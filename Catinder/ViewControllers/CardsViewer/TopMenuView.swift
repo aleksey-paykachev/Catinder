@@ -9,21 +9,42 @@
 import UIKit
 
 class TopMenuView: UIView {
-	private var catinderLogoImage: UIImage!
-	private var profileButton: UIButton!
-	private var messagesButton: UIButton!
-	
-	init() {
-		super.init(frame: .zero)
-		setupView()
-	}
+	private let catinderLogoImageView = UIImageView()
+	private let profileButton = UIButton(type: .custom)
+	private let messagesButton = UIButton(type: .custom)
 	
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+	init() {
+		super.init(frame: .zero)
+		
+		setupSubviews()
+		setupView()
+	}
+	
+	private func setupSubviews() {
+		catinderLogoImageView.image = UIImage(named: "temporaryLogo")
+		catinderLogoImageView.contentMode = .scaleAspectFit
+		
+		profileButton.setImage(UIImage(named: "Profile"), for: .normal)
+		profileButton.contentMode = .scaleAspectFit
+		
+		messagesButton.setImage(UIImage(named: "Messages"), for: .normal)
+		messagesButton.contentMode = .scaleAspectFit
+	}
+	
 	private func setupView() {
 		backgroundColor = .green
 		constraintHeight(to: 100)
+		
+		let stackView = UIStackView(arrangedSubviews: [profileButton, catinderLogoImageView, messagesButton])
+		stackView.axis = .horizontal
+		stackView.distribution = .fillEqually
+
+		// layout
+		addSubview(stackView)
+		stackView.constraintToSuperview()
 	}
 }
