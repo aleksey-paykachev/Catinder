@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		5B139E6723B777F800BE73E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E6623B777F800BE73E7 /* AppDelegate.swift */; };
-		5B139E6923B777F800BE73E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E6823B777F800BE73E7 /* ViewController.swift */; };
+		5B139E6923B777F800BE73E7 /* CardsViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E6823B777F800BE73E7 /* CardsViewerViewController.swift */; };
 		5B139E6C23B777F900BE73E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B139E6A23B777F800BE73E7 /* Main.storyboard */; };
 		5B139E6E23B777FA00BE73E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B139E6D23B777FA00BE73E7 /* Assets.xcassets */; };
 		5B139E7123B777FA00BE73E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B139E6F23B777FA00BE73E7 /* LaunchScreen.storyboard */; };
+		5B139E7B23B7850500BE73E7 /* TopMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E7A23B7850500BE73E7 /* TopMenuView.swift */; };
+		5B139E7D23B7851700BE73E7 /* BottomMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E7C23B7851700BE73E7 /* BottomMenuView.swift */; };
+		5B139E7F23B7853000BE73E7 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E7E23B7853000BE73E7 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5B139E6323B777F800BE73E7 /* Catinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B139E6623B777F800BE73E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5B139E6823B777F800BE73E7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5B139E6823B777F800BE73E7 /* CardsViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewerViewController.swift; sourceTree = "<group>"; };
 		5B139E6B23B777F800BE73E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5B139E6D23B777FA00BE73E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B139E7023B777FA00BE73E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B139E7223B777FA00BE73E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B139E7A23B7850500BE73E7 /* TopMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMenuView.swift; sourceTree = "<group>"; };
+		5B139E7C23B7851700BE73E7 /* BottomMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuView.swift; sourceTree = "<group>"; };
+		5B139E7E23B7853000BE73E7 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +61,32 @@
 			isa = PBXGroup;
 			children = (
 				5B139E6623B777F800BE73E7 /* AppDelegate.swift */,
-				5B139E6823B777F800BE73E7 /* ViewController.swift */,
+				5B139E7823B784E200BE73E7 /* ViewControllers */,
 				5B139E6A23B777F800BE73E7 /* Main.storyboard */,
 				5B139E6D23B777FA00BE73E7 /* Assets.xcassets */,
 				5B139E6F23B777FA00BE73E7 /* LaunchScreen.storyboard */,
 				5B139E7223B777FA00BE73E7 /* Info.plist */,
 			);
 			path = Catinder;
+			sourceTree = "<group>";
+		};
+		5B139E7823B784E200BE73E7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5B139E7923B784F500BE73E7 /* CardsViewer */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5B139E7923B784F500BE73E7 /* CardsViewer */ = {
+			isa = PBXGroup;
+			children = (
+				5B139E6823B777F800BE73E7 /* CardsViewerViewController.swift */,
+				5B139E7E23B7853000BE73E7 /* CardView.swift */,
+				5B139E7A23B7850500BE73E7 /* TopMenuView.swift */,
+				5B139E7C23B7851700BE73E7 /* BottomMenuView.swift */,
+			);
+			path = CardsViewer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +160,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B139E6923B777F800BE73E7 /* ViewController.swift in Sources */,
+				5B139E7D23B7851700BE73E7 /* BottomMenuView.swift in Sources */,
+				5B139E7B23B7850500BE73E7 /* TopMenuView.swift in Sources */,
+				5B139E6923B777F800BE73E7 /* CardsViewerViewController.swift in Sources */,
 				5B139E6723B777F800BE73E7 /* AppDelegate.swift in Sources */,
+				5B139E7F23B7853000BE73E7 /* CardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +320,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.apaykachev.Catinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -310,7 +338,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.apaykachev.Catinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
