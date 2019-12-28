@@ -9,6 +9,11 @@
 import UIKit
 
 class CardView: UIView {
+	struct ViewModel {
+		let imageName: String
+		let informationText: String
+	}
+	
 	private let imageView = UIImageView()
 	private let informationLabel = UILabel()
 	
@@ -16,24 +21,25 @@ class CardView: UIView {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	init(model: CardViewModel) {
+	init(model: ViewModel) {
 		super.init(frame: .zero)
 		
-		setupView()
+		setupImageView()
+		setupImformationLabel()
 		updateUI(using: model)
 	}
 	
-	private func setupView() {
-		// image
+	private func setupImageView() {
 		addSubview(imageView)
 		imageView.constraintToSuperview()
-
-		imageView.contentMode = .scaleAspectFill
 		
-		// label
+		imageView.contentMode = .scaleAspectFill
+	}
+	
+	private func setupImformationLabel() {
 		addSubview(informationLabel)
 		informationLabel.constraintToSuperview(edges: [.leading, .bottom])
-
+		
 		informationLabel.numberOfLines = 0
 		informationLabel.font = UIFont.systemFont(ofSize: 36, weight: .medium)
 		informationLabel.textColor = .white
@@ -41,29 +47,8 @@ class CardView: UIView {
 		informationLabel.shadowOffset = CGSize(width: 1, height: 1)
 	}
 	
-	private func updateUI(using model: CardViewModel) {
+	private func updateUI(using model: ViewModel) {
 		imageView.image = UIImage(named: model.imageName)
 		informationLabel.text = model.informationText
-	}
-}
-
-struct CardViewModel {
-	let imageName: String
-	let informationText: String
-}
-
-struct Cat {
-	let name: String
-	let age: Int
-	let breed: CatBreed
-	let photoName: String
-}
-
-enum CatBreed: String {
-	case maineCoon = "Мейн-кун"
-	case norwegianForestCat = "Норвежская лесная кошка"
-	
-	var name: String {
-		return rawValue
 	}
 }

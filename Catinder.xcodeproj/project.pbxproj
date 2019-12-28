@@ -16,6 +16,8 @@
 		5B139E7D23B7851700BE73E7 /* BottomMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E7C23B7851700BE73E7 /* BottomMenuView.swift */; };
 		5B139E7F23B7853000BE73E7 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E7E23B7853000BE73E7 /* CardView.swift */; };
 		5B139E8123B7873200BE73E7 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */; };
+		5B8B1D8D23B7C57F00543F20 /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B1D8C23B7C57F00543F20 /* Cat.swift */; };
+		5B8B1D8F23B7C59000543F20 /* CatBreed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B1D8E23B7C59000543F20 /* CatBreed.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		5B139E7C23B7851700BE73E7 /* BottomMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuView.swift; sourceTree = "<group>"; };
 		5B139E7E23B7853000BE73E7 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
+		5B8B1D8C23B7C57F00543F20 /* Cat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
+		5B8B1D8E23B7C59000543F20 /* CatBreed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreed.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				5B139E6623B777F800BE73E7 /* AppDelegate.swift */,
+				5B8B1D9023B7C5A100543F20 /* Model */,
 				5B139E7823B784E200BE73E7 /* ViewControllers */,
 				5B139E6A23B777F800BE73E7 /* Main.storyboard */,
 				5B139E6D23B777FA00BE73E7 /* Assets.xcassets */,
@@ -98,6 +103,15 @@
 				5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		5B8B1D9023B7C5A100543F20 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5B8B1D8C23B7C57F00543F20 /* Cat.swift */,
+				5B8B1D8E23B7C59000543F20 /* CatBreed.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,7 +186,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B139E7D23B7851700BE73E7 /* BottomMenuView.swift in Sources */,
+				5B8B1D8D23B7C57F00543F20 /* Cat.swift in Sources */,
 				5B139E7B23B7850500BE73E7 /* TopMenuView.swift in Sources */,
+				5B8B1D8F23B7C59000543F20 /* CatBreed.swift in Sources */,
 				5B139E6923B777F800BE73E7 /* CardsViewerViewController.swift in Sources */,
 				5B139E6723B777F800BE73E7 /* AppDelegate.swift in Sources */,
 				5B139E8123B7873200BE73E7 /* UIView + Extensions.swift in Sources */,

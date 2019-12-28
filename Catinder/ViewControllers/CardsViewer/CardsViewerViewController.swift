@@ -15,7 +15,7 @@ class CardsViewerViewController: UIViewController {
 		
 		let cat = Cat(name: "Барсик", age: 3, breed: .maineCoon, photoName: "Cat_Maine_Coon")
 		let catInformationText = "\(cat.name), \(cat.age)\n\(cat.breed.name)"
-		let cardViewModel = CardViewModel(imageName: cat.photoName, informationText: catInformationText)
+		let cardViewModel = CardView.ViewModel(imageName: cat.photoName, informationText: catInformationText)
 
 		let subviews = [TopMenuView(), CardView(model: cardViewModel), BottomMenuView()]
 		let stackView = UIStackView(arrangedSubviews: subviews)
