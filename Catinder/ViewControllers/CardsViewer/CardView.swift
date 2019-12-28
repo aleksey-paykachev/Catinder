@@ -24,9 +24,40 @@ class CardView: UIView {
 	init(model: ViewModel) {
 		super.init(frame: .zero)
 		
+		setupView()
+		updateUI(using: model)
+	}
+	
+	private func setupView() {
+		layer.zPosition = 1 // place CardView above all other views
+		
+		setupGestures()
+		
 		setupImageView()
 		setupImformationLabel()
-		updateUI(using: model)
+	}
+	
+	private func setupGestures() {
+		let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(gesture:)))
+		addGestureRecognizer(panGestureRecognizer)
+	}
+	
+	@objc private func handlePanGesture(gesture: UIPanGestureRecognizer) {
+		switch gesture.state {
+		case .began, .changed:
+			let coordinate = gesture.translation(in: self)
+			transform = CGAffineTransform(translationX: coordinate.x, y: coordinate.y)
+			print(coordinate.x)
+
+		case .ended, .cancelled, .failed:
+			UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 1, options: .curveEaseOut, animations: { [weak self] in
+				self?.transform = .identity
+			}, completion: nil)
+			print("The End")
+
+		default:
+			break
+		}
 	}
 	
 	private func setupImageView() {
