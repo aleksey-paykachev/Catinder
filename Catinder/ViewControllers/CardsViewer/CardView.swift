@@ -32,7 +32,7 @@ class CardView: UIView {
 		
 		// label
 		addSubview(informationLabel)
-		informationLabel.constraintToSuperview()
+		informationLabel.constraintToSuperview(edges: [.leading, .bottom])
 
 		informationLabel.numberOfLines = 0
 		informationLabel.font = UIFont.systemFont(ofSize: 36, weight: .medium)
