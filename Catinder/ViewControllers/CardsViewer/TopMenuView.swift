@@ -24,7 +24,6 @@ class TopMenuView: UIView {
 	
 	private func setupView() {
 		backgroundColor = .green
-		translatesAutoresizingMaskIntoConstraints = false
-		heightAnchor.constraint(equalToConstant: 100).isActive = true
+		constraintHeight(to: 100)
 	}
 }

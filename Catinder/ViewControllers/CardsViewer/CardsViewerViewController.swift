@@ -19,10 +19,6 @@ class CardsViewerViewController: UIViewController {
 
 		// layout
 		view.addSubview(stackView)
-		stackView.translatesAutoresizingMaskIntoConstraints = false
-		stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-		stackView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-		stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-		stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+		stackView.constraintToSuperview()
 	}
 }

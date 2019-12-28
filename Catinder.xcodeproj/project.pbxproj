@@ -15,6 +15,7 @@
 		5B139E7B23B7850500BE73E7 /* TopMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E7A23B7850500BE73E7 /* TopMenuView.swift */; };
 		5B139E7D23B7851700BE73E7 /* BottomMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E7C23B7851700BE73E7 /* BottomMenuView.swift */; };
 		5B139E7F23B7853000BE73E7 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E7E23B7853000BE73E7 /* CardView.swift */; };
+		5B139E8123B7873200BE73E7 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		5B139E7A23B7850500BE73E7 /* TopMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMenuView.swift; sourceTree = "<group>"; };
 		5B139E7C23B7851700BE73E7 /* BottomMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuView.swift; sourceTree = "<group>"; };
 		5B139E7E23B7853000BE73E7 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				5B139E6D23B777FA00BE73E7 /* Assets.xcassets */,
 				5B139E6F23B777FA00BE73E7 /* LaunchScreen.storyboard */,
 				5B139E7223B777FA00BE73E7 /* Info.plist */,
+				5B139E8223B7875D00BE73E7 /* Helpers */,
 			);
 			path = Catinder;
 			sourceTree = "<group>";
@@ -87,6 +90,14 @@
 				5B139E7C23B7851700BE73E7 /* BottomMenuView.swift */,
 			);
 			path = CardsViewer;
+			sourceTree = "<group>";
+		};
+		5B139E8223B7875D00BE73E7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +175,7 @@
 				5B139E7B23B7850500BE73E7 /* TopMenuView.swift in Sources */,
 				5B139E6923B777F800BE73E7 /* CardsViewerViewController.swift in Sources */,
 				5B139E6723B777F800BE73E7 /* AppDelegate.swift in Sources */,
+				5B139E8123B7873200BE73E7 /* UIView + Extensions.swift in Sources */,
 				5B139E7F23B7853000BE73E7 /* CardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

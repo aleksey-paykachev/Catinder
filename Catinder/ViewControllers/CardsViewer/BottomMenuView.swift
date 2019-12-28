@@ -26,7 +26,6 @@ class BottomMenuView: UIView {
 	
 	private func setupView() {
 		backgroundColor = .purple
-		translatesAutoresizingMaskIntoConstraints = false
-		heightAnchor.constraint(equalToConstant: 80).isActive = true
+		constraintHeight(to: 80)
 	}
 }
