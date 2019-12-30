@@ -86,7 +86,7 @@ class CardView: UIView {
 		let labelsStackView = UIStackView(arrangedSubviews: [titleLabel, subTitleLabel])
 		labelsStackView.axis = .vertical
 		addSubview(labelsStackView)
-		labelsStackView.constraintToSuperview(edges: [.leading, .bottom])
+		labelsStackView.constraintToSuperview(edges: [.leading, .bottom], insets: UIEdgeInsets(top: 0, left: 14, bottom: 28, right: 0))
 		
 		// title
 		titleLabel.font = UIFont.systemFont(ofSize: 36, weight: .medium)

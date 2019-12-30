@@ -28,25 +28,25 @@ extension UIView {
 	///
 	/// - Parameter edges: edges of superview to constraint to.
 	///
-	func constraintToSuperview(edges: ConstraintEdges = .all) {
+	func constraintToSuperview(edges: ConstraintEdges = .all, insets: UIEdgeInsets = .zero) {
 		guard let superview = superview else { return }
 		
 		translatesAutoresizingMaskIntoConstraints = false
 		
 		if edges.contains(.leading) {
-			leadingAnchor.constraint(equalTo: superview.leadingAnchor).isActive = true
+			leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: insets.left).isActive = true
 		}
 		
 		if edges.contains(.trailing) {
-			trailingAnchor.constraint(equalTo: superview.trailingAnchor).isActive = true
+			trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -insets.right).isActive = true
 		}
 		
 		if edges.contains(.top) {
-			topAnchor.constraint(equalTo: superview.topAnchor).isActive = true
+			topAnchor.constraint(equalTo: superview.topAnchor, constant: insets.top).isActive = true
 		}
 		
 		if edges.contains(.bottom) {
-			bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
+			bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -insets.bottom).isActive = true
 		}
 	}
 	
