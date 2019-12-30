@@ -13,11 +13,21 @@ class CardsViewerViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		let cat = Cat(name: "Барсик", age: 3, breed: .maineCoon, photoName: "Cat_Maine_Coon")
-		let catInformationText = "\(cat.name), \(cat.age)\n\(cat.breed.name)"
-		let cardViewModel = CardView.ViewModel(imageName: cat.photoName, informationText: catInformationText)
+		let cats = [
+			Cat(name: "Барсик", age: 3, breed: .maineCoon, photoName: "Cat_Barsik"),
+			Cat(name: "Маруся", age: 2, breed: .norwegianForestCat, photoName: "Cat_Marusia")
+		]
+		
+		let cardsStackView = CardsStackView()
+		cats.forEach { cat in
+			let catInformationText = "\(cat.name), \(cat.age)\n\(cat.breed.name)"
+			let cardViewModel = CardView.ViewModel(imageName: cat.photoName, informationText: catInformationText)
 
-		let subviews = [TopMenuView(), CardView(model: cardViewModel), BottomMenuView()]
+			let cardView = CardView(model: cardViewModel)
+			cardsStackView.add(cardView)
+		}
+
+		let subviews = [TopMenuView(), cardsStackView, BottomMenuView()]
 		let stackView = UIStackView(arrangedSubviews: subviews)
 		stackView.axis = .vertical
 

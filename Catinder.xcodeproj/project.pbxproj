@@ -16,6 +16,7 @@
 		5B139E7D23B7851700BE73E7 /* BottomMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E7C23B7851700BE73E7 /* BottomMenuView.swift */; };
 		5B139E7F23B7853000BE73E7 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E7E23B7853000BE73E7 /* CardView.swift */; };
 		5B139E8123B7873200BE73E7 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */; };
+		5B2DBA7523B9DA5900BACB52 /* CardsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */; };
 		5B8B1D8D23B7C57F00543F20 /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B1D8C23B7C57F00543F20 /* Cat.swift */; };
 		5B8B1D8F23B7C59000543F20 /* CatBreed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B1D8E23B7C59000543F20 /* CatBreed.swift */; };
 /* End PBXBuildFile section */
@@ -32,6 +33,7 @@
 		5B139E7C23B7851700BE73E7 /* BottomMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuView.swift; sourceTree = "<group>"; };
 		5B139E7E23B7853000BE73E7 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
+		5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsStackView.swift; sourceTree = "<group>"; };
 		5B8B1D8C23B7C57F00543F20 /* Cat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
 		5B8B1D8E23B7C59000543F20 /* CatBreed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreed.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				5B139E6823B777F800BE73E7 /* CardsViewerViewController.swift */,
+				5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */,
 				5B139E7E23B7853000BE73E7 /* CardView.swift */,
 				5B139E7A23B7850500BE73E7 /* TopMenuView.swift */,
 				5B139E7C23B7851700BE73E7 /* BottomMenuView.swift */,
@@ -186,6 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B139E7D23B7851700BE73E7 /* BottomMenuView.swift in Sources */,
+				5B2DBA7523B9DA5900BACB52 /* CardsStackView.swift in Sources */,
 				5B8B1D8D23B7C57F00543F20 /* Cat.swift in Sources */,
 				5B139E7B23B7850500BE73E7 /* TopMenuView.swift in Sources */,
 				5B8B1D8F23B7C59000543F20 /* CatBreed.swift in Sources */,
