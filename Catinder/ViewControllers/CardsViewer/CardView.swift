@@ -11,12 +11,15 @@ import UIKit
 class CardView: UIView {
 	struct ViewModel {
 		let imageName: String
-		let informationText: String
+		let titleText: String
+		let subTitleText: String
 	}
 	
 	private let imageView = UIImageView()
-	private let informationLabel = UILabel()
-	
+	private let subLabelsGradientLayer = CAGradientLayer()
+	private let titleLabel = UILabel()
+	private let subTitleLabel = UILabel()
+
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
@@ -29,12 +32,21 @@ class CardView: UIView {
 	}
 	
 	private func setupView() {
-		layer.zPosition = 1 // place CardView above all other views
-		
 		setupGestures()
 		
+		setupLayer()
 		setupImageView()
-		setupImformationLabel()
+		setupLabels()
+	}
+	
+	private func setupLayer() {
+		layer.zPosition = 1 // place CardView above all other views
+
+		layer.cornerRadius = 14
+		layer.masksToBounds = true
+		
+		layer.borderColor = UIColor.black.withAlphaComponent(0.2).cgColor
+		layer.borderWidth = 1
 	}
 	
 	private func setupGestures() {
@@ -67,19 +79,44 @@ class CardView: UIView {
 		imageView.contentMode = .scaleAspectFill
 	}
 	
-	private func setupImformationLabel() {
-		addSubview(informationLabel)
-		informationLabel.constraintToSuperview(edges: [.leading, .bottom])
+	private func setupLabels() {
+		addSubLabelsGradient() // add gradient behind the text to improve readability
 		
-		informationLabel.numberOfLines = 0
-		informationLabel.font = UIFont.systemFont(ofSize: 36, weight: .medium)
-		informationLabel.textColor = .white
-		informationLabel.shadowColor = UIColor.init(white: 0.5, alpha: 0.5)
-		informationLabel.shadowOffset = CGSize(width: 1, height: 1)
+		// put all labels inside one stack
+		let labelsStackView = UIStackView(arrangedSubviews: [titleLabel, subTitleLabel])
+		labelsStackView.axis = .vertical
+		addSubview(labelsStackView)
+		labelsStackView.constraintToSuperview(edges: [.leading, .bottom])
+		
+		// title
+		titleLabel.font = UIFont.systemFont(ofSize: 36, weight: .medium)
+		titleLabel.textColor = .white
+		
+		// subtitle
+		subTitleLabel.numberOfLines = 0
+		subTitleLabel.font = UIFont.systemFont(ofSize: 24, weight: .regular)
+		subTitleLabel.textColor = .white
+	}
+	
+	private func addSubLabelsGradient() {
+		subLabelsGradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.withAlphaComponent(0.6).cgColor]
+
+		subLabelsGradientLayer.startPoint = CGPoint(x: 0, y: 0.8)
+		subLabelsGradientLayer.endPoint = CGPoint(x: 0, y: 1)
+
+		layer.addSublayer(subLabelsGradientLayer)
 	}
 	
 	private func updateUI(using model: ViewModel) {
 		imageView.image = UIImage(named: model.imageName)
-		informationLabel.text = model.informationText
+		titleLabel.text = model.titleText
+		subTitleLabel.text = model.subTitleText
+	}
+	
+	override func layoutSubviews() {
+		super.layoutSubviews()
+
+		// set frame for gradient layer after current view did layout itself
+		subLabelsGradientLayer.frame = frame
 	}
 }

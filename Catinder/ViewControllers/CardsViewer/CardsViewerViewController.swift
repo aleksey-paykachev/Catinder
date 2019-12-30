@@ -20,8 +20,7 @@ class CardsViewerViewController: UIViewController {
 		
 		let cardsStackView = CardsStackView()
 		cats.forEach { cat in
-			let catInformationText = "\(cat.name), \(cat.age)\n\(cat.breed.name)"
-			let cardViewModel = CardView.ViewModel(imageName: cat.photoName, informationText: catInformationText)
+			let cardViewModel = CardView.ViewModel(imageName: cat.photoName, titleText: "\(cat.name), \(cat.age)", subTitleText: cat.breed.name)
 
 			let cardView = CardView(model: cardViewModel)
 			cardsStackView.add(cardView)
