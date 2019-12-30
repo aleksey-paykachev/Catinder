@@ -1,5 +1,5 @@
 //
-//  Cat.swift
+//  CatProfile.swift
 //  Catinder
 //
 //  Created by Aleksey on 28/12/2019.
@@ -8,9 +8,10 @@
 
 import Foundation
 
-struct Cat {
+struct CatProfile {
 	let name: String
 	let age: Int
 	let breed: CatBreed
 	let photoName: String
+	let description: String
 }

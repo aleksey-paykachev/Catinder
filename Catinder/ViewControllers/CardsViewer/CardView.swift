@@ -11,14 +11,16 @@ import UIKit
 class CardView: UIView {
 	struct ViewModel {
 		let imageName: String
+		let headerText: String
 		let titleText: String
-		let subTitleText: String
+		let subtitleText: String
 	}
 	
 	private let imageView = UIImageView()
 	private let subLabelsGradientLayer = CAGradientLayer()
+	private let headerLabel = UILabel()
 	private let titleLabel = UILabel()
-	private let subTitleLabel = UILabel()
+	private let subtitleLabel = UILabel()
 
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
@@ -83,25 +85,31 @@ class CardView: UIView {
 		addSubLabelsGradient() // add gradient behind the text to improve readability
 		
 		// put all labels inside one stack
-		let labelsStackView = UIStackView(arrangedSubviews: [titleLabel, subTitleLabel])
+		let labelsStackView = UIStackView(arrangedSubviews: [headerLabel, titleLabel, subtitleLabel])
+		labelsStackView.setCustomSpacing(16, after: titleLabel)
 		labelsStackView.axis = .vertical
+
 		addSubview(labelsStackView)
-		labelsStackView.constraintToSuperview(edges: [.leading, .bottom], insets: UIEdgeInsets(top: 0, left: 14, bottom: 28, right: 0))
+		labelsStackView.constraintToSuperview(edges: [.leading, .trailing, .bottom], insets: UIEdgeInsets(top: 0, left: 14, bottom: 28, right: 0))
+		
+		// header
+		headerLabel.font = UIFont.systemFont(ofSize: 36, weight: .medium)
+		headerLabel.textColor = .white
 		
 		// title
-		titleLabel.font = UIFont.systemFont(ofSize: 36, weight: .medium)
-		titleLabel.textColor = .white
+		titleLabel.font = UIFont.systemFont(ofSize: 24, weight: .light)
+		titleLabel.textColor = UIColor(white: 0.98, alpha: 1)
 		
 		// subtitle
-		subTitleLabel.numberOfLines = 0
-		subTitleLabel.font = UIFont.systemFont(ofSize: 24, weight: .regular)
-		subTitleLabel.textColor = .white
+		subtitleLabel.numberOfLines = 0
+		subtitleLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+		subtitleLabel.textColor = UIColor(white: 0.96, alpha: 1)
 	}
 	
 	private func addSubLabelsGradient() {
 		subLabelsGradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.withAlphaComponent(0.6).cgColor]
 
-		subLabelsGradientLayer.startPoint = CGPoint(x: 0, y: 0.8)
+		subLabelsGradientLayer.startPoint = CGPoint(x: 0, y: 0.6)
 		subLabelsGradientLayer.endPoint = CGPoint(x: 0, y: 1)
 
 		layer.addSublayer(subLabelsGradientLayer)
@@ -109,8 +117,9 @@ class CardView: UIView {
 	
 	private func updateUI(using model: ViewModel) {
 		imageView.image = UIImage(named: model.imageName)
+		headerLabel.text = model.headerText
 		titleLabel.text = model.titleText
-		subTitleLabel.text = model.subTitleText
+		subtitleLabel.text = model.subtitleText
 	}
 	
 	override func layoutSubviews() {
