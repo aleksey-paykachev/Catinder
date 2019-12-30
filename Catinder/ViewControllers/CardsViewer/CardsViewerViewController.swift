@@ -13,16 +13,15 @@ class CardsViewerViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		let cats = [
+		let cardViewModelObjects: [CardViewModelRepresentable] = [
 			CatProfile(name: "Барсик", age: 3, breed: .maineCoon, photoName: "Cat_Barsik", description: "Люблю драть мебель, и мяукать по ночам. Также очень люблю, когда мне чешут животик."),
+			DogProfile(name: "Дружок", photoName: "Dog_Druzhok", description: "Люблю убивать людей."),
 			CatProfile(name: "Маруся", age: 2, breed: .norwegianForestCat, photoName: "Cat_Marusia", description: "Люблю с умным видом смотреть в окно, ожидая конца света.")
 		]
 		
 		let cardsStackView = CardsStackView()
-		cats.forEach { cat in
-			let cardViewModel = CardView.ViewModel(imageName: cat.photoName, headerText: "\(cat.name), \(cat.age)", titleText: cat.breed.name, subtitleText: cat.description)
-
-			let cardView = CardView(model: cardViewModel)
+		cardViewModelObjects.forEach { cardViewModelObject in
+			let cardView = CardView(model: cardViewModelObject.viewModel)
 			cardsStackView.add(cardView)
 		}
 

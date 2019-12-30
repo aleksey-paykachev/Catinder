@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol CardViewModelRepresentable {
+	var viewModel: CardView.ViewModel { get }
+}
+
 class CardView: UIView {
 	struct ViewModel {
 		let imageName: String
