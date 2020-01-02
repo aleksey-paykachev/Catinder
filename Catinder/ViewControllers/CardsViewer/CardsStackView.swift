@@ -12,6 +12,8 @@ class CardsStackView: UIView {
 	private var cardViews: [CardView] = []
 	
 	func add(_ cardView: CardView) {
+		layer.zPosition = 1 // place CardsStackView above all other views
+
 		cardViews.append(cardView)
 		
 		addSubview(cardView)

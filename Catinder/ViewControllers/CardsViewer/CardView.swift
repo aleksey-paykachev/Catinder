@@ -14,7 +14,7 @@ protocol CardViewModelRepresentable {
 
 class CardView: UIView {
 	struct ViewModel {
-		let imageName: String
+		let imagesNames: [String]
 		let headerText: String
 		let titleText: String
 		let subtitleText: String
@@ -68,8 +68,6 @@ class CardView: UIView {
 	}
 	
 	private func setupLayer() {
-		layer.zPosition = 1 // place CardView above all other views
-
 		layer.cornerRadius = 14
 		layer.masksToBounds = true
 		
@@ -188,7 +186,7 @@ class CardView: UIView {
 	}
 	
 	private func updateUI(using model: ViewModel) {
-		imageView.image = UIImage(named: model.imageName)
+		imageView.image = UIImage(named: model.imagesNames[0])
 		headerLabel.text = model.headerText
 		titleLabel.text = model.titleText
 		subtitleLabel.text = model.subtitleText

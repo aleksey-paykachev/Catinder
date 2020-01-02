@@ -19,7 +19,7 @@ struct DogProfile {
 
 extension DogProfile: CardViewModelRepresentable {
 	var viewModel: CardView.ViewModel {
-		return CardView.ViewModel(imageName: photoName,
+		return CardView.ViewModel(imagesNames: [photoName],
 								  headerText: name,
 								  titleText: "",
 								  subtitleText: description)

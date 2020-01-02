@@ -12,7 +12,7 @@ struct CatProfile {
 	let name: String
 	let age: Int
 	let breed: CatBreed
-	let photoName: String
+	let photosNames: [String]
 	let description: String
 }
 
@@ -21,7 +21,7 @@ struct CatProfile {
 
 extension CatProfile: CardViewModelRepresentable {
 	var viewModel: CardView.ViewModel {
-		return CardView.ViewModel(imageName: photoName,
+		return CardView.ViewModel(imagesNames: photosNames,
 								  headerText: "\(name), \(age)",
 			titleText: breed.name,
 			subtitleText: description)
