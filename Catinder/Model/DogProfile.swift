@@ -18,10 +18,10 @@ struct DogProfile {
 // MARK: - CardViewModelRepresentable
 
 extension DogProfile: CardViewModelRepresentable {
-	var viewModel: CardView.ViewModel {
-		return CardView.ViewModel(imagesNames: [photoName],
-								  headerText: name,
-								  titleText: "",
-								  subtitleText: description)
+	var viewModel: CardViewModel {
+		return CardViewModel(imagesNames: [photoName],
+							 headerText: name,
+							 titleText: "",
+							 subtitleText: description)
 	}
 }

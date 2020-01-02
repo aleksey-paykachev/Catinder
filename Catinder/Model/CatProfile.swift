@@ -20,10 +20,10 @@ struct CatProfile {
 // MARK: - CardViewModelRepresentable
 
 extension CatProfile: CardViewModelRepresentable {
-	var viewModel: CardView.ViewModel {
-		return CardView.ViewModel(imagesNames: photosNames,
-								  headerText: "\(name), \(age)",
-			titleText: breed.name,
-			subtitleText: description)
+	var viewModel: CardViewModel {
+		return CardViewModel(imagesNames: photosNames,
+							 headerText: "\(name), \(age)",
+							 titleText: breed.name,
+							 subtitleText: description)
 	}
 }

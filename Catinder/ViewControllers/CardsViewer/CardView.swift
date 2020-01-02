@@ -8,40 +8,7 @@
 
 import UIKit
 
-protocol CardViewModelRepresentable {
-	var viewModel: CardView.ViewModel { get }
-}
-
 class CardView: UIView {
-	struct ViewModel {
-		let headerText: String
-		let titleText: String
-		let subtitleText: String
-		
-		private let imagesNames: [String]
-		private var activeImageIndex = 0
-
-		init(imagesNames: [String], headerText: String, titleText: String, subtitleText: String) {
-			self.imagesNames = imagesNames
-			self.headerText = headerText
-			self.titleText = titleText
-			self.subtitleText = subtitleText
-		}
-
-		var activeImage: UIImage? {
-			let imageName = imagesNames[activeImageIndex]
-			return UIImage(named: imageName)
-		}
-		
-		mutating func goToPreviousImage() {
-			activeImageIndex = max(0, activeImageIndex - 1)
-		}
-		
-		mutating func advanceToNextImage() {
-			activeImageIndex = min(imagesNames.count - 1, activeImageIndex + 1)
-		}
-	}
-	
 	private enum State {
 		case present
 		case removing(direction: SwipeDirection)
@@ -64,7 +31,7 @@ class CardView: UIView {
 	private let titleLabel = UILabel()
 	private let subtitleLabel = UILabel()
 	
-	private var viewModel: ViewModel { didSet { updateUI() } }
+	private var viewModel: CardViewModel { didSet { updateUI() } }
 	private var state = State.present
 
 	
@@ -74,7 +41,7 @@ class CardView: UIView {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	init(viewModel: ViewModel) {
+	init(viewModel: CardViewModel) {
 		self.viewModel = viewModel
 		super.init(frame: .zero)
 
