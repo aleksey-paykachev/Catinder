@@ -14,10 +14,32 @@ protocol CardViewModelRepresentable {
 
 class CardView: UIView {
 	struct ViewModel {
-		let imagesNames: [String]
 		let headerText: String
 		let titleText: String
 		let subtitleText: String
+		
+		private let imagesNames: [String]
+		private var activeImageIndex = 0
+
+		init(imagesNames: [String], headerText: String, titleText: String, subtitleText: String) {
+			self.imagesNames = imagesNames
+			self.headerText = headerText
+			self.titleText = titleText
+			self.subtitleText = subtitleText
+		}
+
+		var activeImage: UIImage? {
+			let imageName = imagesNames[activeImageIndex]
+			return UIImage(named: imageName)
+		}
+		
+		mutating func goToPreviousImage() {
+			activeImageIndex = max(0, activeImageIndex - 1)
+		}
+		
+		mutating func advanceToNextImage() {
+			activeImageIndex = min(imagesNames.count - 1, activeImageIndex + 1)
+		}
 	}
 	
 	private enum State {
@@ -41,6 +63,8 @@ class CardView: UIView {
 	private let headerLabel = UILabel()
 	private let titleLabel = UILabel()
 	private let subtitleLabel = UILabel()
+	
+	private var viewModel: ViewModel { didSet { updateUI() } }
 	private var state = State.present
 
 	
@@ -50,12 +74,13 @@ class CardView: UIView {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	init(model: ViewModel) {
+	init(viewModel: ViewModel) {
+		self.viewModel = viewModel
 		super.init(frame: .zero)
-		
+
 		setupView()
 		setupGestures()
-		updateUI(using: model)
+		updateUI()
 	}
 	
 	
@@ -120,8 +145,24 @@ class CardView: UIView {
 	// MARK: - Gestures
 	
 	private func setupGestures() {
+		// tap - change photos
+		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(gesture:)))
+		addGestureRecognizer(tapGestureRecognizer)
+
+		// pan - swipe card
 		let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(gesture:)))
 		addGestureRecognizer(panGestureRecognizer)
+	}
+	
+	@objc private func handleTapGesture(gesture: UITapGestureRecognizer) {
+		let tapLocation = gesture.location(in: self)
+		let isRightSideDidTapped = tapLocation.x > frame.width / 2
+		
+		if isRightSideDidTapped {
+			viewModel.advanceToNextImage()
+		} else {
+			viewModel.goToPreviousImage()
+		}
 	}
 	
 	@objc private func handlePanGesture(gesture: UIPanGestureRecognizer) {
@@ -132,7 +173,6 @@ class CardView: UIView {
 			state = calculateState(basedOn: displacement.x)
 			
 		case .ended, .cancelled, .failed:
-			print("____")
 			if case let State.removing(direction) = state {
 				removeCardWithAnimation(direction: direction)
 			} else {
@@ -185,11 +225,11 @@ class CardView: UIView {
 		})
 	}
 	
-	private func updateUI(using model: ViewModel) {
-		imageView.image = UIImage(named: model.imagesNames[0])
-		headerLabel.text = model.headerText
-		titleLabel.text = model.titleText
-		subtitleLabel.text = model.subtitleText
+	private func updateUI() {
+		imageView.image = viewModel.activeImage
+		headerLabel.text = viewModel.headerText
+		titleLabel.text = viewModel.titleText
+		subtitleLabel.text = viewModel.subtitleText
 	}
 	
 	

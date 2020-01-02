@@ -11,6 +11,7 @@ import Foundation
 enum CatBreed: String {
 	case maineCoon = "Мейн-кун"
 	case norwegianForestCat = "Норвежская лесная кошка"
+	case unknown = ""
 	
 	var name: String {
 		return rawValue
