@@ -17,11 +17,13 @@
 		5B139E7F23B7853000BE73E7 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E7E23B7853000BE73E7 /* CardView.swift */; };
 		5B139E8123B7873200BE73E7 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */; };
 		5B19E00823BA4A9100E90F56 /* DogProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B19E00723BA4A9100E90F56 /* DogProfile.swift */; };
+		5B244CA623BF9AB60099B975 /* UIStackView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */; };
 		5B2DBA7523B9DA5900BACB52 /* CardsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */; };
 		5B8B1D8D23B7C57F00543F20 /* CatProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B1D8C23B7C57F00543F20 /* CatProfile.swift */; };
 		5B8B1D8F23B7C59000543F20 /* CatBreed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B1D8E23B7C59000543F20 /* CatBreed.swift */; };
 		5B8FB3D923BE946600041B23 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8FB3D823BE946600041B23 /* CardViewModel.swift */; };
 		5B96C7FD23BE713A00BFB4D0 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B96C7FC23BE713A00BFB4D0 /* Angle.swift */; };
+		5BC68D5C23BF29E500DE9E82 /* CustomPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC68D5B23BF29E500DE9E82 /* CustomPageControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,11 +39,13 @@
 		5B139E7E23B7853000BE73E7 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		5B19E00723BA4A9100E90F56 /* DogProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogProfile.swift; sourceTree = "<group>"; };
+		5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extensions.swift"; sourceTree = "<group>"; };
 		5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsStackView.swift; sourceTree = "<group>"; };
 		5B8B1D8C23B7C57F00543F20 /* CatProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatProfile.swift; sourceTree = "<group>"; };
 		5B8B1D8E23B7C59000543F20 /* CatBreed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreed.swift; sourceTree = "<group>"; };
 		5B8FB3D823BE946600041B23 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		5B96C7FC23BE713A00BFB4D0 /* Angle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
+		5BC68D5B23BF29E500DE9E82 /* CustomPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,7 @@
 				5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */,
 				5B8FB3D823BE946600041B23 /* CardViewModel.swift */,
 				5B139E7E23B7853000BE73E7 /* CardView.swift */,
+				5BC68D5B23BF29E500DE9E82 /* CustomPageControl.swift */,
 				5B139E7A23B7850500BE73E7 /* TopMenuView.swift */,
 				5B139E7C23B7851700BE73E7 /* BottomMenuView.swift */,
 			);
@@ -111,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */,
+				5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */,
 				5B96C7FC23BE713A00BFB4D0 /* Angle.swift */,
 			);
 			path = Helpers;
@@ -206,9 +212,11 @@
 				5B96C7FD23BE713A00BFB4D0 /* Angle.swift in Sources */,
 				5B139E6923B777F800BE73E7 /* CardsViewerViewController.swift in Sources */,
 				5B8FB3D923BE946600041B23 /* CardViewModel.swift in Sources */,
+				5B244CA623BF9AB60099B975 /* UIStackView + Extensions.swift in Sources */,
 				5B139E6723B777F800BE73E7 /* AppDelegate.swift in Sources */,
 				5B139E8123B7873200BE73E7 /* UIView + Extensions.swift in Sources */,
 				5B139E7F23B7853000BE73E7 /* CardView.swift in Sources */,
+				5BC68D5C23BF29E500DE9E82 /* CustomPageControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

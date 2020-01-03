@@ -26,7 +26,7 @@ class CardView: UIView {
 
 	// Properties
 	private let imageView = UIImageView()
-	private let activeImagePageControl = UIPageControl()
+	private let activeImagePageControl = CustomPageControl()
 	private let subLabelsGradientLayer = CAGradientLayer()
 	private let headerLabel = UILabel()
 	private let titleLabel = UILabel()
@@ -112,10 +112,9 @@ class CardView: UIView {
 	
 	private func setupActiveImagePageControl() {
 		addSubview(activeImagePageControl)
-		activeImagePageControl.constraintToSuperview(edges: [.leading, .top, .trailing], insets: UIEdgeInsets(top: 8, left: 8, bottom: 0, right: 8))
+		activeImagePageControl.constraintToSuperview(edges: [.leading, .top, .trailing], insets: UIEdgeInsets(top: 10, left: 16, bottom: 0, right: 16))
 
 		activeImagePageControl.numberOfPages = viewModel.numberOfImages
-		activeImagePageControl.hidesForSinglePage = true
 	}
 	
 	// MARK: - Gestures
