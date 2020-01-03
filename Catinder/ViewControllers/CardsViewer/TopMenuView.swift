@@ -9,7 +9,7 @@
 import UIKit
 
 class TopMenuView: UIView {
-	private let catinderLogoImageView = UIImageView()
+	private let logoImageView = UIImageView()
 	private let profileButton = UIButton(type: .custom)
 	private let messagesButton = UIButton(type: .custom)
 	
@@ -25,25 +25,23 @@ class TopMenuView: UIView {
 	}
 	
 	private func setupSubviews() {
-		catinderLogoImageView.image = UIImage(named: "temporaryLogo")
-		catinderLogoImageView.contentMode = .scaleAspectFit
+		logoImageView.image = UIImage(named: "temporaryLogo")
+		logoImageView.contentMode = .scaleAspectFit
 		
 		profileButton.setImage(UIImage(named: "Profile"), for: .normal)
-		profileButton.contentMode = .scaleAspectFit
+		profileButton.imageView?.contentMode = .scaleAspectFit
 		
 		messagesButton.setImage(UIImage(named: "Messages"), for: .normal)
-		messagesButton.contentMode = .scaleAspectFit
+		messagesButton.imageView?.contentMode = .scaleAspectFit
 	}
 	
 	private func setupView() {
-		backgroundColor = .green
-		constraintHeight(to: 100)
+		constraintHeight(to: 30)
 		
-		let stackView = UIStackView(arrangedSubviews: [profileButton, catinderLogoImageView, messagesButton])
+		let stackView = UIStackView(arrangedSubviews: [profileButton, logoImageView, messagesButton])
 		stackView.axis = .horizontal
-		stackView.distribution = .fillEqually
+		stackView.distribution = .equalCentering
 
-		// layout
 		addSubview(stackView)
 		stackView.constraintToSuperview()
 	}

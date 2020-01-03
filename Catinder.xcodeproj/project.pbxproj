@@ -105,7 +105,6 @@
 				5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */,
 				5B8FB3D823BE946600041B23 /* CardViewModel.swift */,
 				5B139E7E23B7853000BE73E7 /* CardView.swift */,
-				5BC68D5B23BF29E500DE9E82 /* CustomPageControl.swift */,
 				5B139E7A23B7850500BE73E7 /* TopMenuView.swift */,
 				5B139E7C23B7851700BE73E7 /* BottomMenuView.swift */,
 			);
@@ -117,6 +116,7 @@
 			children = (
 				5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */,
 				5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */,
+				5BC68D5B23BF29E500DE9E82 /* CustomPageControl.swift */,
 				5B96C7FC23BE713A00BFB4D0 /* Angle.swift */,
 			);
 			path = Helpers;

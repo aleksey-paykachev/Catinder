@@ -23,10 +23,11 @@ extension UIView {
 		static let all: ConstraintEdges = [.leading, .trailing, .top, .bottom]
 	}
 	
-	
-	/// Constraint current view to its superview given edges.
+	/// Constraint current view to its superview.
 	///
-	/// - Parameter edges: edges of superview to constraint to.
+	/// - Parameters:
+	///   - edges: Edges of superview to constraint to.
+	///   - insets: Inset values for all constrained edges.
 	///
 	func constraintToSuperview(edges: ConstraintEdges = .all, insets: UIEdgeInsets = .zero) {
 		guard let superview = superview else { return }
@@ -34,25 +35,25 @@ extension UIView {
 		translatesAutoresizingMaskIntoConstraints = false
 		
 		if edges.contains(.leading) {
-			leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: insets.left).isActive = true
+			leadingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leadingAnchor, constant: insets.left).isActive = true
 		}
 		
 		if edges.contains(.trailing) {
-			trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -insets.right).isActive = true
+			trailingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.trailingAnchor, constant: -insets.right).isActive = true
 		}
 		
 		if edges.contains(.top) {
-			topAnchor.constraint(equalTo: superview.topAnchor, constant: insets.top).isActive = true
+			topAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.topAnchor, constant: insets.top).isActive = true
 		}
 		
 		if edges.contains(.bottom) {
-			bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -insets.bottom).isActive = true
+			bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor, constant: -insets.bottom).isActive = true
 		}
 	}
 	
 	/// Set fixed height using height constraint.
 	///
-	/// - Parameter height: height constant.
+	/// - Parameter height: Height constant.
 	///
 	func constraintHeight(to height: CGFloat) {
 		translatesAutoresizingMaskIntoConstraints = false

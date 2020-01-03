@@ -29,9 +29,9 @@ class CardsViewerViewController: UIViewController {
 		let subviews = [TopMenuView(), cardsStackView, BottomMenuView()]
 		let stackView = UIStackView(arrangedSubviews: subviews)
 		stackView.axis = .vertical
+		stackView.spacing = 12
 
-		// layout
 		view.addSubview(stackView)
-		stackView.constraintToSuperview()
+		stackView.constraintToSuperview(insets: UIEdgeInsets(top: 6, left: 12, bottom: 6, right: 12))
 	}
 }
