@@ -13,7 +13,7 @@ extension UIView {
 	/// OptionSet which allows to specify separate edges to constraint.
 	///
 	struct ConstraintEdges: OptionSet {
-		let rawValue: Int
+		let rawValue: UInt8
 		
 		static let leading = ConstraintEdges(rawValue: 1 << 0)
 		static let trailing = ConstraintEdges(rawValue: 1 << 1)

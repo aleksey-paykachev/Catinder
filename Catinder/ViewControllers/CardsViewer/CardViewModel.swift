@@ -18,13 +18,17 @@ struct CardViewModel {
 	let subtitleText: String
 	
 	private let imagesNames: [String]
-	private var activeImageIndex = 0
+	private(set) var activeImageIndex = 0
 	
 	init(imagesNames: [String], headerText: String, titleText: String, subtitleText: String) {
 		self.imagesNames = imagesNames
 		self.headerText = headerText
 		self.titleText = titleText
 		self.subtitleText = subtitleText
+	}
+	
+	var numberOfImages: Int {
+		return imagesNames.count
 	}
 	
 	var activeImage: UIImage? {
