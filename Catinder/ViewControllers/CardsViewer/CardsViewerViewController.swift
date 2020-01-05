@@ -25,8 +25,11 @@ class CardsViewerViewController: UIViewController {
 			let cardView = CardView(viewModel: cardViewModelObject.viewModel)
 			cardsStackView.add(cardView)
 		}
+		
+		let bottomMenuView = BottomMenuView()
+		bottomMenuView.delegate = cardsStackView
 
-		let subviews = [TopMenuView(), cardsStackView, BottomMenuView()]
+		let subviews = [TopMenuView(), cardsStackView, bottomMenuView]
 		let stackView = UIStackView(arrangedSubviews: subviews)
 		stackView.axis = .vertical
 		stackView.spacing = 12

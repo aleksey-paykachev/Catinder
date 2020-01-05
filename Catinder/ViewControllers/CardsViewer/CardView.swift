@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol CardViewDelegate: class {
+	func cardDidSwiped(_ cardView: CardView, direction: CardView.SwipeDirection)
+}
+
 class CardView: UIView {
 	private enum State {
 		case present
@@ -15,7 +19,7 @@ class CardView: UIView {
 		case removed
 	}
 	
-	private enum SwipeDirection {
+	enum SwipeDirection {
 		case left
 		case right
 	}
@@ -32,6 +36,7 @@ class CardView: UIView {
 	private let titleLabel = UILabel()
 	private let subtitleLabel = UILabel()
 	
+	weak var delegate: CardViewDelegate?
 	private var viewModel: CardViewModel { didSet { updateUI() } }
 	private var state = State.present
 
@@ -49,6 +54,14 @@ class CardView: UIView {
 		setupView()
 		setupGestures()
 		updateUI()
+	}
+	
+	
+	// MARK: - Public methods
+	
+	func remove(direction: SwipeDirection) {
+		state = .removing(direction: direction)
+		removeCardWithAnimation(direction: direction)
 	}
 	
 	
@@ -186,10 +199,15 @@ class CardView: UIView {
 	private func removeCardWithAnimation(direction: SwipeDirection) {
 		UIView.animate(withDuration: 0.5, animations: {
 			#warning("Fix buggy card removal animation")
-			let dx: CGFloat = direction == .right ? 1000 : -1000
-			self.transform = self.transform.translatedBy(x: dx, y: 0)
+			let multiplyer: CGFloat = direction == .right ? 1 : -1
+			let dx = 1000 * multiplyer
+			let angle = Angle(degrees: 40).radians * multiplyer
+			self.transform = self.transform.translatedBy(x: dx, y: 0).rotated(by: angle)
 		}) { _ in
-			print("Done")
+			if case State.removing(_) = self.state {
+				self.delegate?.cardDidSwiped(self, direction: direction)
+				self.state = .removed
+			}
 		}
 	}
 	

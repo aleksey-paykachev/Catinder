@@ -11,12 +11,37 @@ import UIKit
 class CardsStackView: UIView {
 	private var cardViews: [CardView] = []
 	
+	private var topCard: CardView? {
+		return cardViews.last
+	}
+	
 	func add(_ cardView: CardView) {
 		layer.zPosition = 1 // place CardsStackView above all other views
 
+		cardView.delegate = self
 		cardViews.append(cardView)
 		
 		addSubview(cardView)
 		cardView.constraintToSuperview()
+	}
+}
+
+
+extension CardsStackView: BotomMenuActionsDelegate {
+	func likeButtonDidPressed() {
+		topCard?.remove(direction: .right)
+	}
+	
+	func dislikeButtonDidPressed() {
+		topCard?.remove(direction: .left)
+	}
+}
+
+
+extension CardsStackView: CardViewDelegate {
+	func cardDidSwiped(_ cardView: CardView, direction: CardView.SwipeDirection) {
+		// there is possibility that removing card would not be on top of stack
+		cardViews.removeAll { $0 === cardView }
+		cardView.removeFromSuperview()
 	}
 }

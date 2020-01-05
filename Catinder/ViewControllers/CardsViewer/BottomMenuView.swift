@@ -8,12 +8,19 @@
 
 import UIKit
 
+protocol BotomMenuActionsDelegate: class {
+	func likeButtonDidPressed()
+	func dislikeButtonDidPressed()
+}
+
 class BottomMenuView: UIView {
 	private var undoButton = UIButton(type: .custom)
 	private var dislikeButton = UIButton(type: .custom)
 	private var boostProfileButton = UIButton(type: .custom)
 	private var likeButton = UIButton(type: .custom)
 	private var superLikeButton = UIButton(type: .custom)
+	
+	weak var delegate: BotomMenuActionsDelegate?
 	
 	init() {
 		super.init(frame: .zero)
@@ -32,12 +39,14 @@ class BottomMenuView: UIView {
 
 		dislikeButton.setImage(UIImage(named: "Dislike"), for: .normal)
 		dislikeButton.imageView?.contentMode = .scaleAspectFit
+		dislikeButton.addTarget(self, action: #selector(dislikeButtonDidPressed), for: .touchUpInside)
 		
 		boostProfileButton.setImage(UIImage(named: "Boost"), for: .normal)
 		boostProfileButton.imageView?.contentMode = .scaleAspectFit
 		
 		likeButton.setImage(UIImage(named: "Like"), for: .normal)
 		likeButton.imageView?.contentMode = .scaleAspectFit
+		likeButton.addTarget(self, action: #selector(likeButtonDidPressed), for: .touchUpInside)
 		
 		superLikeButton.setImage(UIImage(named: "SuperLike"), for: .normal)
 		superLikeButton.imageView?.contentMode = .scaleAspectFit
@@ -52,5 +61,16 @@ class BottomMenuView: UIView {
 		
 		addSubview(stackView)
 		stackView.constraintToSuperview()
+	}
+	
+	
+	// MARK: - Buttons actions
+	
+	@objc func likeButtonDidPressed() {
+		delegate?.likeButtonDidPressed()
+	}
+	
+	@objc func dislikeButtonDidPressed() {
+		delegate?.dislikeButtonDidPressed()
 	}
 }
