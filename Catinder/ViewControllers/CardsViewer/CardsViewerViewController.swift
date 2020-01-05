@@ -13,6 +13,8 @@ class CardsViewerViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		view.backgroundColor = .white
+		
 		let cardViewModelObjects: [CardViewModelRepresentable] = [
 			CatProfile(name: "Барсик", age: 3, breed: .maineCoon, photosNames: ["Cat_Barsik"], description: "Люблю драть мебель, и мяукать по ночам. Также очень люблю, когда мне чешут животик."),
 			DogProfile(name: "Дружок", photoName: "Dog_Druzhok", description: "Люблю убивать людей."),
