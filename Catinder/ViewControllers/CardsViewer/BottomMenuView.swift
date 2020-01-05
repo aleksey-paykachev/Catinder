@@ -14,18 +14,35 @@ protocol BotomMenuActionsDelegate: class {
 }
 
 class BottomMenuView: UIView {
-	private var undoButton = UIButton(type: .custom)
-	private var dislikeButton = UIButton(type: .custom)
-	private var boostProfileButton = UIButton(type: .custom)
-	private var likeButton = UIButton(type: .custom)
-	private var superLikeButton = UIButton(type: .custom)
-	
+	// MARK: - Properties
+
 	weak var delegate: BotomMenuActionsDelegate?
+	
+	// Buttons
+	private let undoButton = MenuButton(imageName: "Undo") {
+		print("Undo")
+	}
+
+	private lazy var dislikeButton = MenuButton(imageName: "Dislike") { [weak self] in
+		self?.delegate?.dislikeButtonDidPressed()
+	}
+
+	private let boostProfileButton = MenuButton(imageName: "Boost") {
+		print("Boost")
+	}
+
+	private lazy var likeButton = MenuButton(imageName: "Like") { [weak self] in self?.delegate?.likeButtonDidPressed()
+	}
+
+	private let superLikeButton = MenuButton(imageName: "SuperLike") {
+		print("Super like")
+	}
+	
+	
+	// MARK: - Init
 	
 	init() {
 		super.init(frame: .zero)
-		
-		setupButtons()
 		setupView()
 	}
 	
@@ -33,24 +50,8 @@ class BottomMenuView: UIView {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	private func setupButtons() {
-		undoButton.setImage(UIImage(named: "Undo"), for: .normal)
-		undoButton.imageView?.contentMode = .scaleAspectFit
-
-		dislikeButton.setImage(UIImage(named: "Dislike"), for: .normal)
-		dislikeButton.imageView?.contentMode = .scaleAspectFit
-		dislikeButton.addTarget(self, action: #selector(dislikeButtonDidPressed), for: .touchUpInside)
-		
-		boostProfileButton.setImage(UIImage(named: "Boost"), for: .normal)
-		boostProfileButton.imageView?.contentMode = .scaleAspectFit
-		
-		likeButton.setImage(UIImage(named: "Like"), for: .normal)
-		likeButton.imageView?.contentMode = .scaleAspectFit
-		likeButton.addTarget(self, action: #selector(likeButtonDidPressed), for: .touchUpInside)
-		
-		superLikeButton.setImage(UIImage(named: "SuperLike"), for: .normal)
-		superLikeButton.imageView?.contentMode = .scaleAspectFit
-	}
+	
+	// MARK: - Setup
 	
 	private func setupView() {
 		constraintHeight(to: 80)
@@ -61,16 +62,5 @@ class BottomMenuView: UIView {
 		
 		addSubview(stackView)
 		stackView.constraintToSuperview()
-	}
-	
-	
-	// MARK: - Buttons actions
-	
-	@objc func likeButtonDidPressed() {
-		delegate?.likeButtonDidPressed()
-	}
-	
-	@objc func dislikeButtonDidPressed() {
-		delegate?.dislikeButtonDidPressed()
 	}
 }
