@@ -24,7 +24,21 @@ class ProfileDataViewController: UITableViewController {
 		super.viewDidLoad()
 		
 		title = "Профиль"
+
+		setupTableView()
+		setupGestures()
+	}
+	
+	private func setupTableView() {
 		tableView.allowsSelection = false
+		tableView.keyboardDismissMode = .onDrag
+	}
+	
+	private func setupGestures() {
+		// hide keyboard on tap
+		let tapGestureRecognizer = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+		tapGestureRecognizer.cancelsTouchesInView = false
+		tableView.addGestureRecognizer(tapGestureRecognizer)
 	}
 	
 	#warning("Refactor: move to separate class")
@@ -50,7 +64,7 @@ class ProfileDataViewController: UITableViewController {
 		mainStackView.spacing = photosInterItemSpacing
 		
 		header.addSubview(mainStackView)
-		mainStackView.constraintToSuperview(insets: UIEdgeInsets(top: photosEdgePadding, left: photosEdgePadding, bottom: photosEdgePadding, right: photosEdgePadding))
+		mainStackView.constraintToSuperview(allEdgesInset: photosEdgePadding)
 		
 		return header
 	}
@@ -121,8 +135,9 @@ extension ProfileDataViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-		return UITableViewCell(style: .default, reuseIdentifier: nil)
+		
+		let placeholder = Section(id: indexPath.section)?.title
+		return ProfileDataFieldTableViewCell(placeholder: placeholder)
 	}
 }
 

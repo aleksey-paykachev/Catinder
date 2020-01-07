@@ -51,6 +51,16 @@ extension UIView {
 		}
 	}
 	
+	/// Constraint current view to its superview.
+	///
+	/// - Parameters:
+	///   - edges: Edges of superview to constraint to.
+	///   - allEdgesInset: Inset value for all constrained edges.
+	///
+	func constraintToSuperview(edges: ConstraintEdges = .all, allEdgesInset inset: CGFloat) {
+		constraintToSuperview(edges: edges, insets: UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset))
+	}
+	
 	/// Set fixed height using height constraint.
 	///
 	/// - Parameter height: Height constant.

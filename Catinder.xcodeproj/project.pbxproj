@@ -27,6 +27,7 @@
 		5B96C7FD23BE713A00BFB4D0 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B96C7FC23BE713A00BFB4D0 /* Angle.swift */; };
 		5BA3ED4123C539210013C945 /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA3ED4023C539210013C945 /* UILabel + Extensions.swift */; };
 		5BC68D5C23BF29E500DE9E82 /* CustomPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC68D5B23BF29E500DE9E82 /* CustomPageControl.swift */; };
+		5BFC059923C54954005C7FC1 /* ProfileDataFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC059823C54954005C7FC1 /* ProfileDataFieldTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		5B96C7FC23BE713A00BFB4D0 /* Angle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
 		5BA3ED4023C539210013C945 /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UILabel + Extensions.swift"; path = "../ViewControllers/ProfileData/UILabel + Extensions.swift"; sourceTree = "<group>"; };
 		5BC68D5B23BF29E500DE9E82 /* CustomPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControl.swift; sourceTree = "<group>"; };
+		5BFC059823C54954005C7FC1 /* ProfileDataFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataFieldTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 			children = (
 				5B7FFBCE23C2ACF2009D2854 /* ProfileDataNavigationController.swift */,
 				5B7FFBCB23C2AABC009D2854 /* ProfileDataViewController.swift */,
+				5BFC059823C54954005C7FC1 /* ProfileDataFieldTableViewCell.swift */,
 			);
 			path = ProfileData;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				5B7FFBCC23C2AABC009D2854 /* ProfileDataViewController.swift in Sources */,
 				5B8B1D8D23B7C57F00543F20 /* CatProfile.swift in Sources */,
 				5B7FFBCF23C2ACF2009D2854 /* ProfileDataNavigationController.swift in Sources */,
+				5BFC059923C54954005C7FC1 /* ProfileDataFieldTableViewCell.swift in Sources */,
 				5B139E7B23B7850500BE73E7 /* TopMenuView.swift in Sources */,
 				5B8B1D8F23B7C59000543F20 /* CatBreed.swift in Sources */,
 				5B96C7FD23BE713A00BFB4D0 /* Angle.swift in Sources */,
