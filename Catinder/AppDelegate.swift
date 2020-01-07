@@ -17,8 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		
 		window = UIWindow()
-		let cardsViewController = CardsViewerViewController()
-		window?.rootViewController = cardsViewController
+//		let cardsViewController = CardsViewerViewController()
+		let profileDataNavigationController = ProfileDataNavigationController()
+		window?.rootViewController = profileDataNavigationController
 		window?.makeKeyAndVisible()
 		
 		return true
