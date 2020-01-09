@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct CatProfile {
+struct CatProfile: Profile {
+	let uid = UUID().uuidString
 	let name: String
 	let age: Int
 	let breed: CatBreed

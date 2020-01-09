@@ -10,33 +10,57 @@ import UIKit
 
 class CardsViewerViewController: UIViewController {
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
+	private let dataManager: DataManager
+	private let cardsStackView = CardsStackView()
+	
+	init(dataManager: DataManager = DataManager.shared) {
+		self.dataManager = dataManager
+		super.init(nibName: nil, bundle: nil)
 		
+		setupView()
+		loadData()
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
+	private func setupView() {
 		view.backgroundColor = .white
 		
-		let cardViewModelObjects: [CardViewModelRepresentable] = [
-			CatProfile(name: "Барсик", age: 3, breed: .maineCoon, photosNames: ["Cat_Barsik"], description: "Люблю драть мебель, и мяукать по ночам. Также очень люблю, когда мне чешут животик."),
-			DogProfile(name: "Дружок", photoName: "Dog_Druzhok", description: "Люблю убивать людей."),
-			CatProfile(name: "Маруся", age: 2, breed: .norwegianForestCat, photosNames: ["Cat_Marusia"], description: "Люблю с умным видом смотреть в окно, ожидая конца света."),
-			CatProfile(name: "Боб", age: 10, breed: .unknown, photosNames: ["Cat_Bob_1", "Cat_Bob_2", "Cat_Bob_3"], description: "Про меня сняли фильм, и написали несколько книг. А чего добился ты?")
-		]
+		// top menu
+		let topMenuView = TopMenuView()
 		
-		let cardsStackView = CardsStackView()
-		cardViewModelObjects.forEach { cardViewModelObject in
-			let cardView = CardView(viewModel: cardViewModelObject.viewModel)
-			cardsStackView.add(cardView)
-		}
-		
+		// bottom menu
 		let bottomMenuView = BottomMenuView()
 		bottomMenuView.delegate = cardsStackView
-
-		let subviews = [TopMenuView(), cardsStackView, bottomMenuView]
+		
+		// main stack
+		let subviews = [topMenuView, cardsStackView, bottomMenuView]
 		let stackView = UIStackView(arrangedSubviews: subviews)
 		stackView.axis = .vertical
 		stackView.spacing = 12
-
+		
 		view.addSubview(stackView)
 		stackView.constraintToSuperview(insets: UIEdgeInsets(top: 6, left: 12, bottom: 6, right: 12))
+	}
+	
+	private func loadData() {
+		dataManager.getAllProfiles { (profiles, error) in
+			if let error = error {
+				print(error.localizedDescription)
+				return
+			}
+
+			let cardViewModels = profiles as? [CardViewModelRepresentable] ?? []
+			updateCardsStackView(with: cardViewModels)
+		}
+	}
+	
+	private func updateCardsStackView(with cardViewModels: [CardViewModelRepresentable]) {
+		cardViewModels.forEach { cardViewModelObject in
+			let cardView = CardView(viewModel: cardViewModelObject.viewModel)
+			cardsStackView.add(cardView)
+		}
 	}
 }

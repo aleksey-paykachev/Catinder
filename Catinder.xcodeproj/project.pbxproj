@@ -27,6 +27,8 @@
 		5B96C7FD23BE713A00BFB4D0 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B96C7FC23BE713A00BFB4D0 /* Angle.swift */; };
 		5BA3ED4123C539210013C945 /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA3ED4023C539210013C945 /* UILabel + Extensions.swift */; };
 		5BC68D5C23BF29E500DE9E82 /* CustomPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC68D5B23BF29E500DE9E82 /* CustomPageControl.swift */; };
+		5BD8BE9423C686CB00D9943B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8BE9323C686CB00D9943B /* Profile.swift */; };
+		5BD8BE9623C687C900D9943B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8BE9523C687C900D9943B /* DataManager.swift */; };
 		5BFC059923C54954005C7FC1 /* ProfileDataFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC059823C54954005C7FC1 /* ProfileDataFieldTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +55,8 @@
 		5B96C7FC23BE713A00BFB4D0 /* Angle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
 		5BA3ED4023C539210013C945 /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UILabel + Extensions.swift"; path = "../ViewControllers/ProfileData/UILabel + Extensions.swift"; sourceTree = "<group>"; };
 		5BC68D5B23BF29E500DE9E82 /* CustomPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControl.swift; sourceTree = "<group>"; };
+		5BD8BE9323C686CB00D9943B /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		5BD8BE9523C687C900D9943B /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		5BFC059823C54954005C7FC1 /* ProfileDataFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataFieldTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +94,7 @@
 				5B8B1D9023B7C5A100543F20 /* Models */,
 				5B7FFBC923C2A909009D2854 /* ViewModels */,
 				5B139E7823B784E200BE73E7 /* ViewControllers */,
+				5BD8BE9723C687F800D9943B /* Managers */,
 				5B139E6D23B777FA00BE73E7 /* Assets.xcassets */,
 				5B139E6F23B777FA00BE73E7 /* LaunchScreen.storyboard */,
 				5B139E7223B777FA00BE73E7 /* Info.plist */,
@@ -169,11 +174,20 @@
 		5B8B1D9023B7C5A100543F20 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5BD8BE9323C686CB00D9943B /* Profile.swift */,
 				5B8B1D8C23B7C57F00543F20 /* CatProfile.swift */,
 				5B8B1D8E23B7C59000543F20 /* CatBreed.swift */,
 				5B19E00723BA4A9100E90F56 /* DogProfile.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		5BD8BE9723C687F800D9943B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				5BD8BE9523C687C900D9943B /* DataManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B19E00823BA4A9100E90F56 /* DogProfile.swift in Sources */,
+				5BD8BE9423C686CB00D9943B /* Profile.swift in Sources */,
 				5B139E7D23B7851700BE73E7 /* BottomMenuView.swift in Sources */,
 				5B7FFBC723C2A442009D2854 /* MenuButton.swift in Sources */,
 				5B2DBA7523B9DA5900BACB52 /* CardsStackView.swift in Sources */,
@@ -255,6 +270,7 @@
 				5B7FFBCF23C2ACF2009D2854 /* ProfileDataNavigationController.swift in Sources */,
 				5BFC059923C54954005C7FC1 /* ProfileDataFieldTableViewCell.swift in Sources */,
 				5B139E7B23B7850500BE73E7 /* TopMenuView.swift in Sources */,
+				5BD8BE9623C687C900D9943B /* DataManager.swift in Sources */,
 				5B8B1D8F23B7C59000543F20 /* CatBreed.swift in Sources */,
 				5B96C7FD23BE713A00BFB4D0 /* Angle.swift in Sources */,
 				5B139E6923B777F800BE73E7 /* CardsViewerViewController.swift in Sources */,
