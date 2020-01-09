@@ -10,23 +10,30 @@ import UIKit
 
 class ProfileDataViewController: UITableViewController {
 	
-	let userProfile = CatProfile(name: "Боб", age: 10, breed: .unknown, photosNames: ["Cat_Bob_1", "Cat_Bob_2", "Cat_Bob_3"], description: "Про меня сняли фильм, и написали несколько книг. А чего добился ты?")
+	private let dataManager: DataManager
+	private var userProfile: CatProfile?
 	
-	init() {
+	init(dataManager: DataManager = .shared) {
+		self.dataManager = dataManager
 		super.init(style: .grouped)
+		
+		setupNavigation()
+		setupTableView()
+		setupGestures()
+		loadUserProfile()
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		
+	
+	private func setupNavigation() {
 		title = "Профиль"
-
-		setupTableView()
-		setupGestures()
+		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDoneButton))
+	}
+	
+	@objc private func handleDoneButton() {
+		dismiss(animated: true)
 	}
 	
 	private func setupTableView() {
@@ -39,6 +46,17 @@ class ProfileDataViewController: UITableViewController {
 		let tapGestureRecognizer = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
 		tapGestureRecognizer.cancelsTouchesInView = false
 		tableView.addGestureRecognizer(tapGestureRecognizer)
+	}
+	
+	private func loadUserProfile() {
+		dataManager.getProfile(by: "Logged-In-User-Profile-Id") { profile, error in
+			if let error = error {
+				print(error)
+				return
+			}
+			
+			userProfile = profile as? CatProfile
+		}
 	}
 	
 	#warning("Refactor: move to separate class")
@@ -72,14 +90,16 @@ class ProfileDataViewController: UITableViewController {
 	#warning("Refactor: move to separate custom UIButton class")
 	private func createImageButton() -> UIButton {
 		let imageButton = UIButton()
-		imageButton.backgroundColor = .lightGray
+		imageButton.backgroundColor = .white
 		imageButton.layer.cornerRadius = 10
+		imageButton.layer.borderColor = #colorLiteral(red: 0.862745098, green: 0.862745098, blue: 0.862745098, alpha: 1).cgColor
+		imageButton.layer.borderWidth = 1
 		imageButton.clipsToBounds = true
 		imageButton.setTitleColor(.black, for: .normal)
 		imageButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
 		imageButton.setTitle("Выберите фото", for: .normal)
 		
-		let image = UIImage(named: userProfile.photosNames[1])
+		let image = UIImage(named: userProfile?.photosNames[1] ?? "")
 		imageButton.setImage(image, for: .normal)
 		imageButton.imageView?.contentMode = .scaleAspectFill
 

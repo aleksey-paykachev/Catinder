@@ -13,7 +13,7 @@ class CardsViewerViewController: UIViewController {
 	private let dataManager: DataManager
 	private let cardsStackView = CardsStackView()
 	
-	init(dataManager: DataManager = DataManager.shared) {
+	init(dataManager: DataManager = .shared) {
 		self.dataManager = dataManager
 		super.init(nibName: nil, bundle: nil)
 		

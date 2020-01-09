@@ -26,7 +26,7 @@ class DataManager {
 		completion(profile, nil)
 	}
 	
-	let profiles: [Profile] = [
+	private let profiles: [Profile] = [
 		CatProfile(name: "Барсик", age: 3, breed: .maineCoon, photosNames: ["Cat_Barsik"], description: "Люблю драть мебель, и мяукать по ночам. Также очень люблю, когда мне чешут животик."),
 		DogProfile(name: "Дружок", photoName: "Dog_Druzhok", description: "Люблю убивать людей."),
 		CatProfile(name: "Маруся", age: 2, breed: .norwegianForestCat, photosNames: ["Cat_Marusia"], description: "Люблю с умным видом смотреть в окно, ожидая конца света."),
