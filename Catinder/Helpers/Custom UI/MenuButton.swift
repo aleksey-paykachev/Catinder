@@ -26,7 +26,7 @@ class MenuButton: UIButton {
 	
 	private func setup() {
 		setImage(UIImage(named: imageName), for: .normal)
-		imageView?.contentMode = .scaleAspectFill
+		imageView?.contentMode = .scaleAspectFit
 		addTarget(self, action: #selector(buttonDidTouched), for: .touchUpInside)
 	}
 	
