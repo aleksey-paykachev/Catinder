@@ -71,6 +71,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B0AE63323C7B686009BA91B /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				5B139E7A23B7850500BE73E7 /* TopMenuView.swift */,
+				5B139E7C23B7851700BE73E7 /* BottomMenuView.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 		5B139E5A23B777F800BE73E7 = {
 			isa = PBXGroup;
 			children = (
@@ -116,7 +125,8 @@
 			isa = PBXGroup;
 			children = (
 				5B139E6823B777F800BE73E7 /* CardsViewerViewController.swift */,
-				5B7FFBCA23C2A969009D2854 /* Subviews */,
+				5B0AE63323C7B686009BA91B /* Menu */,
+				5B7FFBCA23C2A969009D2854 /* CardsStack */,
 			);
 			path = CardsViewer;
 			sourceTree = "<group>";
@@ -150,15 +160,13 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		5B7FFBCA23C2A969009D2854 /* Subviews */ = {
+		5B7FFBCA23C2A969009D2854 /* CardsStack */ = {
 			isa = PBXGroup;
 			children = (
-				5B139E7A23B7850500BE73E7 /* TopMenuView.swift */,
 				5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */,
 				5B139E7E23B7853000BE73E7 /* CardView.swift */,
-				5B139E7C23B7851700BE73E7 /* BottomMenuView.swift */,
 			);
-			path = Subviews;
+			path = CardsStack;
 			sourceTree = "<group>";
 		};
 		5B7FFBCD23C2AAC3009D2854 /* ProfileData */ = {

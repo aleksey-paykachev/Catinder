@@ -30,6 +30,7 @@ class CardsViewerViewController: UIViewController {
 		
 		// top menu
 		let topMenuView = TopMenuView()
+		topMenuView.delegate = self
 		
 		// bottom menu
 		let bottomMenuView = BottomMenuView()
@@ -62,5 +63,16 @@ class CardsViewerViewController: UIViewController {
 			let cardView = CardView(viewModel: cardViewModelObject.viewModel)
 			cardsStackView.add(cardView)
 		}
+	}
+}
+
+
+extension CardsViewerViewController: TopMenuActionsDelegate {
+	func profileButtonDidPressed() {
+		let profileViewController = ProfileDataNavigationController()
+		present(profileViewController, animated: true)
+	}
+	
+	func messagesButtonDidPressed() {
 	}
 }
