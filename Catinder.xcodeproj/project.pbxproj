@@ -20,6 +20,7 @@
 		5B2DBA7523B9DA5900BACB52 /* CardsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */; };
 		5B5AD28123C8BF3C00D5B6D7 /* ProfileViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5AD28023C8BF3C00D5B6D7 /* ProfileViewerViewController.swift */; };
 		5B746EF923C8C56600063374 /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B746EF823C8C56600063374 /* UILabel + Extensions.swift */; };
+		5B746EFB23C8C94000063374 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B746EFA23C8C94000063374 /* ProfileViewModel.swift */; };
 		5B7FFBC723C2A442009D2854 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7FFBC623C2A442009D2854 /* MenuButton.swift */; };
 		5B7FFBCC23C2AABC009D2854 /* ProfileEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7FFBCB23C2AABC009D2854 /* ProfileEditorViewController.swift */; };
 		5B7FFBCF23C2ACF2009D2854 /* ProfileEditorNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7FFBCE23C2ACF2009D2854 /* ProfileEditorNavigationController.swift */; };
@@ -49,6 +50,7 @@
 		5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsStackView.swift; sourceTree = "<group>"; };
 		5B5AD28023C8BF3C00D5B6D7 /* ProfileViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewerViewController.swift; sourceTree = "<group>"; };
 		5B746EF823C8C56600063374 /* UILabel + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
+		5B746EFA23C8C94000063374 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		5B7FFBC623C2A442009D2854 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		5B7FFBCB23C2AABC009D2854 /* ProfileEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorViewController.swift; sourceTree = "<group>"; };
 		5B7FFBCE23C2ACF2009D2854 /* ProfileEditorNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorNavigationController.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				5B8FB3D823BE946600041B23 /* CardViewModel.swift */,
+				5B746EFA23C8C94000063374 /* ProfileViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				5B746EF923C8C56600063374 /* UILabel + Extensions.swift in Sources */,
 				5B96C7FD23BE713A00BFB4D0 /* Angle.swift in Sources */,
 				5B139E6923B777F800BE73E7 /* CardsViewerViewController.swift in Sources */,
+				5B746EFB23C8C94000063374 /* ProfileViewModel.swift in Sources */,
 				5B5AD28123C8BF3C00D5B6D7 /* ProfileViewerViewController.swift in Sources */,
 				5B8FB3D923BE946600041B23 /* CardViewModel.swift in Sources */,
 				5B244CA623BF9AB60099B975 /* UIStackView + Extensions.swift in Sources */,
