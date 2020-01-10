@@ -1,5 +1,5 @@
 //
-//  ProfileDataNavigationController.swift
+//  ProfileEditorNavigationController.swift
 //  Catinder
 //
 //  Created by Aleksey on 06/01/2020.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class ProfileDataNavigationController: UINavigationController {
+class ProfileEditorNavigationController: UINavigationController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		navigationBar.prefersLargeTitles = true
 		
-		let profileDataViewController = ProfileDataViewController()
-		pushViewController(profileDataViewController, animated: true)
+		let profileEditorViewController = ProfileEditorViewController()
+		pushViewController(profileEditorViewController, animated: true)
 	}
 }

@@ -32,6 +32,9 @@ class CardsViewerViewController: UIViewController {
 		let topMenuView = TopMenuView()
 		topMenuView.delegate = self
 		
+		// cards stack
+		cardsStackView.delegate = self
+		
 		// bottom menu
 		let bottomMenuView = BottomMenuView()
 		bottomMenuView.delegate = cardsStackView
@@ -67,12 +70,24 @@ class CardsViewerViewController: UIViewController {
 }
 
 
+// MARK: - TopMenuActionsDelegate
+
 extension CardsViewerViewController: TopMenuActionsDelegate {
 	func profileButtonDidPressed() {
-		let profileViewController = ProfileDataNavigationController()
+		let profileViewController = ProfileEditorNavigationController()
 		present(profileViewController, animated: true)
 	}
 	
 	func messagesButtonDidPressed() {
+	}
+}
+
+
+// MARK: - CardsStackViewDelegate
+
+extension CardsViewerViewController: CardsStackViewDelegate {
+	func showMoreInfoButtonDidPressed(for cardId: String) {
+		let profileViewerViewController = ProfileViewerViewController()
+		present(profileViewerViewController, animated: true)
 	}
 }

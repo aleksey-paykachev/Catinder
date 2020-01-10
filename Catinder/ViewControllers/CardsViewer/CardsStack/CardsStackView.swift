@@ -8,7 +8,12 @@
 
 import UIKit
 
+protocol CardsStackViewDelegate: class {
+	func showMoreInfoButtonDidPressed(for cardId: String)
+}
+
 class CardsStackView: UIView {
+	weak var delegate: CardsStackViewDelegate?
 	private var cardViews: [CardView] = []
 	
 	private var topCard: CardView? {
@@ -46,6 +51,7 @@ extension CardsStackView: CardViewDelegate {
 	}
 	
 	func showMoreInfoButtonDidPressed(for cardId: String) {
+		delegate?.showMoreInfoButtonDidPressed(for: cardId)
 		print("Show more info for", cardId)
 	}
 }

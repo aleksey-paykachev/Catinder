@@ -1,5 +1,5 @@
 //
-//  ProfileDataFieldTableViewCell.swift
+//  ProfileEditorFieldTableViewCell.swift
 //  Catinder
 //
 //  Created by Aleksey on 08/01/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileDataFieldTableViewCell: UITableViewCell {
+class ProfileEditorFieldTableViewCell: UITableViewCell {
 	
 	//	enum KeyboardType {
 	//		case text

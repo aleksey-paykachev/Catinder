@@ -18,18 +18,19 @@
 		5B19E00823BA4A9100E90F56 /* DogProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B19E00723BA4A9100E90F56 /* DogProfile.swift */; };
 		5B244CA623BF9AB60099B975 /* UIStackView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */; };
 		5B2DBA7523B9DA5900BACB52 /* CardsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */; };
+		5B5AD28123C8BF3C00D5B6D7 /* ProfileViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5AD28023C8BF3C00D5B6D7 /* ProfileViewerViewController.swift */; };
+		5B746EF923C8C56600063374 /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B746EF823C8C56600063374 /* UILabel + Extensions.swift */; };
 		5B7FFBC723C2A442009D2854 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7FFBC623C2A442009D2854 /* MenuButton.swift */; };
-		5B7FFBCC23C2AABC009D2854 /* ProfileDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7FFBCB23C2AABC009D2854 /* ProfileDataViewController.swift */; };
-		5B7FFBCF23C2ACF2009D2854 /* ProfileDataNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7FFBCE23C2ACF2009D2854 /* ProfileDataNavigationController.swift */; };
+		5B7FFBCC23C2AABC009D2854 /* ProfileEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7FFBCB23C2AABC009D2854 /* ProfileEditorViewController.swift */; };
+		5B7FFBCF23C2ACF2009D2854 /* ProfileEditorNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7FFBCE23C2ACF2009D2854 /* ProfileEditorNavigationController.swift */; };
 		5B8B1D8D23B7C57F00543F20 /* CatProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B1D8C23B7C57F00543F20 /* CatProfile.swift */; };
 		5B8B1D8F23B7C59000543F20 /* CatBreed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B1D8E23B7C59000543F20 /* CatBreed.swift */; };
 		5B8FB3D923BE946600041B23 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8FB3D823BE946600041B23 /* CardViewModel.swift */; };
 		5B96C7FD23BE713A00BFB4D0 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B96C7FC23BE713A00BFB4D0 /* Angle.swift */; };
-		5BA3ED4123C539210013C945 /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA3ED4023C539210013C945 /* UILabel + Extensions.swift */; };
 		5BC68D5C23BF29E500DE9E82 /* CustomPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC68D5B23BF29E500DE9E82 /* CustomPageControl.swift */; };
 		5BD8BE9423C686CB00D9943B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8BE9323C686CB00D9943B /* Profile.swift */; };
 		5BD8BE9623C687C900D9943B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8BE9523C687C900D9943B /* DataManager.swift */; };
-		5BFC059923C54954005C7FC1 /* ProfileDataFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC059823C54954005C7FC1 /* ProfileDataFieldTableViewCell.swift */; };
+		5BFC059923C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC059823C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,18 +47,19 @@
 		5B19E00723BA4A9100E90F56 /* DogProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogProfile.swift; sourceTree = "<group>"; };
 		5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extensions.swift"; sourceTree = "<group>"; };
 		5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsStackView.swift; sourceTree = "<group>"; };
+		5B5AD28023C8BF3C00D5B6D7 /* ProfileViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewerViewController.swift; sourceTree = "<group>"; };
+		5B746EF823C8C56600063374 /* UILabel + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
 		5B7FFBC623C2A442009D2854 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
-		5B7FFBCB23C2AABC009D2854 /* ProfileDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataViewController.swift; sourceTree = "<group>"; };
-		5B7FFBCE23C2ACF2009D2854 /* ProfileDataNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataNavigationController.swift; sourceTree = "<group>"; };
+		5B7FFBCB23C2AABC009D2854 /* ProfileEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorViewController.swift; sourceTree = "<group>"; };
+		5B7FFBCE23C2ACF2009D2854 /* ProfileEditorNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorNavigationController.swift; sourceTree = "<group>"; };
 		5B8B1D8C23B7C57F00543F20 /* CatProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatProfile.swift; sourceTree = "<group>"; };
 		5B8B1D8E23B7C59000543F20 /* CatBreed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreed.swift; sourceTree = "<group>"; };
 		5B8FB3D823BE946600041B23 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		5B96C7FC23BE713A00BFB4D0 /* Angle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
-		5BA3ED4023C539210013C945 /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UILabel + Extensions.swift"; path = "../ViewControllers/ProfileData/UILabel + Extensions.swift"; sourceTree = "<group>"; };
 		5BC68D5B23BF29E500DE9E82 /* CustomPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControl.swift; sourceTree = "<group>"; };
 		5BD8BE9323C686CB00D9943B /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		5BD8BE9523C687C900D9943B /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		5BFC059823C54954005C7FC1 /* ProfileDataFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataFieldTableViewCell.swift; sourceTree = "<group>"; };
+		5BFC059823C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorFieldTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				5B139E7923B784F500BE73E7 /* CardsViewer */,
-				5B7FFBCD23C2AAC3009D2854 /* ProfileData */,
+				5B7FFBCD23C2AAC3009D2854 /* ProfileEditor */,
+				5B5AD28223C8C0F700D5B6D7 /* ProfileViewer */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -136,11 +139,19 @@
 			children = (
 				5B7FFBC823C2A56F009D2854 /* Custom UI */,
 				5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */,
+				5B746EF823C8C56600063374 /* UILabel + Extensions.swift */,
 				5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */,
-				5BA3ED4023C539210013C945 /* UILabel + Extensions.swift */,
 				5B96C7FC23BE713A00BFB4D0 /* Angle.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		5B5AD28223C8C0F700D5B6D7 /* ProfileViewer */ = {
+			isa = PBXGroup;
+			children = (
+				5B5AD28023C8BF3C00D5B6D7 /* ProfileViewerViewController.swift */,
+			);
+			path = ProfileViewer;
 			sourceTree = "<group>";
 		};
 		5B7FFBC823C2A56F009D2854 /* Custom UI */ = {
@@ -169,14 +180,14 @@
 			path = CardsStack;
 			sourceTree = "<group>";
 		};
-		5B7FFBCD23C2AAC3009D2854 /* ProfileData */ = {
+		5B7FFBCD23C2AAC3009D2854 /* ProfileEditor */ = {
 			isa = PBXGroup;
 			children = (
-				5B7FFBCE23C2ACF2009D2854 /* ProfileDataNavigationController.swift */,
-				5B7FFBCB23C2AABC009D2854 /* ProfileDataViewController.swift */,
-				5BFC059823C54954005C7FC1 /* ProfileDataFieldTableViewCell.swift */,
+				5B7FFBCE23C2ACF2009D2854 /* ProfileEditorNavigationController.swift */,
+				5B7FFBCB23C2AABC009D2854 /* ProfileEditorViewController.swift */,
+				5BFC059823C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift */,
 			);
-			path = ProfileData;
+			path = ProfileEditor;
 			sourceTree = "<group>";
 		};
 		5B8B1D9023B7C5A100543F20 /* Models */ = {
@@ -273,19 +284,20 @@
 				5B139E7D23B7851700BE73E7 /* BottomMenuView.swift in Sources */,
 				5B7FFBC723C2A442009D2854 /* MenuButton.swift in Sources */,
 				5B2DBA7523B9DA5900BACB52 /* CardsStackView.swift in Sources */,
-				5B7FFBCC23C2AABC009D2854 /* ProfileDataViewController.swift in Sources */,
+				5B7FFBCC23C2AABC009D2854 /* ProfileEditorViewController.swift in Sources */,
 				5B8B1D8D23B7C57F00543F20 /* CatProfile.swift in Sources */,
-				5B7FFBCF23C2ACF2009D2854 /* ProfileDataNavigationController.swift in Sources */,
-				5BFC059923C54954005C7FC1 /* ProfileDataFieldTableViewCell.swift in Sources */,
+				5B7FFBCF23C2ACF2009D2854 /* ProfileEditorNavigationController.swift in Sources */,
+				5BFC059923C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift in Sources */,
 				5B139E7B23B7850500BE73E7 /* TopMenuView.swift in Sources */,
 				5BD8BE9623C687C900D9943B /* DataManager.swift in Sources */,
 				5B8B1D8F23B7C59000543F20 /* CatBreed.swift in Sources */,
+				5B746EF923C8C56600063374 /* UILabel + Extensions.swift in Sources */,
 				5B96C7FD23BE713A00BFB4D0 /* Angle.swift in Sources */,
 				5B139E6923B777F800BE73E7 /* CardsViewerViewController.swift in Sources */,
+				5B5AD28123C8BF3C00D5B6D7 /* ProfileViewerViewController.swift in Sources */,
 				5B8FB3D923BE946600041B23 /* CardViewModel.swift in Sources */,
 				5B244CA623BF9AB60099B975 /* UIStackView + Extensions.swift in Sources */,
 				5B139E6723B777F800BE73E7 /* AppDelegate.swift in Sources */,
-				5BA3ED4123C539210013C945 /* UILabel + Extensions.swift in Sources */,
 				5B139E8123B7873200BE73E7 /* UIView + Extensions.swift in Sources */,
 				5B139E7F23B7853000BE73E7 /* CardView.swift in Sources */,
 				5BC68D5C23BF29E500DE9E82 /* CustomPageControl.swift in Sources */,

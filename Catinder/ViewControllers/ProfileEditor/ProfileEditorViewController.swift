@@ -1,5 +1,5 @@
 //
-//  ProfileDataViewController.swift
+//  ProfileEditorViewController.swift
 //  Catinder
 //
 //  Created by Aleksey on 06/01/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileDataViewController: UITableViewController {
+class ProfileEditorViewController: UITableViewController {
 	
 	private let dataManager: DataManager
 	private var userProfile: CatProfile?
@@ -138,7 +138,7 @@ class ProfileDataViewController: UITableViewController {
 
 // MARK: - UITableViewDataSource
 
-extension ProfileDataViewController {
+extension ProfileEditorViewController {
 	override func numberOfSections(in tableView: UITableView) -> Int {
 		
 		return Section.sectionsCount
@@ -157,14 +157,14 @@ extension ProfileDataViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
 		let placeholder = Section(id: indexPath.section)?.title
-		return ProfileDataFieldTableViewCell(placeholder: placeholder)
+		return ProfileEditorFieldTableViewCell(placeholder: placeholder)
 	}
 }
 
 
 // MARK: - UITableViewDelegate
 
-extension ProfileDataViewController {
+extension ProfileEditorViewController {
 	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		guard let section = Section(id: section) else { return nil }
 
