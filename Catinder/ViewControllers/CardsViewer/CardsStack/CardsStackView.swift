@@ -44,4 +44,8 @@ extension CardsStackView: CardViewDelegate {
 		cardViews.removeAll { $0 === cardView }
 		cardView.removeFromSuperview()
 	}
+	
+	func showMoreInfoButtonDidPressed(for cardId: String) {
+		print("Show more info for", cardId)
+	}
 }

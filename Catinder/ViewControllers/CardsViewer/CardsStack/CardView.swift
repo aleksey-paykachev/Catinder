@@ -10,6 +10,7 @@ import UIKit
 
 protocol CardViewDelegate: class {
 	func cardDidSwiped(_ cardView: CardView, direction: CardView.SwipeDirection)
+	func showMoreInfoButtonDidPressed(for cardId: String)
 }
 
 class CardView: UIView {
@@ -35,6 +36,7 @@ class CardView: UIView {
 	private let headerLabel = UILabel()
 	private let titleLabel = UILabel()
 	private let subtitleLabel = UILabel()
+	private let moreInfoButton = UIButton(type: .detailDisclosure)
 	
 	weak var delegate: CardViewDelegate?
 	private var viewModel: CardViewModel { didSet { updateUI() } }
@@ -72,6 +74,7 @@ class CardView: UIView {
 		setupImageView()
 		setupLabels()
 		setupActiveImagePageControl()
+		setupMoreInfoButton()
 	}
 	
 	private func setupLayer() {
@@ -129,6 +132,16 @@ class CardView: UIView {
 
 		activeImagePageControl.numberOfPages = viewModel.numberOfImages
 	}
+	
+	private func setupMoreInfoButton() {
+		moreInfoButton.tintColor = .white
+		moreInfoButton.addTarget(self, action: #selector(showMoreInfo), for: .touchUpInside)
+		
+		addSubview(moreInfoButton)
+		moreInfoButton.constraintToSuperview(edges: .trailing, insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 14))
+		moreInfoButton.centerYAnchor.constraint(equalTo: headerLabel.centerYAnchor).isActive = true
+	}
+	
 	
 	// MARK: - Gestures
 	
@@ -216,6 +229,10 @@ class CardView: UIView {
 			
 			self?.transform = .identity
 		})
+	}
+	
+	@objc private func showMoreInfo() {
+		delegate?.showMoreInfoButtonDidPressed(for: "This-Card-Id")
 	}
 	
 	private func updateUI() {
