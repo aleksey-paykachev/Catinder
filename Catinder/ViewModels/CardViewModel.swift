@@ -13,6 +13,7 @@ protocol CardViewModelRepresentable {
 }
 
 struct CardViewModel {
+	let cardId: String
 	let headerText: String
 	let titleText: String
 	let subtitleText: String
@@ -20,7 +21,8 @@ struct CardViewModel {
 	private let imagesNames: [String]
 	private(set) var activeImageIndex = 0
 	
-	init(imagesNames: [String], headerText: String, titleText: String, subtitleText: String) {
+	init(cardId: String, imagesNames: [String], headerText: String, titleText: String, subtitleText: String) {
+		self.cardId = cardId
 		self.imagesNames = imagesNames
 		self.headerText = headerText
 		self.titleText = titleText

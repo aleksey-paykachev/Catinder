@@ -232,7 +232,7 @@ class CardView: UIView {
 	}
 	
 	@objc private func showMoreInfo() {
-		delegate?.showMoreInfoButtonDidPressed(for: "This-Card-Id")
+		delegate?.showMoreInfoButtonDidPressed(for: viewModel.cardId)
 	}
 	
 	private func updateUI() {

@@ -20,7 +20,8 @@ struct DogProfile: Profile {
 
 extension DogProfile: CardViewModelRepresentable {
 	var viewModel: CardViewModel {
-		return CardViewModel(imagesNames: [photoName],
+		return CardViewModel(cardId: uid,
+							 imagesNames: [photoName],
 							 headerText: name,
 							 titleText: "",
 							 subtitleText: description)

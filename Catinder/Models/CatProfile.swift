@@ -22,7 +22,8 @@ struct CatProfile: Profile {
 
 extension CatProfile: CardViewModelRepresentable {
 	var viewModel: CardViewModel {
-		return CardViewModel(imagesNames: photosNames,
+		return CardViewModel(cardId: uid,
+							 imagesNames: photosNames,
 							 headerText: "\(name), \(age)",
 							 titleText: breed.name,
 							 subtitleText: description)
