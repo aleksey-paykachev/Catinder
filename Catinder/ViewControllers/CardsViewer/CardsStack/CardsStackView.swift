@@ -45,13 +45,12 @@ extension CardsStackView: BotomMenuActionsDelegate {
 
 extension CardsStackView: CardViewDelegate {
 	func cardDidSwiped(_ cardView: CardView, direction: CardView.SwipeDirection) {
-		// there is possibility that removing card would not be on top of stack
+		// there is possibility that removed card would not be on top of stack
 		cardViews.removeAll { $0 === cardView }
 		cardView.removeFromSuperview()
 	}
 	
 	func showMoreInfoButtonDidPressed(for cardId: String) {
 		delegate?.showMoreInfoButtonDidPressed(for: cardId)
-		print("Show more info for", cardId)
 	}
 }

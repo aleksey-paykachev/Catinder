@@ -46,6 +46,20 @@ class ProfileViewerViewController: UIViewController {
 		view.addSubview(photoImageView)
 		photoImageView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.width)
 		
+		// text labels
+		setupTextLabels()
+		
+		// back button
+		let backButton = UIButton(type: .custom)
+		backButton.addTarget(self, action: #selector(closeButtonDidTapped), for: .touchUpInside)
+		view.addSubview(backButton)
+		backButton.backgroundColor = .red
+
+		backButton.centerYAnchor.constraint(equalTo: photoImageView.bottomAnchor).isActive = true
+		backButton.constraintToSuperview(edges: [.trailing], allEdgesInset: 36)
+	}
+	
+	private func setupTextLabels() {
 		// name
 		nameLabel.font = UIFont.systemFont(ofSize: 36, weight: .medium)
 		
@@ -62,6 +76,10 @@ class ProfileViewerViewController: UIViewController {
 		view.addSubview(stackView)
 		stackView.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 14).isActive = true
 		stackView.constraintToSuperview(edges: [.leading, .trailing], allEdgesInset: 14)
+	}
+	
+	@objc private func closeButtonDidTapped() {
+		dismiss(animated: true, completion: nil)
 	}
 	
 	
