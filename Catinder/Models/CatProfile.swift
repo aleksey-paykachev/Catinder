@@ -26,6 +26,6 @@ extension CatProfile: CardViewModelRepresentable {
 							 imagesNames: photosNames,
 							 headerText: "\(name), \(age)",
 							 titleText: breed.name,
-							 subtitleText: description)
+							 subtitleText: shortDescription)
 	}
 }

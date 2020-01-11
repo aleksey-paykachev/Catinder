@@ -130,7 +130,7 @@ class CardView: UIView {
 		addSubview(activeImagePageControl)
 		activeImagePageControl.constraintToSuperview(edges: [.leading, .top, .trailing], insets: UIEdgeInsets(top: 10, left: 16, bottom: 0, right: 16))
 
-		activeImagePageControl.numberOfPages = viewModel.numberOfImages
+		activeImagePageControl.numberOfPages = viewModel.imagesCount
 	}
 	
 	private func setupMoreInfoButton() {

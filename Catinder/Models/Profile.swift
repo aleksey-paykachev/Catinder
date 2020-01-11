@@ -11,4 +11,11 @@ import Foundation
 protocol Profile {
 	var uid: String { get }
 	var name: String { get }
+	var description: String { get }
+}
+
+extension Profile {
+	var shortDescription: String {
+		return description.count > 120 ? description.prefix(100).appending("...") : description
+	}
 }

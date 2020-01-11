@@ -10,6 +10,7 @@ import UIKit
 
 class ProfileViewerViewController: UIViewController {
 	
+	private let photoImageView = UIImageView()
 	private let nameLabel = UILabel()
 	private let descriptionLabel = UILabel()
 	
@@ -39,11 +40,18 @@ class ProfileViewerViewController: UIViewController {
 	}
 	
 	private func setupSubviews() {
+		// photo
+		photoImageView.contentMode = .scaleAspectFill
+		photoImageView.clipsToBounds = true
+		view.addSubview(photoImageView)
+		photoImageView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.width)
 		
 		// name
+		nameLabel.font = UIFont.systemFont(ofSize: 36, weight: .medium)
 		
 		// description
 		descriptionLabel.numberOfLines = 0
+		descriptionLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
 		
 		// stack view
 		let stackView = UIStackView(arrangedSubviews: [nameLabel, descriptionLabel])
@@ -51,13 +59,15 @@ class ProfileViewerViewController: UIViewController {
 		stackView.distribution = .fillEqually
 		
 		view.addSubview(stackView)
-		stackView.constraintToSuperview()
+		stackView.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 12).isActive = true
+		stackView.constraintToSuperview(edges: [.leading, .trailing], allEdgesInset: 12)
 	}
 	
 	
 	// MARK: - UI
 	
 	private func updateUI() {
+		photoImageView.image = viewModel.activePhotoName.flatMap { UIImage(named: $0) }
 		nameLabel.text = viewModel.name
 		descriptionLabel.text = viewModel.description
 	}

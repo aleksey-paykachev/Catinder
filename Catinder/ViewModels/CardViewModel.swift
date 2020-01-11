@@ -29,11 +29,13 @@ struct CardViewModel {
 		self.subtitleText = subtitleText
 	}
 	
-	var numberOfImages: Int {
+	var imagesCount: Int {
 		return imagesNames.count
 	}
 	
 	var activeImage: UIImage? {
+		guard imagesCount > 0 else { return nil }
+		
 		let imageName = imagesNames[activeImageIndex]
 		return UIImage(named: imageName)
 	}
@@ -43,6 +45,6 @@ struct CardViewModel {
 	}
 	
 	mutating func advanceToNextImage() {
-		activeImageIndex = min(imagesNames.count - 1, activeImageIndex + 1)
+		activeImageIndex = min(imagesCount - 1, activeImageIndex + 1)
 	}
 }
