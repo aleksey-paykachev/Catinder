@@ -19,11 +19,22 @@ struct DogProfile: Profile {
 // MARK: - CardViewModelRepresentable
 
 extension DogProfile: CardViewModelRepresentable {
-	var viewModel: CardViewModel {
+	var cardViewModel: CardViewModel {
 		return CardViewModel(cardId: uid,
 							 imagesNames: [photoName],
 							 headerText: name,
 							 titleText: "",
 							 subtitleText: description)
+	}
+}
+
+
+// MARK: - ProfileViewModelRepresentable
+
+extension DogProfile: ProfileViewModelRepresentable {
+	var profileViewModel: ProfileViewModel {
+		return ProfileViewModel(name: name,
+								description: description,
+								photosNames: [photoName])
 	}
 }

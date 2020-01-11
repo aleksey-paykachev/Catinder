@@ -63,7 +63,7 @@ class CardsViewerViewController: UIViewController {
 	
 	private func updateCardsStackView(with cardViewModels: [CardViewModelRepresentable]) {
 		cardViewModels.forEach { cardViewModelObject in
-			let cardView = CardView(viewModel: cardViewModelObject.viewModel)
+			let cardView = CardView(viewModel: cardViewModelObject.cardViewModel)
 			cardsStackView.add(cardView)
 		}
 	}
@@ -87,9 +87,16 @@ extension CardsViewerViewController: TopMenuActionsDelegate {
 
 extension CardsViewerViewController: CardsStackViewDelegate {
 	func showMoreInfoButtonDidPressed(for cardId: String) {
-		let profileViewModel = ProfileViewModel(name: cardId, description: "test\ntest", photosNames: ["Cat_Marusia"])
-		let profileViewerViewController = ProfileViewerViewController(viewModel: profileViewModel)
-		
-		present(profileViewerViewController, animated: true)
+		dataManager.getProfile(by: cardId) { profile, error in
+			if let error = error {
+				print(error.localizedDescription)
+				return
+			}
+			
+			guard let profileViewModel = (profile as? ProfileViewModelRepresentable)?.profileViewModel else { return }
+
+			let profileViewerViewController = ProfileViewerViewController(viewModel: profileViewModel)
+			present(profileViewerViewController, animated: true)
+		}
 	}
 }

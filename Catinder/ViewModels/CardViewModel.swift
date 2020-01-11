@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CardViewModelRepresentable {
-	var viewModel: CardViewModel { get }
+	var cardViewModel: CardViewModel { get }
 }
 
 struct CardViewModel {

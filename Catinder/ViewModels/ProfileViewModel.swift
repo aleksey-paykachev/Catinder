@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol ProfileViewModelRepresentable {
+	var profileViewModel: ProfileViewModel { get }
+}
+
 struct ProfileViewModel {
 	let name: String
 	let description: String

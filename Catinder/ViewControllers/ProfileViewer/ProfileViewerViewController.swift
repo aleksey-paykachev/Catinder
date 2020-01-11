@@ -51,16 +51,17 @@ class ProfileViewerViewController: UIViewController {
 		
 		// description
 		descriptionLabel.numberOfLines = 0
-		descriptionLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+		descriptionLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
 		
 		// stack view
 		let stackView = UIStackView(arrangedSubviews: [nameLabel, descriptionLabel])
 		stackView.axis = .vertical
-		stackView.distribution = .fillEqually
+		stackView.distribution = .fill
+		stackView.spacing = 12
 		
 		view.addSubview(stackView)
-		stackView.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 12).isActive = true
-		stackView.constraintToSuperview(edges: [.leading, .trailing], allEdgesInset: 12)
+		stackView.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 14).isActive = true
+		stackView.constraintToSuperview(edges: [.leading, .trailing], allEdgesInset: 14)
 	}
 	
 	

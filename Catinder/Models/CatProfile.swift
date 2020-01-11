@@ -21,11 +21,22 @@ struct CatProfile: Profile {
 // MARK: - CardViewModelRepresentable
 
 extension CatProfile: CardViewModelRepresentable {
-	var viewModel: CardViewModel {
+	var cardViewModel: CardViewModel {
 		return CardViewModel(cardId: uid,
 							 imagesNames: photosNames,
 							 headerText: "\(name), \(age)",
 							 titleText: breed.name,
 							 subtitleText: shortDescription)
+	}
+}
+
+
+// MARK: - ProfileViewModelRepresentable
+
+extension CatProfile: ProfileViewModelRepresentable {
+	var profileViewModel: ProfileViewModel {
+		return ProfileViewModel(name: name,
+								description: description,
+								photosNames: photosNames)
 	}
 }
