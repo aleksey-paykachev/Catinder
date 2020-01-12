@@ -28,26 +28,31 @@ extension UIView {
 	/// - Parameters:
 	///   - edges: Edges of superview to constraint to.
 	///   - insets: Inset values for all constrained edges.
+	///   - respectSafeArea: Take safe area layout guide into account.
 	///
-	func constraintToSuperview(edges: ConstraintEdges = .all, insets: UIEdgeInsets = .zero) {
+	func constraintToSuperview(edges: ConstraintEdges = .all, insets: UIEdgeInsets = .zero, respectSafeArea: Bool = true) {
 		guard let superview = superview else { return }
 		
 		translatesAutoresizingMaskIntoConstraints = false
 		
 		if edges.contains(.leading) {
-			leadingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leadingAnchor, constant: insets.left).isActive = true
+			let superviewLeadingAnchor = respectSafeArea ? superview.safeAreaLayoutGuide.leadingAnchor : superview.leadingAnchor
+			leadingAnchor.constraint(equalTo: superviewLeadingAnchor, constant: insets.left).isActive = true
 		}
 		
 		if edges.contains(.trailing) {
-			trailingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.trailingAnchor, constant: -insets.right).isActive = true
+			let superviewTrailingAnchor = respectSafeArea ? superview.safeAreaLayoutGuide.trailingAnchor : superview.trailingAnchor
+			trailingAnchor.constraint(equalTo: superviewTrailingAnchor, constant: -insets.right).isActive = true
 		}
 		
 		if edges.contains(.top) {
-			topAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.topAnchor, constant: insets.top).isActive = true
+			let superviewTopAnchor = respectSafeArea ? superview.safeAreaLayoutGuide.topAnchor : superview.topAnchor
+			topAnchor.constraint(equalTo: superviewTopAnchor, constant: insets.top).isActive = true
 		}
 		
 		if edges.contains(.bottom) {
-			bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor, constant: -insets.bottom).isActive = true
+			let superviewBottomAnchor = respectSafeArea ? superview.safeAreaLayoutGuide.bottomAnchor : superview.bottomAnchor
+			bottomAnchor.constraint(equalTo: superviewBottomAnchor, constant: -insets.bottom).isActive = true
 		}
 	}
 	
@@ -56,9 +61,10 @@ extension UIView {
 	/// - Parameters:
 	///   - edges: Edges of superview to constraint to.
 	///   - allEdgesInset: Inset value for all constrained edges.
+	///   - respectSafeArea: Take safe area layout guide into account.
 	///
-	func constraintToSuperview(edges: ConstraintEdges = .all, allEdgesInset inset: CGFloat) {
-		constraintToSuperview(edges: edges, insets: UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset))
+	func constraintToSuperview(edges: ConstraintEdges = .all, allEdgesInset inset: CGFloat, respectSafeArea: Bool = true) {
+		constraintToSuperview(edges: edges, insets: UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset), respectSafeArea: respectSafeArea)
 	}
 	
 	/// Set fixed height using height constraint.
