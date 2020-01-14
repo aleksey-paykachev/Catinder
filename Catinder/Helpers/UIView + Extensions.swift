@@ -10,69 +10,131 @@ import UIKit
 
 extension UIView {
 	
-	/// OptionSet which allows to specify separate edges to constraint.
+	/// OptionSet which allows to specify separate anchors to constrain.
 	///
-	struct ConstraintEdges: OptionSet {
+	struct Anchors: OptionSet {
 		let rawValue: UInt8
 		
-		static let leading = ConstraintEdges(rawValue: 1 << 0)
-		static let trailing = ConstraintEdges(rawValue: 1 << 1)
-		static let top = ConstraintEdges(rawValue: 1 << 2)
-		static let bottom = ConstraintEdges(rawValue: 1 << 3)
+		static let leading = Anchors(rawValue: 1 << 0)
+		static let trailing = Anchors(rawValue: 1 << 1)
+		static let top = Anchors(rawValue: 1 << 2)
+		static let bottom = Anchors(rawValue: 1 << 3)
 		
-		static let all: ConstraintEdges = [.leading, .trailing, .top, .bottom]
+		static let centerX = Anchors(rawValue: 1 << 4)
+		static let centerY = Anchors(rawValue: 1 << 5)
+		
+		static let allEdges: Anchors = [.leading, .trailing, .top, .bottom]
 	}
 	
-	/// Constraint current view to its superview.
+	/// Padding structure allows specify paddings to constrained edges.
+	///
+	struct Padding {
+		let leading: CGFloat
+		let trailing: CGFloat
+		let top: CGFloat
+		let bottom: CGFloat
+		
+		static func leading(_ padding: CGFloat) -> Padding {
+			return Padding(leading: padding, trailing: 0, top: 0, bottom: 0)
+		}
+		
+		static func trailing(_ padding: CGFloat) -> Padding {
+			return Padding(leading: 0, trailing: padding, top: 0, bottom: 0)
+		}
+
+		static func top(_ padding: CGFloat) -> Padding {
+			return Padding(leading: 0, trailing: 0, top: padding, bottom: 0)
+		}
+
+		static func bottom(_ padding: CGFloat) -> Padding {
+			return Padding(leading: 0, trailing: 0, top: 0, bottom: padding)
+		}
+		
+		static func vertical(_ padding: CGFloat) -> Padding {
+			return Padding(leading: 0, trailing: 0, top: padding, bottom: padding)
+		}
+		
+		static func horizontal(_ padding: CGFloat) -> Padding {
+			return Padding(leading: padding, trailing: padding, top: 0, bottom: 0)
+		}
+		
+		static func all(_ padding: CGFloat) -> Padding {
+			return Padding(leading: padding, trailing: padding, top: padding, bottom: padding)
+		}
+	}
+	
+	/// Constrain current view to another view.
 	///
 	/// - Parameters:
-	///   - edges: Edges of superview to constraint to.
-	///   - insets: Inset values for all constrained edges.
+	///   - secondView: View wich current view are constrains to. Must have common ancestor.
+	///   - anchors: Anchors of second view to constrain to.
+	///   - paddings: Padding values for all constrained edges.
 	///   - respectSafeArea: Take safe area layout guide into account.
 	///
-	func constraintToSuperview(edges: ConstraintEdges = .all, insets: UIEdgeInsets = .zero, respectSafeArea: Bool = true) {
-		guard let superview = superview else { return }
+	func constrainTo(_ secondView: UIView, anchors: Anchors = .allEdges, paddings: Padding = .all(0), respectSafeArea: Bool = true) {
 		
 		translatesAutoresizingMaskIntoConstraints = false
 		
-		if edges.contains(.leading) {
-			let superviewLeadingAnchor = respectSafeArea ? superview.safeAreaLayoutGuide.leadingAnchor : superview.leadingAnchor
-			leadingAnchor.constraint(equalTo: superviewLeadingAnchor, constant: insets.left).isActive = true
+		if anchors.contains(.leading) {
+			let secondViewLeadingAnchor = respectSafeArea ? secondView.safeAreaLayoutGuide.leadingAnchor : secondView.leadingAnchor
+			leadingAnchor.constraint(equalTo: secondViewLeadingAnchor, constant: paddings.leading).isActive = true
 		}
 		
-		if edges.contains(.trailing) {
-			let superviewTrailingAnchor = respectSafeArea ? superview.safeAreaLayoutGuide.trailingAnchor : superview.trailingAnchor
-			trailingAnchor.constraint(equalTo: superviewTrailingAnchor, constant: -insets.right).isActive = true
+		if anchors.contains(.trailing) {
+			let secondViewTrailingAnchor = respectSafeArea ? secondView.safeAreaLayoutGuide.trailingAnchor : secondView.trailingAnchor
+			trailingAnchor.constraint(equalTo: secondViewTrailingAnchor, constant: -paddings.trailing).isActive = true
 		}
 		
-		if edges.contains(.top) {
-			let superviewTopAnchor = respectSafeArea ? superview.safeAreaLayoutGuide.topAnchor : superview.topAnchor
-			topAnchor.constraint(equalTo: superviewTopAnchor, constant: insets.top).isActive = true
+		if anchors.contains(.top) {
+			let secondViewTopAnchor = respectSafeArea ? secondView.safeAreaLayoutGuide.topAnchor : secondView.topAnchor
+			topAnchor.constraint(equalTo: secondViewTopAnchor, constant: paddings.top).isActive = true
 		}
 		
-		if edges.contains(.bottom) {
-			let superviewBottomAnchor = respectSafeArea ? superview.safeAreaLayoutGuide.bottomAnchor : superview.bottomAnchor
-			bottomAnchor.constraint(equalTo: superviewBottomAnchor, constant: -insets.bottom).isActive = true
+		if anchors.contains(.bottom) {
+			let secondViewBottomAnchor = respectSafeArea ? secondView.safeAreaLayoutGuide.bottomAnchor : secondView.bottomAnchor
+			bottomAnchor.constraint(equalTo: secondViewBottomAnchor, constant: -paddings.bottom).isActive = true
+		}
+		
+		if anchors.contains(.centerX) {
+			centerXAnchor.constraint(equalTo: secondView.centerXAnchor).isActive = true
+		}
+		
+		if anchors.contains(.centerY) {
+			centerYAnchor.constraint(equalTo: secondView.centerYAnchor).isActive = true
 		}
 	}
 	
-	/// Constraint current view to its superview.
+	/// Constrain current view to its superview.
 	///
 	/// - Parameters:
-	///   - edges: Edges of superview to constraint to.
-	///   - allEdgesInset: Inset value for all constrained edges.
+	///   - anchors: Anchors of superview to constrain to.
+	///   - paddings: Padding values for all constrained edges.
 	///   - respectSafeArea: Take safe area layout guide into account.
 	///
-	func constraintToSuperview(edges: ConstraintEdges = .all, allEdgesInset inset: CGFloat, respectSafeArea: Bool = true) {
-		constraintToSuperview(edges: edges, insets: UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset), respectSafeArea: respectSafeArea)
+	func constrainToSuperview(anchors: Anchors = .allEdges, paddings: Padding = .all(0), respectSafeArea: Bool = true) {
+		guard let superview = superview else { return }
+		
+		constrainTo(superview, anchors: anchors, paddings: paddings, respectSafeArea: respectSafeArea)
 	}
 	
 	/// Set fixed height using height constraint.
 	///
 	/// - Parameter height: Height constant.
 	///
-	func constraintHeight(to height: CGFloat) {
+	func constrainHeight(to height: CGFloat) {
 		translatesAutoresizingMaskIntoConstraints = false
 		heightAnchor.constraint(equalToConstant: height).isActive = true
+	}
+}
+
+
+// MARK: - UIView.Padding + Extensions
+
+extension UIView.Padding {
+	static func +(lhs: UIView.Padding, rhs: UIView.Padding) -> UIView.Padding {
+		return UIView.Padding(leading: lhs.leading + rhs.leading,
+							  trailing: lhs.trailing + rhs.trailing,
+							  top: lhs.top + rhs.top,
+							  bottom: lhs.bottom + rhs.bottom)
 	}
 }

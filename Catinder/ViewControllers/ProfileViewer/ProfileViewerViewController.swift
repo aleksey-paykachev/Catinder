@@ -46,14 +46,14 @@ class ProfileViewerViewController: UIViewController {
 		scrollView.contentInsetAdjustmentBehavior = .never // don't use safeAreaInsets
 		scrollView.alwaysBounceVertical = true
 		view.addSubview(scrollView)
-		scrollView.constraintToSuperview(respectSafeArea: false)
+		scrollView.constrainToSuperview(respectSafeArea: false)
 		
 		// photo
 		photoImageView.contentMode = .scaleAspectFill
 		photoImageView.clipsToBounds = true
 		scrollView.addSubview(photoImageView)
-		photoImageView.constraintToSuperview(edges: [.leading, .trailing])
-		photoImageView.constraintHeight(to: view.frame.width * 1.2)
+		photoImageView.constrainToSuperview(anchors: [.leading, .trailing])
+		photoImageView.constrainHeight(to: view.frame.width * 1.2)
 		
 		// text labels
 		setupTextLabels()
@@ -65,7 +65,7 @@ class ProfileViewerViewController: UIViewController {
 		backButton.backgroundColor = .red
 
 		backButton.centerYAnchor.constraint(equalTo: photoImageView.bottomAnchor).isActive = true
-		backButton.constraintToSuperview(edges: [.trailing], allEdgesInset: 36)
+		backButton.constrainToSuperview(anchors: [.trailing], paddings: .all(36))
 	}
 	
 	private func setupTextLabels() {
@@ -84,7 +84,7 @@ class ProfileViewerViewController: UIViewController {
 		
 		scrollView.addSubview(stackView)
 		stackView.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 14).isActive = true
-		stackView.constraintToSuperview(edges: [.leading, .trailing], allEdgesInset: 14)
+		stackView.constrainToSuperview(anchors: [.leading, .trailing], paddings: .all(14))
 	}
 	
 	@objc private func closeButtonDidTapped() {

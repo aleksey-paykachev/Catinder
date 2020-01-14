@@ -63,7 +63,6 @@ class ProfileEditorViewController: UITableViewController {
 	private func createPhotosSelectorHeaderView() -> UIView {
 		let header = UIView()
 		let photosInterItemSpacing: CGFloat = 10
-		let photosEdgePadding: CGFloat = 16
 		
 		let primaryImageButton = createImageButton()
 		let secondaryImageButton1 = createImageButton()
@@ -82,7 +81,7 @@ class ProfileEditorViewController: UITableViewController {
 		mainStackView.spacing = photosInterItemSpacing
 		
 		header.addSubview(mainStackView)
-		mainStackView.constraintToSuperview(allEdgesInset: photosEdgePadding)
+		mainStackView.constrainToSuperview(paddings: .all(16))
 		
 		return header
 	}

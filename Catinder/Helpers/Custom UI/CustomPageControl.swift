@@ -21,7 +21,7 @@ class CustomPageControl: UIView {
 		stackView.spacing = 5
 		
 		addSubview(stackView)
-		stackView.constraintToSuperview()
+		stackView.constrainToSuperview()
 		
 		return stackView
 	}()

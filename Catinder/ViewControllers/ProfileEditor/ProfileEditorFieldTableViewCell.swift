@@ -22,7 +22,7 @@ class ProfileEditorFieldTableViewCell: UITableViewCell {
 		textField.placeholder = placeholder
 		textField.keyboardType = keyboardType
 		contentView.addSubview(textField)
-		textField.constraintToSuperview(allEdgesInset: 12)
+		textField.constrainToSuperview(paddings: .all(12))
 	}
 	
 	required init?(coder aDecoder: NSCoder) {

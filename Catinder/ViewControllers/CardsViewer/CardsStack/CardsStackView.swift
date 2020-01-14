@@ -27,7 +27,7 @@ class CardsStackView: UIView {
 		cardViews.append(cardView)
 		
 		addSubview(cardView)
-		cardView.constraintToSuperview()
+		cardView.constrainToSuperview()
 	}
 }
 

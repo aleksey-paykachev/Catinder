@@ -46,7 +46,7 @@ class CardsViewerViewController: UIViewController {
 		stackView.spacing = 12
 		
 		view.addSubview(stackView)
-		stackView.constraintToSuperview(insets: UIEdgeInsets(top: 6, left: 12, bottom: 6, right: 12))
+		stackView.constrainToSuperview(paddings: .vertical(6) + .horizontal(12))
 	}
 	
 	private func loadData() {

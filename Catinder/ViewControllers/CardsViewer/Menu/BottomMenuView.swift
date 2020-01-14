@@ -54,13 +54,13 @@ class BottomMenuView: UIView {
 	// MARK: - Setup
 	
 	private func setupView() {
-		constraintHeight(to: 80)
+		constrainHeight(to: 80)
 		
 		let stackView = UIStackView(arrangedSubviews: [undoButton, dislikeButton, boostProfileButton, likeButton, superLikeButton])
 		stackView.axis = .horizontal
 		stackView.distribution = .fillEqually
 		
 		addSubview(stackView)
-		stackView.constraintToSuperview()
+		stackView.constrainToSuperview()
 	}
 }

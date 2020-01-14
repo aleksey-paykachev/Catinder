@@ -87,7 +87,7 @@ class CardView: UIView {
 	
 	private func setupImageView() {
 		addSubview(imageView)
-		imageView.constraintToSuperview()
+		imageView.constrainToSuperview()
 		
 		imageView.contentMode = .scaleAspectFill
 	}
@@ -101,7 +101,7 @@ class CardView: UIView {
 		labelsStackView.axis = .vertical
 		
 		addSubview(labelsStackView)
-		labelsStackView.constraintToSuperview(edges: [.leading, .trailing, .bottom], insets: UIEdgeInsets(top: 0, left: 14, bottom: 28, right: 0))
+		labelsStackView.constrainToSuperview(anchors: [.leading, .trailing, .bottom], paddings: .horizontal(14) + .bottom(28))
 		
 		// header
 		headerLabel.font = UIFont.systemFont(ofSize: 36, weight: .medium)
@@ -128,7 +128,7 @@ class CardView: UIView {
 	
 	private func setupActiveImagePageControl() {
 		addSubview(activeImagePageControl)
-		activeImagePageControl.constraintToSuperview(edges: [.leading, .top, .trailing], insets: UIEdgeInsets(top: 10, left: 16, bottom: 0, right: 16))
+		activeImagePageControl.constrainToSuperview(anchors: [.top, .leading, .trailing], paddings: .top(10) + .horizontal(16))
 
 		activeImagePageControl.numberOfPages = viewModel.imagesCount
 	}
@@ -138,8 +138,8 @@ class CardView: UIView {
 		moreInfoButton.addTarget(self, action: #selector(showMoreInfo), for: .touchUpInside)
 		
 		addSubview(moreInfoButton)
-		moreInfoButton.constraintToSuperview(edges: .trailing, insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 14))
-		moreInfoButton.centerYAnchor.constraint(equalTo: headerLabel.centerYAnchor).isActive = true
+		moreInfoButton.constrainToSuperview(anchors: .trailing, paddings: .trailing(14))
+		moreInfoButton.constrainTo(headerLabel, anchors: .centerY)
 	}
 	
 	
