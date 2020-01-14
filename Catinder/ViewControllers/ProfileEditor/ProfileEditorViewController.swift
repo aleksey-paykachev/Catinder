@@ -59,52 +59,6 @@ class ProfileEditorViewController: UITableViewController {
 		}
 	}
 	
-	#warning("Refactor: move to separate class")
-	private func createPhotosSelectorHeaderView() -> UIView {
-		let header = UIView()
-		let photosInterItemSpacing: CGFloat = 10
-		
-		let primaryImageButton = createImageButton()
-		let secondaryImageButton1 = createImageButton()
-		let secondaryImageButton2 = createImageButton()
-		
-		// two secondary photos on the right side
-		let secondaryStackView = UIStackView(arrangedSubviews: [secondaryImageButton1, secondaryImageButton2])
-		secondaryStackView.axis = .vertical
-		secondaryStackView.distribution = .fillEqually
-		secondaryStackView.spacing = photosInterItemSpacing
-		
-		// main photo on the left side
-		let mainStackView = UIStackView(arrangedSubviews: [primaryImageButton, secondaryStackView])
-		mainStackView.axis = .horizontal
-		mainStackView.distribution = .fillEqually
-		mainStackView.spacing = photosInterItemSpacing
-		
-		header.addSubview(mainStackView)
-		mainStackView.constrainToSuperview(paddings: .all(16))
-		
-		return header
-	}
-	
-	#warning("Refactor: move to separate custom UIButton class")
-	private func createImageButton() -> UIButton {
-		let imageButton = UIButton()
-		imageButton.backgroundColor = .white
-		imageButton.layer.cornerRadius = 10
-		imageButton.layer.borderColor = #colorLiteral(red: 0.862745098, green: 0.862745098, blue: 0.862745098, alpha: 1).cgColor
-		imageButton.layer.borderWidth = 1
-		imageButton.clipsToBounds = true
-		imageButton.setTitleColor(.black, for: .normal)
-		imageButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-		imageButton.setTitle("Выберите фото", for: .normal)
-		
-		let image = UIImage(named: userProfile?.photosNames[1] ?? "")
-		imageButton.setImage(image, for: .normal)
-		imageButton.imageView?.contentMode = .scaleAspectFill
-
-		return imageButton
-	}
-	
 	private enum Section: Int, CaseIterable {
 		case photos
 		case name
@@ -167,7 +121,14 @@ extension ProfileEditorViewController {
 	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		guard let section = Section(id: section) else { return nil }
 
-		return section == .photos ? createPhotosSelectorHeaderView() : nil
+		if section == .photos {
+			let photosSelectorViewController = PhotosSelectorViewController()
+			addChild(photosSelectorViewController)
+
+			return photosSelectorViewController.view
+		}
+		
+		return nil
 	}
 	
 	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
