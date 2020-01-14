@@ -10,6 +10,7 @@ import UIKit
 
 class ProfileViewerViewController: UIViewController {
 	
+	private let scrollView = UIScrollView()
 	private let photoImageView = UIImageView()
 	private let nameLabel = UILabel()
 	private let descriptionLabel = UILabel()
@@ -40,11 +41,18 @@ class ProfileViewerViewController: UIViewController {
 	}
 	
 	private func setupSubviews() {
+		// scroll view
+		scrollView.contentInsetAdjustmentBehavior = .never // don't use safeAreaInsets
+		scrollView.alwaysBounceVertical = true
+		view.addSubview(scrollView)
+		scrollView.constraintToSuperview(respectSafeArea: false)
+		
 		// photo
 		photoImageView.contentMode = .scaleAspectFill
 		photoImageView.clipsToBounds = true
-		view.addSubview(photoImageView)
-		photoImageView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.width)
+		scrollView.addSubview(photoImageView)
+		photoImageView.constraintToSuperview(edges: [.leading, .trailing])
+		photoImageView.constraintHeight(to: view.frame.width * 1.2)
 		
 		// text labels
 		setupTextLabels()
@@ -52,7 +60,7 @@ class ProfileViewerViewController: UIViewController {
 		// back button
 		let backButton = UIButton(type: .custom)
 		backButton.addTarget(self, action: #selector(closeButtonDidTapped), for: .touchUpInside)
-		view.addSubview(backButton)
+		scrollView.addSubview(backButton)
 		backButton.backgroundColor = .red
 
 		backButton.centerYAnchor.constraint(equalTo: photoImageView.bottomAnchor).isActive = true
@@ -73,7 +81,7 @@ class ProfileViewerViewController: UIViewController {
 		stackView.distribution = .fill
 		stackView.spacing = 12
 		
-		view.addSubview(stackView)
+		scrollView.addSubview(stackView)
 		stackView.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 14).isActive = true
 		stackView.constraintToSuperview(edges: [.leading, .trailing], allEdgesInset: 14)
 	}
