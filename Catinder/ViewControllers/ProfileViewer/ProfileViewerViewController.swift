@@ -42,6 +42,7 @@ class ProfileViewerViewController: UIViewController {
 	
 	private func setupSubviews() {
 		// scroll view
+		#warning("Fix scroll view scrolling (set content size).")
 		scrollView.contentInsetAdjustmentBehavior = .never // don't use safeAreaInsets
 		scrollView.alwaysBounceVertical = true
 		view.addSubview(scrollView)
