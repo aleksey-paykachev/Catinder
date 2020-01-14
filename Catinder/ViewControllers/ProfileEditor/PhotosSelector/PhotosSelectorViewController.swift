@@ -9,13 +9,17 @@
 import UIKit
 
 class PhotosSelectorViewController: UIViewController {
-	
-	let photoImagePicker = PhotoImagePicker()
-	let primaryImageButton = PhotoSelectorButton(photoId: 0)
-	let secondaryImageButton1 = PhotoSelectorButton(photoId: 1)
-	let secondaryImageButton2 = PhotoSelectorButton(photoId: 2)
-	
-	let photosInterItemSpacing: CGFloat = 10
+
+	private let numberOfPhotos = 3
+	private let photosInterItemSpacing: CGFloat = 10
+
+	private lazy var photoImagePicker = PhotoImagePicker()
+
+	private lazy var photoButtons = (0..<numberOfPhotos).map {
+		PhotoSelectorButton(photoId: $0, tapCallback: { [weak self] photoId in
+			self?.photoSelectorButtonDidTapped(photoId: photoId)
+		})
+	}
 	
 	override func loadView() {
 		view = createView()
@@ -24,14 +28,14 @@ class PhotosSelectorViewController: UIViewController {
 	private func createView() -> UIView {
 		let view = UIView()
 		
-		// two secondary photos on the right side
-		let secondaryStackView = UIStackView(arrangedSubviews: [secondaryImageButton1, secondaryImageButton2])
+		// secondary photos on the right side
+		let secondaryStackView = UIStackView(arrangedSubviews: Array(photoButtons.dropFirst()))
 		secondaryStackView.axis = .vertical
 		secondaryStackView.distribution = .fillEqually
 		secondaryStackView.spacing = photosInterItemSpacing
 		
 		// main photo on the left side
-		let mainStackView = UIStackView(arrangedSubviews: [primaryImageButton, secondaryStackView])
+		let mainStackView = UIStackView(arrangedSubviews: [photoButtons[0], secondaryStackView])
 		mainStackView.axis = .horizontal
 		mainStackView.distribution = .fillEqually
 		mainStackView.spacing = photosInterItemSpacing
@@ -46,15 +50,10 @@ class PhotosSelectorViewController: UIViewController {
 		super.viewDidLoad()
 		
 		photoImagePicker.photoSelectorDelegate = self
-		
-		#warning("Move target-action setup into PhotoSelectorButton.")
-		primaryImageButton.addTarget(self, action: #selector(photoSelectorButtonDidTaped), for: .touchUpInside)
-		secondaryImageButton1.addTarget(self, action: #selector(photoSelectorButtonDidTaped), for: .touchUpInside)
-		secondaryImageButton2.addTarget(self, action: #selector(photoSelectorButtonDidTaped), for: .touchUpInside)
 	}
 	
-	@objc private func photoSelectorButtonDidTaped(button: PhotoSelectorButton) {
-		photoImagePicker.photoId = button.photoId
+	private func photoSelectorButtonDidTapped(photoId: Int) {
+		photoImagePicker.photoId = photoId
 		present(photoImagePicker, animated: true)
 	}
 }
@@ -63,7 +62,7 @@ class PhotosSelectorViewController: UIViewController {
 // MARK: - PhotoImagePickerDelegate
 
 extension PhotosSelectorViewController: PhotoImagePickerDelegate {
-	func didFinishPicking(image: UIImage, for photoId: UInt8) {
-		print("Select photo for id:", photoId)
+	func didFinishPicking(image: UIImage, for photoId: Int) {
+		photoButtons[photoId].setImage(image, for: .normal)
 	}
 }

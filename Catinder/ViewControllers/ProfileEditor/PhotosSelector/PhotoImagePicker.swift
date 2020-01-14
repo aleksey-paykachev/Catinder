@@ -9,11 +9,11 @@
 import UIKit
 
 protocol PhotoImagePickerDelegate: class {
-	func didFinishPicking(image: UIImage, for photoId: UInt8)
+	func didFinishPicking(image: UIImage, for photoId: Int)
 }
 
 class PhotoImagePicker: UIImagePickerController {
-	var photoId: UInt8?
+	var photoId: Int?
 	weak var photoSelectorDelegate: PhotoImagePickerDelegate?
 	
 	override func viewDidLoad() {

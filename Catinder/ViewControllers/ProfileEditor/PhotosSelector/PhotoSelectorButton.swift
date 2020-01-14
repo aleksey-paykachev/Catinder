@@ -9,13 +9,16 @@
 import UIKit
 
 class PhotoSelectorButton: UIButton {
-	let photoId: UInt8
+	let photoId: Int
+	let tapCallback: (Int) -> ()
 	
-	init(photoId: UInt8) {
+	init(photoId: Int, tapCallback: @escaping (Int) -> ()) {
 		self.photoId = photoId
+		self.tapCallback = tapCallback
+
 		super.init(frame: .zero)
-		
 		setupView()
+		setupActions()
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -32,5 +35,13 @@ class PhotoSelectorButton: UIButton {
 		titleLabel?.font = UIFont.systemFont(ofSize: 18)
 		setTitle("Выберите фото", for: .normal)
 		imageView?.contentMode = .scaleAspectFill
+	}
+	
+	private func setupActions() {
+		addTarget(self, action: #selector(buttonDidTapped), for: .touchUpInside)
+	}
+	
+	@objc private func buttonDidTapped() {
+		tapCallback(photoId)
 	}
 }
