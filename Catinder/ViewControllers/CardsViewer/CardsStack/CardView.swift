@@ -45,10 +45,6 @@ class CardView: UIView {
 	
 	// MARK: - Init
 	
-	required init?(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-	
 	init(viewModel: CardViewModel) {
 		self.viewModel = viewModel
 		super.init(frame: .zero)
@@ -56,6 +52,10 @@ class CardView: UIView {
 		setupView()
 		setupGestures()
 		updateUI()
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
 	}
 	
 	
@@ -95,14 +95,6 @@ class CardView: UIView {
 	private func setupLabels() {
 		addSubLabelsGradient() // add gradient behind labels to improve readability
 		
-		// put all labels inside one stack
-		let labelsStackView = UIStackView(arrangedSubviews: [headerLabel, titleLabel, subtitleLabel])
-		labelsStackView.setCustomSpacing(16, after: titleLabel)
-		labelsStackView.axis = .vertical
-		
-		addSubview(labelsStackView)
-		labelsStackView.constrainToSuperview(anchors: [.leading, .trailing, .bottom], paddings: .horizontal(14) + .bottom(28))
-		
 		// header
 		headerLabel.font = UIFont.systemFont(ofSize: 36, weight: .medium)
 		headerLabel.textColor = .white
@@ -115,13 +107,19 @@ class CardView: UIView {
 		subtitleLabel.numberOfLines = 0
 		subtitleLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
 		subtitleLabel.textColor = UIColor(white: 0.96, alpha: 1)
+		
+		// put all labels inside one stack
+		let labelsStackView = UIStackView(arrangedSubviews: [headerLabel, titleLabel, subtitleLabel])
+		labelsStackView.setCustomSpacing(16, after: titleLabel)
+		labelsStackView.axis = .vertical
+		
+		addSubview(labelsStackView)
+		labelsStackView.constrainToSuperview(anchors: [.leading, .trailing, .bottom], paddings: .horizontal(14) + .bottom(28))
 	}
 	
 	private func addSubLabelsGradient() {
-		subLabelsGradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.withAlphaComponent(0.6).cgColor]
-		
-		subLabelsGradientLayer.startPoint = CGPoint(x: 0, y: 0.6)
-		subLabelsGradientLayer.endPoint = CGPoint(x: 0, y: 1)
+		subLabelsGradientLayer.locations = [0.6, 1]
+		subLabelsGradientLayer.colors = [CGColor.clear, CGColor.black.withAlphaComponent(0.6)]
 		
 		layer.addSublayer(subLabelsGradientLayer)
 	}
@@ -147,11 +145,11 @@ class CardView: UIView {
 	
 	private func setupGestures() {
 		// tap - change photos
-		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(gesture:)))
+		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
 		addGestureRecognizer(tapGestureRecognizer)
 
 		// pan - swipe card
-		let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(gesture:)))
+		let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
 		addGestureRecognizer(panGestureRecognizer)
 	}
 	
@@ -159,11 +157,7 @@ class CardView: UIView {
 		let tapLocation = gesture.location(in: self)
 		let isRightSideDidTapped = tapLocation.x > frame.width / 2
 		
-		if isRightSideDidTapped {
-			viewModel.advanceToNextImage()
-		} else {
-			viewModel.goToPreviousImage()
-		}
+		isRightSideDidTapped ? viewModel.advanceToNextImage() : viewModel.goToPreviousImage()
 	}
 	
 	@objc private func handlePanGesture(gesture: UIPanGestureRecognizer) {
@@ -210,18 +204,30 @@ class CardView: UIView {
 	// MARK: - Card methods
 	
 	private func removeCardWithAnimation(direction: SwipeDirection) {
-		UIView.animate(withDuration: 0.5, animations: {
-			#warning("Fix buggy card removal animation")
-			let multiplyer: CGFloat = direction == .right ? 1 : -1
-			let dx = 1000 * multiplyer
-			let angle = Angle(degrees: 40).radians * multiplyer
-			self.transform = self.transform.translatedBy(x: dx, y: 0).rotated(by: angle)
-		}) { _ in
-			if case State.removing(_) = self.state {
-				self.delegate?.cardDidSwiped(self, direction: direction)
-				self.state = .removed
-			}
+		// calculate final position transform
+		let multiplier: CGFloat = direction == .right ? 1 : -1
+		let offscreenX = 2 * UIScreen.main.bounds.width * multiplier
+		let angle = Angle(degrees: 40).radians * multiplier
+		let finalPositionTransform = CGAffineTransform(translationX: offscreenX, y: 0).rotated(by: angle)
+		let finalPosition3dTransform = CATransform3DMakeAffineTransform(finalPositionTransform)
+
+		// setup animation
+		let animation = CABasicAnimation(keyPath: #keyPath(CALayer.transform))
+		animation.duration = 0.8
+		animation.fromValue = layer.transform
+		animation.toValue = finalPosition3dTransform
+		animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
+		
+		// fire animation
+		CATransaction.begin()
+		CATransaction.setCompletionBlock {
+			self.delegate?.cardDidSwiped(self, direction: direction)
+			self.state = .removed
 		}
+		
+		layer.transform = finalPosition3dTransform // set in final state before animation
+		layer.add(animation, forKey: "cardSwiping")
+		CATransaction.commit()
 	}
 	
 	private func putCardBackWithAnimation() {
