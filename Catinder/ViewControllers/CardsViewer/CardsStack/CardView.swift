@@ -208,26 +208,15 @@ class CardView: UIView {
 		let multiplier: CGFloat = direction == .right ? 1 : -1
 		let offscreenX = 2 * UIScreen.main.bounds.width * multiplier
 		let angle = Angle(degrees: 40).radians * multiplier
-		let finalPositionTransform = CGAffineTransform(translationX: offscreenX, y: 0).rotated(by: angle)
-		let finalPosition3dTransform = CATransform3DMakeAffineTransform(finalPositionTransform)
 
-		// setup animation
-		let animation = CABasicAnimation(keyPath: #keyPath(CALayer.transform))
-		animation.duration = 0.8
-		animation.fromValue = layer.transform
-		animation.toValue = finalPosition3dTransform
-		animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
-		
-		// fire animation
-		CATransaction.begin()
-		CATransaction.setCompletionBlock {
+		let finalTransformState = CGAffineTransform(translationX: offscreenX, y: transform.ty).rotated(by: angle)
+		let final3dTransformState = CATransform3DMakeAffineTransform(finalTransformState)
+
+		// animate
+		layer.animateTransform(to: final3dTransformState, duration: 0.8, easing: .easeOut) {
 			self.delegate?.cardDidSwiped(self, direction: direction)
 			self.state = .removed
 		}
-		
-		layer.transform = finalPosition3dTransform // set in final state before animation
-		layer.add(animation, forKey: "cardSwiping")
-		CATransaction.commit()
 	}
 	
 	private func putCardBackWithAnimation() {
