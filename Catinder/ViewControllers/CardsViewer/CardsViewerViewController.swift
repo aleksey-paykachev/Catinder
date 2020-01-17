@@ -56,15 +56,8 @@ class CardsViewerViewController: UIViewController {
 				return
 			}
 
-			let cardViewModels = profiles as? [CardViewModelRepresentable] ?? []
-			updateCardsStackView(with: cardViewModels)
-		}
-	}
-	
-	private func updateCardsStackView(with cardViewModels: [CardViewModelRepresentable]) {
-		cardViewModels.forEach { cardViewModelObject in
-			let cardView = CardView(viewModel: cardViewModelObject.cardViewModel)
-			cardsStackView.add(cardView)
+			let cardViewModelRepresentables = profiles as? [CardViewModelRepresentable] ?? []
+			cardsStackView.add(cardViewModelRepresentables)
 		}
 	}
 }

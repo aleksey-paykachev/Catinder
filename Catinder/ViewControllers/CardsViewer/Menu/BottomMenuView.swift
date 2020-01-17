@@ -9,8 +9,9 @@
 import UIKit
 
 protocol BotomMenuActionsDelegate: class {
-	func likeButtonDidPressed()
+	func undoButtonDidPressed()
 	func dislikeButtonDidPressed()
+	func likeButtonDidPressed()
 }
 
 class BottomMenuView: UIView {
@@ -19,8 +20,8 @@ class BottomMenuView: UIView {
 	weak var delegate: BotomMenuActionsDelegate?
 	
 	// Buttons
-	private let undoButton = MenuButton(imageName: "Undo") {
-		print("Undo")
+	private lazy var undoButton = MenuButton(imageName: "Undo") { [weak self] in
+		self?.delegate?.undoButtonDidPressed()
 	}
 
 	private lazy var dislikeButton = MenuButton(imageName: "Dislike") { [weak self] in

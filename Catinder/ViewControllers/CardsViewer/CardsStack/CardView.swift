@@ -39,7 +39,7 @@ class CardView: UIView {
 	private let moreInfoButton = UIButton(type: .detailDisclosure)
 	
 	weak var delegate: CardViewDelegate?
-	private var viewModel: CardViewModel { didSet { updateUI() } }
+	private(set) var viewModel: CardViewModel { didSet { updateUI() } }
 	private var state = State.present
 
 	
@@ -62,6 +62,8 @@ class CardView: UIView {
 	// MARK: - Public methods
 	
 	func remove(direction: SwipeDirection) {
+		guard case State.present = state else { return } // prevent multiple remove() calls
+		
 		state = .removing(direction: direction)
 		removeCardWithAnimation(direction: direction)
 	}
