@@ -9,13 +9,13 @@
 import UIKit
 
 class MatchSplashScreenViewController: UIViewController {
-	let blurView = UIVisualEffectView(effect: nil)
+	private let blurView = UIVisualEffectView(effect: nil)
 
-	let userProfileImageView = UIImageView(image: UIImage(named: "Cat_Marusia"))
-	let matchProfileImageView = UIImageView(image: UIImage(named: "Cat_Bob_1"))
+	private let userProfileImageView = UIImageView(image: UIImage(named: "Cat_Marusia"))
+	private let matchProfileImageView = UIImageView(image: UIImage(named: "Cat_Bob_1"))
 	
 	// test button
-	let playAnimationButton = UIButton(type: .custom)
+	private let playAnimationButton = UIButton(type: .custom)
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -36,22 +36,9 @@ class MatchSplashScreenViewController: UIViewController {
 		view.insertSubview(blurView, at: 0)
 		blurView.constrainToSuperview(respectSafeArea: false)
 		
-		// profiles
-		let profileImageSideSize = view.frame.width * 0.33
-
-		// user profile
-		userProfileImageView.contentMode = .scaleAspectFill
-		userProfileImageView.frame.size = .square(profileImageSideSize)
-		userProfileImageView.constrainSize(to: .square(profileImageSideSize))
-		userProfileImageView.layer.round()
-		userProfileImageView.layer.setBorder(size: 2, color: .white)
-		
-		// match profile
-		matchProfileImageView.contentMode = .scaleAspectFill
-		matchProfileImageView.frame.size = .square(profileImageSideSize)
-		matchProfileImageView.constrainSize(to: .square(profileImageSideSize))
-		matchProfileImageView.layer.round()
-		matchProfileImageView.layer.setBorder(size: 2, color: .white)
+		// profiles images
+		setupProfileImageView(userProfileImageView)
+		setupProfileImageView(matchProfileImageView)
 		
 		// match title
 		let matchTitleLabel = UILabel()
@@ -80,6 +67,16 @@ class MatchSplashScreenViewController: UIViewController {
 		
 		view.addSubview(mainStack)
 		mainStack.constrainToSuperview(anchors: [.centerX, .centerY])
+	}
+	
+	private func setupProfileImageView(_ profileImageView: UIImageView) {
+		let profileImageSideSize = view.frame.width * 0.33
+
+		profileImageView.contentMode = .scaleAspectFill
+		profileImageView.frame.size = .square(profileImageSideSize)
+		profileImageView.constrainSize(to: .square(profileImageSideSize))
+		profileImageView.layer.round()
+		profileImageView.layer.setBorder(size: 2, color: .white)
 	}
 	
 	private func prepareForAnimation() {
