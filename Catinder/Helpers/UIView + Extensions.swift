@@ -117,7 +117,7 @@ extension UIView {
 		constrainTo(superview, anchors: anchors, paddings: paddings, respectSafeArea: respectSafeArea)
 	}
 	
-	/// Set fixed width using width constraint.
+	/// Constrain current view to fixed width.
 	///
 	/// - Parameter width: Width constant.
 	///
@@ -126,7 +126,7 @@ extension UIView {
 		widthAnchor.constraint(equalToConstant: width).isActive = true
 	}
 	
-	/// Set fixed height using height constraint.
+	/// Constrain current view to fixed height.
 	///
 	/// - Parameter height: Height constant.
 	///
@@ -135,14 +135,25 @@ extension UIView {
 		heightAnchor.constraint(equalToConstant: height).isActive = true
 	}
 	
-	/// Set fixed width and height using constraints.
+	/// Constrain current view to fixed width and height.
 	///
 	/// - Parameters:
 	///   - width: Width constant.
 	///   - height: Height constant.
+	///
 	func constrainSize(width: CGFloat, height: CGFloat) {
 		constrainWidth(to: width)
 		constrainHeight(to: height)
+	}
+	
+	/// Constrain current view to fixed width and height.
+	///
+	/// - Parameters:
+	///   - size: Size structure with width and height values.
+	///
+	func constrainSize(to size: CGSize) {
+		constrainWidth(to: size.width)
+		constrainHeight(to: size.height)
 	}
 }
 

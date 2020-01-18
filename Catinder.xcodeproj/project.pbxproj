@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B035D4B23D299D100542242 /* CGSize + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B035D4A23D299D100542242 /* CGSize + Extensions.swift */; };
 		5B07A50A23D12E9D00122190 /* CALayer + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07A50923D12E9D00122190 /* CALayer + Extensions.swift */; };
 		5B07A50C23D13A6500122190 /* Collection + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07A50B23D13A6500122190 /* Collection + Extensions.swift */; };
 		5B139E6723B777F800BE73E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E6623B777F800BE73E7 /* AppDelegate.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B035D4A23D299D100542242 /* CGSize + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize + Extensions.swift"; sourceTree = "<group>"; };
 		5B07A50923D12E9D00122190 /* CALayer + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer + Extensions.swift"; sourceTree = "<group>"; };
 		5B07A50B23D13A6500122190 /* Collection + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection + Extensions.swift"; sourceTree = "<group>"; };
 		5B139E6323B777F800BE73E7 /* Catinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +161,7 @@
 				5B746EF823C8C56600063374 /* UILabel + Extensions.swift */,
 				5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */,
 				5BD9B09423CFDDC9000E5028 /* CGColor + Extensions.swift */,
+				5B035D4A23D299D100542242 /* CGSize + Extensions.swift */,
 				5B07A50923D12E9D00122190 /* CALayer + Extensions.swift */,
 				5B07A50B23D13A6500122190 /* Collection + Extensions.swift */,
 				5B96C7FC23BE713A00BFB4D0 /* Angle.swift */,
@@ -346,6 +349,7 @@
 				5B37744723CE769A00698427 /* PhotosSelectorViewController.swift in Sources */,
 				5B244CA623BF9AB60099B975 /* UIStackView + Extensions.swift in Sources */,
 				5B139E6723B777F800BE73E7 /* AppDelegate.swift in Sources */,
+				5B035D4B23D299D100542242 /* CGSize + Extensions.swift in Sources */,
 				5B139E8123B7873200BE73E7 /* UIView + Extensions.swift in Sources */,
 				5B139E7F23B7853000BE73E7 /* CardView.swift in Sources */,
 				5BC68D5C23BF29E500DE9E82 /* CustomPageControl.swift in Sources */,

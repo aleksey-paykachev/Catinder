@@ -41,10 +41,9 @@ class MatchSplashScreenViewController: UIViewController {
 
 		// user profile
 		userProfileImageView.contentMode = .scaleAspectFill
-		userProfileImageView.frame.size = CGSize(width: profileImageSize, height: profileImageSize)
-		userProfileImageView.constrainSize(width: profileImageSize, height: profileImageSize)
+		userProfileImageView.frame.size = .square(profileImageSize)
+		userProfileImageView.constrainSize(to: .square(profileImageSize))
 		userProfileImageView.layer.round()
-		print(profileImageSize)
 		
 		#warning("Refactor into separate function")
 		userProfileImageView.layer.borderColor = UIColor.white.cgColor
@@ -52,8 +51,8 @@ class MatchSplashScreenViewController: UIViewController {
 		
 		// match profile
 		matchProfileImageView.contentMode = .scaleAspectFill
-		matchProfileImageView.frame.size = CGSize(width: profileImageSize, height: profileImageSize)
-		matchProfileImageView.constrainSize(width: profileImageSize, height: profileImageSize)
+		matchProfileImageView.frame.size = .square(profileImageSize)
+		matchProfileImageView.constrainSize(to: .square(profileImageSize))
 		matchProfileImageView.layer.round()
 		
 		matchProfileImageView.layer.borderColor = UIColor.white.cgColor
