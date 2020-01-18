@@ -41,10 +41,7 @@ class MatchSplashScreenViewController: UIViewController {
 
 		// user profile
 		userProfileImageView.contentMode = .scaleAspectFill
-		
-		#warning("Refactor into separate function")
-		userProfileImageView.constrainWidth(to: profileImageSize)
-		userProfileImageView.constrainHeight(to: profileImageSize)
+		userProfileImageView.constrainSize(width: profileImageSize, height: profileImageSize)
 
 		#warning("Refactor into separate function")
 		userProfileImageView.layer.cornerRadius = profileImageSize / 2
@@ -56,9 +53,8 @@ class MatchSplashScreenViewController: UIViewController {
 		
 		// match profile
 		matchProfileImageView.contentMode = .scaleAspectFill
-		
-		matchProfileImageView.constrainWidth(to: profileImageSize)
-		matchProfileImageView.constrainHeight(to: profileImageSize)
+		matchProfileImageView.constrainSize(width: profileImageSize, height: profileImageSize)
+
 		
 		matchProfileImageView.layer.cornerRadius = profileImageSize / 2
 		matchProfileImageView.layer.masksToBounds = true
