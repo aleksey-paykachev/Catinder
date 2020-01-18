@@ -125,6 +125,15 @@ extension UIView {
 		translatesAutoresizingMaskIntoConstraints = false
 		heightAnchor.constraint(equalToConstant: height).isActive = true
 	}
+	
+	/// Set fixed width using width constraint.
+	///
+	/// - Parameter width: Width constant.
+	///
+	func constrainWidth(to width: CGFloat) {
+		translatesAutoresizingMaskIntoConstraints = false
+		widthAnchor.constraint(equalToConstant: width).isActive = true
+	}	
 }
 
 

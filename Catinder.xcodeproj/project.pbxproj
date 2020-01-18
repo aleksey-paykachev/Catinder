@@ -23,6 +23,7 @@
 		5B37744323CE75FA00698427 /* PhotoImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37744223CE75FA00698427 /* PhotoImagePicker.swift */; };
 		5B37744523CE767400698427 /* PhotoSelectorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37744423CE767400698427 /* PhotoSelectorButton.swift */; };
 		5B37744723CE769A00698427 /* PhotosSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37744623CE769A00698427 /* PhotosSelectorViewController.swift */; };
+		5B5A9D7223D1422F00C7FF85 /* MatchSplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5A9D7123D1422F00C7FF85 /* MatchSplashScreenViewController.swift */; };
 		5B5AD28123C8BF3C00D5B6D7 /* ProfileViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5AD28023C8BF3C00D5B6D7 /* ProfileViewerViewController.swift */; };
 		5B746EF923C8C56600063374 /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B746EF823C8C56600063374 /* UILabel + Extensions.swift */; };
 		5B746EFB23C8C94000063374 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B746EFA23C8C94000063374 /* ProfileViewModel.swift */; };
@@ -59,6 +60,7 @@
 		5B37744223CE75FA00698427 /* PhotoImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoImagePicker.swift; sourceTree = "<group>"; };
 		5B37744423CE767400698427 /* PhotoSelectorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorButton.swift; sourceTree = "<group>"; };
 		5B37744623CE769A00698427 /* PhotosSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosSelectorViewController.swift; sourceTree = "<group>"; };
+		5B5A9D7123D1422F00C7FF85 /* MatchSplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchSplashScreenViewController.swift; sourceTree = "<group>"; };
 		5B5AD28023C8BF3C00D5B6D7 /* ProfileViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewerViewController.swift; sourceTree = "<group>"; };
 		5B746EF823C8C56600063374 /* UILabel + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
 		5B746EFA23C8C94000063374 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				5B139E7923B784F500BE73E7 /* CardsViewer */,
 				5B7FFBCD23C2AAC3009D2854 /* ProfileEditor */,
 				5B5AD28223C8C0F700D5B6D7 /* ProfileViewer */,
+				5B5A9D7323D1423500C7FF85 /* MatchSplashScreen */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -171,6 +174,14 @@
 				5B37744223CE75FA00698427 /* PhotoImagePicker.swift */,
 			);
 			path = PhotosSelector;
+			sourceTree = "<group>";
+		};
+		5B5A9D7323D1423500C7FF85 /* MatchSplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				5B5A9D7123D1422F00C7FF85 /* MatchSplashScreenViewController.swift */,
+			);
+			path = MatchSplashScreen;
 			sourceTree = "<group>";
 		};
 		5B5AD28223C8C0F700D5B6D7 /* ProfileViewer */ = {
@@ -317,6 +328,7 @@
 				5B2DBA7523B9DA5900BACB52 /* CardsStackView.swift in Sources */,
 				5B7FFBCC23C2AABC009D2854 /* ProfileEditorViewController.swift in Sources */,
 				5B8B1D8D23B7C57F00543F20 /* CatProfile.swift in Sources */,
+				5B5A9D7223D1422F00C7FF85 /* MatchSplashScreenViewController.swift in Sources */,
 				5B7FFBCF23C2ACF2009D2854 /* ProfileEditorNavigationController.swift in Sources */,
 				5BFC059923C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift in Sources */,
 				5B139E7B23B7850500BE73E7 /* TopMenuView.swift in Sources */,
