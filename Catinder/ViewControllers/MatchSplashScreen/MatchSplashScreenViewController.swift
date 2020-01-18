@@ -41,18 +41,10 @@ class MatchSplashScreenViewController: UIViewController {
 		setupProfileImageView(matchProfileImageView)
 		
 		// match title
-		let matchTitleLabel = UILabel()
-		matchTitleLabel.text = "Совпадение!"
-		matchTitleLabel.textColor = .white
-		matchTitleLabel.font = .systemFont(ofSize: 36, weight: .medium)
-		matchTitleLabel.textAlignment = .center
+		let matchTitleLabel = UILabel(text: "Совпадение!", color: .white, alignment: .center, font: .systemFont(ofSize: 36, weight: .medium))
 		
 		// match description
-		let matchDescriptionLabel = UILabel()
-		matchDescriptionLabel.text = "Вы, и %secondUser% понравились друг другу."
-		matchDescriptionLabel.textColor = .white
-		matchDescriptionLabel.font = .systemFont(ofSize: 18, weight: .regular)
-		matchDescriptionLabel.numberOfLines = 0
+		let matchDescriptionLabel = UILabel(text: "Вы, и %secondUser% понравились друг другу.", color: .white, allowMultipleLines: true, font: .systemFont(ofSize: 18, weight: .regular))
 		
 		// profiles stack
 		let profilesStack = UIStackView(arrangedSubviews: [userProfileImageView, matchProfileImageView])
