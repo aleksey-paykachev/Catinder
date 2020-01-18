@@ -37,26 +37,21 @@ class MatchSplashScreenViewController: UIViewController {
 		blurView.constrainToSuperview(respectSafeArea: false)
 		
 		// profiles
-		let profileImageSize = view.frame.width * 0.33
+		let profileImageSideSize = view.frame.width * 0.33
 
 		// user profile
 		userProfileImageView.contentMode = .scaleAspectFill
-		userProfileImageView.frame.size = .square(profileImageSize)
-		userProfileImageView.constrainSize(to: .square(profileImageSize))
+		userProfileImageView.frame.size = .square(profileImageSideSize)
+		userProfileImageView.constrainSize(to: .square(profileImageSideSize))
 		userProfileImageView.layer.round()
-		
-		#warning("Refactor into separate function")
-		userProfileImageView.layer.borderColor = UIColor.white.cgColor
-		userProfileImageView.layer.borderWidth = 2
+		userProfileImageView.layer.setBorder(size: 2, color: .white)
 		
 		// match profile
 		matchProfileImageView.contentMode = .scaleAspectFill
-		matchProfileImageView.frame.size = .square(profileImageSize)
-		matchProfileImageView.constrainSize(to: .square(profileImageSize))
+		matchProfileImageView.frame.size = .square(profileImageSideSize)
+		matchProfileImageView.constrainSize(to: .square(profileImageSideSize))
 		matchProfileImageView.layer.round()
-		
-		matchProfileImageView.layer.borderColor = UIColor.white.cgColor
-		matchProfileImageView.layer.borderWidth = 2
+		matchProfileImageView.layer.setBorder(size: 2, color: .white)
 		
 		// match title
 		let matchTitleLabel = UILabel()
@@ -97,7 +92,6 @@ class MatchSplashScreenViewController: UIViewController {
 	
 	@objc private func playAnimation() {
 		prepareForAnimation()
-//		userProfileImageView.layer.round()
 
 		UIView.animateKeyframes(withDuration: 5, delay: 0, options: [], animations: {
 			UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.3) {

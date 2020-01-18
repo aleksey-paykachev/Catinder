@@ -6,7 +6,7 @@
 //  Copyright © 2020 Aleksey Paykachev. All rights reserved.
 //
 
-import QuartzCore
+import UIKit
 
 extension CALayer {
 	
@@ -50,5 +50,16 @@ extension CALayer {
 		}
 
 		masksToBounds = true
+	}
+	
+	/// Set border for current layer.
+	///
+	/// - Parameters:
+	///   - size: Size of the border.
+	///   - color: Color of the border.
+	///
+	func setBorder(size: CGFloat, color: UIColor = .black) {
+		borderWidth = size
+		borderColor = color.cgColor
 	}
 }
