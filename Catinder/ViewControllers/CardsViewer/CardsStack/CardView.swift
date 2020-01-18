@@ -33,10 +33,11 @@ class CardView: UIView {
 	private let imageView = UIImageView()
 	private let activeImagePageControl = CustomPageControl()
 	private let subLabelsGradientLayer = CAGradientLayer()
-	private let headerLabel = UILabel()
-	private let titleLabel = UILabel()
-	private let subtitleLabel = UILabel()
 	private let moreInfoButton = UIButton(type: .detailDisclosure)
+	// labels
+	private let headerLabel = UILabel(color: .white, font: .systemFont(ofSize: 36, weight: .medium))
+	private let titleLabel = UILabel(color: UIColor(white: 0.98, alpha: 1), font: .systemFont(ofSize: 24, weight: .light))
+	private let subtitleLabel = UILabel(color: UIColor(white: 0.96, alpha: 1), allowMultipleLines: true, font: .systemFont(ofSize: 18, weight: .medium))
 	
 	weak var delegate: CardViewDelegate?
 	private(set) var viewModel: CardViewModel { didSet { updateUI() } }
@@ -95,20 +96,8 @@ class CardView: UIView {
 	}
 	
 	private func setupLabels() {
-		addSubLabelsGradient() // add gradient behind labels to improve readability
-		
-		// header
-		headerLabel.font = UIFont.systemFont(ofSize: 36, weight: .medium)
-		headerLabel.textColor = .white
-		
-		// title
-		titleLabel.font = UIFont.systemFont(ofSize: 24, weight: .light)
-		titleLabel.textColor = UIColor(white: 0.98, alpha: 1)
-		
-		// subtitle
-		subtitleLabel.numberOfLines = 0
-		subtitleLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-		subtitleLabel.textColor = UIColor(white: 0.96, alpha: 1)
+		// add gradient behind labels to improve readability
+		addSubLabelsGradient()
 		
 		// put all labels inside one stack
 		let labelsStackView = UIStackView(arrangedSubviews: [headerLabel, titleLabel, subtitleLabel])

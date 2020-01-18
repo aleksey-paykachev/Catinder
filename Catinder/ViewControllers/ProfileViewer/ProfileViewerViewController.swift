@@ -12,8 +12,8 @@ class ProfileViewerViewController: UIViewController {
 	
 	private let scrollView = UIScrollView()
 	private let photoImageView = UIImageView()
-	private let nameLabel = UILabel()
-	private let descriptionLabel = UILabel()
+	private let nameLabel = UILabel(font: .systemFont(ofSize: 36, weight: .medium))
+	private let descriptionLabel = UILabel(allowMultipleLines: true, font: .systemFont(ofSize: 18, weight: .regular))
 	
 	private var viewModel: ProfileViewModel { didSet { updateUI() } }
 	
@@ -69,14 +69,7 @@ class ProfileViewerViewController: UIViewController {
 	}
 	
 	private func setupTextLabels() {
-		// name
-		nameLabel.font = UIFont.systemFont(ofSize: 36, weight: .medium)
-		
-		// description
-		descriptionLabel.numberOfLines = 0
-		descriptionLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-		
-		// stack view
+		// text labels stack view
 		let stackView = UIStackView(arrangedSubviews: [nameLabel, descriptionLabel])
 		stackView.axis = .vertical
 		stackView.distribution = .fill
