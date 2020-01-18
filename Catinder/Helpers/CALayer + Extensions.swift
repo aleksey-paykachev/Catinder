@@ -36,4 +36,19 @@ extension CALayer {
 		add(animation, forKey: "transform")
 		CATransaction.commit()
 	}
+	
+	/// Set rounded corners for current layer using provided radius.
+	///
+	/// - Parameter radius: Radius value applying to corners. If no value were provided,
+	///						use half of the layers width, i.e. make squared layer a circle.
+	///
+	func round(radius: CGFloat? = nil) {
+		if let radius = radius {
+			cornerRadius = radius
+		} else {
+			cornerRadius = frame.width / 2
+		}
+
+		masksToBounds = true
+	}
 }

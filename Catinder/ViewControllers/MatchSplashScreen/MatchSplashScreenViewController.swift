@@ -41,11 +41,10 @@ class MatchSplashScreenViewController: UIViewController {
 
 		// user profile
 		userProfileImageView.contentMode = .scaleAspectFill
+		userProfileImageView.frame.size = CGSize(width: profileImageSize, height: profileImageSize)
 		userProfileImageView.constrainSize(width: profileImageSize, height: profileImageSize)
-
-		#warning("Refactor into separate function")
-		userProfileImageView.layer.cornerRadius = profileImageSize / 2
-		userProfileImageView.layer.masksToBounds = true
+		userProfileImageView.layer.round()
+		print(profileImageSize)
 		
 		#warning("Refactor into separate function")
 		userProfileImageView.layer.borderColor = UIColor.white.cgColor
@@ -53,11 +52,9 @@ class MatchSplashScreenViewController: UIViewController {
 		
 		// match profile
 		matchProfileImageView.contentMode = .scaleAspectFill
+		matchProfileImageView.frame.size = CGSize(width: profileImageSize, height: profileImageSize)
 		matchProfileImageView.constrainSize(width: profileImageSize, height: profileImageSize)
-
-		
-		matchProfileImageView.layer.cornerRadius = profileImageSize / 2
-		matchProfileImageView.layer.masksToBounds = true
+		matchProfileImageView.layer.round()
 		
 		matchProfileImageView.layer.borderColor = UIColor.white.cgColor
 		matchProfileImageView.layer.borderWidth = 2
@@ -101,7 +98,8 @@ class MatchSplashScreenViewController: UIViewController {
 	
 	@objc private func playAnimation() {
 		prepareForAnimation()
-		
+//		userProfileImageView.layer.round()
+
 		UIView.animateKeyframes(withDuration: 5, delay: 0, options: [], animations: {
 			UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.3) {
 				// blur
