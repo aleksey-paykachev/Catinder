@@ -38,6 +38,8 @@
 		5B96C7FD23BE713A00BFB4D0 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B96C7FC23BE713A00BFB4D0 /* Angle.swift */; };
 		5BC68D5C23BF29E500DE9E82 /* CatinderPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC68D5B23BF29E500DE9E82 /* CatinderPageControl.swift */; };
 		5BD54E1123D50381004A0AA2 /* CatinderSecondaryTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD54E1023D50381004A0AA2 /* CatinderSecondaryTextButton.swift */; };
+		5BD54E1523D5075A004A0AA2 /* HorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD54E1423D5075A004A0AA2 /* HorizontalStackView.swift */; };
+		5BD54E1723D5077E004A0AA2 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD54E1623D5077E004A0AA2 /* VerticalStackView.swift */; };
 		5BD8BE9423C686CB00D9943B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8BE9323C686CB00D9943B /* Profile.swift */; };
 		5BD8BE9623C687C900D9943B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8BE9523C687C900D9943B /* DataManager.swift */; };
 		5BD9B09523CFDDC9000E5028 /* CGColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD9B09423CFDDC9000E5028 /* CGColor + Extensions.swift */; };
@@ -78,6 +80,8 @@
 		5B96C7FC23BE713A00BFB4D0 /* Angle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
 		5BC68D5B23BF29E500DE9E82 /* CatinderPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderPageControl.swift; sourceTree = "<group>"; };
 		5BD54E1023D50381004A0AA2 /* CatinderSecondaryTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderSecondaryTextButton.swift; sourceTree = "<group>"; };
+		5BD54E1423D5075A004A0AA2 /* HorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalStackView.swift; sourceTree = "<group>"; };
+		5BD54E1623D5077E004A0AA2 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		5BD8BE9323C686CB00D9943B /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		5BD8BE9523C687C900D9943B /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		5BD9B09423CFDDC9000E5028 /* CGColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGColor + Extensions.swift"; sourceTree = "<group>"; };
@@ -161,9 +165,9 @@
 		5B139E8223B7875D00BE73E7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				5BD54E1323D50743004A0AA2 /* UIStackView */,
 				5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */,
 				5B746EF823C8C56600063374 /* UILabel + Extensions.swift */,
-				5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */,
 				5BD9B09423CFDDC9000E5028 /* CGColor + Extensions.swift */,
 				5B035D4A23D299D100542242 /* CGSize + Extensions.swift */,
 				5B07A50923D12E9D00122190 /* CALayer + Extensions.swift */,
@@ -258,6 +262,16 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		5BD54E1323D50743004A0AA2 /* UIStackView */ = {
+			isa = PBXGroup;
+			children = (
+				5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */,
+				5BD54E1423D5075A004A0AA2 /* HorizontalStackView.swift */,
+				5BD54E1623D5077E004A0AA2 /* VerticalStackView.swift */,
+			);
+			path = UIStackView;
+			sourceTree = "<group>";
+		};
 		5BD8BE9723C687F800D9943B /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -343,6 +357,7 @@
 				5B37744323CE75FA00698427 /* PhotoImagePicker.swift in Sources */,
 				5B37744523CE767400698427 /* PhotoSelectorButton.swift in Sources */,
 				5B2DBA7523B9DA5900BACB52 /* CardsStackView.swift in Sources */,
+				5BD54E1523D5075A004A0AA2 /* HorizontalStackView.swift in Sources */,
 				5B7FFBCC23C2AABC009D2854 /* ProfileEditorViewController.swift in Sources */,
 				5B8B1D8D23B7C57F00543F20 /* CatProfile.swift in Sources */,
 				5B5A9D7223D1422F00C7FF85 /* MatchSplashScreenViewController.swift in Sources */,
@@ -369,6 +384,7 @@
 				5B139E7F23B7853000BE73E7 /* CardView.swift in Sources */,
 				5B956FAC23D4289B008A53B6 /* CatinderPrimaryTextButton.swift in Sources */,
 				5BC68D5C23BF29E500DE9E82 /* CatinderPageControl.swift in Sources */,
+				5BD54E1723D5077E004A0AA2 /* VerticalStackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -59,9 +59,7 @@ class MatchSplashScreenViewController: UIViewController {
 		setupProfileImageView(matchedProfileImageView)
 		
 		// profiles stack
-		let profilesStack = UIStackView(arrangedSubviews: [userProfileImageView, matchedProfileImageView])
-		profilesStack.axis = .horizontal
-		profilesStack.spacing = 30
+		let profilesStack = HorizontalStackView([userProfileImageView, matchedProfileImageView], spacing: 30)		
 		
 		// buttons
 		sendMessageButton.constrainHeight(to: 50)
@@ -71,9 +69,8 @@ class MatchSplashScreenViewController: UIViewController {
 		continueSwipingButton.addTarget(self, action: #selector(continueSwipingButtonDidTapped), for: .touchUpInside)
 		
 		// main stack
-		let mainStack = UIStackView(arrangedSubviews: [matchTitleLabel, matchDescriptionLabel, profilesStack, sendMessageButton, continueSwipingButton])
-		mainStack.axis = .vertical
-		mainStack.spacing = 10
+		let mainStackSubviews = [matchTitleLabel, matchDescriptionLabel, profilesStack, sendMessageButton, continueSwipingButton]
+		let mainStack = VerticalStackView(mainStackSubviews, spacing: 10)
 		mainStack.setCustomSpacing(40, after: matchDescriptionLabel)
 		mainStack.setCustomSpacing(40, after: profilesStack)
 		
