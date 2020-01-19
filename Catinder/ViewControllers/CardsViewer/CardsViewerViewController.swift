@@ -37,7 +37,7 @@ class CardsViewerViewController: UIViewController {
 		
 		// bottom menu
 		let bottomMenuView = BottomMenuView()
-		bottomMenuView.delegate = cardsStackView
+		bottomMenuView.delegate = self
 		
 		// main stack
 		let subviews = [topMenuView, cardsStackView, bottomMenuView]
@@ -72,6 +72,23 @@ extension CardsViewerViewController: TopMenuActionsDelegate {
 	}
 	
 	func messagesButtonDidPressed() {
+	}
+}
+
+
+// MARK: - BotomMenuActionsDelegate
+
+extension CardsViewerViewController: BotomMenuActionsDelegate {
+	func undoButtonDidPressed() {
+		cardsStackView.undoLastRemoval()
+	}
+	
+	func dislikeButtonDidPressed() {
+		cardsStackView.removeTopCard(direction: .left)
+	}
+	
+	func likeButtonDidPressed() {
+		cardsStackView.removeTopCard(direction: .right)
 	}
 }
 

@@ -55,24 +55,15 @@ class CardsStackView: UIView {
 	func add(_ cardViewModelRepresentables: [CardViewModelRepresentable]) {
 		cardViewModelRepresentables.forEach { add($0.cardViewModel) }
 	}
-}
-
-
-// MARK: - BotomMenuActionsDelegate
-
-extension CardsStackView: BotomMenuActionsDelegate {
-	func undoButtonDidPressed() {
+	
+	func removeTopCard(direction: CardView.SwipeDirection) {
+		topCard?.remove(direction: direction)
+	}
+	
+	func undoLastRemoval() {
 		guard removedCardModels.isNotEmpty else { return }
 		
 		add(removedCardModels.removeLast())
-	}
-	
-	func dislikeButtonDidPressed() {
-		topCard?.remove(direction: .left)
-	}
-
-	func likeButtonDidPressed() {
-		topCard?.remove(direction: .right)
 	}
 }
 
