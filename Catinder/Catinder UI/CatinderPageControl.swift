@@ -1,5 +1,5 @@
 //
-//  CustomPageControl.swift
+//  CatinderPageControl.swift
 //  Catinder
 //
 //  Created by Aleksey on 03/01/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomPageControl: UIView {
+class CatinderPageControl: UIView {
 	var numberOfPages = 0 { didSet { setNumberOfPages() } }
 	var currentPage = 0 { didSet { setCurrentPage() } }
 

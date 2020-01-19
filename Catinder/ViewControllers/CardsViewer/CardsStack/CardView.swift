@@ -31,7 +31,7 @@ class CardView: UIView {
 
 	// Properties
 	private let imageView = UIImageView()
-	private let activeImagePageControl = CustomPageControl()
+	private let activeImagePageControl = CatinderPageControl()
 	private let subLabelsGradientLayer = CAGradientLayer()
 	private let moreInfoButton = UIButton(type: .detailDisclosure)
 	// labels

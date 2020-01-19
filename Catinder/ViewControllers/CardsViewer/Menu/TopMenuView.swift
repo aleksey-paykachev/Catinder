@@ -21,11 +21,11 @@ class TopMenuView: UIView {
 	private let logoImageView = UIImageView()
 
 	// buttons
-	private lazy var profileButton = MenuButton(imageName: "Profile") { [weak self] in
+	private lazy var profileButton = CatinderImageButton("Profile") { [weak self] in
 		self?.delegate?.profileButtonDidPressed()
 	}
 	
-	private lazy var messagesButton = MenuButton(imageName: "Messages") { [weak self] in
+	private lazy var messagesButton = CatinderImageButton("Messages") { [weak self] in
 		self?.delegate?.messagesButtonDidPressed()
 	}
 	

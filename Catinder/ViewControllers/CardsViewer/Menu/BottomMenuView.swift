@@ -20,22 +20,22 @@ class BottomMenuView: UIView {
 	weak var delegate: BotomMenuActionsDelegate?
 	
 	// Buttons
-	private lazy var undoButton = MenuButton(imageName: "Undo") { [weak self] in
+	private lazy var undoButton = CatinderImageButton("Undo") { [weak self] in
 		self?.delegate?.undoButtonDidPressed()
 	}
 
-	private lazy var dislikeButton = MenuButton(imageName: "Dislike") { [weak self] in
+	private lazy var dislikeButton = CatinderImageButton("Dislike") { [weak self] in
 		self?.delegate?.dislikeButtonDidPressed()
 	}
 
-	private let boostProfileButton = MenuButton(imageName: "Boost") {
+	private let boostProfileButton = CatinderImageButton("Boost") {
 		print("Boost")
 	}
 
-	private lazy var likeButton = MenuButton(imageName: "Like") { [weak self] in self?.delegate?.likeButtonDidPressed()
+	private lazy var likeButton = CatinderImageButton("Like") { [weak self] in self?.delegate?.likeButtonDidPressed()
 	}
 
-	private let superLikeButton = MenuButton(imageName: "SuperLike") {
+	private let superLikeButton = CatinderImageButton("SuperLike") {
 		print("Super like")
 	}
 	

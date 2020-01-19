@@ -1,5 +1,5 @@
 //
-//  MenuButton.swift
+//  CatinderImageButton.swift
 //  Catinder
 //
 //  Created by Aleksey on 06/01/2020.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-class MenuButton: UIButton {
+class CatinderImageButton: UIButton {
 	private let imageName: String
 	private let touchHandler: () -> ()
 	
-	init(imageName: String, touchHandler: @escaping () -> ()) {
+	init(_ imageName: String, touchHandler: @escaping () -> ()) {
 		self.imageName = imageName
 		self.touchHandler = touchHandler
 		
