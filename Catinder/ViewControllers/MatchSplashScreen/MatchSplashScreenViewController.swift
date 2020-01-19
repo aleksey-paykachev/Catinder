@@ -23,8 +23,8 @@ class MatchSplashScreenViewController: UIViewController {
 	private let matchedProfileImageView = UIImageView(image: UIImage(named: "Cat_Bob_1"))
 	
 	// Buttons
-	private let sendMessageButton = CatinderTextButton(text: "Отправить сообщение")
-	private let continueSwipingButton = CatinderTextButton(text: "Продолжить поиски")
+	private let sendMessageButton = CatinderPrimaryTextButton(text: "Отправить сообщение")
+	private let continueSwipingButton = CatinderSecondaryTextButton(text: "Продолжить поиски")
 	
 	// Constants
 	private let profileImageRotationAngle = Angle(degrees: 40).radians

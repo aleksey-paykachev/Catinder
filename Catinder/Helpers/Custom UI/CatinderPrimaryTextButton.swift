@@ -1,5 +1,5 @@
 //
-//  CatinderTextButton.swift
+//  CatinderPrimaryTextButton.swift
 //  Catinder
 //
 //  Created by Aleksey on 19/01/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CatinderTextButton: UIButton {
+class CatinderPrimaryTextButton: UIButton {
 	
 	convenience init(text: String) {
 		self.init(type: .system)
