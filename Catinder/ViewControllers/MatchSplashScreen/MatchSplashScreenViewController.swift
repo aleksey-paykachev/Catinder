@@ -96,7 +96,13 @@ class MatchSplashScreenViewController: UIViewController {
 	}
 	
 	@objc private func continueSwipingButtonDidTapped() {
-		print("Continue swiping.")
+		// remove self from parent with animation
+		UIView.animate(withDuration: 0.5, animations: {
+			self.view.alpha = 0
+		}) { _ in
+			self.view.removeFromSuperview()
+			self.removeFromParent()
+		}
 	}
 	
 	

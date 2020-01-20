@@ -91,12 +91,9 @@ extension CardsViewerViewController: BotomMenuActionsDelegate {
 		cardsStackView.removeTopCard(direction: .right)
 		
 		#warning("This should be implemented inside cards stack view callback.")
-		let match = MatchSplashScreenViewController()
-		view.addSubview(match.view)
-		
-		DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
-			match.view.removeFromSuperview()
-		}
+		let matchSplashScreenViewController = MatchSplashScreenViewController()
+		addChild(matchSplashScreenViewController)
+		view.addSubview(matchSplashScreenViewController.view)
 	}
 }
 
