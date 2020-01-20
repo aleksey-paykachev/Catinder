@@ -29,27 +29,28 @@ class MatchSplashScreenViewController: UIViewController {
 	// Constants
 	private let profileImageRotationAngle = Angle(degrees: 40).radians
 
-	// del - test button
-	private let playAnimationButton = UIButton(type: .custom)
-	
 	
 	// MARK: - Setup
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		setupView()
 		setupSubviews()
+	}
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
 		
-		// test button
-		playAnimationButton.setTitle("Play animation", for: .normal)
-		view.addSubview(playAnimationButton)
-		playAnimationButton.constrainToSuperview(anchors: [.bottom, .centerX], paddings: .bottom(20))
-		playAnimationButton.addTarget(nil, action: #selector(playAnimation), for: .touchUpInside)
+		prepareForAnimation()
+		playAnimation()
+	}
+	
+	private func setupView() {
+		view.layer.zPosition = 2 // place this view on top of all others
 	}
 	
 	private func setupSubviews() {
-		view.backgroundColor = .lightGray
-		
 		// blur view
 		view.insertSubview(blurView, at: 0)
 		blurView.constrainToSuperview(respectSafeArea: false)
@@ -103,22 +104,23 @@ class MatchSplashScreenViewController: UIViewController {
 	
 	// Set all animated values into initial states.
 	private func prepareForAnimation() {
-		blurView.effect = UIBlurEffect(style: .light)
-		
+		// labels
 		matchTitleLabel.alpha = 0
 		matchDescriptionLabel.alpha = 0
 		
+		// profiles images
 		let offscreenX = UIScreen.main.bounds.width
 		userProfileImageView.transform = CGAffineTransform(translationX: offscreenX, y: 0).rotated(by: -profileImageRotationAngle)
 		matchedProfileImageView.transform = CGAffineTransform(translationX: -offscreenX, y: 0).rotated(by: profileImageRotationAngle)
 		
+		// buttons
 		sendMessageButton.transform = CGAffineTransform(translationX: -offscreenX, y: 0)
 		continueSwipingButton.transform = CGAffineTransform(translationX: offscreenX, y: 0)
 	}
 	
 	@objc private func playAnimation() {
-		prepareForAnimation()
-
+		// multiple steps animation
+		
 		UIView.animateKeyframes(withDuration: 2, delay: 0, options: [], animations: {
 			// step 1 - add blur, show labels
 			UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.3) {
