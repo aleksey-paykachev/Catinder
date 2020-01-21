@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B035D4B23D299D100542242 /* CGSize + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B035D4A23D299D100542242 /* CGSize + Extensions.swift */; };
+		5B04923F23D69F9400639802 /* RelationshipDecision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B04923E23D69F9400639802 /* RelationshipDecision.swift */; };
 		5B07A50A23D12E9D00122190 /* CALayer + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07A50923D12E9D00122190 /* CALayer + Extensions.swift */; };
 		5B07A50C23D13A6500122190 /* Collection + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07A50B23D13A6500122190 /* Collection + Extensions.swift */; };
 		5B139E6723B777F800BE73E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E6623B777F800BE73E7 /* AppDelegate.swift */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		5B035D4A23D299D100542242 /* CGSize + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize + Extensions.swift"; sourceTree = "<group>"; };
+		5B04923E23D69F9400639802 /* RelationshipDecision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipDecision.swift; sourceTree = "<group>"; };
 		5B07A50923D12E9D00122190 /* CALayer + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer + Extensions.swift"; sourceTree = "<group>"; };
 		5B07A50B23D13A6500122190 /* Collection + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection + Extensions.swift"; sourceTree = "<group>"; };
 		5B139E6323B777F800BE73E7 /* Catinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -254,6 +256,7 @@
 				5B8B1D8C23B7C57F00543F20 /* CatProfile.swift */,
 				5B8B1D8E23B7C59000543F20 /* CatBreed.swift */,
 				5B19E00723BA4A9100E90F56 /* DogProfile.swift */,
+				5B04923E23D69F9400639802 /* RelationshipDecision.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				5B244CA623BF9AB60099B975 /* UIStackView + Extensions.swift in Sources */,
 				5B197FF223D67C0E006DFB9E /* MatchViewModel.swift in Sources */,
 				5B139E6723B777F800BE73E7 /* AppDelegate.swift in Sources */,
+				5B04923F23D69F9400639802 /* RelationshipDecision.swift in Sources */,
 				5B035D4B23D299D100542242 /* CGSize + Extensions.swift in Sources */,
 				5B139E8123B7873200BE73E7 /* UIView + Extensions.swift in Sources */,
 				5B139E7F23B7853000BE73E7 /* CardView.swift in Sources */,

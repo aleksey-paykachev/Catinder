@@ -10,7 +10,7 @@ import UIKit
 
 protocol CardsStackViewDelegate: class {
 	func showMoreInfoButtonDidPressed(for cardId: String)
-	func cardDidSwiped(cardId: String, direction: CardView.SwipeDirection)
+	func cardDidSwiped(cardId: String, decision: RelationshipDecision)
 }
 
 class CardsStackView: UIView {
@@ -57,8 +57,8 @@ class CardsStackView: UIView {
 		cardViewModelRepresentables.forEach { add($0.cardViewModel) }
 	}
 	
-	func removeTopCard(direction: CardView.SwipeDirection) {
-		topCard?.remove(direction: direction)
+	func removeTopCard(decision: RelationshipDecision) {
+		topCard?.remove(decision: decision)
 	}
 	
 	func undoLastRemoval() {
@@ -72,14 +72,14 @@ class CardsStackView: UIView {
 // MARK: - CardViewDelegate
 
 extension CardsStackView: CardViewDelegate {
-	func cardDidSwiped(_ cardView: CardView, direction: CardView.SwipeDirection) {
+	func cardDidSwiped(_ cardView: CardView, decision: RelationshipDecision) {
 		guard cardView === topCard else { return }
 
 		cardViews.removeLast()
 		cardView.removeFromSuperview()
 		
 		removedCardModels.append(cardView.viewModel)
-		delegate?.cardDidSwiped(cardId: cardView.viewModel.cardId, direction: direction)
+		delegate?.cardDidSwiped(cardId: cardView.viewModel.cardId, decision: decision)
 	}
 	
 	func showMoreInfoButtonDidPressed(for cardId: String) {

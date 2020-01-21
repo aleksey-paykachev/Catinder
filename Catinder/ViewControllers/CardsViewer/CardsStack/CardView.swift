@@ -9,20 +9,15 @@
 import UIKit
 
 protocol CardViewDelegate: class {
-	func cardDidSwiped(_ cardView: CardView, direction: CardView.SwipeDirection)
+	func cardDidSwiped(_ cardView: CardView, decision: RelationshipDecision)
 	func showMoreInfoButtonDidPressed(for cardId: String)
 }
 
 class CardView: UIView {
 	private enum State {
 		case present
-		case removing(direction: SwipeDirection)
+		case removing(decision: RelationshipDecision)
 		case removed
-	}
-	
-	enum SwipeDirection {
-		case left
-		case right
 	}
 	
 	// Constants
@@ -61,11 +56,11 @@ class CardView: UIView {
 	
 	// MARK: - Public methods
 	
-	func remove(direction: SwipeDirection) {
+	func remove(decision: RelationshipDecision) {
 		guard case State.present = state else { return } // prevent multiple remove() calls
 		
-		state = .removing(direction: direction)
-		removeCardWithAnimation(direction: direction)
+		state = .removing(decision: decision)
+		removeCardWithAnimation(decision: decision)
 	}
 	
 	
@@ -158,8 +153,8 @@ class CardView: UIView {
 			state = calculateState(basedOn: displacement.x)
 			
 		case .ended, .cancelled, .failed:
-			if case let State.removing(direction) = state {
-				removeCardWithAnimation(direction: direction)
+			if case let State.removing(decision) = state {
+				removeCardWithAnimation(decision: decision)
 			} else {
 				putCardBackWithAnimation()
 			}
@@ -182,9 +177,9 @@ class CardView: UIView {
 	
 	private func calculateState(basedOn horizontalDisplacement: CGFloat) -> State {
 		if horizontalDisplacement > cardRemovalHorizontalThreshold {
-			return .removing(direction: .right)
+			return .removing(decision: .like(type: .regular))
 		} else if horizontalDisplacement < -cardRemovalHorizontalThreshold {
-			return .removing(direction: .left)
+			return .removing(decision: .dislike)
 		}
 		
 		return .present
@@ -193,9 +188,9 @@ class CardView: UIView {
 	
 	// MARK: - Card methods
 	
-	private func removeCardWithAnimation(direction: SwipeDirection) {
+	private func removeCardWithAnimation(decision: RelationshipDecision) {
 		// calculate final position transform
-		let multiplier: CGFloat = direction == .right ? 1 : -1
+		let multiplier: CGFloat = decision == .dislike ? -1 : 1
 		let offscreenX = 2 * UIScreen.main.bounds.width * multiplier
 		let angle = Angle(degrees: 40).radians * multiplier
 
@@ -204,7 +199,7 @@ class CardView: UIView {
 
 		// animate
 		layer.animateTransform(to: final3dTransformState, duration: 0.8, easing: .easeOut) {
-			self.delegate?.cardDidSwiped(self, direction: direction)
+			self.delegate?.cardDidSwiped(self, decision: decision)
 			self.state = .removed
 		}
 	}

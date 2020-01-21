@@ -91,17 +91,15 @@ extension CardsViewerViewController: BotomMenuActionsDelegate {
 	}
 	
 	func dislikeButtonDidPressed() {
-		cardsStackView.removeTopCard(direction: .left)
+		cardsStackView.removeTopCard(decision: .dislike)
 	}
 	
 	func likeButtonDidPressed() {
-		#warning("Pass like type (regular like)")
-		cardsStackView.removeTopCard(direction: .right)
+		cardsStackView.removeTopCard(decision: .like(type: .regular))
 	}
 	
 	func superLikeButtonDidPressed() {
-		#warning("Pass like type (super like)")
-		cardsStackView.removeTopCard(direction: .right)
+		cardsStackView.removeTopCard(decision: .like(type: .super))
 	}
 }
 
@@ -124,17 +122,19 @@ extension CardsViewerViewController: CardsStackViewDelegate {
 		}
 	}
 	
-	func cardDidSwiped(cardId: String, direction: CardView.SwipeDirection) {
+	func cardDidSwiped(cardId: String, decision: RelationshipDecision) {
 		
-		switch direction {
-		case .left:
+		switch decision {
+		case .dislike:
 			dataManager.setDislike(to: cardId) { error in
 				if let error = error {
 					print("Error:", error.localizedDescription)
 				}
 			}
-		case .right:
-			dataManager.setLike(to: cardId) { (isLikeMutual, error) in
+		case .like(let type):
+			print("Like type:", type)
+			#warning("Use single method for like and superLike")
+			dataManager.setLike(to: cardId) { isLikeMutual, error in
 				if let error = error {
 					print("Eror:", error.localizedDescription)
 					return
