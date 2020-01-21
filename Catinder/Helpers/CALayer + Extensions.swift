@@ -43,7 +43,7 @@ extension CALayer {
 	///						use half of the layers side with the minimum size, i.e. make
 	///						squared layer a circle and round rectangular.
 	///
-	func round(radius: CGFloat? = nil) {
+	func roundCorners(radius: CGFloat? = nil) {
 		if let radius = radius {
 			cornerRadius = radius
 		} else {
