@@ -19,6 +19,7 @@
 		5B139E7F23B7853000BE73E7 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E7E23B7853000BE73E7 /* CardView.swift */; };
 		5B139E8123B7873200BE73E7 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */; };
 		5B197FF223D67C0E006DFB9E /* MatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B197FF123D67C0E006DFB9E /* MatchViewModel.swift */; };
+		5B197FF423D6966D006DFB9E /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B197FF323D6966D006DFB9E /* GradientView.swift */; };
 		5B19E00823BA4A9100E90F56 /* DogProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B19E00723BA4A9100E90F56 /* DogProfile.swift */; };
 		5B244CA623BF9AB60099B975 /* UIStackView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */; };
 		5B2DBA7523B9DA5900BACB52 /* CardsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */; };
@@ -62,6 +63,7 @@
 		5B139E7E23B7853000BE73E7 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		5B197FF123D67C0E006DFB9E /* MatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewModel.swift; sourceTree = "<group>"; };
+		5B197FF323D6966D006DFB9E /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		5B19E00723BA4A9100E90F56 /* DogProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogProfile.swift; sourceTree = "<group>"; };
 		5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extensions.swift"; sourceTree = "<group>"; };
 		5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsStackView.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				5B035D4A23D299D100542242 /* CGSize + Extensions.swift */,
 				5B07A50923D12E9D00122190 /* CALayer + Extensions.swift */,
 				5B07A50B23D13A6500122190 /* Collection + Extensions.swift */,
+				5B197FF323D6966D006DFB9E /* GradientView.swift */,
 				5B96C7FC23BE713A00BFB4D0 /* Angle.swift */,
 			);
 			path = Helpers;
@@ -368,6 +371,7 @@
 				5BFC059923C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift in Sources */,
 				5B139E7B23B7850500BE73E7 /* TopMenuView.swift in Sources */,
 				5BD8BE9623C687C900D9943B /* DataManager.swift in Sources */,
+				5B197FF423D6966D006DFB9E /* GradientView.swift in Sources */,
 				5B8B1D8F23B7C59000543F20 /* CatBreed.swift in Sources */,
 				5B07A50C23D13A6500122190 /* Collection + Extensions.swift in Sources */,
 				5BD54E1123D50381004A0AA2 /* CatinderSecondaryTextButton.swift in Sources */,

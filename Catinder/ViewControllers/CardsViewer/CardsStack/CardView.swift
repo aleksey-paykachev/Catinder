@@ -32,7 +32,6 @@ class CardView: UIView {
 	// Properties
 	private let imageView = UIImageView()
 	private let activeImagePageControl = CatinderPageControl()
-	private let subLabelsGradientLayer = CAGradientLayer()
 	private let moreInfoButton = UIButton(type: .detailDisclosure)
 	// labels
 	private let headerLabel = UILabel(color: .white, font: .systemFont(ofSize: 36, weight: .medium))
@@ -109,10 +108,10 @@ class CardView: UIView {
 	}
 	
 	private func addSubLabelsGradient() {
-		subLabelsGradientLayer.locations = [0.6, 1]
-		subLabelsGradientLayer.colors = [CGColor.clear, CGColor.black.withAlphaComponent(0.6)]
-		
-		layer.addSublayer(subLabelsGradientLayer)
+		let gradientSecondColor = UIColor.black.withAlphaComponent(0.6)
+		let gradientView = GradientView([.clear, gradientSecondColor], at: [0.6, 1])
+		addSubview(gradientView)
+		gradientView.constrainToSuperview()
 	}
 	
 	private func setupActiveImagePageControl() {
@@ -227,15 +226,5 @@ class CardView: UIView {
 		headerLabel.text = viewModel.headerText
 		titleLabel.text = viewModel.titleText
 		subtitleLabel.text = viewModel.subtitleText
-	}
-	
-	
-	// MARK: - View methods
-	
-	override func layoutSubviews() {
-		super.layoutSubviews()
-
-		// set frame for gradient layer each time current view layouts itself
-		subLabelsGradientLayer.frame = frame
 	}
 }
