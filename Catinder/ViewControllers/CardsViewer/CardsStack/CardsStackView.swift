@@ -10,6 +10,7 @@ import UIKit
 
 protocol CardsStackViewDelegate: class {
 	func showMoreInfoButtonDidPressed(for cardId: String)
+	func cardDidSwiped(cardId: String, direction: CardView.SwipeDirection)
 }
 
 class CardsStackView: UIView {
@@ -78,6 +79,7 @@ extension CardsStackView: CardViewDelegate {
 		cardView.removeFromSuperview()
 		
 		removedCardModels.append(cardView.viewModel)
+		delegate?.cardDidSwiped(cardId: cardView.viewModel.cardId, direction: direction)
 	}
 	
 	func showMoreInfoButtonDidPressed(for cardId: String) {

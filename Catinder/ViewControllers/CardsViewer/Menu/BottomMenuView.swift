@@ -12,6 +12,7 @@ protocol BotomMenuActionsDelegate: class {
 	func undoButtonDidPressed()
 	func dislikeButtonDidPressed()
 	func likeButtonDidPressed()
+	func superLikeButtonDidPressed()
 }
 
 class BottomMenuView: UIView {
@@ -35,8 +36,8 @@ class BottomMenuView: UIView {
 	private lazy var likeButton = CatinderImageButton("Like") { [weak self] in self?.delegate?.likeButtonDidPressed()
 	}
 
-	private let superLikeButton = CatinderImageButton("SuperLike") {
-		print("Super like")
+	private lazy var superLikeButton = CatinderImageButton("SuperLike") { [weak self] in
+		self?.delegate?.superLikeButtonDidPressed()
 	}
 	
 	

@@ -60,6 +60,13 @@ class CardsViewerViewController: UIViewController {
 			cardsStackView.add(cardViewModelRepresentables)
 		}
 	}
+	
+	private func showMatchSplashScreen() {
+		let matchViewModel = MatchViewModel(userProfileImageName: "Cat_Bob_2", matchedProfileName: "Маруся", matchedProfileImageName: "Cat_Marusia")
+		let matchSplashScreenViewController = MatchSplashScreenViewController(viewModel: matchViewModel)
+		addChild(matchSplashScreenViewController)
+		view.addSubview(matchSplashScreenViewController.view)
+	}
 }
 
 
@@ -88,12 +95,13 @@ extension CardsViewerViewController: BotomMenuActionsDelegate {
 	}
 	
 	func likeButtonDidPressed() {
+		#warning("Pass like type (regular like)")
 		cardsStackView.removeTopCard(direction: .right)
-		
-		#warning("This should be implemented inside cards stack view callback.")
-		let matchSplashScreenViewController = MatchSplashScreenViewController()
-		addChild(matchSplashScreenViewController)
-		view.addSubview(matchSplashScreenViewController.view)
+	}
+	
+	func superLikeButtonDidPressed() {
+		#warning("Pass like type (super like)")
+		cardsStackView.removeTopCard(direction: .right)
 	}
 }
 
@@ -101,6 +109,7 @@ extension CardsViewerViewController: BotomMenuActionsDelegate {
 // MARK: - CardsStackViewDelegate
 
 extension CardsViewerViewController: CardsStackViewDelegate {
+	
 	func showMoreInfoButtonDidPressed(for cardId: String) {
 		dataManager.getProfile(by: cardId) { profile, error in
 			if let error = error {
@@ -112,6 +121,30 @@ extension CardsViewerViewController: CardsStackViewDelegate {
 
 			let profileViewerViewController = ProfileViewerViewController(viewModel: profileViewModel)
 			present(profileViewerViewController, animated: true)
+		}
+	}
+	
+	func cardDidSwiped(cardId: String, direction: CardView.SwipeDirection) {
+		
+		switch direction {
+		case .left:
+			dataManager.setDislike(to: cardId) { error in
+				if let error = error {
+					print("Error:", error.localizedDescription)
+				}
+			}
+		case .right:
+			dataManager.setLike(to: cardId) { (isLikeMutual, error) in
+				if let error = error {
+					print("Eror:", error.localizedDescription)
+					return
+				}
+				
+				if isLikeMutual == true {
+					#warning("Place currently dragging card (if there is one) back on stack.")
+					showMatchSplashScreen()
+				}
+			}
 		}
 	}
 }
