@@ -10,11 +10,6 @@ import UIKit
 
 class ProfileEditorFieldTableViewCell: UITableViewCell {
 	
-	//	enum KeyboardType {
-	//		case text
-	//		case numbers
-	//	}
-	
 	init(placeholder: String? = nil, keyboardType: UIKeyboardType = .default) {
 		super.init(style: .default, reuseIdentifier: nil)
 		

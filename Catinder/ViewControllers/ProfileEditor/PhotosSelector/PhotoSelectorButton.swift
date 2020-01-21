@@ -32,7 +32,7 @@ class PhotoSelectorButton: UIButton {
 		layer.borderWidth = 1
 		clipsToBounds = true
 		setTitleColor(#colorLiteral(red: 0.7843137255, green: 0.7858179953, blue: 0.7858179953, alpha: 1), for: .normal)
-		titleLabel?.font = UIFont.systemFont(ofSize: 18)
+		titleLabel?.font = .systemFont(ofSize: 18)
 		setTitle("Выберите фото", for: .normal)
 		imageView?.contentMode = .scaleAspectFill
 	}

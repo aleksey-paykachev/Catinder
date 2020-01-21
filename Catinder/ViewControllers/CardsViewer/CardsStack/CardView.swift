@@ -14,7 +14,7 @@ protocol CardViewDelegate: class {
 }
 
 class CardView: UIView {
-	private enum State {
+	private enum State: Equatable {
 		case present
 		case removing(decision: RelationshipDecision)
 		case removed
@@ -27,6 +27,7 @@ class CardView: UIView {
 	// Subviews
 	private let imageView = UIImageView()
 	private let activeImagePageControl = CatinderPageControl()
+	#warning("Add real image asset to moreInfoButton.")
 	private let moreInfoButton = UIButton(type: .detailDisclosure)
 
 	// Labels
@@ -60,7 +61,7 @@ class CardView: UIView {
 	// MARK: - Public methods
 	
 	func remove(decision: RelationshipDecision) {
-		guard case State.present = state else { return } // prevent multiple remove() calls
+		guard state == .present else { return } // prevent multiple remove() calls
 		
 		state = .removing(decision: decision)
 		removeCardWithAnimation(decision: decision)
@@ -176,7 +177,7 @@ class CardView: UIView {
 	
 	private func applyCardAffineTransform(with displacement: CGPoint) {
 		// rotation
-		let angle = Angle(degrees: displacement.x * panRotationSpeedDegreesPerPixel)
+		let angle = Angle(displacement.x * panRotationSpeedDegreesPerPixel)
 		let rotationTransform = CGAffineTransform(rotationAngle: angle.radians)
 		
 		// displacement
@@ -202,7 +203,7 @@ class CardView: UIView {
 		// calculate final position transform
 		let multiplier: CGFloat = decision == .dislike ? -1 : 1
 		let offscreenX = 2 * UIScreen.main.bounds.width * multiplier
-		let angle = Angle(degrees: 40).radians * multiplier
+		let angle = Angle(40).radians * multiplier
 
 		let finalTransformState = CGAffineTransform(translationX: offscreenX, y: transform.ty).rotated(by: angle)
 		let final3dTransformState = CATransform3DMakeAffineTransform(finalTransformState)

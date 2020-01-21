@@ -141,6 +141,6 @@ extension ProfileEditorViewController {
 		guard let headerView = view as? UITableViewHeaderFooterView else { return }
 
 		headerView.textLabel?.capitalizeText()
-		headerView.textLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+		headerView.textLabel?.font = .systemFont(ofSize: 16, weight: .medium)
 	}
 }

@@ -59,7 +59,8 @@ class ProfileViewerViewController: UIViewController {
 		setupTextLabels()
 		
 		// back button
-		let backButton = UIButton(type: .custom)
+		#warning("Add real asset image to backButton.")
+		let backButton = UIButton(type: .system)
 		backButton.addTarget(self, action: #selector(closeButtonDidTapped), for: .touchUpInside)
 		scrollView.addSubview(backButton)
 		backButton.backgroundColor = .red

@@ -14,4 +14,8 @@ struct Angle {
 	var radians: CGFloat {
 		return degrees * .pi / 180
 	}
+	
+	init(_ degrees: CGFloat) {
+		self.degrees = degrees
+	}
 }

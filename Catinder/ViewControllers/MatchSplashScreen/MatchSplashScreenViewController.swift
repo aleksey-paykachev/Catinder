@@ -28,7 +28,7 @@ class MatchSplashScreenViewController: UIViewController {
 	private let continueSwipingButton = CatinderSecondaryTextButton(text: "Продолжить поиски")
 	
 	// Constants
-	private let profileImageRotationAngle = Angle(degrees: 40).radians
+	private let profileImageRotationAngle = Angle(40).radians
 
 	
 	// MARK: - Init
