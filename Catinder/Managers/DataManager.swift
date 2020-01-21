@@ -20,10 +20,40 @@ class DataManager {
 		completion(profiles, nil)
 	}
 	
+	func getLikedProfiles(completion: ([Profile], Error?) -> ()) {
+		completion(profiles, nil)
+	}
+	
 	func getProfile(by uid: String, completion: (Profile?, Error?) -> ()) {
 		let profile = profiles.first { $0.uid == uid }
 		
 		completion(profile, nil)
+	}
+	
+	func setLike(to uid: String, completion: (Bool?, Error?) -> ()) {
+		// Save to server
+		// ...
+		
+		// Check if like is mutual using random (in real app this data should come from server)
+		let mutualLikePercentageProbability = 35
+		let isLikeMutual = Int.random(in: 1...100) <= mutualLikePercentageProbability
+		completion(isLikeMutual, nil)
+	}
+	
+	func setSuperLike(to uid: String, completion: (Bool?, Error?) -> ()) {
+		// Save to server
+		// ...
+		
+		// Super like always gives 100% probability of mutuality (in real app this data should come from server)
+		let isLikeMutual = true
+		completion(isLikeMutual, nil)
+	}
+	
+	func setDislike(to uid: String, completion: ((Error?) -> ())? = nil) {
+		// Save to server
+		// ...
+
+		completion?(nil)
 	}
 	
 	private let profiles: [Profile] = [
