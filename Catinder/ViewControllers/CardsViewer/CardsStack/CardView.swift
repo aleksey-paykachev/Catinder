@@ -24,18 +24,21 @@ class CardView: UIView {
 	let cardRemovalHorizontalThreshold: CGFloat = 100
 	let panRotationSpeedDegreesPerPixel: CGFloat = 0.12
 
-	// Properties
+	// Subviews
 	private let imageView = UIImageView()
 	private let activeImagePageControl = CatinderPageControl()
 	private let moreInfoButton = UIButton(type: .detailDisclosure)
-	// labels
+
+	// Labels
 	private let headerLabel = UILabel(color: .white, font: .systemFont(ofSize: 36, weight: .medium))
 	private let titleLabel = UILabel(color: UIColor(white: 0.98, alpha: 1), font: .systemFont(ofSize: 24, weight: .light))
 	private let subtitleLabel = UILabel(color: UIColor(white: 0.96, alpha: 1), allowMultipleLines: true, font: .systemFont(ofSize: 18, weight: .medium))
-	
+
+	// Properties
 	weak var delegate: CardViewDelegate?
 	private(set) var viewModel: CardViewModel { didSet { updateUI() } }
 	private var state = State.present
+	private var panGestureRecognizer: UIPanGestureRecognizer!
 
 	
 	// MARK: - Init
@@ -61,6 +64,10 @@ class CardView: UIView {
 		
 		state = .removing(decision: decision)
 		removeCardWithAnimation(decision: decision)
+	}
+	
+	func cancelAllUserInteractions() {
+		panGestureRecognizer.state = .cancelled
 	}
 	
 	
@@ -134,7 +141,7 @@ class CardView: UIView {
 		addGestureRecognizer(tapGestureRecognizer)
 
 		// pan - swipe card
-		let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
+		panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
 		addGestureRecognizer(panGestureRecognizer)
 	}
 	
@@ -152,7 +159,10 @@ class CardView: UIView {
 			applyCardAffineTransform(with: displacement)
 			state = calculateState(basedOn: displacement.x)
 			
-		case .ended, .cancelled, .failed:
+		case .cancelled, .failed:
+			putCardBackWithAnimation()
+			
+		case .ended:
 			if case let State.removing(decision) = state {
 				removeCardWithAnimation(decision: decision)
 			} else {

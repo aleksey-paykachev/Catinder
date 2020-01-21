@@ -66,6 +66,10 @@ class CardsStackView: UIView {
 		
 		add(removedCardModels.removeLast())
 	}
+	
+	func cancelAllUserInteractions() {
+		topCard?.cancelAllUserInteractions()
+	}
 }
 
 

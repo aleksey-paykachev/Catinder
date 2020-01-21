@@ -141,7 +141,7 @@ extension CardsViewerViewController: CardsStackViewDelegate {
 				}
 				
 				if isLikeMutual == true {
-					#warning("Place currently dragging card (if there is one) back on stack.")
+					cardsStackView.cancelAllUserInteractions()
 					showMatchSplashScreen()
 				}
 			}
