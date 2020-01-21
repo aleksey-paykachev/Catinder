@@ -10,17 +10,18 @@ import UIKit
 
 class MatchSplashScreenViewController: UIViewController {
 	// MARK: - Properties
+	private let viewModel: MatchViewModel
 
 	// Blur view
 	private let blurView = UIVisualEffectView(effect: nil)
 
 	// Labels
 	private let matchTitleLabel = UILabel(text: "Совпадение!", color: .white, alignment: .center, font: .systemFont(ofSize: 36, weight: .medium))
-	private let matchDescriptionLabel = UILabel(text: "Вы, и %secondUser% понравились друг другу.", color: .white, allowMultipleLines: true, font: .systemFont(ofSize: 18))
+	private let matchDescriptionLabel = UILabel(color: .white, alignment: .center, allowMultipleLines: true, font: .systemFont(ofSize: 18))
 
 	// Profile images
-	private let userProfileImageView = UIImageView(image: UIImage(named: "Cat_Marusia"))
-	private let matchedProfileImageView = UIImageView(image: UIImage(named: "Cat_Bob_1"))
+	private let userProfileImageView = UIImageView()
+	private let matchedProfileImageView = UIImageView()
 	
 	// Buttons
 	private let sendMessageButton = CatinderPrimaryTextButton(text: "Отправить сообщение")
@@ -30,21 +31,38 @@ class MatchSplashScreenViewController: UIViewController {
 	private let profileImageRotationAngle = Angle(degrees: 40).radians
 
 	
-	// MARK: - Setup
+	// MARK: - Init
+	
+	init(viewModel: MatchViewModel) {
+		self.viewModel = viewModel
+		super.init(nibName: nil, bundle: nil)
+		
+		updateUI()
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
+	
+	// MARK: - ViewController lifecycle
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		setupView()
 		setupSubviews()
+		prepareForAnimation()
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		
-		prepareForAnimation()
 		playAnimation()
 	}
+	
+	
+	// MARK: - Setup
 	
 	private func setupView() {
 		view.layer.zPosition = 2 // place this view on top of all others
@@ -89,8 +107,14 @@ class MatchSplashScreenViewController: UIViewController {
 	}
 	
 	
-	// MARK: - Action methods
+	// MARK: - Methods
 	
+	private func updateUI() {
+		userProfileImageView.image = UIImage(named: viewModel.userProfileImageName)
+		matchedProfileImageView.image = UIImage(named: viewModel.matchedProfileImageName)
+		matchDescriptionLabel.text = "Вы, и \(viewModel.matchedProfileName) понравились друг другу."
+	}
+
 	@objc private func sendMessageButtonDidTapped() {
 		print("Send message.")
 	}

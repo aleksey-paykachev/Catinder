@@ -18,6 +18,7 @@
 		5B139E7D23B7851700BE73E7 /* BottomMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E7C23B7851700BE73E7 /* BottomMenuView.swift */; };
 		5B139E7F23B7853000BE73E7 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E7E23B7853000BE73E7 /* CardView.swift */; };
 		5B139E8123B7873200BE73E7 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */; };
+		5B197FF223D67C0E006DFB9E /* MatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B197FF123D67C0E006DFB9E /* MatchViewModel.swift */; };
 		5B19E00823BA4A9100E90F56 /* DogProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B19E00723BA4A9100E90F56 /* DogProfile.swift */; };
 		5B244CA623BF9AB60099B975 /* UIStackView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */; };
 		5B2DBA7523B9DA5900BACB52 /* CardsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */; };
@@ -60,6 +61,7 @@
 		5B139E7C23B7851700BE73E7 /* BottomMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuView.swift; sourceTree = "<group>"; };
 		5B139E7E23B7853000BE73E7 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
+		5B197FF123D67C0E006DFB9E /* MatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewModel.swift; sourceTree = "<group>"; };
 		5B19E00723BA4A9100E90F56 /* DogProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogProfile.swift; sourceTree = "<group>"; };
 		5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extensions.swift"; sourceTree = "<group>"; };
 		5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsStackView.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 			children = (
 				5B8FB3D823BE946600041B23 /* CardViewModel.swift */,
 				5B746EFA23C8C94000063374 /* ProfileViewModel.swift */,
+				5B197FF123D67C0E006DFB9E /* MatchViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				5BD9B09523CFDDC9000E5028 /* CGColor + Extensions.swift in Sources */,
 				5B37744723CE769A00698427 /* PhotosSelectorViewController.swift in Sources */,
 				5B244CA623BF9AB60099B975 /* UIStackView + Extensions.swift in Sources */,
+				5B197FF223D67C0E006DFB9E /* MatchViewModel.swift in Sources */,
 				5B139E6723B777F800BE73E7 /* AppDelegate.swift in Sources */,
 				5B035D4B23D299D100542242 /* CGSize + Extensions.swift in Sources */,
 				5B139E8123B7873200BE73E7 /* UIView + Extensions.swift in Sources */,
