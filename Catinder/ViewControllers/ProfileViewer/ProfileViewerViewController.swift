@@ -35,6 +35,10 @@ class ProfileViewerViewController: UIViewController {
 	
 	
 	// MARK: - Setup
+	
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return .lightContent
+	}
 
 	private func setupView() {
 		view.backgroundColor = .white
@@ -54,6 +58,14 @@ class ProfileViewerViewController: UIViewController {
 		scrollView.addSubview(photoImageView)
 		photoImageView.constrainToSuperview(anchors: [.leading, .trailing])
 		photoImageView.constrainHeight(to: view.frame.width * 1.2)
+		
+		// status bar gradient
+		let statusBarHeight = UIApplication.shared.statusBarFrame.height
+
+		let statusBarGradient = GradientView([.black, .clear], at: [-1.5, 1])
+		view.addSubview(statusBarGradient)
+		statusBarGradient.constrainToSuperview(anchors: [.top, .leading, .trailing], respectSafeArea: false)
+		statusBarGradient.constrainHeight(to: statusBarHeight * 1.5)
 		
 		// text labels
 		setupTextLabels()
