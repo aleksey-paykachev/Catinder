@@ -63,4 +63,20 @@ extension CALayer {
 		borderWidth = size
 		borderColor = color.cgColor
 	}
+	
+	/// Set shadow for current layer.
+	///
+	/// - Parameters:
+	///   - color: The color of the layer’s shadow.
+	///   - size: The blur radius used to render the layer’s shadow.
+	///   - offsetX: The X offset of the layer’s shadow.
+	///   - offsetY: The Y offset of the layer’s shadow.
+	///   - alpha: The opacity of the layer’s shadow.
+	func setShadow(color: UIColor = .black, size: CGFloat, offsetX: CGFloat = 0, offsetY: CGFloat = 0, alpha: CGFloat = 1) {
+		
+		shadowColor = color.cgColor
+		shadowRadius = size
+		shadowOffset = CGSize(width: offsetX, height: offsetY)
+		shadowOpacity = Float(alpha)
+	}
 }

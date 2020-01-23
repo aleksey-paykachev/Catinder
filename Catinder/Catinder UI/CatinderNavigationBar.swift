@@ -38,13 +38,9 @@ class CatinderNavigationBar: UIView {
 	}
 	
 	private func setupView() {
+		// appearance
 		backgroundColor = .white
-		
-		// shadow
-		layer.shadowColor = .black
-		layer.shadowOffset = CGSize(width: 0, height: 2)
-		layer.shadowRadius = 6
-		layer.shadowOpacity = 0.2
+		layer.setShadow(size: 6, offsetY: 2, alpha: 0.2)
 		
 		// content area
 		let contentArea = UIView()
