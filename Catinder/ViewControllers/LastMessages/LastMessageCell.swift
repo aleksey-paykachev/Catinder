@@ -56,7 +56,7 @@ class LastMessageCell: UICollectionViewCell {
 		let mainStack = HorizontalStackView([profileImageView, textStack], spacing: 14, distribution: .fill)
 		
 		addSubview(mainStack)
-		mainStack.constrainToSuperview()
+		mainStack.constrainToSuperview(respectSafeArea: false)
 	}
 	
 	override func prepareForReuse() {
