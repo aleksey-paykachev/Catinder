@@ -79,6 +79,8 @@ extension CardsViewerViewController: TopMenuActionsDelegate {
 	}
 	
 	func messagesButtonDidPressed() {
+		let lastMessagesViewController = LastMessagesViewController()
+		navigationController?.pushViewController(lastMessagesViewController, animated: true)
 	}
 }
 
