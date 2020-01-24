@@ -8,13 +8,22 @@
 
 import UIKit
 
+protocol CatinderNavigationBarDelegate: class {
+	func backButtonDidPressed()
+}
+
 class CatinderNavigationBar: UIView {
+	
+	// MARK: - Properties
+	
+	weak var delegate: CatinderNavigationBarDelegate?
 	
 	private(set) var height: CGFloat = 100
 	let bottomInset: CGFloat = 30
 	
 	private var topConstraint: NSLayoutConstraint?
 	private let titleLabel = UILabel(text: "", font: .systemFont(ofSize: 20, weight: .medium))
+	
 	
 	// MARK: - Init
 	
@@ -55,7 +64,7 @@ class CatinderNavigationBar: UIView {
 		let backButton = UIButton(type: .system)
 		#warning("Add real back buton image.")
 		backButton.backgroundColor = .red
-		backButton.addTarget(self, action: #selector(backButtonDidTapped), for: .touchUpInside)
+		backButton.addTarget(self, action: #selector(backButtonDidPressed), for: .touchUpInside)
 		contentArea.addSubview(backButton)
 		backButton.constrainToSuperview(anchors: [.leading, .centerY])
 		
@@ -64,8 +73,11 @@ class CatinderNavigationBar: UIView {
 		titleLabel.constrainToSuperview(anchors: [.centerX, .centerY])
 	}
 	
-	@objc private func backButtonDidTapped() {
-		print("Back")
+	
+	// MARK: - Actions
+	
+	@objc private func backButtonDidPressed() {
+		delegate?.backButtonDidPressed()
 	}
 	
 	private func setToolbarVisible(visible: Bool, animated: Bool = true) {
@@ -75,7 +87,7 @@ class CatinderNavigationBar: UIView {
 			superview?.layoutIfNeeded()
 			topConstraint?.constant = visible ? 0 : -height
 			
-			UIView.animate(withDuration: 0.3) {
+			UIView.animate(withDuration: 0.25) {
 				self.superview?.layoutIfNeeded()
 			}
 		}

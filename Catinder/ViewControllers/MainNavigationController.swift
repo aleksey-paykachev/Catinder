@@ -18,7 +18,17 @@ class MainNavigationController: UINavigationController {
 		view.addSubview(catinderNavigationBar)
 		navigationBar.isHidden = true
 		delegate = catinderNavigationBar
+		catinderNavigationBar.delegate = self
 		
 		pushViewController(CardsViewerViewController(), animated: false)
+	}
+}
+
+
+// MARK: - CatinderNavigationBarDelegate
+
+extension MainNavigationController: CatinderNavigationBarDelegate {
+	func backButtonDidPressed() {
+		popViewController(animated: true)
 	}
 }
