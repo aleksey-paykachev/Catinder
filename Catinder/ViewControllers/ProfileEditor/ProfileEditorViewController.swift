@@ -13,11 +13,13 @@ class ProfileEditorViewController: UITableViewController {
 	private let dataManager: DataManager
 	private var userProfile: CatProfile?
 	
+	// MARK: - Init
+	
 	init(dataManager: DataManager = .shared) {
 		self.dataManager = dataManager
 		super.init(style: .grouped)
 		
-		setupNavigation()
+		setupNavigationBar()
 		setupTableView()
 		setupGestures()
 		loadUserProfile()
@@ -27,16 +29,16 @@ class ProfileEditorViewController: UITableViewController {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	private func setupNavigation() {
-		title = "Профиль"
-		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDoneButton))
-	}
 	
-	@objc private func handleDoneButton() {
-		dismiss(animated: true)
+	// MARK: - Setup
+	
+	private func setupNavigationBar() {
+		title = "Профиль"
 	}
 	
 	private func setupTableView() {
+		tableView.contentInsetAdjustmentBehavior = .never // don't use safe area insets
+		
 		tableView.allowsSelection = false
 		tableView.keyboardDismissMode = .onDrag
 	}
@@ -48,6 +50,18 @@ class ProfileEditorViewController: UITableViewController {
 		tableView.addGestureRecognizer(tapGestureRecognizer)
 	}
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		if let navigationBar = (navigationController as? MainNavigationController)?.catinderNavigationBar {
+			
+			tableView.contentInset.top = navigationBar.height + 30
+		}
+	}
+	
+	
+	// MARK: - Load data
+	
 	private func loadUserProfile() {
 		dataManager.getProfile(by: "Logged-In-User-Profile-Id") { profile, error in
 			if let error = error {
@@ -58,6 +72,9 @@ class ProfileEditorViewController: UITableViewController {
 			userProfile = profile as? CatProfile
 		}
 	}
+	
+	
+	// MARK: - Table sections
 	
 	private enum Section: Int, CaseIterable {
 		case photos
@@ -134,7 +151,7 @@ extension ProfileEditorViewController {
 	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		guard let section = Section(id: section) else { return 0 }
 
-		return section == .photos ? 300 : UITableView.automaticDimension
+		return section == .photos ? 270 : UITableView.automaticDimension
 	}
 	
 	override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {

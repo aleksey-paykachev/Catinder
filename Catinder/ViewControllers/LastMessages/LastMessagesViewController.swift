@@ -13,8 +13,6 @@ class LastMessagesViewController: UICollectionViewController {
 	private let cellResueId = "LastMessageCell"
 	private var lastMessages: [LastMessageViewModel] = []
 	
-	private let navigationBar = CatinderNavigationBar(title: "Последние сообщения")
-	
 	// MARK: - Init
 	
 	init() {
@@ -39,16 +37,24 @@ class LastMessagesViewController: UICollectionViewController {
 	// MARK: - Setup
 	
 	private func setupNavigationBar() {
-		view.addSubview(navigationBar)
+		title = "Последние сообщения"
 	}
 	
 	private func setupCollectionView() {
 		collectionView.backgroundColor = .white
 		collectionView.alwaysBounceVertical = true
 		collectionView.contentInsetAdjustmentBehavior = .never // don't use safe area insets
-		collectionView.contentInset.top = navigationBar.height + 34
 
 		collectionView.register(LastMessageCell.self, forCellWithReuseIdentifier: cellResueId)
+	}
+
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		if let navigationBar = (navigationController as? MainNavigationController)?.catinderNavigationBar {
+
+			collectionView.contentInset.top = navigationBar.height + 30
+		}
 	}
 }
 

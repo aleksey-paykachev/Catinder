@@ -10,10 +10,15 @@ import UIKit
 
 class MainNavigationController: UINavigationController {
 	
+	let catinderNavigationBar = CatinderNavigationBar()
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		view.addSubview(catinderNavigationBar)
 		navigationBar.isHidden = true
+		delegate = catinderNavigationBar
+		
 		pushViewController(CardsViewerViewController(), animated: false)
 	}
 }

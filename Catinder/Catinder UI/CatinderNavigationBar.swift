@@ -10,15 +10,14 @@ import UIKit
 
 class CatinderNavigationBar: UIView {
 	
-	let title: String
-	let height: CGFloat = 100
+	private(set) var height: CGFloat = 100
 	
+	private var topConstraint: NSLayoutConstraint?
+	private let titleLabel = UILabel(text: "", font: .systemFont(ofSize: 20, weight: .medium))
 	
 	// MARK: - Init
 	
-	init(title: String) {
-		self.title = title
-		
+	init() {
 		super.init(frame: .zero)
 		setupView()
 	}
@@ -32,8 +31,12 @@ class CatinderNavigationBar: UIView {
 	
 	override func didMoveToSuperview() {
 		super.didMoveToSuperview()
+		guard let superview = superview else { return }
 		
-		constrainToSuperview(anchors: [.top, .leading, .trailing], respectSafeArea: false)
+		topConstraint = topAnchor.constraint(equalTo: superview.topAnchor)
+		topConstraint?.isActive = true
+		
+		constrainToSuperview(anchors: [.leading, .trailing], respectSafeArea: false)
 		constrainHeight(to: height)
 	}
 	
@@ -51,13 +54,49 @@ class CatinderNavigationBar: UIView {
 		let backButton = UIButton(type: .system)
 		#warning("Add real back buton image.")
 		backButton.backgroundColor = .red
+		backButton.addTarget(self, action: #selector(backButtonDidTapped), for: .touchUpInside)
 		contentArea.addSubview(backButton)
 		backButton.constrainToSuperview(anchors: [.leading, .centerY])
 		
 		// title
-		let titleLabel = UILabel(text: title, font: .systemFont(ofSize: 20, weight: .medium))
 		contentArea.addSubview(titleLabel)
 		titleLabel.constrainToSuperview(anchors: [.centerX, .centerY])
 	}
+	
+	@objc private func backButtonDidTapped() {
+		print("Back")
+	}
+	
+	private func setToolbarVisible(visible: Bool, animated: Bool = true) {
+		if !animated {
+			topConstraint?.constant = visible ? 0 : -height
+		} else {
+			superview?.layoutIfNeeded()
+			topConstraint?.constant = visible ? 0 : -height
+			
+			UIView.animate(withDuration: 0.3) {
+				self.superview?.layoutIfNeeded()
+			}
+		}
+	}
+	
+	private func setTitle(title: String?, animated: Bool) {
+		titleLabel.text = title
+		
+		if let title = title, title.isNotEmpty {
+			setToolbarVisible(visible: true, animated: animated)
+		} else {
+			setToolbarVisible(visible: false, animated: animated)
+		}
+	}
 }
 
+
+// MARK: - UINavigationControllerDelegate
+
+extension CatinderNavigationBar: UINavigationControllerDelegate {
+	func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+
+		setTitle(title: viewController.title, animated: animated)
+	}
+}

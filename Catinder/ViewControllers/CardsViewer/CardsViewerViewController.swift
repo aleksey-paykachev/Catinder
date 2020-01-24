@@ -74,8 +74,8 @@ class CardsViewerViewController: UIViewController {
 
 extension CardsViewerViewController: TopMenuActionsDelegate {
 	func profileButtonDidPressed() {
-		let profileViewController = ProfileEditorNavigationController()
-		present(profileViewController, animated: true)
+		let profileEditorViewController = ProfileEditorViewController()
+		navigationController?.pushViewController(profileEditorViewController, animated: true)
 	}
 	
 	func messagesButtonDidPressed() {

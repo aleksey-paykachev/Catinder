@@ -41,7 +41,7 @@ class PhotosSelectorViewController: UIViewController {
 		mainStackView.spacing = photosInterItemSpacing
 		
 		view.addSubview(mainStackView)
-		mainStackView.constrainToSuperview(paddings: .all(16))
+		mainStackView.constrainToSuperview(paddings: .horizontal(16))
 		
 		return view
 	}
