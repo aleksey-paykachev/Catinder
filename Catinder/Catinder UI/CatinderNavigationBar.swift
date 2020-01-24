@@ -11,6 +11,7 @@ import UIKit
 class CatinderNavigationBar: UIView {
 	
 	private(set) var height: CGFloat = 100
+	let bottomInset: CGFloat = 30
 	
 	private var topConstraint: NSLayoutConstraint?
 	private let titleLabel = UILabel(text: "", font: .systemFont(ofSize: 20, weight: .medium))

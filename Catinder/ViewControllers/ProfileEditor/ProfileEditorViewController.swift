@@ -37,8 +37,6 @@ class ProfileEditorViewController: UITableViewController {
 	}
 	
 	private func setupTableView() {
-		tableView.contentInsetAdjustmentBehavior = .never // don't use safe area insets
-		
 		tableView.allowsSelection = false
 		tableView.keyboardDismissMode = .onDrag
 	}
@@ -48,15 +46,6 @@ class ProfileEditorViewController: UITableViewController {
 		let tapGestureRecognizer = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
 		tapGestureRecognizer.cancelsTouchesInView = false
 		tableView.addGestureRecognizer(tapGestureRecognizer)
-	}
-	
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-		
-		if let navigationBar = (navigationController as? MainNavigationController)?.catinderNavigationBar {
-			
-			tableView.contentInset.top = navigationBar.height + 30
-		}
 	}
 	
 	

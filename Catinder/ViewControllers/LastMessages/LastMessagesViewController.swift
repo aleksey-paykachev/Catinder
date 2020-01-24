@@ -43,18 +43,8 @@ class LastMessagesViewController: UICollectionViewController {
 	private func setupCollectionView() {
 		collectionView.backgroundColor = .white
 		collectionView.alwaysBounceVertical = true
-		collectionView.contentInsetAdjustmentBehavior = .never // don't use safe area insets
 
 		collectionView.register(LastMessageCell.self, forCellWithReuseIdentifier: cellResueId)
-	}
-
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-		
-		if let navigationBar = (navigationController as? MainNavigationController)?.catinderNavigationBar {
-
-			collectionView.contentInset.top = navigationBar.height + 30
-		}
 	}
 }
 
