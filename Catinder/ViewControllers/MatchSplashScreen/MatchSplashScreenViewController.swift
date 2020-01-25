@@ -116,11 +116,18 @@ class MatchSplashScreenViewController: UIViewController {
 	}
 
 	@objc private func sendMessageButtonDidTapped() {
-		print("Send message.")
+		let conversationViewModel = ConversationViewModel(collocutorName: viewModel.matchedProfileName, collocutorImageName: viewModel.matchedProfileImageName)
+		let conversationViewController = ConversationViewController(viewModel: conversationViewModel)
+		navigationController?.pushViewController(conversationViewController, animated: true)
+
+		removeFromParentWithAnimation()
 	}
 	
 	@objc private func continueSwipingButtonDidTapped() {
-		// remove self from parent with animation
+		removeFromParentWithAnimation()
+	}
+	
+	private func removeFromParentWithAnimation() {
 		UIView.animate(withDuration: 0.5, animations: {
 			self.view.alpha = 0
 		}) { _ in
@@ -130,7 +137,7 @@ class MatchSplashScreenViewController: UIViewController {
 	}
 	
 	
-	// MARK: - Animation
+	// MARK: - Appearance animation
 	
 	// Set all animated values into initial states.
 	private func prepareForAnimation() {

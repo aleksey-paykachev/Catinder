@@ -62,8 +62,11 @@ class CardsViewerViewController: UIViewController {
 	}
 	
 	private func showMatchSplashScreen() {
+		#warning("Prevent multiple splash screen appearance.")
+		
 		let matchViewModel = MatchViewModel(userProfileImageName: "Cat_Bob_2", matchedProfileName: "Маруся", matchedProfileImageName: "Cat_Marusia")
 		let matchSplashScreenViewController = MatchSplashScreenViewController(viewModel: matchViewModel)
+		
 		addChild(matchSplashScreenViewController)
 		view.addSubview(matchSplashScreenViewController.view)
 	}
