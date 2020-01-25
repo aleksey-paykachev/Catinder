@@ -13,8 +13,8 @@ extension UITableViewController {
 	open override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 
-		// if this TableViewController are using CatinderNavigationBar
-		if let navigationBar = (navigationController as? MainNavigationController)?.catinderNavigationBar {
+		// if this TableViewController are placed inside CatinderNavigationController
+		if let navigationBar = (navigationController as? CatinderNavigationController)?.catinderNavigationBar {
 			
 			// don't use safe area insets
 			tableView.contentInsetAdjustmentBehavior = .never

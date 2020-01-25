@@ -1,5 +1,5 @@
 //
-//  MainNavigationController.swift
+//  CatinderNavigationController.swift
 //  Catinder
 //
 //  Created by Aleksey on 23/01/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainNavigationController: UINavigationController {
+class CatinderNavigationController: UINavigationController {
 	
 	let catinderNavigationBar = CatinderNavigationBar()
 
@@ -18,16 +18,14 @@ class MainNavigationController: UINavigationController {
 		view.addSubview(catinderNavigationBar)
 		navigationBar.isHidden = true
 		delegate = catinderNavigationBar
-		catinderNavigationBar.delegate = self
-		
-		pushViewController(CardsViewerViewController(), animated: false)
+		catinderNavigationBar.delegate = self		
 	}
 }
 
 
 // MARK: - CatinderNavigationBarDelegate
 
-extension MainNavigationController: CatinderNavigationBarDelegate {
+extension CatinderNavigationController: CatinderNavigationBarDelegate {
 	func backButtonDidPressed() {
 		popViewController(animated: true)
 	}

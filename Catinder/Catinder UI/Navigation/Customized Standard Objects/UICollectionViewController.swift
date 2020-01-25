@@ -13,8 +13,8 @@ extension UICollectionViewController {
 	open override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		// if this CollectionViewController are using CatinderNavigationBar
-		if let navigationBar = (navigationController as? MainNavigationController)?.catinderNavigationBar {
+		// if this CollectionViewController are placed inside CatinderNavigationController
+		if let navigationBar = (navigationController as? CatinderNavigationController)?.catinderNavigationBar {
 			
 			// don't use safe area insets
 			collectionView.contentInsetAdjustmentBehavior = .never
