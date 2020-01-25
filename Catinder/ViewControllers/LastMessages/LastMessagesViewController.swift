@@ -10,7 +10,7 @@ import UIKit
 
 class LastMessagesViewController: UICollectionViewController {
 	
-	private let cellResueId = "LastMessageCell"
+	private let cellReuseId = "LastMessageCell"
 	private var lastMessages: [LastMessageViewModel] = []
 	
 	// MARK: - Init
@@ -44,7 +44,7 @@ class LastMessagesViewController: UICollectionViewController {
 		collectionView.backgroundColor = .white
 		collectionView.alwaysBounceVertical = true
 
-		collectionView.register(LastMessageCell.self, forCellWithReuseIdentifier: cellResueId)
+		collectionView.register(LastMessageCell.self, forCellWithReuseIdentifier: cellReuseId)
 	}
 }
 
@@ -60,10 +60,24 @@ extension LastMessagesViewController {
 	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellResueId, for: indexPath) as! LastMessageCell
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseId, for: indexPath) as! LastMessageCell
 		cell.viewModel = lastMessages[indexPath.item]
 
 		return cell
+	}
+}
+
+
+// MARK: - UICollectionViewDelegate
+
+extension LastMessagesViewController {
+	
+	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		let message = lastMessages[indexPath.item]
+
+		let conversationViewModel = ConversationViewModel(collocutorName: message.profileName, collocutorImageName: message.profileImageName)
+		let conversationViewController = ConversationViewController(viewModel: conversationViewModel)
+		navigationController?.pushViewController(conversationViewController, animated: true)
 	}
 }
 
