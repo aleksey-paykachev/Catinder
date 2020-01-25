@@ -8,21 +8,6 @@
 
 import UIKit
 
-struct ConversationMessageViewModel {
-	let sender: Sender
-	let message: String
-	
-	enum Sender {
-		case user
-		case collocutor
-	}
-}
-
-struct ConversationViewModel {
-	let collocutorName: String
-	let collocutorImageName: String
-}
-
 class ConversationViewController: UICollectionViewController {
 	
 	// MARK: - Properties

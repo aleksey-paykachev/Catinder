@@ -36,6 +36,8 @@
 		5B7FFBC723C2A442009D2854 /* CatinderImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7FFBC623C2A442009D2854 /* CatinderImageButton.swift */; };
 		5B7FFBCC23C2AABC009D2854 /* ProfileEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7FFBCB23C2AABC009D2854 /* ProfileEditorViewController.swift */; };
 		5B81A26823D7F28100565F4A /* LastMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81A26723D7F28100565F4A /* LastMessageViewModel.swift */; };
+		5B875FE523DC00E200408EDC /* ConversationMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875FE423DC00E200408EDC /* ConversationMessageViewModel.swift */; };
+		5B875FE723DC00F900408EDC /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875FE623DC00F900408EDC /* ConversationViewModel.swift */; };
 		5B8B1D8D23B7C57F00543F20 /* CatProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B1D8C23B7C57F00543F20 /* CatProfile.swift */; };
 		5B8B1D8F23B7C59000543F20 /* CatBreed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B1D8E23B7C59000543F20 /* CatBreed.swift */; };
 		5B8FB3D923BE946600041B23 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8FB3D823BE946600041B23 /* CardViewModel.swift */; };
@@ -89,6 +91,8 @@
 		5B7FFBC623C2A442009D2854 /* CatinderImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderImageButton.swift; sourceTree = "<group>"; };
 		5B7FFBCB23C2AABC009D2854 /* ProfileEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorViewController.swift; sourceTree = "<group>"; };
 		5B81A26723D7F28100565F4A /* LastMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastMessageViewModel.swift; sourceTree = "<group>"; };
+		5B875FE423DC00E200408EDC /* ConversationMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationMessageViewModel.swift; sourceTree = "<group>"; };
+		5B875FE623DC00F900408EDC /* ConversationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
 		5B8B1D8C23B7C57F00543F20 /* CatProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatProfile.swift; sourceTree = "<group>"; };
 		5B8B1D8E23B7C59000543F20 /* CatBreed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreed.swift; sourceTree = "<group>"; };
 		5B8FB3D823BE946600041B23 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
@@ -256,6 +260,7 @@
 				5B746EFA23C8C94000063374 /* ProfileViewModel.swift */,
 				5B197FF123D67C0E006DFB9E /* MatchViewModel.swift */,
 				5B81A26723D7F28100565F4A /* LastMessageViewModel.swift */,
+				5B875FE823DC012B00408EDC /* Conversation */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -277,6 +282,15 @@
 				5B37744823CE772400698427 /* PhotosSelector */,
 			);
 			path = ProfileEditor;
+			sourceTree = "<group>";
+		};
+		5B875FE823DC012B00408EDC /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				5B875FE623DC00F900408EDC /* ConversationViewModel.swift */,
+				5B875FE423DC00E200408EDC /* ConversationMessageViewModel.swift */,
+			);
+			path = Conversation;
 			sourceTree = "<group>";
 		};
 		5B8B1D9023B7C5A100543F20 /* Models */ = {
@@ -420,8 +434,10 @@
 				5B7FFBCC23C2AABC009D2854 /* ProfileEditorViewController.swift in Sources */,
 				5B8B1D8D23B7C57F00543F20 /* CatProfile.swift in Sources */,
 				5B5A9D7223D1422F00C7FF85 /* MatchSplashScreenViewController.swift in Sources */,
+				5B875FE723DC00F900408EDC /* ConversationViewModel.swift in Sources */,
 				5BC4194D23DB2C1800E98AA9 /* UITableViewController.swift in Sources */,
 				5BFC059923C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift in Sources */,
+				5B875FE523DC00E200408EDC /* ConversationMessageViewModel.swift in Sources */,
 				5B139E7B23B7850500BE73E7 /* TopMenuView.swift in Sources */,
 				5BD8BE9623C687C900D9943B /* DataManager.swift in Sources */,
 				5B197FF423D6966D006DFB9E /* GradientView.swift in Sources */,
