@@ -136,10 +136,9 @@ extension CardsViewerViewController: CardsStackViewDelegate {
 					print("Error:", error.localizedDescription)
 				}
 			}
+			
 		case .like(let type):
-			print("Like type:", type)
-			#warning("Use single method for like and superLike")
-			dataManager.setLike(to: cardId) { isLikeMutual, error in
+			dataManager.setLike(to: cardId, likeType: type) { isLikeMutual, error in
 				if let error = error {
 					print("Eror:", error.localizedDescription)
 					return

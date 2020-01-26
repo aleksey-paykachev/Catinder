@@ -13,14 +13,14 @@ import Foundation
 class DataManager {
 	static let shared = DataManager()
 	
-	// singleton
+	// Singleton
 	private init() { }
 	
 	func getAllProfiles(completion: ([Profile], Error?) -> ()) {
 		completion(profiles, nil)
 	}
 	
-	func getLikedProfiles(completion: ([Profile], Error?) -> ()) {
+	func getMatchedProfiles(completion: ([Profile], Error?) -> ()) {
 		completion(profiles, nil)
 	}
 	
@@ -30,27 +30,28 @@ class DataManager {
 		completion(profile, nil)
 	}
 	
-	func setLike(to uid: String, completion: (Bool?, Error?) -> ()) {
-		// Save to server
+	func setLike(to uid: String, likeType: RelationshipDecision.LikeType, completion: (_ isLikeMutual: Bool?, Error?) -> ()) {
+		// save to server
 		// ...
 		
-		// Check if like is mutual using random (in real app this data should come from server)
-		let mutualLikePercentageProbability = 35
-		let isLikeMutual = Int.random(in: 1...100) <= mutualLikePercentageProbability
-		completion(isLikeMutual, nil)
-	}
-	
-	func setSuperLike(to uid: String, completion: (Bool?, Error?) -> ()) {
-		// Save to server
-		// ...
-		
-		// Super like always gives 100% probability of mutuality (in real app this data should come from server)
-		let isLikeMutual = true
+		// and get from server info about like mutuality. In this demo app use random values based on like type
+		let isLikeMutual: Bool
+
+		switch likeType {
+		case .regular:
+			// regular like gives random probability of mutuality
+			let mutualLikePercentageProbability = 35
+			isLikeMutual = Int.random(in: 1...100) <= mutualLikePercentageProbability
+
+		case .super:
+			// super like always gives 100% probability of mutuality
+			isLikeMutual = true
+		}
 		completion(isLikeMutual, nil)
 	}
 	
 	func setDislike(to uid: String, completion: ((Error?) -> ())? = nil) {
-		// Save to server
+		// save to server
 		// ...
 
 		completion?(nil)
