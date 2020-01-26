@@ -9,24 +9,25 @@
 import UIKit
 
 class LastMessagesViewController: UICollectionViewController {
+
+	// MARK: - Properties
+	
+	private let dataManager: DataManager
 	
 	private let cellReuseId = "LastMessageCell"
 	private var lastMessages: [LastMessageViewModel] = []
+
 	
 	// MARK: - Init
 	
-	init() {
+	init(dataManager: DataManager = .shared) {
+		self.dataManager = dataManager
 		super.init(collectionViewLayout: UICollectionViewFlowLayout())
 		
 		setupNavigationBar()
 		setupCollectionView()
 		
-		// del - demo messages
-		lastMessages = [
-			LastMessageViewModel(profileName: "Маруся", profileImageName: "Cat_Marusia", message: "Привет."),
-			LastMessageViewModel(profileName: "Мамочка", profileImageName: "Cat_Stray", message: "Пойдёшь со мной на дело? Надо у фраера одного скатерку спереть."),
-			LastMessageViewModel(profileName: "Дружок", profileImageName: "Dog_Druzhok", message: "Гав! Гав! Гав! Гав! Гав! Гав! Гав! Гав! Гав! Гав! Гав!\nГав! Гав! Гав! Гав! Гав! Гав! Гав! Гав!\nГав! Гав! Гав! Гав! Гав! Гав! Гав! Гав!\nГав! Гав! Гав! Гав! Гав! Гав! Гав! Гав!\nГав! Гав! Гав! Гав! Гав! Гав! Гав! Гав!")
-		]
+		loadData()
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -45,6 +46,21 @@ class LastMessagesViewController: UICollectionViewController {
 		collectionView.alwaysBounceVertical = true
 
 		collectionView.register(LastMessageCell.self, forCellWithReuseIdentifier: cellReuseId)
+	}
+	
+	
+	// MARK: - Load data
+	
+	private func loadData() {
+		dataManager.getLastMessages { lastMessages, error in
+			if let error = error {
+				print(error.localizedDescription)
+				return
+			}
+			
+			self.lastMessages = lastMessages
+			self.collectionView.reloadData()
+		}
 	}
 }
 

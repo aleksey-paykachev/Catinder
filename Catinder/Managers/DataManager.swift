@@ -16,19 +16,44 @@ class DataManager {
 	// Singleton
 	private init() { }
 	
+	
+	// MARK: - Profiles
+	
 	func getAllProfiles(completion: ([Profile], Error?) -> ()) {
-		completion(profiles, nil)
+		completion(demoProfiles, nil)
 	}
 	
 	func getMatchedProfiles(completion: ([Profile], Error?) -> ()) {
-		completion(profiles, nil)
+		completion(demoProfiles, nil)
 	}
 	
 	func getProfile(by uid: String, completion: (Profile?, Error?) -> ()) {
-		let profile = profiles.first { $0.uid == uid }
+		let profile = demoProfiles.first { $0.uid == uid }
 		
 		completion(profile, nil)
 	}
+	
+	
+	// MARK: - Messages
+	
+	#warning("Remove viewModel from Data Manager.")
+	func getLastMessages(completion: @escaping ([LastMessageViewModel], Error?) -> ()) {
+
+		// Emulate server request
+		let responseDelay = Int.random(in: 500...1500)
+		DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(responseDelay)) {
+			completion(self.demoLastMessages, nil)
+		}
+	}
+	
+	#warning("Remove viewModel from Data Manager.")
+	func getConversationMessages(for collocutorUid: String, completion: ([ConversationMessageViewModel], Error?) -> ()) {
+		
+		completion(demoConversationMessages, nil)
+	}
+
+	
+	// MARK: - Likes / dislikes
 	
 	func setLike(to uid: String, likeType: RelationshipDecision.LikeType, completion: (_ isLikeMutual: Bool?, Error?) -> ()) {
 		// save to server
@@ -57,7 +82,7 @@ class DataManager {
 		completion?(nil)
 	}
 	
-	private let profiles: [Profile] = [
+	private let demoProfiles: [Profile] = [
 		CatProfile(name: "Барсик", age: 3, breed: .maineCoon, photosNames: ["Cat_Barsik"], description: "Люблю драть мебель, и мяукать по ночам. Также очень люблю, когда мне чешут животик."),
 		DogProfile(name: "Дружок", photoName: "Dog_Druzhok", description: "Люблю убивать людей."),
 		CatProfile(name: "Маруся", age: 2, breed: .norwegianForestCat, photosNames: ["Cat_Marusia"], description: "Люблю с умным видом смотреть в окно, ожидая конца света."),
@@ -92,5 +117,19 @@ class DataManager {
 Ах, зачем я на свет появился,
 Ах, зачем меня мать родила!
 """)
+	]
+	
+	
+	private let demoLastMessages = [
+		LastMessageViewModel(profileName: "Маруся", profileImageName: "Cat_Marusia", message: "Привет."),
+		LastMessageViewModel(profileName: "Мамочка", profileImageName: "Cat_Stray", message: "Пойдёшь со мной на дело? Надо у фраера одного скатерку спереть."),
+		LastMessageViewModel(profileName: "Дружок", profileImageName: "Dog_Druzhok", message: "Гав! Гав! Гав! Гав! Гав! Гав! Гав! Гав! Гав! Гав! Гав!\nГав! Гав! Гав! Гав! Гав! Гав! Гав! Гав!\nГав! Гав! Гав! Гав! Гав! Гав! Гав! Гав!\nГав! Гав! Гав! Гав! Гав! Гав! Гав! Гав!\nГав! Гав! Гав! Гав! Гав! Гав! Гав! Гав!")
+	]
+	
+	
+	private let demoConversationMessages = [
+		ConversationMessageViewModel(sender: .collocutor, message: "Привет."),
+		ConversationMessageViewModel(sender: .user, message: "Привет, привет.\nКак у тебя дела?"),
+		ConversationMessageViewModel(sender: .collocutor, message: "Да вот, решил написать тебе длинное сообщение, чтобы проверить, будет ли оно переноситься на следующую строку, чтобы целиком влезть на экран.")
 	]
 }

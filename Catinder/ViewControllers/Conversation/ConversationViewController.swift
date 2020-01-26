@@ -12,6 +12,8 @@ class ConversationViewController: UICollectionViewController {
 	
 	// MARK: - Properties
 	
+	private let dataManager: DataManager
+	
 	private let collectionViewFlowLayout = UICollectionViewFlowLayout()
 	private let cellReuseId = "ConversationMessageCell"
 
@@ -21,7 +23,8 @@ class ConversationViewController: UICollectionViewController {
 	
 	// MARK: - Init
 	
-	init(viewModel: ConversationViewModel) {
+	init(viewModel: ConversationViewModel, dataManager: DataManager = .shared) {
+		self.dataManager = dataManager
 		self.viewModel = viewModel
 		super.init(collectionViewLayout: collectionViewFlowLayout)
 		
@@ -29,12 +32,7 @@ class ConversationViewController: UICollectionViewController {
 		setupCollectionViewLayout()
 		setupCollectionView()
 		
-		// del - demo conversation messages
-		messages = [
-			ConversationMessageViewModel(sender: .collocutor, message: "Привет."),
-			ConversationMessageViewModel(sender: .user, message: "Привет, привет.\nКак у тебя дела?"),
-			ConversationMessageViewModel(sender: .collocutor, message: "Да вот, решил написать тебе длинное сообщение, чтобы проверить, будет ли оно переноситься на следующую строку, чтобы целиком влезть на экран.")
-		]
+		loadData()
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -62,6 +60,21 @@ class ConversationViewController: UICollectionViewController {
 		collectionView.backgroundColor = .white
 		collectionView.alwaysBounceVertical = true
 		collectionView.register(ConversationMessageCell.self, forCellWithReuseIdentifier: cellReuseId)
+	}
+	
+	
+	// MARK: - Load data
+	
+	func loadData() {
+		dataManager.getConversationMessages(for: "Current-Collocutor-UID") { (messages, error) in
+			if let error = error {
+				print(error.localizedDescription)
+				return
+			}
+			
+			self.messages = messages
+			collectionView.reloadData()
+		}
 	}
 }
 
