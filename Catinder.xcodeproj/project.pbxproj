@@ -45,6 +45,7 @@
 		5B96C7FD23BE713A00BFB4D0 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B96C7FC23BE713A00BFB4D0 /* Angle.swift */; };
 		5BAE16F923D9516B007D3EA4 /* CatinderNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAE16F823D9516B007D3EA4 /* CatinderNavigationBar.swift */; };
 		5BAE16FB23D95839007D3EA4 /* CatinderNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAE16FA23D95839007D3EA4 /* CatinderNavigationController.swift */; };
+		5BB2ED0A23DD5900008AA5E6 /* UIViewController + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2ED0923DD5900008AA5E6 /* UIViewController + Extensions.swift */; };
 		5BC4194A23DB2A5D00E98AA9 /* UICollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC4194923DB2A5D00E98AA9 /* UICollectionViewController.swift */; };
 		5BC4194D23DB2C1800E98AA9 /* UITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC4194C23DB2C1800E98AA9 /* UITableViewController.swift */; };
 		5BC4194F23DB321F00E98AA9 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC4194E23DB321F00E98AA9 /* ConversationViewController.swift */; };
@@ -100,6 +101,7 @@
 		5B96C7FC23BE713A00BFB4D0 /* Angle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
 		5BAE16F823D9516B007D3EA4 /* CatinderNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderNavigationBar.swift; sourceTree = "<group>"; };
 		5BAE16FA23D95839007D3EA4 /* CatinderNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderNavigationController.swift; sourceTree = "<group>"; };
+		5BB2ED0923DD5900008AA5E6 /* UIViewController + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extensions.swift"; sourceTree = "<group>"; };
 		5BC4194923DB2A5D00E98AA9 /* UICollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewController.swift; sourceTree = "<group>"; };
 		5BC4194C23DB2C1800E98AA9 /* UITableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewController.swift; sourceTree = "<group>"; };
 		5BC4194E23DB321F00E98AA9 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				5BD54E1323D50743004A0AA2 /* UIStackView */,
+				5BB2ED0923DD5900008AA5E6 /* UIViewController + Extensions.swift */,
 				5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */,
 				5B746EF823C8C56600063374 /* UILabel + Extensions.swift */,
 				5BD9B09423CFDDC9000E5028 /* CGColor + Extensions.swift */,
@@ -446,6 +449,7 @@
 				5BC4194D23DB2C1800E98AA9 /* UITableViewController.swift in Sources */,
 				5BFC059923C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift in Sources */,
 				5B875FE523DC00E200408EDC /* ConversationMessageViewModel.swift in Sources */,
+				5BB2ED0A23DD5900008AA5E6 /* UIViewController + Extensions.swift in Sources */,
 				5B139E7B23B7850500BE73E7 /* TopMenuView.swift in Sources */,
 				5BD8BE9623C687C900D9943B /* DataManager.swift in Sources */,
 				5B197FF423D6966D006DFB9E /* GradientView.swift in Sources */,

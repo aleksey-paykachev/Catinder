@@ -50,23 +50,6 @@ class LastMessagesViewController: UICollectionViewController {
 	
 	
 	// MARK: - Load data
-	lazy private var activityIndicatorView: UIActivityIndicatorView = {
-		let activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
-		activityIndicatorView.color = .gray
-		
-		view.addSubview(activityIndicatorView)
-		activityIndicatorView.constrainToSuperview(anchors: [.centerX, .centerY])
-		
-		return activityIndicatorView
-	}()
-	
-	func showLoadingIndicator() {
-		activityIndicatorView.startAnimating()
-	}
-	
-	func hideLoadingIndicator() {
-		activityIndicatorView.stopAnimating()
-	}
 	
 	private func loadData() {
 		showLoadingIndicator()

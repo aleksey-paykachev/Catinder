@@ -22,7 +22,7 @@ class ProfileEditorViewController: UITableViewController {
 		setupNavigationBar()
 		setupTableView()
 		setupGestures()
-		loadUserProfile()
+		loadData()
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -51,7 +51,7 @@ class ProfileEditorViewController: UITableViewController {
 	
 	// MARK: - Load data
 	
-	private func loadUserProfile() {
+	private func loadData() {
 		dataManager.getProfile(by: "Logged-In-User-Profile-Id") { profile, error in
 			if let error = error {
 				print(error)
