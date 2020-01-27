@@ -29,6 +29,7 @@
 		5B37744723CE769A00698427 /* PhotosSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37744623CE769A00698427 /* PhotosSelectorViewController.swift */; };
 		5B457F4E23D7DAE300A630F9 /* LastMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B457F4D23D7DAE300A630F9 /* LastMessagesViewController.swift */; };
 		5B457F5123D7F0BD00A630F9 /* LastMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B457F5023D7F0BD00A630F9 /* LastMessageCell.swift */; };
+		5B5430AA23DEC3C5000F9F81 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5430A923DEC3C5000F9F81 /* NetworkManager.swift */; };
 		5B5A9D7223D1422F00C7FF85 /* MatchSplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5A9D7123D1422F00C7FF85 /* MatchSplashScreenViewController.swift */; };
 		5B5AD28123C8BF3C00D5B6D7 /* ProfileViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5AD28023C8BF3C00D5B6D7 /* ProfileViewerViewController.swift */; };
 		5B746EF923C8C56600063374 /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B746EF823C8C56600063374 /* UILabel + Extensions.swift */; };
@@ -85,6 +86,7 @@
 		5B37744623CE769A00698427 /* PhotosSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosSelectorViewController.swift; sourceTree = "<group>"; };
 		5B457F4D23D7DAE300A630F9 /* LastMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastMessagesViewController.swift; sourceTree = "<group>"; };
 		5B457F5023D7F0BD00A630F9 /* LastMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastMessageCell.swift; sourceTree = "<group>"; };
+		5B5430A923DEC3C5000F9F81 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5B5A9D7123D1422F00C7FF85 /* MatchSplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchSplashScreenViewController.swift; sourceTree = "<group>"; };
 		5B5AD28023C8BF3C00D5B6D7 /* ProfileViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewerViewController.swift; sourceTree = "<group>"; };
 		5B746EF823C8C56600063374 /* UILabel + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				5BD8BE9523C687C900D9943B /* DataManager.swift */,
+				5B5430A923DEC3C5000F9F81 /* NetworkManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				5BD8BE9623C687C900D9943B /* DataManager.swift in Sources */,
 				5B197FF423D6966D006DFB9E /* GradientView.swift in Sources */,
 				5B81A26823D7F28100565F4A /* LastMessageViewModel.swift in Sources */,
+				5B5430AA23DEC3C5000F9F81 /* NetworkManager.swift in Sources */,
 				5B8B1D8F23B7C59000543F20 /* CatBreed.swift in Sources */,
 				5B457F5123D7F0BD00A630F9 /* LastMessageCell.swift in Sources */,
 				5B07A50C23D13A6500122190 /* Collection + Extensions.swift in Sources */,
