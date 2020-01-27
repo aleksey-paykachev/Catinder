@@ -8,12 +8,16 @@
 
 import Foundation
 
-enum CatBreed: String {
-	case maineCoon = "Мейн-кун"
-	case norwegianForestCat = "Норвежская лесная кошка"
-	case unknown = ""
+enum CatBreed: String, Decodable {
+	case maineCoon
+	case norwegianForestCat
+	case unknown
 	
 	var name: String {
-		return rawValue
+		switch self {
+		case .unknown: return ""
+		case .maineCoon: return "Мейн-кун"
+		case .norwegianForestCat: return "Норвежская лесная кошка"
+		}
 	}
 }
