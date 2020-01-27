@@ -9,7 +9,6 @@
 import UIKit
 
 class ConversationMessageCell: UICollectionViewCell {
-	
 	// MARK: - Properties
 	
 	private let messageLabel = UILabel(allowMultipleLines: true)

@@ -9,7 +9,6 @@
 import UIKit
 
 class LastMessagesViewController: UICollectionViewController {
-
 	// MARK: - Properties
 	
 	private let dataManager: DataManager
@@ -54,7 +53,9 @@ class LastMessagesViewController: UICollectionViewController {
 	private func loadData() {
 		showLoadingIndicator()
 		
-		dataManager.getLastMessages { lastMessages, error in
+		dataManager.getLastMessages { [weak self] lastMessages, error in
+			guard let self = self else { return }
+
 			self.hideLoadingIndicator()
 
 			if let error = error {

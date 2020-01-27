@@ -52,13 +52,14 @@ class ProfileEditorViewController: UITableViewController {
 	// MARK: - Load data
 	
 	private func loadData() {
+		#warning("Don't perform network request. Use local data.")
 		dataManager.getProfile(by: "Logged-In-User-Profile-Id") { profile, error in
 			if let error = error {
-				print(error)
+				print(error.localizedDescription)
 				return
 			}
 			
-			userProfile = profile as? CatProfile
+			self.userProfile = profile as? CatProfile
 		}
 	}
 	

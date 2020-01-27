@@ -9,7 +9,6 @@
 import UIKit
 
 class ConversationViewController: UICollectionViewController {
-	
 	// MARK: - Properties
 	
 	private let dataManager: DataManager
@@ -66,14 +65,20 @@ class ConversationViewController: UICollectionViewController {
 	// MARK: - Load data
 	
 	func loadData() {
-		dataManager.getConversationMessages(for: "Current-Collocutor-UID") { (messages, error) in
+		showLoadingIndicator()
+		
+		dataManager.getConversationMessages(for: "Current-Collocutor-UID") { [weak self] messages, error in
+			guard let self = self else { return }
+
+			self.hideLoadingIndicator()
+
 			if let error = error {
 				print(error.localizedDescription)
 				return
 			}
 			
 			self.messages = messages
-			collectionView.reloadData()
+			self.collectionView.reloadData()
 		}
 	}
 }

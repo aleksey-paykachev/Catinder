@@ -50,14 +50,20 @@ class CardsViewerViewController: UIViewController {
 	}
 	
 	private func loadData() {
-		dataManager.getAllProfiles { (profiles, error) in
+		showLoadingIndicator()
+		
+		dataManager.getAllProfiles { [weak self] profiles, error in
+			guard let self = self else { return }
+
+			self.hideLoadingIndicator()
+			
 			if let error = error {
 				print(error.localizedDescription)
 				return
 			}
 
 			let cardViewModelRepresentables = profiles as? [CardViewModelRepresentable] ?? []
-			cardsStackView.add(cardViewModelRepresentables)
+			self.cardsStackView.add(cardViewModelRepresentables)
 		}
 	}
 	
@@ -114,6 +120,7 @@ extension CardsViewerViewController: BotomMenuActionsDelegate {
 extension CardsViewerViewController: CardsStackViewDelegate {
 	
 	func showMoreInfoButtonDidPressed(for cardId: String) {
+		#warning("Don't perform network request. Use local data.")
 		dataManager.getProfile(by: cardId) { profile, error in
 			if let error = error {
 				print(error.localizedDescription)
@@ -123,7 +130,7 @@ extension CardsViewerViewController: CardsStackViewDelegate {
 			guard let profileViewModel = (profile as? ProfileViewModelRepresentable)?.profileViewModel else { return }
 
 			let profileViewerViewController = ProfileViewerViewController(viewModel: profileViewModel)
-			present(profileViewerViewController, animated: true)
+			self.present(profileViewerViewController, animated: true)
 		}
 	}
 	

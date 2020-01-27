@@ -13,7 +13,6 @@ protocol CatinderNavigationBarDelegate: class {
 }
 
 class CatinderNavigationBar: UIView {
-	
 	// MARK: - Properties
 	
 	weak var delegate: CatinderNavigationBarDelegate?
