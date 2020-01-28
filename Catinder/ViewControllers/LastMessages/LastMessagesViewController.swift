@@ -53,7 +53,7 @@ class LastMessagesViewController: UICollectionViewController {
 	private func loadData() {
 		showLoadingIndicator()
 		
-		dataManager.getLastMessages { [weak self] lastMessages, error in
+		dataManager.getMatches { [weak self] matches, error in
 			guard let self = self else { return }
 
 			self.hideLoadingIndicator()
@@ -63,7 +63,7 @@ class LastMessagesViewController: UICollectionViewController {
 				return
 			}
 			
-			self.lastMessages = lastMessages
+			self.lastMessages = matches?.map { $0.lastMessageViewModel } ?? []
 			self.collectionView.reloadData()
 		}
 	}

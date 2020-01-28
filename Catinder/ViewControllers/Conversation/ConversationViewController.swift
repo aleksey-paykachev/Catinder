@@ -67,7 +67,7 @@ class ConversationViewController: UICollectionViewController {
 	func loadData() {
 		showLoadingIndicator()
 		
-		dataManager.getConversationMessages(for: "Current-Collocutor-UID") { [weak self] messages, error in
+		dataManager.getMessages(forConversationWith: "Current-Collocutor-UID") { [weak self] messages, error in
 			guard let self = self else { return }
 
 			self.hideLoadingIndicator()
@@ -77,7 +77,7 @@ class ConversationViewController: UICollectionViewController {
 				return
 			}
 			
-			self.messages = messages
+			self.messages = messages?.compactMap { $0.conversationMessageViewModel } ?? []
 			self.collectionView.reloadData()
 		}
 	}

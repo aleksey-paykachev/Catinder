@@ -15,6 +15,10 @@ struct CatProfile: Profile, Decodable {
 	let breed: CatBreed
 	let photosNames: [String]
 	let description: String
+	
+	var photoName: String {
+		return photosNames.first ?? ""
+	}
 }
 
 

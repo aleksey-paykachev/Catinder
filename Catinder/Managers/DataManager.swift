@@ -36,33 +36,31 @@ class DataManager {
 		parseDataFromNetwork(for: "profiles", completion: completion)
 	}
 	
-	func getMatchedProfiles(completion: ([CatProfile]?, Error?) -> ()) {
-	}
-	
 	func getProfile(by uid: String, completion: @escaping (CatProfile?, Error?) -> ()) {
 		parseDataFromNetwork(for: "profile/\(uid)", completion: completion)
 	}
+	
+	
+	// MARK: - Matches
 
-	
-	// MARK: - Messages
-	
-	#warning("Remove viewModel from Data Manager.")
-	func getLastMessages(completion: @escaping ([LastMessageViewModel], Error?) -> ()) {
+	func getMatches(completion: @escaping ([Match]?, Error?) -> ()) {
 
 		// Emulate server request
 		let responseDelay = Int.random(in: 500...1500)
 		DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(responseDelay)) {
-			completion(self.demoLastMessages, nil)
+			completion(self.demoMatches, nil)
 		}
 	}
 	
-	#warning("Remove viewModel from Data Manager.")
-	func getConversationMessages(for collocutorUid: String, completion: @escaping ([ConversationMessageViewModel], Error?) -> ()) {
+	
+	// MARK: - Messages
+	
+	func getMessages(forConversationWith collocutorUid: String, completion: @escaping ([Message]?, Error?) -> ()) {
 
 		// Emulate server request
 		let responseDelay = Int.random(in: 500...1500)
 		DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(responseDelay)) {
-			completion(self.demoConversationMessages, nil)
+			completion(self.demoMessages, nil)
 		}
 	}
 
@@ -141,16 +139,22 @@ class DataManager {
 	
 	// MARK: - del - Demo data
 	
-	private let demoLastMessages = [
-		LastMessageViewModel(profileName: "Маруся", profileImageName: "Cat_Marusia", message: "Привет."),
-		LastMessageViewModel(profileName: "Мамочка", profileImageName: "Cat_Stray", message: "Пойдёшь со мной на дело? Надо у фраера одного скатерку спереть."),
-		LastMessageViewModel(profileName: "Дружок", profileImageName: "Dog_Druzhok", message: "Гав! Гав! Гав! Гав! Гав! Гав! Гав! Гав! Гав! Гав! Гав!\nГав! Гав! Гав! Гав! Гав! Гав! Гав! Гав!\nГав! Гав! Гав! Гав! Гав! Гав! Гав! Гав!\nГав! Гав! Гав! Гав! Гав! Гав! Гав! Гав!\nГав! Гав! Гав! Гав! Гав! Гав! Гав! Гав!")
+	private let demoMessages = [
+		Message(date: Date(), senderUid: "F59C2433-B0F5-4A84-B017-2212C1CFA7ED", receiverUid: "Logged-In-User-Uid", text: "Привет."),
+		Message(date: Date(), senderUid: "Logged-In-User-Uid", receiverUid: "F59C2433-B0F5-4A84-B017-2212C1CFA7ED", text: "Привет, привет.\nКак у тебя дела?"),
+		Message(date: Date(), senderUid: "F59C2433-B0F5-4A84-B017-2212C1CFA7ED", receiverUid: "Logged-In-User-Uid", text: "Да вот, решил написать тебе длинное сообщение, чтобы проверить, будет ли оно переноситься на следующую строку, чтобы целиком влезть на экран.")
 	]
 	
-	
-	private let demoConversationMessages = [
-		ConversationMessageViewModel(sender: .collocutor, message: "Привет."),
-		ConversationMessageViewModel(sender: .user, message: "Привет, привет.\nКак у тебя дела?"),
-		ConversationMessageViewModel(sender: .collocutor, message: "Да вот, решил написать тебе длинное сообщение, чтобы проверить, будет ли оно переноситься на следующую строку, чтобы целиком влезть на экран.")
-	]
+	private var demoMatches: [Match] {
+		let user = DataManager.shared.loggedInUser
+		let marusia = CatProfile(uid: "1", name: "Маруся", age: 4, breed: .unknown, photosNames: ["Cat_Marusia"], description: "")
+		let stray = CatProfile(uid: "2", name: "Мамочка", age: 3, breed: .unknown, photosNames: ["Cat_Stray"], description: "")
+		
+		let message = Message(date: Date(), senderUid: "2", receiverUid: "1", text: "Привет.")
+
+		return [
+			Match(matchDate: Date(), profile1: user, profile2: marusia, lastMessage: message),
+			Match(matchDate: Date(), profile1: stray, profile2: user, lastMessage: message)
+		]
+	}
 }

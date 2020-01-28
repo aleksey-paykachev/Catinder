@@ -11,6 +11,7 @@ import Foundation
 protocol Profile {
 	var uid: String { get }
 	var name: String { get }
+	var photoName: String { get }
 	var description: String { get }
 }
 
