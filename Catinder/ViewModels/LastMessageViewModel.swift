@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol LastMessageViewModelRepresentable {
+	var lastMessageViewModel: LastMessageViewModel { get }
+}
+
 struct LastMessageViewModel {
 	let profileName: String
 	let profileImageName: String
