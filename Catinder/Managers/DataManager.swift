@@ -24,53 +24,17 @@ class DataManager {
 	
 	// MARK: - Profiles
 	
-	func getAllProfiles(completion: @escaping ([Profile], Error?) -> ()) {
+	func getAllProfiles(completion: @escaping ([CatProfile]?, Error?) -> ()) {
+		parseDataFromNetwork(for: "profiles", completion: completion)
+	}
+	
+	func getMatchedProfiles(completion: ([CatProfile]?, Error?) -> ()) {
+	}
+	
+	func getProfile(by uid: String, completion: @escaping (CatProfile?, Error?) -> ()) {
+		parseDataFromNetwork(for: "profile/\(uid)", completion: completion)
+	}
 
-		networkManager.getData(for: "profiles") { data, error in
-			guard error == nil else {
-				completion([], error)
-				return
-			}
-			
-			guard let data = data else {
-				completion([], DataManagerError.emptyData)
-				return
-			}
-			
-			guard let profiles = try? self.jsonDecoder.decode([CatProfile].self, from: data) else {
-				completion([], DataManagerError.parseError)
-				return
-			}
-			
-			completion(profiles, nil)
-		}
-	}
-	
-	func getMatchedProfiles(completion: ([Profile], Error?) -> ()) {
-	}
-	
-	func getProfile(by uid: String, completion: @escaping (Profile?, Error?) -> ()) {
-		
-		networkManager.getData(for: "profile/\(uid)") { data, error in
-			guard error == nil else {
-				completion(nil, error)
-				return
-			}
-			
-			guard let data = data else {
-				completion(nil, DataManagerError.emptyData)
-				return
-			}
-			
-			guard let profile = try? self.jsonDecoder.decode(CatProfile.self, from: data) else {
-				completion(nil, DataManagerError.parseError)
-				return
-			}
-			
-			completion(profile, nil)
-		}
-	}
-	
 	
 	// MARK: - Messages
 	
@@ -122,6 +86,31 @@ class DataManager {
 		// ...
 
 		completion?(nil)
+	}
+	
+	
+	// MARK: - Network
+	
+	private func parseDataFromNetwork<T: Decodable>(for resource: String, completion: @escaping (T?, Error?) -> ()) {
+		
+		networkManager.getData(for: resource) { data, error in
+			guard error == nil else {
+				completion(nil, error)
+				return
+			}
+			
+			guard let data = data else {
+				completion(nil, DataManagerError.emptyData)
+				return
+			}
+			
+			guard let parsedData = try? self.jsonDecoder.decode(T.self, from: data) else {
+				completion(nil, DataManagerError.parseError)
+				return
+			}
+			
+			completion(parsedData, nil)
+		}
 	}
 	
 	
