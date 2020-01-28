@@ -42,7 +42,7 @@ class ConversationMessageCell: UICollectionViewCell {
 	// MARK: - UI
 	
 	private func updateUI() {
-		messageLabel.text = viewModel?.message
+		messageLabel.text = viewModel?.messageText
 	}
 	
 	override func prepareForReuse() {

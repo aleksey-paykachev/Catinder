@@ -24,6 +24,14 @@ class DataManager {
 	
 	// MARK: - Profiles
 	
+	var loggedInUserUid: String {
+		return "Logged-In-User-Uid"
+	}
+	
+	var loggedInUser: Profile {
+		return CatProfile(uid: loggedInUserUid, name: "Me", age: 5, breed: .unknown, photosNames: [], description: "Description")
+	}
+	
 	func getAllProfiles(completion: @escaping ([CatProfile]?, Error?) -> ()) {
 		parseDataFromNetwork(for: "profiles", completion: completion)
 	}

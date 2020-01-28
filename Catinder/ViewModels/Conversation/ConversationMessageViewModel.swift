@@ -8,9 +8,13 @@
 
 import Foundation
 
+protocol ConversationMessageViewModelRepresentable {
+	var conversationMessageViewModel: ConversationMessageViewModel { get }
+}
+
 struct ConversationMessageViewModel {
 	let sender: Sender
-	let message: String
+	let messageText: String
 	
 	enum Sender {
 		case user

@@ -27,6 +27,7 @@
 		5B37744323CE75FA00698427 /* PhotoImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37744223CE75FA00698427 /* PhotoImagePicker.swift */; };
 		5B37744523CE767400698427 /* PhotoSelectorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37744423CE767400698427 /* PhotoSelectorButton.swift */; };
 		5B37744723CE769A00698427 /* PhotosSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37744623CE769A00698427 /* PhotosSelectorViewController.swift */; };
+		5B3BCA0F23E0356500092DD5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3BCA0E23E0356500092DD5 /* Message.swift */; };
 		5B457F4E23D7DAE300A630F9 /* LastMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B457F4D23D7DAE300A630F9 /* LastMessagesViewController.swift */; };
 		5B457F5123D7F0BD00A630F9 /* LastMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B457F5023D7F0BD00A630F9 /* LastMessageCell.swift */; };
 		5B5430AA23DEC3C5000F9F81 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5430A923DEC3C5000F9F81 /* NetworkManager.swift */; };
@@ -84,6 +85,7 @@
 		5B37744223CE75FA00698427 /* PhotoImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoImagePicker.swift; sourceTree = "<group>"; };
 		5B37744423CE767400698427 /* PhotoSelectorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorButton.swift; sourceTree = "<group>"; };
 		5B37744623CE769A00698427 /* PhotosSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosSelectorViewController.swift; sourceTree = "<group>"; };
+		5B3BCA0E23E0356500092DD5 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		5B457F4D23D7DAE300A630F9 /* LastMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastMessagesViewController.swift; sourceTree = "<group>"; };
 		5B457F5023D7F0BD00A630F9 /* LastMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastMessageCell.swift; sourceTree = "<group>"; };
 		5B5430A923DEC3C5000F9F81 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				5B8B1D8E23B7C59000543F20 /* CatBreed.swift */,
 				5B19E00723BA4A9100E90F56 /* DogProfile.swift */,
 				5B04923E23D69F9400639802 /* RelationshipDecision.swift */,
+				5B3BCA0E23E0356500092DD5 /* Message.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				5B19E00823BA4A9100E90F56 /* DogProfile.swift in Sources */,
 				5BD8BE9423C686CB00D9943B /* Profile.swift in Sources */,
 				5BC4194F23DB321F00E98AA9 /* ConversationViewController.swift in Sources */,
+				5B3BCA0F23E0356500092DD5 /* Message.swift in Sources */,
 				5B139E7D23B7851700BE73E7 /* BottomMenuView.swift in Sources */,
 				5B7FFBC723C2A442009D2854 /* CatinderImageButton.swift in Sources */,
 				5B37744323CE75FA00698427 /* PhotoImagePicker.swift in Sources */,
