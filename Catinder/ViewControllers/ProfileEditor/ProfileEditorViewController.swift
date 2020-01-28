@@ -12,6 +12,7 @@ class ProfileEditorViewController: UITableViewController {
 	
 	private let dataManager: DataManager
 	private var userProfile: CatProfile?
+	private let sections: [Section] = [.photos, .name, .age, .description]
 	
 	// MARK: - Init
 	
@@ -52,45 +53,24 @@ class ProfileEditorViewController: UITableViewController {
 	// MARK: - Load data
 	
 	private func loadData() {
-		#warning("Don't perform network request. Use local data.")
-		dataManager.getProfile(by: "Logged-In-User-Profile-Id") { profile, error in
-			if let error = error {
-				print(error.localizedDescription)
-				return
-			}
-			
-			self.userProfile = profile as? CatProfile
-		}
+		userProfile = dataManager.loggedInUser as? CatProfile
 	}
 	
 	
 	// MARK: - Table sections
 	
-	private enum Section: Int, CaseIterable {
-		case photos
-		case name
-		case age
-		case description
-		
-		init?(id: RawValue) {
-			self.init(rawValue: id)
-		}
-		
-		static var sectionsCount: Int {
-			return allCases.count
-		}
+	private enum Section: String {
+		case photos = "Фотографии"
+		case name = "Имя"
+		case age = "Возраст"
+		case description = "Описание"
 		
 		var title: String {
-			switch self {
-			case .photos:
-				return "Фотографии"
-			case .name:
-				return "Имя"
-			case .age:
-				return "Возраст"
-			case .description:
-				return "Описание"
-			}
+			return rawValue
+		}
+		
+		var placeholder: String {
+			return rawValue
 		}
 	}
 }
@@ -101,22 +81,21 @@ class ProfileEditorViewController: UITableViewController {
 extension ProfileEditorViewController {
 	override func numberOfSections(in tableView: UITableView) -> Int {
 		
-		return Section.sectionsCount
+		return sections.count
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		
-		return Section(id: section) == .photos ? 0 : 1
+		return sections[section] == .photos ? 0 : 1
 	}
 	
 	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 
-		return Section(id: section)?.title
+		return sections[section].title
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		let placeholder = Section(id: indexPath.section)?.title
+		let placeholder = sections[indexPath.section].placeholder
 		return ProfileEditorFieldTableViewCell(placeholder: placeholder)
 	}
 }
@@ -126,9 +105,8 @@ extension ProfileEditorViewController {
 
 extension ProfileEditorViewController {
 	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-		guard let section = Section(id: section) else { return nil }
-
-		if section == .photos {
+		
+		if sections[section] == .photos {
 			let photosSelectorViewController = PhotosSelectorViewController()
 			addChild(photosSelectorViewController)
 
@@ -139,9 +117,8 @@ extension ProfileEditorViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-		guard let section = Section(id: section) else { return 0 }
-
-		return section == .photos ? 270 : UITableView.automaticDimension
+		
+		return sections[section] == .photos ? 270 : UITableView.automaticDimension
 	}
 	
 	override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
