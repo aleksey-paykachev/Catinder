@@ -56,7 +56,7 @@ class ConversationViewController: UICollectionViewController {
 	}
 	
 	private func setupCollectionView() {
-		collectionView.backgroundColor = .white
+		collectionView.backgroundColor = .lightGray
 		collectionView.alwaysBounceVertical = true
 		collectionView.register(ConversationMessageCell.self, forCellWithReuseIdentifier: cellReuseId)
 	}
