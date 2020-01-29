@@ -22,7 +22,7 @@ class DataManager {
 	private init() { } 	// Singleton
 	
 	
-	// MARK: - Profiles
+	// MARK: - Auth
 	
 	var loggedInUserUid: String {
 		return "Logged-In-User-Uid"
@@ -31,6 +31,9 @@ class DataManager {
 	var loggedInUser: Profile {
 		return CatProfile(uid: loggedInUserUid, name: "Me", age: 5, breed: .unknown, photosNames: [], description: "Description")
 	}
+
+	
+	// MARK: - Profiles
 	
 	func getAllProfiles(completion: @escaping ([CatProfile]?, Error?) -> ()) {
 		parseDataFromNetwork(for: "profiles", completion: completion)

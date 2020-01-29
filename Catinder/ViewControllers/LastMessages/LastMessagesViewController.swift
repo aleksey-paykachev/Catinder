@@ -114,6 +114,6 @@ extension LastMessagesViewController: UICollectionViewDelegateFlowLayout {
 
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-		return CGSize(width: collectionView.bounds.width * 0.96, height: 90)
+		return CGSize(width: collectionView.bounds.width * 0.96, height: 80)
 	}
 }

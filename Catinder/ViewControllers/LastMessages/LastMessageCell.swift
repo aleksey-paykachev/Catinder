@@ -26,19 +26,19 @@ class LastMessageCell: UICollectionViewCell {
 	override init(frame: CGRect) {
 		super.init(frame: .zero)
 		
-		setupView()
+		setupView(with: frame.size)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	private func setupView() {
+	private func setupView(with size: CGSize) {
 		// profile image
 		profileImageView.contentMode = .scaleAspectFill
 		profileImageView.widthAnchor.constraint(equalTo: profileImageView.heightAnchor).isActive = true
-		#warning("Fix constant radius size")
-		profileImageView.layer.roundCorners(radius: 45)
+		profileImageView.layer.roundCorners(radius: size.height / 2)
+		profileImageView.layer.setBorder(size: 1, color: .lightGray)
 		
 		// profile name
 		profileNameLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
@@ -46,6 +46,7 @@ class LastMessageCell: UICollectionViewCell {
 		// message
 		messageTextView.isScrollEnabled = false
 		messageTextView.isEditable = false
+		messageTextView.isUserInteractionEnabled = false
 		messageTextView.font = .systemFont(ofSize: 16)
 		messageTextView.textColor = .darkGray
 		messageTextView.textContainerInset = .zero
