@@ -11,12 +11,14 @@ import UIKit
 class ConversationMessageCell: UICollectionViewCell {
 	// MARK: - Properties
 	
+	private let messageViewHorizontalAlignmentPadding: CGFloat = 12
+	
 	private let messageView = UIView()
 	private let messageLabel = UILabel(color: .darkText, allowMultipleLines: true, font: .systemFont(ofSize: 14))
 	var viewModel: ConversationMessageViewModel? { didSet { updateUI() } }
 	
-	lazy var messageViewLeadingAnchor = messageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12)
-	lazy var messageViewTrailingAnchor = messageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12)
+	lazy var messageViewLeadingAnchor = messageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: messageViewHorizontalAlignmentPadding)
+	lazy var messageViewTrailingAnchor = messageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -messageViewHorizontalAlignmentPadding)
 	
 	
 	// MARK: - Init
@@ -46,6 +48,16 @@ class ConversationMessageCell: UICollectionViewCell {
 		messageView.layer.roundCorners(radius: 10)
 		messageViewLeadingAnchor.priority = .defaultLow // to prevent autolayout issues
 	}
+		
+	private func setMessageViewAlignLeading() {
+		messageViewTrailingAnchor.isActive = false
+		messageViewLeadingAnchor.isActive = true
+	}
+	
+	private func setMessageViewAlignTrailing() {
+		messageViewLeadingAnchor.isActive = false
+		messageViewTrailingAnchor.isActive = true
+	}
 	
 	
 	// MARK: - UI
@@ -58,12 +70,10 @@ class ConversationMessageCell: UICollectionViewCell {
 		switch viewModel.sender {
 		case .user:
 			messageView.backgroundColor = .cyan
-			messageViewLeadingAnchor.isActive = false
-			messageViewTrailingAnchor.isActive = true
+			setMessageViewAlignTrailing()
 		case .collocutor:
 			messageView.backgroundColor = .white
-			messageViewTrailingAnchor.isActive = false
-			messageViewLeadingAnchor.isActive = true
+			setMessageViewAlignLeading()
 		}
 	}
 	
