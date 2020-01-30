@@ -15,6 +15,7 @@ class ConversationViewController: UICollectionViewController {
 	
 	private let collectionViewFlowLayout = UICollectionViewFlowLayout()
 	private let cellReuseId = "ConversationMessageCell"
+	private let newMessageTextField = UITextField()
 
 	private let viewModel: ConversationViewModel
 	private var messages: [ConversationMessageViewModel] = []
@@ -30,6 +31,7 @@ class ConversationViewController: UICollectionViewController {
 		setupNavigationBar()
 		setupCollectionViewLayout()
 		setupCollectionView()
+		setupNewMessageTextField()
 		
 		loadData()
 	}
@@ -61,6 +63,14 @@ class ConversationViewController: UICollectionViewController {
 		collectionView.register(ConversationMessageCell.self, forCellWithReuseIdentifier: cellReuseId)
 	}
 	
+	private func setupNewMessageTextField() {
+		newMessageTextField.backgroundColor = .red
+		newMessageTextField.delegate = self
+		
+		view.addSubview(newMessageTextField)
+		newMessageTextField.constrainToSuperview(anchors: [.leading, .trailing, .bottom], respectSafeArea: false)
+	}
+	
 	
 	// MARK: - Load data
 	
@@ -81,6 +91,21 @@ class ConversationViewController: UICollectionViewController {
 			self.collectionView.reloadData()
 		}
 	}
+	
+	
+	// MARK: - Methods
+	
+	func addMessage(text: String) {
+		let sender = Bool.random() ? ConversationMessageViewModel.Sender.user : .collocutor
+
+		let message = ConversationMessageViewModel(sender: sender, messageText: text)
+		messages.append(message)
+		let newItemIndexPath = IndexPath(item: messages.endIndex - 1, section: 0)
+		collectionView.insertItems(at: [newItemIndexPath])
+		
+		#warning("Set 'sended' status for sended messages.")
+		dataManager.addMessage(forConversationWith: "")
+	}
 }
 
 
@@ -99,5 +124,20 @@ extension ConversationViewController {
 		cell.viewModel = messages[indexPath.item]
 		
 		return cell
+	}
+}
+
+
+// MARK: - UITextFieldDelegate
+
+extension ConversationViewController: UITextFieldDelegate {
+
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		guard let textMessage = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines), textMessage.isNotEmpty else { return false }
+
+		addMessage(text: textMessage)
+
+		textField.text = ""
+		return true
 	}
 }

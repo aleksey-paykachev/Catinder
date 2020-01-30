@@ -66,6 +66,15 @@ class DataManager {
 			completion(self.demoMessages, nil)
 		}
 	}
+	
+	func addMessage(forConversationWith collocutorUid: String, completion: ((Bool?, Error?) -> ())? = nil) {
+
+		// Emulate server request
+		let responseDelay = Int.random(in: 500...1500)
+		DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(responseDelay)) {
+			completion?(true, nil)
+		}
+	}
 
 	
 	// MARK: - Likes / dislikes
