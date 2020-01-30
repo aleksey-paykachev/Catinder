@@ -61,6 +61,7 @@
 		5BD8BE9623C687C900D9943B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8BE9523C687C900D9943B /* DataManager.swift */; };
 		5BD9B09523CFDDC9000E5028 /* CGColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD9B09423CFDDC9000E5028 /* CGColor + Extensions.swift */; };
 		5BFC059923C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC059823C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift */; };
+		5BFDACFE23E301B7006542FA /* ConversationViewControllerFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFDACFD23E301B7006542FA /* ConversationViewControllerFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +121,7 @@
 		5BD8BE9523C687C900D9943B /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		5BD9B09423CFDDC9000E5028 /* CGColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGColor + Extensions.swift"; sourceTree = "<group>"; };
 		5BFC059823C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorFieldTableViewCell.swift; sourceTree = "<group>"; };
+		5BFDACFD23E301B7006542FA /* ConversationViewControllerFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewControllerFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,6 +339,7 @@
 			isa = PBXGroup;
 			children = (
 				5BC4194E23DB321F00E98AA9 /* ConversationViewController.swift */,
+				5BFDACFD23E301B7006542FA /* ConversationViewControllerFlowLayout.swift */,
 				5BC4195423DB3AFE00E98AA9 /* ConversationMessageCell.swift */,
 			);
 			path = Conversation;
@@ -490,6 +493,7 @@
 				5BC4194A23DB2A5D00E98AA9 /* UICollectionViewController.swift in Sources */,
 				5B139E7F23B7853000BE73E7 /* CardView.swift in Sources */,
 				5B956FAC23D4289B008A53B6 /* CatinderPrimaryTextButton.swift in Sources */,
+				5BFDACFE23E301B7006542FA /* ConversationViewControllerFlowLayout.swift in Sources */,
 				5BC68D5C23BF29E500DE9E82 /* CatinderPageControl.swift in Sources */,
 				5BD54E1723D5077E004A0AA2 /* VerticalStackView.swift in Sources */,
 				5BAE16FB23D95839007D3EA4 /* CatinderNavigationController.swift in Sources */,

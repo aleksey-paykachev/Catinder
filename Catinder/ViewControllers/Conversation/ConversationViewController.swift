@@ -13,7 +13,7 @@ class ConversationViewController: UICollectionViewController {
 	
 	private let dataManager: DataManager
 	
-	private let collectionViewFlowLayout = UICollectionViewFlowLayout()
+	private let collectionViewFlowLayout = ConversationViewControllerFlowLayout()
 	private let cellReuseId = "ConversationMessageCell"
 	private let newMessageTextField = UITextField()
 
