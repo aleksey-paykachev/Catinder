@@ -15,10 +15,36 @@ class ConversationViewController: UICollectionViewController {
 	
 	private let collectionViewFlowLayout = ConversationViewControllerFlowLayout()
 	private let cellReuseId = "ConversationMessageCell"
-	private let newMessageTextField = UITextField()
 
 	private let viewModel: ConversationViewModel
 	private var messages: [ConversationMessageViewModel] = []
+	
+	#warning("Move to separate class")
+	lazy var textInputView: UIView = {
+		let textInputView = UIView()
+		textInputView.frame.size.height = 50
+		textInputView.backgroundColor = .white
+		textInputView.layer.setShadow(size: 1, offsetY: -1, alpha: 0.1)
+		
+		// text view
+		let newMessageTextView = UITextView()
+		newMessageTextView.isScrollEnabled = false
+		newMessageTextView.clipsToBounds = false
+		newMessageTextView.layer.setShadow(size: 2, alpha: 0.2)
+
+		// send button
+		let sendButton = UIButton(type: .system)
+		#warning("Add real send button image.")
+		sendButton.setTitle(">", for: .normal)
+		sendButton.constrainWidth(to: 20)
+		
+		// stack
+		let stack = HorizontalStackView([newMessageTextView, sendButton], spacing: 10)
+		textInputView.addSubview(stack)
+		stack.constrainToSuperview(paddings: .all(10), respectSafeArea: false)
+
+		return textInputView
+	}()
 	
 	
 	// MARK: - Init
@@ -31,7 +57,6 @@ class ConversationViewController: UICollectionViewController {
 		setupNavigationBar()
 		setupCollectionViewLayout()
 		setupCollectionView()
-		setupNewMessageTextField()
 		
 		loadData()
 	}
@@ -61,14 +86,18 @@ class ConversationViewController: UICollectionViewController {
 		collectionView.backgroundColor = .lightGray
 		collectionView.alwaysBounceVertical = true
 		collectionView.register(ConversationMessageCell.self, forCellWithReuseIdentifier: cellReuseId)
+		
+		// hide keyboard on tap
+		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+		view.addGestureRecognizer(tapGestureRecognizer)
 	}
 	
-	private func setupNewMessageTextField() {
-		newMessageTextField.backgroundColor = .red
-		newMessageTextField.delegate = self
-		
-		view.addSubview(newMessageTextField)
-		newMessageTextField.constrainToSuperview(anchors: [.leading, .trailing, .bottom], respectSafeArea: false)
+	override var inputAccessoryView: UIView? {
+		textInputView
+	}
+	
+	override var canBecomeFirstResponder: Bool {
+		true
 	}
 	
 	
@@ -95,7 +124,7 @@ class ConversationViewController: UICollectionViewController {
 	
 	// MARK: - Methods
 	
-	func addMessage(text: String) {
+	private func addMessage(text: String) {
 		let sender = Bool.random() ? ConversationMessageViewModel.Sender.user : .collocutor
 
 		let message = ConversationMessageViewModel(sender: sender, messageText: text)
@@ -105,6 +134,10 @@ class ConversationViewController: UICollectionViewController {
 		
 		#warning("Set 'sended' status for sended messages.")
 		dataManager.addMessage(forConversationWith: "")
+	}
+	
+	@objc private func hideKeyboard() {
+		print("Hide keyboard")
 	}
 }
 
