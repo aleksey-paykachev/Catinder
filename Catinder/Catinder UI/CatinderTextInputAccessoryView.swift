@@ -44,6 +44,7 @@ class CatinderTextInputAccessoryView: UIView {
 	
 	private func setupSubviews() {
 		// text view
+		textInputTextView.delegate = self
 		textInputTextView.isScrollEnabled = false
 		textInputTextView.clipsToBounds = false
 		textInputTextView.layer.setShadow(size: 2, alpha: 0.2)
@@ -62,9 +63,19 @@ class CatinderTextInputAccessoryView: UIView {
 	}
 	
 	@objc private func sendButtonDidTapped() {
-		guard let text = textInputTextView.text?.trimmingCharacters(in: .whitespacesAndNewlines), text.isNotEmpty else { return }
+		guard let text = textInputTextView.text?.trimmed, text.isNotEmpty else { return }
 
 		textInputTextView.text = ""
+		sendButton.isEnabled = false
 		delegate?.sendButtonDidTapped(with: text)
+	}
+}
+
+
+// MARK: - UITextViewDelegate
+
+extension CatinderTextInputAccessoryView: UITextViewDelegate {
+	func textViewDidChange(_ textView: UITextView) {
+		sendButton.isEnabled = textView.text.trimmed.isNotEmpty
 	}
 }
