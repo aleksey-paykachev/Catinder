@@ -32,6 +32,7 @@ class ConversationViewController: UICollectionViewController {
 		setupCollectionViewLayout()
 		setupCollectionView()
 		setupSubviews()
+		setupGestures()
 		
 		loadData()
 	}
@@ -61,14 +62,16 @@ class ConversationViewController: UICollectionViewController {
 		collectionView.backgroundColor = .lightGray
 		collectionView.alwaysBounceVertical = true
 		collectionView.register(ConversationMessageCell.self, forCellWithReuseIdentifier: cellReuseId)
-		
-		// hide keyboard on tap
-		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-		view.addGestureRecognizer(tapGestureRecognizer)
 	}
 	
 	private func setupSubviews() {
 		textInputAccessoryView.delegate = self
+	}
+	
+	private func setupGestures() {
+		// hide keyboard on tap
+		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+		view.addGestureRecognizer(tapGestureRecognizer)
 	}
 	
 	override var inputAccessoryView: UIView? {
@@ -116,7 +119,7 @@ class ConversationViewController: UICollectionViewController {
 	}
 	
 	@objc private func hideKeyboard() {
-		print("Hide keyboard")
+		textInputAccessoryView.hideKeyboard()
 	}
 }
 

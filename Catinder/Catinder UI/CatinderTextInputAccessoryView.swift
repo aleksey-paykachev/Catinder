@@ -34,6 +34,13 @@ class CatinderTextInputAccessoryView: UIView {
 	}
 	
 	
+	// MARK: - API
+	
+	func hideKeyboard() {
+		textInputTextView.resignFirstResponder()
+	}
+	
+	
 	// MARK: - Setup
 	
 	private func setupView() {
