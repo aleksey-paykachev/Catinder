@@ -28,6 +28,7 @@
 		5B37744523CE767400698427 /* PhotoSelectorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37744423CE767400698427 /* PhotoSelectorButton.swift */; };
 		5B37744723CE769A00698427 /* PhotosSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37744623CE769A00698427 /* PhotosSelectorViewController.swift */; };
 		5B3BCA0F23E0356500092DD5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3BCA0E23E0356500092DD5 /* Message.swift */; };
+		5B41EBE123E5916700D99CA6 /* CatinderTextInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41EBE023E5916700D99CA6 /* CatinderTextInputAccessoryView.swift */; };
 		5B457F4E23D7DAE300A630F9 /* LastMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B457F4D23D7DAE300A630F9 /* LastMessagesViewController.swift */; };
 		5B457F5123D7F0BD00A630F9 /* LastMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B457F5023D7F0BD00A630F9 /* LastMessageCell.swift */; };
 		5B5430AA23DEC3C5000F9F81 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5430A923DEC3C5000F9F81 /* NetworkManager.swift */; };
@@ -88,6 +89,7 @@
 		5B37744423CE767400698427 /* PhotoSelectorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorButton.swift; sourceTree = "<group>"; };
 		5B37744623CE769A00698427 /* PhotosSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosSelectorViewController.swift; sourceTree = "<group>"; };
 		5B3BCA0E23E0356500092DD5 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		5B41EBE023E5916700D99CA6 /* CatinderTextInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderTextInputAccessoryView.swift; sourceTree = "<group>"; };
 		5B457F4D23D7DAE300A630F9 /* LastMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastMessagesViewController.swift; sourceTree = "<group>"; };
 		5B457F5023D7F0BD00A630F9 /* LastMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastMessageCell.swift; sourceTree = "<group>"; };
 		5B5430A923DEC3C5000F9F81 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				5B875FE923DC026A00408EDC /* Navigation */,
 				5BD54E1223D505F9004A0AA2 /* Buttons */,
 				5BC68D5B23BF29E500DE9E82 /* CatinderPageControl.swift */,
+				5B41EBE023E5916700D99CA6 /* CatinderTextInputAccessoryView.swift */,
 			);
 			path = "Catinder UI";
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				5BC4194F23DB321F00E98AA9 /* ConversationViewController.swift in Sources */,
 				5B3BCA0F23E0356500092DD5 /* Message.swift in Sources */,
 				5B139E7D23B7851700BE73E7 /* BottomMenuView.swift in Sources */,
+				5B41EBE123E5916700D99CA6 /* CatinderTextInputAccessoryView.swift in Sources */,
 				5B7FFBC723C2A442009D2854 /* CatinderImageButton.swift in Sources */,
 				5B37744323CE75FA00698427 /* PhotoImagePicker.swift in Sources */,
 				5BC4195523DB3AFE00E98AA9 /* ConversationMessageCell.swift in Sources */,

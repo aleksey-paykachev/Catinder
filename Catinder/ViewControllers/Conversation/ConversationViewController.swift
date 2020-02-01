@@ -15,36 +15,10 @@ class ConversationViewController: UICollectionViewController {
 	
 	private let collectionViewFlowLayout = ConversationViewControllerFlowLayout()
 	private let cellReuseId = "ConversationMessageCell"
+	private let textInputAccessoryView = CatinderTextInputAccessoryView()
 
 	private let viewModel: ConversationViewModel
 	private var messages: [ConversationMessageViewModel] = []
-	
-	#warning("Move to separate class")
-	lazy var textInputView: UIView = {
-		let textInputView = UIView()
-		textInputView.frame.size.height = 50
-		textInputView.backgroundColor = .white
-		textInputView.layer.setShadow(size: 1, offsetY: -1, alpha: 0.1)
-		
-		// text view
-		let newMessageTextView = UITextView()
-		newMessageTextView.isScrollEnabled = false
-		newMessageTextView.clipsToBounds = false
-		newMessageTextView.layer.setShadow(size: 2, alpha: 0.2)
-
-		// send button
-		let sendButton = UIButton(type: .system)
-		#warning("Add real send button image.")
-		sendButton.setTitle(">", for: .normal)
-		sendButton.constrainWidth(to: 20)
-		
-		// stack
-		let stack = HorizontalStackView([newMessageTextView, sendButton], spacing: 10)
-		textInputView.addSubview(stack)
-		stack.constrainToSuperview(paddings: .all(10), respectSafeArea: false)
-
-		return textInputView
-	}()
 	
 	
 	// MARK: - Init
@@ -57,6 +31,7 @@ class ConversationViewController: UICollectionViewController {
 		setupNavigationBar()
 		setupCollectionViewLayout()
 		setupCollectionView()
+		setupSubviews()
 		
 		loadData()
 	}
@@ -77,7 +52,7 @@ class ConversationViewController: UICollectionViewController {
 	}
 	
 	private func setupCollectionViewLayout() {
-		collectionViewFlowLayout.scrollDirection = .horizontal
+		collectionViewFlowLayout.scrollDirection = .vertical
 		let cellMaxWidth = collectionView.bounds.width
 		collectionViewFlowLayout.estimatedItemSize = CGSize(width: cellMaxWidth, height: 0)
 	}
@@ -92,8 +67,12 @@ class ConversationViewController: UICollectionViewController {
 		view.addGestureRecognizer(tapGestureRecognizer)
 	}
 	
+	private func setupSubviews() {
+		textInputAccessoryView.delegate = self
+	}
+	
 	override var inputAccessoryView: UIView? {
-		textInputView
+		textInputAccessoryView
 	}
 	
 	override var canBecomeFirstResponder: Bool {
@@ -161,16 +140,10 @@ extension ConversationViewController {
 }
 
 
-// MARK: - UITextFieldDelegate
+// MARK: - CatinderTextInputAccessoryViewDelegate
 
-extension ConversationViewController: UITextFieldDelegate {
-
-	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-		guard let textMessage = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines), textMessage.isNotEmpty else { return false }
-
-		addMessage(text: textMessage)
-
-		textField.text = ""
-		return true
+extension ConversationViewController: CatinderTextInputAccessoryViewDelegate {
+	func sendButtonDidTapped(with text: String) {
+		addMessage(text: text)
 	}
 }
