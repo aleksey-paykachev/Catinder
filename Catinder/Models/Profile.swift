@@ -25,6 +25,15 @@ struct Profile: Decodable {
 }
 
 
+// MARK: - Equatable
+
+extension Profile: Equatable {
+	static func == (lhs: Self, rhs: Self) -> Bool {
+		lhs.uid == rhs.uid
+	}
+}
+
+
 // MARK: - CardViewModelRepresentable
 
 extension Profile: CardViewModelRepresentable {
