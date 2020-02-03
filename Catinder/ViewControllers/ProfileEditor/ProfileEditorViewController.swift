@@ -11,7 +11,7 @@ import UIKit
 class ProfileEditorViewController: UITableViewController {
 	
 	private let dataManager: DataManager
-	private var userProfile: CatProfile?
+	private var userProfile: Profile?
 	private let sections: [Section] = [.photos, .name, .age, .description]
 	
 	// MARK: - Init
@@ -53,7 +53,7 @@ class ProfileEditorViewController: UITableViewController {
 	// MARK: - Load data
 	
 	private func loadData() {
-		userProfile = AuthenticationManager.shared.loggedInUser as? CatProfile
+		userProfile = AuthenticationManager.shared.loggedInUser
 	}
 	
 	

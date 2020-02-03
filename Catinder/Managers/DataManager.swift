@@ -24,11 +24,11 @@ class DataManager {
 	
 	// MARK: - Profiles
 	
-	func getAllProfiles(completion: @escaping ([CatProfile]?, Error?) -> ()) {
+	func getAllProfiles(completion: @escaping ([Profile]?, Error?) -> ()) {
 		parseDataFromNetwork(for: "profiles", completion: completion)
 	}
 	
-	func getProfile(by uid: String, completion: @escaping (CatProfile?, Error?) -> ()) {
+	func getProfile(by uid: String, completion: @escaping (Profile?, Error?) -> ()) {
 		parseDataFromNetwork(for: "profile/\(uid)", completion: completion)
 	}
 	
@@ -149,8 +149,8 @@ class DataManager {
 	private var demoMatches: [Match] {
 		guard let user = AuthenticationManager.shared.loggedInUser else { return [] }
 
-		let marusia = CatProfile(uid: "1", name: "Маруся", age: 4, breed: .unknown, photosNames: ["Cat_Marusia"], description: "")
-		let stray = CatProfile(uid: "2", name: "Мамочка", age: 3, breed: .unknown, photosNames: ["Cat_Stray"], description: "")
+		let marusia = Profile(uid: "1", name: "Маруся", age: 4, photosNames: ["Cat_Marusia"], description: "")
+		let stray = Profile(uid: "2", name: "Мамочка", age: 3, photosNames: ["Cat_Stray"], description: "")
 		
 		let message = Message(date: Date(), senderUid: "2", receiverUid: "1", text: "Привет.")
 

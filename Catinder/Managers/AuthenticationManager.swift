@@ -19,7 +19,7 @@ class AuthenticationManager {
 		// get logged-in user data from network
 		// ...
 		
-		loggedInUser = CatProfile(uid: "F59C2433-B0F5-4A84-B017-2212C1CFA7ED", name: "Me", age: 5, breed: .unknown, photosNames: ["Cat_Bob_3"], description: "Description")
+		loggedInUser = Profile(uid: "F59C2433-B0F5-4A84-B017-2212C1CFA7ED", name: "Me", age: 5, photosNames: ["Cat_Bob_3"], description: "Description")
 		
 		return true
 	}

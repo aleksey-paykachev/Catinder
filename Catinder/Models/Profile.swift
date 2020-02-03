@@ -2,21 +2,48 @@
 //  Profile.swift
 //  Catinder
 //
-//  Created by Aleksey on 09/01/2020.
-//  Copyright © 2020 Aleksey Paykachev. All rights reserved.
+//  Created by Aleksey on 28/12/2019.
+//  Copyright © 2019 Aleksey Paykachev. All rights reserved.
 //
 
 import Foundation
 
-protocol Profile {
-	var uid: String { get }
-	var name: String { get }
-	var photoName: String { get }
-	var description: String { get }
+struct Profile: Decodable {
+	let uid: String
+	let name: String
+	let age: Int
+	let photosNames: [String]
+	let description: String
+	
+	var photoName: String {
+		photosNames.first ?? ""
+	}
+	
+	var shortDescription: String {
+		description.count > 120 ? description.prefix(100).appending("...") : description
+	}
 }
 
-extension Profile {
-	var shortDescription: String {
-		return description.count > 120 ? description.prefix(100).appending("...") : description
+
+// MARK: - CardViewModelRepresentable
+
+extension Profile: CardViewModelRepresentable {
+	var cardViewModel: CardViewModel {
+		CardViewModel(cardId: uid,
+					  imagesNames: photosNames,
+					  headerText: "\(name), \(age)",
+					  titleText: "-----",
+					  subtitleText: shortDescription)
+	}
+}
+
+
+// MARK: - ProfileViewModelRepresentable
+
+extension Profile: ProfileViewModelRepresentable {
+	var profileViewModel: ProfileViewModel {
+		ProfileViewModel(name: name,
+						 description: description,
+						 photosNames: photosNames)
 	}
 }

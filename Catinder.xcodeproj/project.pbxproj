@@ -21,7 +21,6 @@
 		5B139E8123B7873200BE73E7 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */; };
 		5B197FF223D67C0E006DFB9E /* MatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B197FF123D67C0E006DFB9E /* MatchViewModel.swift */; };
 		5B197FF423D6966D006DFB9E /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B197FF323D6966D006DFB9E /* GradientView.swift */; };
-		5B19E00823BA4A9100E90F56 /* DogProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B19E00723BA4A9100E90F56 /* DogProfile.swift */; };
 		5B244CA623BF9AB60099B975 /* UIStackView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */; };
 		5B2DBA7523B9DA5900BACB52 /* CardsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */; };
 		5B37744323CE75FA00698427 /* PhotoImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37744223CE75FA00698427 /* PhotoImagePicker.swift */; };
@@ -43,8 +42,7 @@
 		5B81A26823D7F28100565F4A /* LastMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81A26723D7F28100565F4A /* LastMessageViewModel.swift */; };
 		5B875FE523DC00E200408EDC /* ConversationMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875FE423DC00E200408EDC /* ConversationMessageViewModel.swift */; };
 		5B875FE723DC00F900408EDC /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B875FE623DC00F900408EDC /* ConversationViewModel.swift */; };
-		5B8B1D8D23B7C57F00543F20 /* CatProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B1D8C23B7C57F00543F20 /* CatProfile.swift */; };
-		5B8B1D8F23B7C59000543F20 /* CatBreed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B1D8E23B7C59000543F20 /* CatBreed.swift */; };
+		5B8B1D8D23B7C57F00543F20 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B1D8C23B7C57F00543F20 /* Profile.swift */; };
 		5B8FB3D923BE946600041B23 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8FB3D823BE946600041B23 /* CardViewModel.swift */; };
 		5B956FAC23D4289B008A53B6 /* CatinderPrimaryTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B956FAB23D4289B008A53B6 /* CatinderPrimaryTextButton.swift */; };
 		5B96C7FD23BE713A00BFB4D0 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B96C7FC23BE713A00BFB4D0 /* Angle.swift */; };
@@ -59,7 +57,6 @@
 		5BD54E1123D50381004A0AA2 /* CatinderSecondaryTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD54E1023D50381004A0AA2 /* CatinderSecondaryTextButton.swift */; };
 		5BD54E1523D5075A004A0AA2 /* HorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD54E1423D5075A004A0AA2 /* HorizontalStackView.swift */; };
 		5BD54E1723D5077E004A0AA2 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD54E1623D5077E004A0AA2 /* VerticalStackView.swift */; };
-		5BD8BE9423C686CB00D9943B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8BE9323C686CB00D9943B /* Profile.swift */; };
 		5BD8BE9623C687C900D9943B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8BE9523C687C900D9943B /* DataManager.swift */; };
 		5BD9B09523CFDDC9000E5028 /* CGColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD9B09423CFDDC9000E5028 /* CGColor + Extensions.swift */; };
 		5BE56BB723E8BD59000374C2 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE56BB623E8BD59000374C2 /* AuthenticationManager.swift */; };
@@ -84,7 +81,6 @@
 		5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		5B197FF123D67C0E006DFB9E /* MatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewModel.swift; sourceTree = "<group>"; };
 		5B197FF323D6966D006DFB9E /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
-		5B19E00723BA4A9100E90F56 /* DogProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogProfile.swift; sourceTree = "<group>"; };
 		5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extensions.swift"; sourceTree = "<group>"; };
 		5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsStackView.swift; sourceTree = "<group>"; };
 		5B37744223CE75FA00698427 /* PhotoImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoImagePicker.swift; sourceTree = "<group>"; };
@@ -106,8 +102,7 @@
 		5B81A26723D7F28100565F4A /* LastMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastMessageViewModel.swift; sourceTree = "<group>"; };
 		5B875FE423DC00E200408EDC /* ConversationMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationMessageViewModel.swift; sourceTree = "<group>"; };
 		5B875FE623DC00F900408EDC /* ConversationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
-		5B8B1D8C23B7C57F00543F20 /* CatProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatProfile.swift; sourceTree = "<group>"; };
-		5B8B1D8E23B7C59000543F20 /* CatBreed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreed.swift; sourceTree = "<group>"; };
+		5B8B1D8C23B7C57F00543F20 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		5B8FB3D823BE946600041B23 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		5B956FAB23D4289B008A53B6 /* CatinderPrimaryTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderPrimaryTextButton.swift; sourceTree = "<group>"; };
 		5B96C7FC23BE713A00BFB4D0 /* Angle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
@@ -122,7 +117,6 @@
 		5BD54E1023D50381004A0AA2 /* CatinderSecondaryTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderSecondaryTextButton.swift; sourceTree = "<group>"; };
 		5BD54E1423D5075A004A0AA2 /* HorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalStackView.swift; sourceTree = "<group>"; };
 		5BD54E1623D5077E004A0AA2 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
-		5BD8BE9323C686CB00D9943B /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		5BD8BE9523C687C900D9943B /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		5BD9B09423CFDDC9000E5028 /* CGColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGColor + Extensions.swift"; sourceTree = "<group>"; };
 		5BE56BB623E8BD59000374C2 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
@@ -323,10 +317,7 @@
 		5B8B1D9023B7C5A100543F20 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5BD8BE9323C686CB00D9943B /* Profile.swift */,
-				5B8B1D8C23B7C57F00543F20 /* CatProfile.swift */,
-				5B8B1D8E23B7C59000543F20 /* CatBreed.swift */,
-				5B19E00723BA4A9100E90F56 /* DogProfile.swift */,
+				5B8B1D8C23B7C57F00543F20 /* Profile.swift */,
 				5B04923E23D69F9400639802 /* RelationshipDecision.swift */,
 				5B72293323E07063003B6BD4 /* Match.swift */,
 				5B3BCA0E23E0356500092DD5 /* Message.swift */,
@@ -453,8 +444,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B19E00823BA4A9100E90F56 /* DogProfile.swift in Sources */,
-				5BD8BE9423C686CB00D9943B /* Profile.swift in Sources */,
 				5BC4194F23DB321F00E98AA9 /* ConversationViewController.swift in Sources */,
 				5B3BCA0F23E0356500092DD5 /* Message.swift in Sources */,
 				5B139E7D23B7851700BE73E7 /* BottomMenuView.swift in Sources */,
@@ -467,7 +456,7 @@
 				5B2DBA7523B9DA5900BACB52 /* CardsStackView.swift in Sources */,
 				5BD54E1523D5075A004A0AA2 /* HorizontalStackView.swift in Sources */,
 				5B7FFBCC23C2AABC009D2854 /* ProfileEditorViewController.swift in Sources */,
-				5B8B1D8D23B7C57F00543F20 /* CatProfile.swift in Sources */,
+				5B8B1D8D23B7C57F00543F20 /* Profile.swift in Sources */,
 				5B5A9D7223D1422F00C7FF85 /* MatchSplashScreenViewController.swift in Sources */,
 				5B875FE723DC00F900408EDC /* ConversationViewModel.swift in Sources */,
 				5BC4194D23DB2C1800E98AA9 /* UITableViewController.swift in Sources */,
@@ -479,7 +468,6 @@
 				5B197FF423D6966D006DFB9E /* GradientView.swift in Sources */,
 				5B81A26823D7F28100565F4A /* LastMessageViewModel.swift in Sources */,
 				5B5430AA23DEC3C5000F9F81 /* NetworkManager.swift in Sources */,
-				5B8B1D8F23B7C59000543F20 /* CatBreed.swift in Sources */,
 				5B457F5123D7F0BD00A630F9 /* LastMessageCell.swift in Sources */,
 				5B07A50C23D13A6500122190 /* Collection + Extensions.swift in Sources */,
 				5BD54E1123D50381004A0AA2 /* CatinderSecondaryTextButton.swift in Sources */,
