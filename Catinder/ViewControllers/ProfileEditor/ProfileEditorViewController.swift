@@ -53,7 +53,7 @@ class ProfileEditorViewController: UITableViewController {
 	// MARK: - Load data
 	
 	private func loadData() {
-		userProfile = dataManager.loggedInUser as? CatProfile
+		userProfile = AuthenticationManager.shared.loggedInUser as? CatProfile
 	}
 	
 	

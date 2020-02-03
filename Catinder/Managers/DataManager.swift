@@ -22,17 +22,6 @@ class DataManager {
 	private init() { } 	// Singleton
 	
 	
-	// MARK: - Auth
-	
-	var loggedInUserUid: String {
-		return "Logged-In-User-Uid"
-	}
-	
-	var loggedInUser: Profile {
-		return CatProfile(uid: loggedInUserUid, name: "Me", age: 5, breed: .unknown, photosNames: [], description: "Description")
-	}
-
-	
 	// MARK: - Profiles
 	
 	func getAllProfiles(completion: @escaping ([CatProfile]?, Error?) -> ()) {
@@ -107,7 +96,7 @@ class DataManager {
 	}
 	
 	
-	// MARK: - Network
+	// MARK: - Parser
 	
 	private func parseDataFromNetwork<T: Decodable>(for resource: String, completion: @escaping (T?, Error?) -> ()) {
 		
@@ -158,7 +147,8 @@ class DataManager {
 	]
 	
 	private var demoMatches: [Match] {
-		let user = DataManager.shared.loggedInUser
+		guard let user = AuthenticationManager.shared.loggedInUser else { return [] }
+
 		let marusia = CatProfile(uid: "1", name: "Маруся", age: 4, breed: .unknown, photosNames: ["Cat_Marusia"], description: "")
 		let stray = CatProfile(uid: "2", name: "Мамочка", age: 3, breed: .unknown, photosNames: ["Cat_Stray"], description: "")
 		

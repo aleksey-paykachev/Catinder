@@ -62,6 +62,7 @@
 		5BD8BE9423C686CB00D9943B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8BE9323C686CB00D9943B /* Profile.swift */; };
 		5BD8BE9623C687C900D9943B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8BE9523C687C900D9943B /* DataManager.swift */; };
 		5BD9B09523CFDDC9000E5028 /* CGColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD9B09423CFDDC9000E5028 /* CGColor + Extensions.swift */; };
+		5BE56BB723E8BD59000374C2 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE56BB623E8BD59000374C2 /* AuthenticationManager.swift */; };
 		5BFC059923C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC059823C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift */; };
 		5BFDACFE23E301B7006542FA /* ConversationViewControllerFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFDACFD23E301B7006542FA /* ConversationViewControllerFlowLayout.swift */; };
 /* End PBXBuildFile section */
@@ -124,6 +125,7 @@
 		5BD8BE9323C686CB00D9943B /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		5BD8BE9523C687C900D9943B /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		5BD9B09423CFDDC9000E5028 /* CGColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGColor + Extensions.swift"; sourceTree = "<group>"; };
+		5BE56BB623E8BD59000374C2 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		5BFC059823C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorFieldTableViewCell.swift; sourceTree = "<group>"; };
 		5BFDACFD23E301B7006542FA /* ConversationViewControllerFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewControllerFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -374,6 +376,7 @@
 		5BD8BE9723C687F800D9943B /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				5BE56BB623E8BD59000374C2 /* AuthenticationManager.swift */,
 				5BD8BE9523C687C900D9943B /* DataManager.swift */,
 				5B5430A923DEC3C5000F9F81 /* NetworkManager.swift */,
 			);
@@ -459,6 +462,7 @@
 				5B7FFBC723C2A442009D2854 /* CatinderImageButton.swift in Sources */,
 				5B37744323CE75FA00698427 /* PhotoImagePicker.swift in Sources */,
 				5BC4195523DB3AFE00E98AA9 /* ConversationMessageCell.swift in Sources */,
+				5BE56BB723E8BD59000374C2 /* AuthenticationManager.swift in Sources */,
 				5B37744523CE767400698427 /* PhotoSelectorButton.swift in Sources */,
 				5B2DBA7523B9DA5900BACB52 /* CardsStackView.swift in Sources */,
 				5BD54E1523D5075A004A0AA2 /* HorizontalStackView.swift in Sources */,

@@ -73,9 +73,8 @@ class CardsViewerViewController: UIViewController {
 		#warning("Do not use network for presenting match screen.")
 		dataManager.getProfile(by: profileId) { profile, error in
 			guard let profile = profile else { return }
-			let userPhotoName = self.dataManager.loggedInUser.photoName
 
-			let matchViewModel = MatchViewModel(userProfileImageName: userPhotoName, matchedProfileName: profile.name, matchedProfileImageName: profile.photoName)
+			let matchViewModel = MatchViewModel(matchedProfileName: profile.name, matchedProfileImageName: profile.photoName)
 			let matchSplashScreenViewController = MatchSplashScreenViewController(viewModel: matchViewModel)
 			
 			self.addChild(matchSplashScreenViewController)

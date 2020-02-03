@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		window?.makeKeyAndVisible()
 		
+		#warning("Move auth logic from app delegate.")
+		AuthenticationManager.shared.login(with: "login", password: "password")
 		return true
 	}
 }

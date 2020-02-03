@@ -17,7 +17,7 @@ struct Match {
 
 extension Match: LastMessageViewModelRepresentable {
 	var lastMessageViewModel: LastMessageViewModel {
-		let matchedProfile = profile1.uid == DataManager.shared.loggedInUserUid ? profile2 : profile1
+		let matchedProfile = profile1.uid == AuthenticationManager.shared.loggedInUser?.uid ? profile2 : profile1
 		
 		return LastMessageViewModel(profileName: matchedProfile.name, profileImageName: matchedProfile.photoName, message: lastMessage?.text ?? "")
 	}

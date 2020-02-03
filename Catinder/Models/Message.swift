@@ -22,7 +22,7 @@ extension Message: ConversationMessageViewModelRepresentable {
 	
 	var conversationMessageViewModel: ConversationMessageViewModel {
 		let sender: ConversationMessageViewModel.Sender =
-			senderUid == DataManager.shared.loggedInUserUid ? .user : .collocutor
+		senderUid == AuthenticationManager.shared.loggedInUser?.uid ? .user : .collocutor
 		
 		return ConversationMessageViewModel(sender: sender, messageText: text)
 	}
