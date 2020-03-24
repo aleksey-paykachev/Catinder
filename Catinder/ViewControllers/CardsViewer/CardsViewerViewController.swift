@@ -85,13 +85,13 @@ class CardsViewerViewController: UIViewController {
 
 extension CardsViewerViewController: TopMenuActionsDelegate {
 	func profileButtonDidPressed() {
-		let profileEditorViewController = ProfileEditorViewController()
-		navigationController?.pushViewController(profileEditorViewController, animated: true)
+		let profileEditorVC = ProfileEditorViewController()
+		navigationController?.pushViewController(profileEditorVC, animated: true)
 	}
 	
 	func messagesButtonDidPressed() {
-		let lastMessagesViewController = LastMessagesViewController()
-		navigationController?.pushViewController(lastMessagesViewController, animated: true)
+		let lastMessagesVC = LastMessagesViewController()
+		navigationController?.pushViewController(lastMessagesVC, animated: true)
 	}
 }
 
@@ -122,22 +122,13 @@ extension CardsViewerViewController: BotomMenuActionsDelegate {
 extension CardsViewerViewController: CardsStackViewDelegate {
 	
 	func showMoreInfoButtonDidPressed(for cardId: String) {
-		#warning("Don't perform network request. Use local data.")
-		dataManager.getProfile(by: cardId) { profile, error in
-			if let error = error {
-				print(error.localizedDescription)
-				return
-			}
-			
-			guard let profileViewModel = profile?.profileViewModel else { return }
-
-			let profileViewerViewController = ProfileViewerViewController(viewModel: profileViewModel)
-			self.present(profileViewerViewController, animated: true)
-		}
+		guard let profile = profiles.first(where: { $0.uid == cardId }) else { return }
+		
+		let profileViewerVC = ProfileViewerViewController(viewModel: profile.profileViewModel)
+		present(profileViewerVC, animated: true)
 	}
 	
 	func cardDidSwiped(cardId: String, decision: RelationshipDecision) {
-		
 		switch decision {
 		case .dislike:
 			dataManager.setDislike(to: cardId) { error in
