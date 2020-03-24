@@ -12,7 +12,8 @@ class CardsViewerViewController: UIViewController {
 
 	private let dataManager: DataManager
 	private let cardsStackView = CardsStackView()
-	
+	private var profiles: [Profile] = []
+
 	init(dataManager: DataManager = .shared) {
 		self.dataManager = dataManager
 		super.init(nibName: nil, bundle: nil)
@@ -41,9 +42,7 @@ class CardsViewerViewController: UIViewController {
 		
 		// main stack
 		let subviews = [topMenuView, cardsStackView, bottomMenuView]
-		let stackView = UIStackView(arrangedSubviews: subviews)
-		stackView.axis = .vertical
-		stackView.spacing = 12
+		let stackView = VerticalStackView(subviews, spacing: 12)
 		
 		view.addSubview(stackView)
 		stackView.constrainToSuperview(paddings: .vertical(6) + .horizontal(12))
@@ -62,24 +61,22 @@ class CardsViewerViewController: UIViewController {
 				return
 			}
 
-			let cardViewModelRepresentables = profiles as? [CardViewModelRepresentable] ?? []
-			self.cardsStackView.add(cardViewModelRepresentables)
+			self.profiles = profiles ?? []
+			self.cardsStackView.add(profiles ?? [])
 		}
 	}
-	
-	private func showMatchSplashScreen(for profileId: String) {
-		#warning("Prevent multiple splash screen appearance.")
 		
-		#warning("Do not use network for presenting match screen.")
-		dataManager.getProfile(by: profileId) { profile, error in
-			guard let profile = profile else { return }
+	private func showMatchSplashScreen(for profileId: String) {
+		// Prevent multiple splash screen appearance.
+		guard !(children.last is MatchSplashScreenViewController) else { return }
+		guard let matchedProfile = profiles.first(where: { $0.uid == profileId }) else { return }
 
-			let matchViewModel = MatchViewModel(matchedProfileName: profile.name, matchedProfileImageName: profile.photoName)
-			let matchSplashScreenViewController = MatchSplashScreenViewController(viewModel: matchViewModel)
-			
-			self.addChild(matchSplashScreenViewController)
-			self.view.addSubview(matchSplashScreenViewController.view)
-		}
+		let matchViewModel = MatchViewModel(matchedProfileName: matchedProfile.name,
+											matchedProfileImageName: matchedProfile.photoName)
+		let matchSplashScreenVC = MatchSplashScreenViewController(viewModel: matchViewModel)
+		
+		addChild(matchSplashScreenVC)
+		view.addSubview(matchSplashScreenVC.view)
 	}
 }
 
@@ -132,7 +129,7 @@ extension CardsViewerViewController: CardsStackViewDelegate {
 				return
 			}
 			
-			guard let profileViewModel = (profile as? ProfileViewModelRepresentable)?.profileViewModel else { return }
+			guard let profileViewModel = profile?.profileViewModel else { return }
 
 			let profileViewerViewController = ProfileViewerViewController(viewModel: profileViewModel)
 			self.present(profileViewerViewController, animated: true)
