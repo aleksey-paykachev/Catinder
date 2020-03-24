@@ -16,9 +16,13 @@ struct Match {
 }
 
 extension Match: LastMessageViewModelRepresentable {
+
 	var lastMessageViewModel: LastMessageViewModel {
-		let matchedProfile = profile1 == AuthenticationManager.shared.loggedInUser ? profile2 : profile1
+		let loggedInProfile = AuthenticationManager.shared.loggedInUser
+		let matchedProfile = profile1 == loggedInProfile ? profile2 : profile1
 		
-		return LastMessageViewModel(profileName: matchedProfile.name, profileImageName: matchedProfile.photoName, message: lastMessage?.text ?? "")
+		return LastMessageViewModel(profileName: matchedProfile.name,
+									profileImageName: matchedProfile.photoName,
+									message: lastMessage?.text ?? "")
 	}
 }

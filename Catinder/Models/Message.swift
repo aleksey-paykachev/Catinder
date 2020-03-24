@@ -21,8 +21,8 @@ struct Message {
 extension Message: ConversationMessageViewModelRepresentable {
 	
 	var conversationMessageViewModel: ConversationMessageViewModel {
-		let sender: ConversationMessageViewModel.Sender =
-		senderUid == AuthenticationManager.shared.loggedInUser?.uid ? .user : .collocutor
+		let loggedInUserUid = AuthenticationManager.shared.loggedInUser?.uid
+		let sender = senderUid == loggedInUserUid ? ConversationMessageViewModel.Sender.user : .collocutor
 		
 		return ConversationMessageViewModel(sender: sender, messageText: text)
 	}

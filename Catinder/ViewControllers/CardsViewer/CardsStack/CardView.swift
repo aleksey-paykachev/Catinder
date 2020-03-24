@@ -227,7 +227,7 @@ class CardView: UIView {
 	}
 	
 	private func updateUI() {
-		imageView.image = viewModel.activeImage
+		imageView.image = viewModel.activeImageName.flatMap { UIImage(named: $0) }
 		activeImagePageControl.currentPage = viewModel.activeImageIndex
 		headerLabel.text = viewModel.headerText
 		titleLabel.text = viewModel.titleText

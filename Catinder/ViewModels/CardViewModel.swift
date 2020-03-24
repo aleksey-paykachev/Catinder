@@ -6,7 +6,7 @@
 //  Copyright © 2020 Aleksey Paykachev. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 protocol CardViewModelRepresentable {
 	var cardViewModel: CardViewModel { get }
@@ -30,14 +30,13 @@ struct CardViewModel {
 	}
 	
 	var imagesCount: Int {
-		return imagesNames.count
+		imagesNames.count
 	}
 	
-	var activeImage: UIImage? {
+	var activeImageName: String? {
 		guard imagesCount > 0 else { return nil }
 		
-		let imageName = imagesNames[activeImageIndex]
-		return UIImage(named: imageName)
+		return imagesNames[activeImageIndex]
 	}
 	
 	mutating func goToPreviousImage() {

@@ -26,7 +26,7 @@ struct ProfileViewModel {
 	}
 	
 	var photosCount: Int {
-		return photosNames.count
+		photosNames.count
 	}
 	
 	var activePhotoName: String? {
