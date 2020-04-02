@@ -20,7 +20,7 @@ extension UICollectionViewController {
 			collectionView.contentInsetAdjustmentBehavior = .never
 			
 			// and take custom navigation bar insets into account
-			collectionView.contentInset.top = navigationBar.height + navigationBar.bottomInset
+//			collectionView.contentInset.top = navigationBar.height + navigationBar.bottomInset
 		}
 	}
 }

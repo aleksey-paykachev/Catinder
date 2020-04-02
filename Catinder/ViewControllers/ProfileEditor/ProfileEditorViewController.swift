@@ -80,17 +80,15 @@ class ProfileEditorViewController: UITableViewController {
 
 extension ProfileEditorViewController {
 	override func numberOfSections(in tableView: UITableView) -> Int {
-		
-		return sections.count
+		sections.count
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return sections[section] == .photos ? 0 : 1
+		sections[section] == .photos ? 0 : 1
 	}
 	
 	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-
-		return sections[section].title
+		sections[section].title
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -107,7 +105,7 @@ extension ProfileEditorViewController {
 	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		
 		if sections[section] == .photos {
-			let photosSelectorViewController = PhotosSelectorViewController()
+			let photosSelectorViewController = ProfilePhotoSelectorViewController(collectionViewLayout: UICollectionViewFlowLayout()) // PhotosSelectorViewController()
 			addChild(photosSelectorViewController)
 
 			return photosSelectorViewController.view
