@@ -18,7 +18,11 @@ extension CALayer {
 	///   - easing: Easing timing function for animation.
 	///   - completion: A block object to be executed when the animation sequence ends.
 	///
-	func animateTransform(to final3dTransformState: CATransform3D, duration: TimeInterval, easing: CAMediaTimingFunctionName = .linear, completion: @escaping () -> ()) {
+	func animateTransform(to final3dTransformState: CATransform3D,
+						  duration: TimeInterval,
+						  reverse: Bool = false,
+						  easing: CAMediaTimingFunctionName = .linear,
+						  completion: @escaping () -> ()) {
 		
 		// setup animation
 		let animation = CABasicAnimation(keyPath: #keyPath(CALayer.transform))
@@ -26,6 +30,7 @@ extension CALayer {
 		animation.fromValue = transform
 		animation.toValue = final3dTransformState
 		animation.timingFunction = CAMediaTimingFunction(name: easing)
+		animation.autoreverses = reverse
 		
 		// fire animation
 		CATransaction.begin()

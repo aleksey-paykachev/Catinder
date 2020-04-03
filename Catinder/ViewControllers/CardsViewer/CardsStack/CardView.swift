@@ -150,7 +150,22 @@ class CardView: UIView {
 		let tapLocation = gesture.location(in: self)
 		let isRightSideDidTapped = tapLocation.x > frame.width / 2
 		
-		isRightSideDidTapped ? viewModel.advanceToNextImage() : viewModel.goToPreviousImage()
+		// try to change to different image if there is one
+		let didChangedToDifferentImage = isRightSideDidTapped ? viewModel.advanceToNextImage() : viewModel.goToPreviousImage()
+
+		// if there is no, rotate card around y-axis a little bit to indicate it
+		if !didChangedToDifferentImage {
+			layer.zPosition = 100 // bring to top to prevent overlapping with bottom cards
+
+			var transform = CATransform3DIdentity
+			transform.m34 = 1 / 800 * (isRightSideDidTapped ? -1 : 1) // 3d-perspective
+			transform = CATransform3DRotate(transform, Angle(7).radians, 0, 1, 0) // rotation
+
+			layer.animateTransform(to: transform, duration: 0.2, reverse: true, easing: .easeOut) {
+				self.layer.transform = CATransform3DIdentity
+				self.layer.zPosition = 0
+			}
+		}
 	}
 	
 	@objc private func handlePanGesture(gesture: UIPanGestureRecognizer) {

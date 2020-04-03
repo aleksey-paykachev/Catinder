@@ -39,11 +39,25 @@ struct CardViewModel {
 		return imagesNames[activeImageIndex]
 	}
 	
-	mutating func goToPreviousImage() {
-		activeImageIndex = max(0, activeImageIndex - 1)
+	@discardableResult mutating func goToPreviousImage() -> Bool {
+		let newImageIndex = max(0, activeImageIndex - 1)
+		
+		if activeImageIndex != newImageIndex {
+			activeImageIndex = newImageIndex
+			return true
+		}
+		
+		return false
 	}
 	
-	mutating func advanceToNextImage() {
-		activeImageIndex = min(imagesCount - 1, activeImageIndex + 1)
+	@discardableResult mutating func advanceToNextImage() -> Bool {
+		let newImageIndex = min(imagesCount - 1, activeImageIndex + 1)
+		
+		if activeImageIndex != newImageIndex {
+			activeImageIndex = newImageIndex
+			return true
+		}
+		
+		return false
 	}
 }
