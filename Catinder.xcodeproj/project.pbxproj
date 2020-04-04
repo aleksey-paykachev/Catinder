@@ -21,6 +21,7 @@
 		5B139E8123B7873200BE73E7 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */; };
 		5B197FF223D67C0E006DFB9E /* MatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B197FF123D67C0E006DFB9E /* MatchViewModel.swift */; };
 		5B197FF423D6966D006DFB9E /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B197FF323D6966D006DFB9E /* GradientView.swift */; };
+		5B1B84CD2438A69300F0091F /* ProfilePhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B84CC2438A69300F0091F /* ProfilePhotoSelectorCell.swift */; };
 		5B244CA623BF9AB60099B975 /* UIStackView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */; };
 		5B2DBA7523B9DA5900BACB52 /* CardsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */; };
 		5B37744323CE75FA00698427 /* PhotoImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37744223CE75FA00698427 /* PhotoImagePicker.swift */; };
@@ -82,6 +83,7 @@
 		5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		5B197FF123D67C0E006DFB9E /* MatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewModel.swift; sourceTree = "<group>"; };
 		5B197FF323D6966D006DFB9E /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		5B1B84CC2438A69300F0091F /* ProfilePhotoSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoSelectorCell.swift; sourceTree = "<group>"; };
 		5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extensions.swift"; sourceTree = "<group>"; };
 		5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsStackView.swift; sourceTree = "<group>"; };
 		5B37744223CE75FA00698427 /* PhotoImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoImagePicker.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 				5B7FFBCB23C2AABC009D2854 /* ProfileEditorViewController.swift */,
 				5BFC059823C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift */,
 				5BF37D4524360A9D00347053 /* ProfilePhotoSelectorViewController.swift */,
+				5B1B84CC2438A69300F0091F /* ProfilePhotoSelectorCell.swift */,
 				5B37744823CE772400698427 /* PhotosSelector */,
 			);
 			path = ProfileEditor;
@@ -495,6 +498,7 @@
 				5B139E8123B7873200BE73E7 /* UIView + Extensions.swift in Sources */,
 				5BC4194A23DB2A5D00E98AA9 /* UICollectionViewController.swift in Sources */,
 				5B139E7F23B7853000BE73E7 /* CardView.swift in Sources */,
+				5B1B84CD2438A69300F0091F /* ProfilePhotoSelectorCell.swift in Sources */,
 				5B41EBE323E5956800D99CA6 /* String + Extensions.swift in Sources */,
 				5B956FAC23D4289B008A53B6 /* CatinderPrimaryTextButton.swift in Sources */,
 				5BFDACFE23E301B7006542FA /* ConversationViewControllerFlowLayout.swift in Sources */,
@@ -641,6 +645,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D2886KUG27;
 				INFOPLIST_FILE = Catinder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -659,6 +664,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D2886KUG27;
 				INFOPLIST_FILE = Catinder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

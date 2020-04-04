@@ -105,7 +105,7 @@ extension ProfileEditorViewController {
 	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		
 		if sections[section] == .photos {
-			let photosSelectorViewController = ProfilePhotoSelectorViewController(collectionViewLayout: UICollectionViewFlowLayout()) // PhotosSelectorViewController()
+			let photosSelectorViewController = ProfilePhotoSelectorViewController()
 			addChild(photosSelectorViewController)
 
 			return photosSelectorViewController.view
