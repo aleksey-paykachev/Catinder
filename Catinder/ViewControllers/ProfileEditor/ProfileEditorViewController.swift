@@ -9,10 +9,31 @@
 import UIKit
 
 class ProfileEditorViewController: UITableViewController {
+	// MARK: - Sections
+	
+	private enum Section: String {
+		case photos = "Фотографии"
+		case name = "Имя"
+		case age = "Возраст"
+		case description = "Описание"
+		
+		var title: String {
+			return rawValue
+		}
+		
+		var placeholder: String {
+			return rawValue
+		}
+	}
+	
+	
+	// MARK: - Properties
 	
 	private let dataManager: DataManager
 	private var userProfile: Profile?
 	private let sections: [Section] = [.photos, .name, .age, .description]
+	private let photoSelectorViewController = ProfilePhotoSelectorViewController()
+	
 	
 	// MARK: - Init
 	
@@ -55,24 +76,6 @@ class ProfileEditorViewController: UITableViewController {
 	private func loadData() {
 		userProfile = AuthenticationManager.shared.loggedInUser
 	}
-	
-	
-	// MARK: - Table sections
-	
-	private enum Section: String {
-		case photos = "Фотографии"
-		case name = "Имя"
-		case age = "Возраст"
-		case description = "Описание"
-		
-		var title: String {
-			return rawValue
-		}
-		
-		var placeholder: String {
-			return rawValue
-		}
-	}
 }
 
 
@@ -104,19 +107,26 @@ extension ProfileEditorViewController {
 extension ProfileEditorViewController {
 	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		
-		if sections[section] == .photos {
-			let photosSelectorViewController = ProfilePhotoSelectorViewController()
-			addChild(photosSelectorViewController)
+		switch sections[section] {
+		case .photos:
+			addChild(photoSelectorViewController)
+			return photoSelectorViewController.view
 
-			return photosSelectorViewController.view
+		default:
+			return nil
 		}
-		
-		return nil
 	}
 	
 	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-		
-		return sections[section] == .photos ? 270 : UITableView.automaticDimension
+
+		switch sections[section] {
+		case .photos:
+			photoSelectorViewController.collectionView.layoutIfNeeded()
+			return photoSelectorViewController.collectionView.contentSize.height
+
+		default:
+			return UITableView.automaticDimension
+		}
 	}
 	
 	override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
