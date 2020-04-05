@@ -172,11 +172,11 @@
 				5B7FFBC923C2A909009D2854 /* ViewModels */,
 				5B139E7823B784E200BE73E7 /* ViewControllers */,
 				5BD8BE9723C687F800D9943B /* Managers */,
+				5B7FFBC823C2A56F009D2854 /* Catinder UI */,
+				5B139E8223B7875D00BE73E7 /* Helpers */,
 				5B139E6D23B777FA00BE73E7 /* Assets.xcassets */,
 				5B139E6F23B777FA00BE73E7 /* LaunchScreen.storyboard */,
 				5B139E7223B777FA00BE73E7 /* Info.plist */,
-				5B7FFBC823C2A56F009D2854 /* Catinder UI */,
-				5B139E8223B7875D00BE73E7 /* Helpers */,
 			);
 			path = Catinder;
 			sourceTree = "<group>";

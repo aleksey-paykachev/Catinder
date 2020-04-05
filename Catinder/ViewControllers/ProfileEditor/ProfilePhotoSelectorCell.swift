@@ -22,12 +22,22 @@ class ProfilePhotoSelectorCell: UICollectionViewCell {
 	
 	private func setup() {
 		contentView.backgroundColor = .white
-		contentView.layer.cornerRadius = 10
-		contentView.layer.borderColor = #colorLiteral(red: 0.862745098, green: 0.862745098, blue: 0.862745098, alpha: 1).cgColor
-		contentView.layer.borderWidth = 1
+//		contentView.layer.cornerRadius = 10
+//		contentView.layer.borderColor = #colorLiteral(red: 0.862745098, green: 0.862745098, blue: 0.862745098, alpha: 1).cgColor
+//		contentView.layer.borderWidth = 1
 		contentView.clipsToBounds = true
+		
+		let borderLayer = CAShapeLayer()
+		borderLayer.strokeColor = UIColor.lightGray.cgColor
+		borderLayer.fillColor = nil
+		borderLayer.lineWidth = 4
+		borderLayer.lineDashPattern = [5, 5]
+		borderLayer.frame = contentView.bounds
+		borderLayer.path = CGPath(rect: contentView.bounds, transform: nil)
+		contentView.layer.addSublayer(borderLayer)
 
-		photoImageView.contentMode = .scaleAspectFill
+		photoImageView.contentMode = .scaleAspectFit // .scaleAspectFill
+		photoImageView.tintColor = .lightGray
 		contentView.addSubview(photoImageView)
 		photoImageView.constrainToSuperview()
 	}
