@@ -64,7 +64,7 @@ class CatinderTextInputAccessoryView: UIView {
 		sendButton.constrainWidth(to: 20)
 		
 		// stack
-		let stack = HorizontalStackView([textInputTextView, sendButton], spacing: 10)
+		let stack = HStackView([textInputTextView, sendButton], spacing: 10)
 		addSubview(stack)
 		stack.constrainToSuperview(paddings: .all(10), respectSafeArea: false)
 	}

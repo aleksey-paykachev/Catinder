@@ -78,7 +78,7 @@ class MatchSplashScreenViewController: UIViewController {
 		setupProfileImageView(matchedProfileImageView)
 		
 		// profiles stack
-		let profilesStack = HorizontalStackView([userProfileImageView, matchedProfileImageView], spacing: 30)		
+		let profilesStack = HStackView([userProfileImageView, matchedProfileImageView], spacing: 30)		
 		
 		// buttons
 		sendMessageButton.constrainHeight(to: 50)
@@ -89,7 +89,7 @@ class MatchSplashScreenViewController: UIViewController {
 		
 		// main stack
 		let mainStackSubviews = [matchTitleLabel, matchDescriptionLabel, profilesStack, sendMessageButton, continueSwipingButton]
-		let mainStack = VerticalStackView(mainStackSubviews, spacing: 10)
+		let mainStack = VStackView(mainStackSubviews, spacing: 10)
 		mainStack.setCustomSpacing(40, after: matchDescriptionLabel)
 		mainStack.setCustomSpacing(40, after: profilesStack)
 		

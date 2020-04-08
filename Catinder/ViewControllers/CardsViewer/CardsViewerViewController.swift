@@ -42,7 +42,7 @@ class CardsViewerViewController: UIViewController {
 		
 		// main stack
 		let subviews = [topMenuView, cardsStackView, bottomMenuView]
-		let stackView = VerticalStackView(subviews, spacing: 12)
+		let stackView = VStackView(subviews, spacing: 12)
 		
 		view.addSubview(stackView)
 		stackView.constrainToSuperview(paddings: .vertical(6) + .horizontal(12))

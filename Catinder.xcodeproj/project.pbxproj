@@ -56,8 +56,8 @@
 		5BC4195523DB3AFE00E98AA9 /* ConversationMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC4195423DB3AFE00E98AA9 /* ConversationMessageCell.swift */; };
 		5BC68D5C23BF29E500DE9E82 /* CatinderPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC68D5B23BF29E500DE9E82 /* CatinderPageControl.swift */; };
 		5BD54E1123D50381004A0AA2 /* CatinderSecondaryTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD54E1023D50381004A0AA2 /* CatinderSecondaryTextButton.swift */; };
-		5BD54E1523D5075A004A0AA2 /* HorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD54E1423D5075A004A0AA2 /* HorizontalStackView.swift */; };
-		5BD54E1723D5077E004A0AA2 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD54E1623D5077E004A0AA2 /* VerticalStackView.swift */; };
+		5BD54E1523D5075A004A0AA2 /* HStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD54E1423D5075A004A0AA2 /* HStackView.swift */; };
+		5BD54E1723D5077E004A0AA2 /* VStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD54E1623D5077E004A0AA2 /* VStackView.swift */; };
 		5BD8BE9623C687C900D9943B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8BE9523C687C900D9943B /* DataManager.swift */; };
 		5BD9B09523CFDDC9000E5028 /* CGColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD9B09423CFDDC9000E5028 /* CGColor + Extensions.swift */; };
 		5BE56BB723E8BD59000374C2 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE56BB623E8BD59000374C2 /* AuthenticationManager.swift */; };
@@ -118,8 +118,8 @@
 		5BC4195423DB3AFE00E98AA9 /* ConversationMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationMessageCell.swift; sourceTree = "<group>"; };
 		5BC68D5B23BF29E500DE9E82 /* CatinderPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderPageControl.swift; sourceTree = "<group>"; };
 		5BD54E1023D50381004A0AA2 /* CatinderSecondaryTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderSecondaryTextButton.swift; sourceTree = "<group>"; };
-		5BD54E1423D5075A004A0AA2 /* HorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalStackView.swift; sourceTree = "<group>"; };
-		5BD54E1623D5077E004A0AA2 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
+		5BD54E1423D5075A004A0AA2 /* HStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStackView.swift; sourceTree = "<group>"; };
+		5BD54E1623D5077E004A0AA2 /* VStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VStackView.swift; sourceTree = "<group>"; };
 		5BD8BE9523C687C900D9943B /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		5BD9B09423CFDDC9000E5028 /* CGColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGColor + Extensions.swift"; sourceTree = "<group>"; };
 		5BE56BB623E8BD59000374C2 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
@@ -364,8 +364,8 @@
 			isa = PBXGroup;
 			children = (
 				5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */,
-				5BD54E1423D5075A004A0AA2 /* HorizontalStackView.swift */,
-				5BD54E1623D5077E004A0AA2 /* VerticalStackView.swift */,
+				5BD54E1423D5075A004A0AA2 /* HStackView.swift */,
+				5BD54E1623D5077E004A0AA2 /* VStackView.swift */,
 			);
 			path = UIStackView;
 			sourceTree = "<group>";
@@ -460,7 +460,7 @@
 				5BE56BB723E8BD59000374C2 /* AuthenticationManager.swift in Sources */,
 				5B37744523CE767400698427 /* PhotoSelectorButton.swift in Sources */,
 				5B2DBA7523B9DA5900BACB52 /* CardsStackView.swift in Sources */,
-				5BD54E1523D5075A004A0AA2 /* HorizontalStackView.swift in Sources */,
+				5BD54E1523D5075A004A0AA2 /* HStackView.swift in Sources */,
 				5B7FFBCC23C2AABC009D2854 /* ProfileEditorViewController.swift in Sources */,
 				5B8B1D8D23B7C57F00543F20 /* Profile.swift in Sources */,
 				5B5A9D7223D1422F00C7FF85 /* MatchSplashScreenViewController.swift in Sources */,
@@ -503,7 +503,7 @@
 				5B956FAC23D4289B008A53B6 /* CatinderPrimaryTextButton.swift in Sources */,
 				5BFDACFE23E301B7006542FA /* ConversationViewControllerFlowLayout.swift in Sources */,
 				5BC68D5C23BF29E500DE9E82 /* CatinderPageControl.swift in Sources */,
-				5BD54E1723D5077E004A0AA2 /* VerticalStackView.swift in Sources */,
+				5BD54E1723D5077E004A0AA2 /* VStackView.swift in Sources */,
 				5BAE16FB23D95839007D3EA4 /* CatinderNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

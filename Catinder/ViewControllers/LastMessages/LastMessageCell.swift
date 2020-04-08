@@ -53,8 +53,8 @@ class LastMessageCell: UICollectionViewCell {
 		messageTextView.textContainer.lineFragmentPadding = 0
 		
 		// distribute all subviews in two stacks
-		let textStack = VerticalStackView([profileNameLabel, messageTextView], spacing: 6, distribution: .fill)
-		let mainStack = HorizontalStackView([profileImageView, textStack], spacing: 14, distribution: .fill)
+		let textStack = VStackView([profileNameLabel, messageTextView], spacing: 6, distribution: .fill)
+		let mainStack = HStackView([profileImageView, textStack], spacing: 14, distribution: .fill)
 		
 		addSubview(mainStack)
 		mainStack.constrainToSuperview(respectSafeArea: false)

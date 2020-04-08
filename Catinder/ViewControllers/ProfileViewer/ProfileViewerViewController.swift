@@ -57,10 +57,10 @@ class ProfileViewerViewController: UIViewController {
 		photoImageView.constrainHeight(to: view.frame.width * 1.2)
 		
 		// text labels
-		let textLabelsStack = VerticalStackView([nameLabel, descriptionLabel], spacing: 12)
+		let textLabelsStack = VStackView([nameLabel, descriptionLabel], spacing: 12)
 		
 		// main stack
-		let mainStackView = VerticalStackView([photoImageView, textLabelsStack], spacing: 16)
+		let mainStackView = VStackView([photoImageView, textLabelsStack], spacing: 16)
 		mainStackView.alignment = .center
 		textLabelsStack.constrainToSuperview(anchors: [.leading, .trailing], paddings: .all(14))
 

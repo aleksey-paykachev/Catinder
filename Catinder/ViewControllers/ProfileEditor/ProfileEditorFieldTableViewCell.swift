@@ -16,6 +16,7 @@ class ProfileEditorFieldTableViewCell: UITableViewCell {
 		let textField = UITextField()
 		textField.placeholder = placeholder
 		textField.keyboardType = keyboardType
+		textField.autocorrectionType = .no
 		contentView.addSubview(textField)
 		textField.constrainToSuperview(paddings: .all(12), respectSafeArea: false)
 	}

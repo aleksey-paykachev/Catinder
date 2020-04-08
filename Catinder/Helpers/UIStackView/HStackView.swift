@@ -1,5 +1,5 @@
 //
-//  VerticalStackView.swift
+//  HStackView.swift
 //  Catinder
 //
 //  Created by Aleksey on 20/01/2020.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class VerticalStackView: UIStackView {
+class HStackView: UIStackView {
 	
-	/// Returns a new vertical stack view object that manages the provided views.
+	/// Returns a new horizontal stack view object that manages the provided views.
 	///
 	/// - Parameters:
 	///   - arrangedSubviews: The views to be arranged by the stack view.
@@ -20,7 +20,7 @@ class VerticalStackView: UIStackView {
 	convenience init(_ arrangedSubviews: [UIView], spacing: CGFloat = 0, distribution: Distribution = .fill) {
 		self.init(arrangedSubviews: arrangedSubviews)
 		
-		axis = .vertical
+		axis = .horizontal
 		self.spacing = spacing
 		self.distribution = distribution
 	}

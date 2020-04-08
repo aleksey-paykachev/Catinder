@@ -11,7 +11,7 @@ import UIKit
 class ProfilePhotoSelectorViewController: UICollectionViewController {
 	
 	// demo images instead of user photos
-	var images = ["car", "airplane", "printer", "gamecontroller", "folder", "paperplane", "bell", "car", "airplane", "printer", "gamecontroller", "folder", "paperplane", "bell", "car", "airplane", "printer", "gamecontroller", "folder", "paperplane", "bell"].map { UIImage(systemName: $0)! }
+	var images = ["person.badge.plus.fill", "person.badge.plus", "person.crop.circle.badge.plus", "person.crop.circle.fill.badge.plus", "plus.rectangle", "plus.rectangle.fill", "plus.square", "plus.square.fill", "plus.circle", "plus.circle.fill", "photo", "photo.fill", "photo.on.rectangle", "photo.fill.on.rectangle.fill", "car", "airplane", "printer", "gamecontroller", "folder", "paperplane", "bell"].map { UIImage(systemName: $0)! }
 	
 	private let layout = UICollectionViewFlowLayout()
 	
