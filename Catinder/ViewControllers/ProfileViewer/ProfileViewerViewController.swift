@@ -46,7 +46,6 @@ class ProfileViewerViewController: UIViewController {
 	
 	private func setupSubviews() {
 		// scroll view
-		#warning("Fix scroll view scrolling (set content size).")
 		scrollView.contentInsetAdjustmentBehavior = .never // don't use safeAreaInsets
 		scrollView.alwaysBounceVertical = true
 		view.addSubview(scrollView)
@@ -55,12 +54,19 @@ class ProfileViewerViewController: UIViewController {
 		// photo
 		photoImageView.contentMode = .scaleAspectFill
 		photoImageView.clipsToBounds = true
-		scrollView.addSubview(photoImageView)
-		photoImageView.constrainToSuperview(anchors: [.leading, .trailing])
 		photoImageView.constrainHeight(to: view.frame.width * 1.2)
 		
 		// text labels
-		setupTextLabels()
+		let textLabelsStack = VerticalStackView([nameLabel, descriptionLabel], spacing: 12)
+		
+		// main stack
+		let mainStackView = VerticalStackView([photoImageView, textLabelsStack], spacing: 16)
+		mainStackView.alignment = .center
+		textLabelsStack.constrainToSuperview(anchors: [.leading, .trailing], paddings: .all(14))
+
+		scrollView.addSubview(mainStackView)
+		mainStackView.constrainToSuperview(paddings: .bottom(18), respectSafeArea: false)
+		mainStackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
 		
 		// back button
 		#warning("Add real asset image to backButton.")
@@ -71,18 +77,6 @@ class ProfileViewerViewController: UIViewController {
 
 		backButton.centerYAnchor.constraint(equalTo: photoImageView.bottomAnchor).isActive = true
 		backButton.constrainToSuperview(anchors: [.trailing], paddings: .all(36))
-	}
-	
-	private func setupTextLabels() {
-		// text labels stack view
-		let stackView = UIStackView(arrangedSubviews: [nameLabel, descriptionLabel])
-		stackView.axis = .vertical
-		stackView.distribution = .fill
-		stackView.spacing = 12
-		
-		scrollView.addSubview(stackView)
-		stackView.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 14).isActive = true
-		stackView.constrainToSuperview(anchors: [.leading, .trailing], paddings: .all(14))
 	}
 	
 	@objc private func closeButtonDidTapped() {
