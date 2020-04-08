@@ -10,23 +10,23 @@ import UIKit
 
 class CatinderNavigationController: UINavigationController {
 	
-	let catinderNavigationBar = CatinderNavigationBar()
-
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		view.addSubview(catinderNavigationBar)
-		navigationBar.isHidden = true
-		delegate = catinderNavigationBar
-		catinderNavigationBar.delegate = self		
+		setupAppearance()
+		setupNavigationBar()
 	}
-}
-
-
-// MARK: - CatinderNavigationBarDelegate
-
-extension CatinderNavigationController: CatinderNavigationBarDelegate {
-	func backButtonDidPressed() {
-		popViewController(animated: true)
+	
+	private func setupAppearance() {
+		let navigationBarAppearance = UINavigationBar.appearance()
+		navigationBarAppearance.tintColor = .darkGray
+		navigationBarAppearance.barTintColor = .white
+		navigationBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.darkGray]
+	}
+	
+	private func setupNavigationBar() {
+		// remove bottom line and add real shadow instead
+		navigationBar.shadowImage = UIImage()
+		navigationBar.layer.setShadow(size: 6, offsetY: 2, alpha: 0.2)
 	}
 }

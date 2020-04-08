@@ -47,7 +47,7 @@ class ConversationViewController: UICollectionViewController {
 	private func setupNavigationBar() {
 		title = viewModel.collocutorName
 		
-		guard let catinderNavigationBar = (navigationController as? CatinderNavigationController)?.catinderNavigationBar else { return }
+//		guard let catinderNavigationBar = (navigationController as? CatinderNavigationController)?.catinderNavigationBar else { return }
 		
 		#warning("Set collocutor image in navigation bar.")
 	}
