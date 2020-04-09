@@ -47,11 +47,8 @@
 		5B8FB3D923BE946600041B23 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8FB3D823BE946600041B23 /* CardViewModel.swift */; };
 		5B956FAC23D4289B008A53B6 /* CatinderPrimaryTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B956FAB23D4289B008A53B6 /* CatinderPrimaryTextButton.swift */; };
 		5B96C7FD23BE713A00BFB4D0 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B96C7FC23BE713A00BFB4D0 /* Angle.swift */; };
-		5BAE16F923D9516B007D3EA4 /* CatinderNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAE16F823D9516B007D3EA4 /* CatinderNavigationBar.swift */; };
 		5BAE16FB23D95839007D3EA4 /* CatinderNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAE16FA23D95839007D3EA4 /* CatinderNavigationController.swift */; };
 		5BB2ED0A23DD5900008AA5E6 /* UIViewController + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2ED0923DD5900008AA5E6 /* UIViewController + Extensions.swift */; };
-		5BC4194A23DB2A5D00E98AA9 /* UICollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC4194923DB2A5D00E98AA9 /* UICollectionViewController.swift */; };
-		5BC4194D23DB2C1800E98AA9 /* UITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC4194C23DB2C1800E98AA9 /* UITableViewController.swift */; };
 		5BC4194F23DB321F00E98AA9 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC4194E23DB321F00E98AA9 /* ConversationViewController.swift */; };
 		5BC4195523DB3AFE00E98AA9 /* ConversationMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC4195423DB3AFE00E98AA9 /* ConversationMessageCell.swift */; };
 		5BC68D5C23BF29E500DE9E82 /* CatinderPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC68D5B23BF29E500DE9E82 /* CatinderPageControl.swift */; };
@@ -109,11 +106,8 @@
 		5B8FB3D823BE946600041B23 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		5B956FAB23D4289B008A53B6 /* CatinderPrimaryTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderPrimaryTextButton.swift; sourceTree = "<group>"; };
 		5B96C7FC23BE713A00BFB4D0 /* Angle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
-		5BAE16F823D9516B007D3EA4 /* CatinderNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderNavigationBar.swift; sourceTree = "<group>"; };
 		5BAE16FA23D95839007D3EA4 /* CatinderNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderNavigationController.swift; sourceTree = "<group>"; };
 		5BB2ED0923DD5900008AA5E6 /* UIViewController + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extensions.swift"; sourceTree = "<group>"; };
-		5BC4194923DB2A5D00E98AA9 /* UICollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewController.swift; sourceTree = "<group>"; };
-		5BC4194C23DB2C1800E98AA9 /* UITableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewController.swift; sourceTree = "<group>"; };
 		5BC4194E23DB321F00E98AA9 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		5BC4195423DB3AFE00E98AA9 /* ConversationMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationMessageCell.swift; sourceTree = "<group>"; };
 		5BC68D5B23BF29E500DE9E82 /* CatinderPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderPageControl.swift; sourceTree = "<group>"; };
@@ -260,8 +254,8 @@
 		5B7FFBC823C2A56F009D2854 /* Catinder UI */ = {
 			isa = PBXGroup;
 			children = (
-				5B875FE923DC026A00408EDC /* Navigation */,
 				5BD54E1223D505F9004A0AA2 /* Buttons */,
+				5BAE16FA23D95839007D3EA4 /* CatinderNavigationController.swift */,
 				5BC68D5B23BF29E500DE9E82 /* CatinderPageControl.swift */,
 				5B41EBE023E5916700D99CA6 /* CatinderTextInputAccessoryView.swift */,
 			);
@@ -310,16 +304,6 @@
 			path = Conversation;
 			sourceTree = "<group>";
 		};
-		5B875FE923DC026A00408EDC /* Navigation */ = {
-			isa = PBXGroup;
-			children = (
-				5BC4194B23DB2A6300E98AA9 /* Customized Standard Objects */,
-				5BAE16FA23D95839007D3EA4 /* CatinderNavigationController.swift */,
-				5BAE16F823D9516B007D3EA4 /* CatinderNavigationBar.swift */,
-			);
-			path = Navigation;
-			sourceTree = "<group>";
-		};
 		5B8B1D9023B7C5A100543F20 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -329,15 +313,6 @@
 				5B3BCA0E23E0356500092DD5 /* Message.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		5BC4194B23DB2A6300E98AA9 /* Customized Standard Objects */ = {
-			isa = PBXGroup;
-			children = (
-				5BC4194C23DB2C1800E98AA9 /* UITableViewController.swift */,
-				5BC4194923DB2A5D00E98AA9 /* UICollectionViewController.swift */,
-			);
-			path = "Customized Standard Objects";
 			sourceTree = "<group>";
 		};
 		5BC4195023DB323A00E98AA9 /* Conversation */ = {
@@ -465,7 +440,6 @@
 				5B8B1D8D23B7C57F00543F20 /* Profile.swift in Sources */,
 				5B5A9D7223D1422F00C7FF85 /* MatchSplashScreenViewController.swift in Sources */,
 				5B875FE723DC00F900408EDC /* ConversationViewModel.swift in Sources */,
-				5BC4194D23DB2C1800E98AA9 /* UITableViewController.swift in Sources */,
 				5BFC059923C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift in Sources */,
 				5B875FE523DC00E200408EDC /* ConversationMessageViewModel.swift in Sources */,
 				5BB2ED0A23DD5900008AA5E6 /* UIViewController + Extensions.swift in Sources */,
@@ -493,10 +467,8 @@
 				5B197FF223D67C0E006DFB9E /* MatchViewModel.swift in Sources */,
 				5B139E6723B777F800BE73E7 /* AppDelegate.swift in Sources */,
 				5B04923F23D69F9400639802 /* RelationshipDecision.swift in Sources */,
-				5BAE16F923D9516B007D3EA4 /* CatinderNavigationBar.swift in Sources */,
 				5B035D4B23D299D100542242 /* CGSize + Extensions.swift in Sources */,
 				5B139E8123B7873200BE73E7 /* UIView + Extensions.swift in Sources */,
-				5BC4194A23DB2A5D00E98AA9 /* UICollectionViewController.swift in Sources */,
 				5B139E7F23B7853000BE73E7 /* CardView.swift in Sources */,
 				5B1B84CD2438A69300F0091F /* ProfilePhotoSelectorCell.swift in Sources */,
 				5B41EBE323E5956800D99CA6 /* String + Extensions.swift in Sources */,
