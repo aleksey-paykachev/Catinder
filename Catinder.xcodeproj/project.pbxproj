@@ -48,6 +48,7 @@
 		5B956FAC23D4289B008A53B6 /* CatinderPrimaryTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B956FAB23D4289B008A53B6 /* CatinderPrimaryTextButton.swift */; };
 		5B96C7FD23BE713A00BFB4D0 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B96C7FC23BE713A00BFB4D0 /* Angle.swift */; };
 		5B98EF85243F43C800BC93E9 /* CatinderCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B98EF84243F43C800BC93E9 /* CatinderCircleButton.swift */; };
+		5B98EF87243F445F00BC93E9 /* CatinderBarButtonCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B98EF86243F445F00BC93E9 /* CatinderBarButtonCircleButton.swift */; };
 		5BAE16FB23D95839007D3EA4 /* CatinderNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAE16FA23D95839007D3EA4 /* CatinderNavigationController.swift */; };
 		5BB2ED0A23DD5900008AA5E6 /* UIViewController + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2ED0923DD5900008AA5E6 /* UIViewController + Extensions.swift */; };
 		5BC4194F23DB321F00E98AA9 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC4194E23DB321F00E98AA9 /* ConversationViewController.swift */; };
@@ -108,6 +109,7 @@
 		5B956FAB23D4289B008A53B6 /* CatinderPrimaryTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderPrimaryTextButton.swift; sourceTree = "<group>"; };
 		5B96C7FC23BE713A00BFB4D0 /* Angle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
 		5B98EF84243F43C800BC93E9 /* CatinderCircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderCircleButton.swift; sourceTree = "<group>"; };
+		5B98EF86243F445F00BC93E9 /* CatinderBarButtonCircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderBarButtonCircleButton.swift; sourceTree = "<group>"; };
 		5BAE16FA23D95839007D3EA4 /* CatinderNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderNavigationController.swift; sourceTree = "<group>"; };
 		5BB2ED0923DD5900008AA5E6 /* UIViewController + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extensions.swift"; sourceTree = "<group>"; };
 		5BC4194E23DB321F00E98AA9 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 			children = (
 				5BD54E1223D505F9004A0AA2 /* Buttons */,
 				5BAE16FA23D95839007D3EA4 /* CatinderNavigationController.swift */,
+				5B98EF86243F445F00BC93E9 /* CatinderBarButtonCircleButton.swift */,
 				5BC68D5B23BF29E500DE9E82 /* CatinderPageControl.swift */,
 				5B41EBE023E5916700D99CA6 /* CatinderTextInputAccessoryView.swift */,
 			);
@@ -445,6 +448,7 @@
 				5B875FE723DC00F900408EDC /* ConversationViewModel.swift in Sources */,
 				5BFC059923C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift in Sources */,
 				5B875FE523DC00E200408EDC /* ConversationMessageViewModel.swift in Sources */,
+				5B98EF87243F445F00BC93E9 /* CatinderBarButtonCircleButton.swift in Sources */,
 				5BB2ED0A23DD5900008AA5E6 /* UIViewController + Extensions.swift in Sources */,
 				5B139E7B23B7850500BE73E7 /* TopMenuView.swift in Sources */,
 				5BF37D4624360A9D00347053 /* ProfilePhotoSelectorViewController.swift in Sources */,
