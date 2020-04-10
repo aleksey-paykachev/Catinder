@@ -41,9 +41,7 @@ class CardsViewerViewController: UIViewController {
 		bottomMenuView.delegate = self
 		
 		// main stack
-		let subviews = [topMenuView, cardsStackView, bottomMenuView]
-		let stackView = VStackView(subviews, spacing: 12)
-		
+		let stackView = VStackView([topMenuView, cardsStackView, bottomMenuView], spacing: 12)
 		view.addSubview(stackView)
 		stackView.constrainToSuperview(paddings: .vertical(6) + .horizontal(12))
 	}
@@ -78,6 +76,21 @@ class CardsViewerViewController: UIViewController {
 		
 		addChild(matchSplashScreenVC)
 		view.addSubview(matchSplashScreenVC.view)
+	}
+
+	
+	// MARK: - View lifecycle
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+
+		navigationController?.setNavigationBarHidden(true, animated: animated)
+	}
+
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+
+		navigationController?.setNavigationBarHidden(false, animated: animated)
 	}
 }
 
