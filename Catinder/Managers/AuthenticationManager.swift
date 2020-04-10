@@ -15,7 +15,7 @@ class AuthenticationManager {
 	
 	private(set) var loggedInUser: Profile? = nil
 
-	func login(with username: String, password: String) -> Bool {
+	@discardableResult func login(with username: String, password: String) -> Bool {
 		// get logged-in user data from network
 		// ...
 		

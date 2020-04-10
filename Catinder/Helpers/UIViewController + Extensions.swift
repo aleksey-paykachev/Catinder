@@ -13,7 +13,7 @@ extension UIViewController {
 	// MARK: - Loading indicator
 	
 	private func addLoadingIndicator() -> UIActivityIndicatorView {
-		let activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
+		let activityIndicatorView = UIActivityIndicatorView(style: .large)
 		activityIndicatorView.color = .gray
 		
 		view.addSubview(activityIndicatorView)

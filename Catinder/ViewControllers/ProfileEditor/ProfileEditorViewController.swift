@@ -61,6 +61,7 @@ class ProfileEditorViewController: UITableViewController {
 	private func setupTableView() {
 		tableView.allowsSelection = false
 		tableView.keyboardDismissMode = .onDrag
+		tableView.contentInset.top = 20
 	}
 	
 	private func setupGestures() {
