@@ -96,7 +96,7 @@ extension LastMessagesViewController {
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		let message = lastMessages[indexPath.item]
 
-		let conversationViewModel = ConversationViewModel(collocutorName: message.profileName, collocutorImageName: message.profileImageName)
+		let conversationViewModel = ConversationViewModel(collocutorUid: message.profileUid, collocutorName: message.profileName, collocutorImageName: message.profileImageName)
 		let conversationViewController = ConversationViewController(viewModel: conversationViewModel)
 		navigationController?.pushViewController(conversationViewController, animated: true)
 	}

@@ -71,7 +71,8 @@ class CardsViewerViewController: UIViewController {
 		guard !(children.last is MatchSplashScreenViewController) else { return }
 		guard let matchedProfile = profiles.first(where: { $0.uid == profileId }) else { return }
 
-		let matchViewModel = MatchViewModel(matchedProfileName: matchedProfile.name,
+		let matchViewModel = MatchViewModel(matchedProfileUid: matchedProfile.uid,
+											matchedProfileName: matchedProfile.name,
 											matchedProfileImageName: matchedProfile.photoName)
 		let matchSplashScreenVC = MatchSplashScreenViewController(viewModel: matchViewModel)
 		

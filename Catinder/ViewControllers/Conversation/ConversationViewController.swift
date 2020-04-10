@@ -16,6 +16,7 @@ class ConversationViewController: UICollectionViewController {
 	private let collectionViewFlowLayout = ConversationViewControllerFlowLayout()
 	private let cellReuseId = "ConversationMessageCell"
 	private let textInputAccessoryView = CatinderTextInputAccessoryView()
+	private let navigationItemCollocutorButton = CatinderBarButtonCircleButton()
 
 	private let viewModel: ConversationViewModel
 	private var messages: [ConversationMessageViewModel] = []
@@ -34,7 +35,7 @@ class ConversationViewController: UICollectionViewController {
 		setupSubviews()
 		setupGestures()
 		
-		loadData()
+		loadMessages()
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -47,9 +48,12 @@ class ConversationViewController: UICollectionViewController {
 	private func setupNavigationBar() {
 		title = viewModel.collocutorName
 		
-//		guard let catinderNavigationBar = (navigationController as? CatinderNavigationController)?.catinderNavigationBar else { return }
+		navigationItem.rightBarButtonItem = navigationItemCollocutorButton
+		navigationItemCollocutorButton.set(imageName: viewModel.collocutorImageName)
 		
-		#warning("Set collocutor image in navigation bar.")
+		navigationItemCollocutorButton.onClick { [weak self] in
+			self?.showProfileViewer()
+		}
 	}
 	
 	private func setupCollectionViewLayout() {
@@ -61,6 +65,8 @@ class ConversationViewController: UICollectionViewController {
 	private func setupCollectionView() {
 		collectionView.backgroundColor = .lightGray
 		collectionView.alwaysBounceVertical = true
+		collectionView.contentInset.top = 10
+
 		collectionView.register(ConversationMessageCell.self, forCellWithReuseIdentifier: cellReuseId)
 	}
 	
@@ -74,6 +80,12 @@ class ConversationViewController: UICollectionViewController {
 		view.addGestureRecognizer(tapGestureRecognizer)
 	}
 	
+	private func showProfileViewer() {
+		loadCollocutorProfile { [weak self] profile in
+			self?.present(ProfileViewerViewController(viewModel: profile.profileViewModel), animated: true)
+		}
+	}
+	
 	override var inputAccessoryView: UIView? {
 		textInputAccessoryView
 	}
@@ -85,7 +97,7 @@ class ConversationViewController: UICollectionViewController {
 	
 	// MARK: - Load data
 	
-	func loadData() {
+	private func loadMessages() {
 		showLoadingIndicator()
 		
 		dataManager.getMessages(forConversationWith: "Current-Collocutor-UID") { [weak self] messages, error in
@@ -100,6 +112,25 @@ class ConversationViewController: UICollectionViewController {
 			
 			self.messages = messages?.compactMap { $0.conversationMessageViewModel } ?? []
 			self.collectionView.reloadData()
+		}
+	}
+	
+	private func loadCollocutorProfile(completion: @escaping (Profile) -> Void) {
+		showLoadingIndicator()
+		
+		dataManager.getProfile(by: viewModel.collocutorUid) { [weak self] profile, error in
+			guard let self = self else { return }
+			
+			self.hideLoadingIndicator()
+
+			if let error = error {
+				print(error.localizedDescription)
+				return
+			}
+
+			if let profile = profile {
+				completion(profile)
+			}
 		}
 	}
 	
@@ -129,8 +160,7 @@ class ConversationViewController: UICollectionViewController {
 extension ConversationViewController {
 	
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		
-		return messages.count
+		messages.count
 	}
 	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

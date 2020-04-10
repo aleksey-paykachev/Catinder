@@ -21,7 +21,8 @@ extension Match: LastMessageViewModelRepresentable {
 		let loggedInProfile = AuthenticationManager.shared.loggedInUser
 		let matchedProfile = profile1 == loggedInProfile ? profile2 : profile1
 		
-		return LastMessageViewModel(profileName: matchedProfile.name,
+		return LastMessageViewModel(profileUid: matchedProfile.uid,
+									profileName: matchedProfile.name,
 									profileImageName: matchedProfile.photoName,
 									message: lastMessage?.text ?? "")
 	}

@@ -13,6 +13,7 @@ protocol LastMessageViewModelRepresentable {
 }
 
 struct LastMessageViewModel {
+	let profileUid: String
 	let profileName: String
 	let profileImageName: String
 	let message: String

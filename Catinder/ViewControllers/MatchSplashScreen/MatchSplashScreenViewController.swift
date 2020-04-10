@@ -116,7 +116,7 @@ class MatchSplashScreenViewController: UIViewController {
 	}
 
 	@objc private func sendMessageButtonDidTapped() {
-		let conversationViewModel = ConversationViewModel(collocutorName: viewModel.matchedProfileName, collocutorImageName: viewModel.matchedProfileImageName)
+		let conversationViewModel = ConversationViewModel(collocutorUid: viewModel.matchedProfileUid, collocutorName: viewModel.matchedProfileName, collocutorImageName: viewModel.matchedProfileImageName)
 		let conversationViewController = ConversationViewController(viewModel: conversationViewModel)
 		navigationController?.pushViewController(conversationViewController, animated: true)
 

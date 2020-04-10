@@ -9,6 +9,7 @@
 import Foundation
 
 struct ConversationViewModel {
+	let collocutorUid: String
 	let collocutorName: String
 	let collocutorImageName: String
 }

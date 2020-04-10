@@ -11,6 +11,7 @@ import Foundation
 struct MatchViewModel {
 	let userProfileImageName = AuthenticationManager.shared.loggedInUser?.photoName ?? ""
 
+	let matchedProfileUid: String
 	let matchedProfileName: String
 	let matchedProfileImageName: String
 }
