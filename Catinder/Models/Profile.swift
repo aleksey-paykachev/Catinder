@@ -42,9 +42,8 @@ extension Profile: CardViewModelRepresentable {
 	var cardViewModel: CardViewModel {
 		CardViewModel(cardId: uid,
 					  imagesNames: photosNames,
-					  headerText: "\(name), \(age)",
-					  titleText: "-----",
-					  subtitleText: shortDescription)
+					  title: "\(name), \(age)",
+					  content: shortDescription)
 	}
 }
 
@@ -54,8 +53,6 @@ extension Profile: CardViewModelRepresentable {
 extension Profile: ProfileViewModelRepresentable {
 
 	var profileViewModel: ProfileViewModel {
-		ProfileViewModel(name: name,
-						 description: description,
-						 photosNames: photosNames)
+		ProfileViewModel(name: name, description: description, photosNames: photosNames)
 	}
 }

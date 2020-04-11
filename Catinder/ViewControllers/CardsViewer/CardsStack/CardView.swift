@@ -31,9 +31,8 @@ class CardView: UIView {
 	private let moreInfoButton = UIButton(type: .detailDisclosure)
 
 	// Labels
-	private let headerLabel = UILabel(color: .white, font: .systemFont(ofSize: 36, weight: .medium))
-	private let titleLabel = UILabel(color: UIColor(white: 0.98, alpha: 1), font: .systemFont(ofSize: 24, weight: .light))
-	private let subtitleLabel = UILabel(color: UIColor(white: 0.96, alpha: 1), allowMultipleLines: true, font: .systemFont(ofSize: 18, weight: .medium))
+	private let titleLabel = UILabel(color: .white, font: .systemFont(ofSize: 36, weight: .medium))
+	private let contentLabel = UILabel(color: UIColor(white: 0.96, alpha: 1), allowMultipleLines: true, font: .systemFont(ofSize: 18, weight: .medium))
 
 	// Properties
 	weak var delegate: CardViewDelegate?
@@ -100,12 +99,9 @@ class CardView: UIView {
 	private func setupLabels() {
 		// add gradient behind labels to improve readability
 		addSubLabelsGradient()
-		
-		// put all labels inside one stack
-		let labelsStackView = UIStackView(arrangedSubviews: [headerLabel, titleLabel, subtitleLabel])
-		labelsStackView.setCustomSpacing(16, after: titleLabel)
-		labelsStackView.axis = .vertical
-		
+
+		let labelsStackView = VStackView([titleLabel, contentLabel], spacing: 12)
+
 		addSubview(labelsStackView)
 		labelsStackView.constrainToSuperview(anchors: [.leading, .trailing, .bottom], paddings: .horizontal(14) + .bottom(28))
 	}
@@ -130,7 +126,7 @@ class CardView: UIView {
 		
 		addSubview(moreInfoButton)
 		moreInfoButton.constrainToSuperview(anchors: .trailing, paddings: .trailing(14))
-		moreInfoButton.constrainTo(headerLabel, anchors: .centerY)
+		moreInfoButton.constrainTo(titleLabel, anchors: .centerY)
 	}
 	
 	
@@ -244,8 +240,7 @@ class CardView: UIView {
 	private func updateUI() {
 		imageView.image = viewModel.activeImageName.flatMap { UIImage(named: $0) }
 		activeImagePageControl.currentPage = viewModel.activeImageIndex
-		headerLabel.text = viewModel.headerText
-		titleLabel.text = viewModel.titleText
-		subtitleLabel.text = viewModel.subtitleText
+		titleLabel.text = viewModel.title
+		contentLabel.text = viewModel.content
 	}
 }
