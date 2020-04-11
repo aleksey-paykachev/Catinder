@@ -22,6 +22,7 @@
 		5B197FF223D67C0E006DFB9E /* MatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B197FF123D67C0E006DFB9E /* MatchViewModel.swift */; };
 		5B197FF423D6966D006DFB9E /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B197FF323D6966D006DFB9E /* GradientView.swift */; };
 		5B1B84CD2438A69300F0091F /* ProfilePhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B84CC2438A69300F0091F /* ProfilePhotoSelectorCell.swift */; };
+		5B1C8D0F2442632B00A6D91A /* PhotoPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C8D0E2442632B00A6D91A /* PhotoPreviewCell.swift */; };
 		5B244CA623BF9AB60099B975 /* UIStackView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */; };
 		5B2DBA7523B9DA5900BACB52 /* CardsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */; };
 		5B37744323CE75FA00698427 /* PhotoImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37744223CE75FA00698427 /* PhotoImagePicker.swift */; };
@@ -83,6 +84,7 @@
 		5B197FF123D67C0E006DFB9E /* MatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewModel.swift; sourceTree = "<group>"; };
 		5B197FF323D6966D006DFB9E /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		5B1B84CC2438A69300F0091F /* ProfilePhotoSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoSelectorCell.swift; sourceTree = "<group>"; };
+		5B1C8D0E2442632B00A6D91A /* PhotoPreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPreviewCell.swift; sourceTree = "<group>"; };
 		5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extensions.swift"; sourceTree = "<group>"; };
 		5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsStackView.swift; sourceTree = "<group>"; };
 		5B37744223CE75FA00698427 /* PhotoImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoImagePicker.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				5B5AD28023C8BF3C00D5B6D7 /* ProfileViewerViewController.swift */,
+				5B1C8D0E2442632B00A6D91A /* PhotoPreviewCell.swift */,
 			);
 			path = ProfileViewer;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				5B139E6923B777F800BE73E7 /* CardsViewerViewController.swift in Sources */,
 				5B07A50A23D12E9D00122190 /* CALayer + Extensions.swift in Sources */,
 				5B746EFB23C8C94000063374 /* ProfileViewModel.swift in Sources */,
+				5B1C8D0F2442632B00A6D91A /* PhotoPreviewCell.swift in Sources */,
 				5B5AD28123C8BF3C00D5B6D7 /* ProfileViewerViewController.swift in Sources */,
 				5B8FB3D923BE946600041B23 /* CardViewModel.swift in Sources */,
 				5B72293423E07063003B6BD4 /* Match.swift in Sources */,
