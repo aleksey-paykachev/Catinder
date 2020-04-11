@@ -14,6 +14,7 @@ class ProfileViewerViewController: UIViewController {
 	private let photoImageView = UIImageView()
 	private let nameLabel = UILabel(font: .systemFont(ofSize: 36, weight: .medium))
 	private let descriptionLabel = UILabel(allowMultipleLines: true, font: .systemFont(ofSize: 18, weight: .regular))
+	private let photoPreviewsViewer = PhotoPreviewsViewer()
 	
 	private var viewModel: ProfileViewModel { didSet { updateUI() } }
 	
@@ -26,6 +27,7 @@ class ProfileViewerViewController: UIViewController {
 		
 		setupView()
 		setupSubviews()
+		setupPhotoPreviewsViewer()
 		updateUI()
 	}
 	
@@ -54,7 +56,7 @@ class ProfileViewerViewController: UIViewController {
 		// photo
 		photoImageView.contentMode = .scaleAspectFill
 		photoImageView.clipsToBounds = true
-		photoImageView.constrainHeight(to: view.frame.width * 1.2)
+		photoImageView.constrainHeight(to: view.frame.width * 1.5)
 		
 		// text labels
 		let textLabelsStack = VStackView([nameLabel, descriptionLabel], spacing: 12)
@@ -69,7 +71,7 @@ class ProfileViewerViewController: UIViewController {
 		mainStackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
 		
 		// back button
-		#warning("Add real asset image to backButton.")
+		#warning("Add real asset image to backButton or replace with close button.")
 		let backButton = UIButton(type: .system)
 		backButton.addTarget(self, action: #selector(closeButtonDidTapped), for: .touchUpInside)
 		scrollView.addSubview(backButton)
@@ -77,6 +79,20 @@ class ProfileViewerViewController: UIViewController {
 
 		backButton.centerYAnchor.constraint(equalTo: photoImageView.bottomAnchor).isActive = true
 		backButton.constrainToSuperview(anchors: [.trailing], paddings: .all(36))
+	}
+	
+	private func setupPhotoPreviewsViewer() {
+		// do not show photo previews viewer if user has only one photo
+		guard viewModel.photosCount > 1 else { return }
+
+		photoPreviewsViewer.dataSource = self
+		photoPreviewsViewer.delegate = self
+		
+		view.addSubview(photoPreviewsViewer)
+		photoPreviewsViewer.constrainHeight(to: photoPreviewsViewer.itemHeight)
+		photoPreviewsViewer.constrainTo(photoImageView, anchors: [.leading, .trailing, .bottom], paddings: .all(12))
+		
+		photoPreviewsViewer.selectItem(at: viewModel.selectedPhotoIndex)
 	}
 	
 	@objc private func closeButtonDidTapped() {
@@ -87,8 +103,36 @@ class ProfileViewerViewController: UIViewController {
 	// MARK: - UI
 	
 	private func updateUI() {
-		photoImageView.image = viewModel.activePhotoName.flatMap { UIImage(named: $0) }
+		photoImageView.image = viewModel.selectedPhotoName.flatMap { UIImage(named: $0) }
 		nameLabel.text = viewModel.name
 		descriptionLabel.text = viewModel.description
+	}
+}
+
+
+// MARK: - data source for PhotoPreviewsViewer
+
+extension ProfileViewerViewController: UICollectionViewDataSource {
+	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		viewModel.photosCount
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoPreviewCell", for: indexPath) as! PhotoPreviewCell
+		let image = UIImage(named: viewModel.photosNames[indexPath.item])
+		cell.set(image: image)
+		return cell
+	}
+}
+
+
+// MARK: - delegate for PhotoPreviewsViewer
+
+extension ProfileViewerViewController: UICollectionViewDelegate {
+	
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		viewModel.setPhotoAsSelected(at: indexPath.item)
+		photoImageView.image = viewModel.selectedPhotoName.flatMap { UIImage(named: $0) }
 	}
 }

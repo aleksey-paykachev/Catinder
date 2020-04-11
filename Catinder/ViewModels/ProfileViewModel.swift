@@ -16,8 +16,8 @@ struct ProfileViewModel {
 	let name: String
 	let description: String
 	
-	private let photosNames: [String]
-	private(set) var activePhotoIndex = 0
+	let photosNames: [String]
+	private(set) var selectedPhotoIndex = 0
 	
 	init(name: String, description: String, photosNames: [String]) {
 		self.name = name
@@ -29,17 +29,15 @@ struct ProfileViewModel {
 		photosNames.count
 	}
 	
-	var activePhotoName: String? {
+	var selectedPhotoName: String? {
 		guard photosCount > 0 else { return nil }
 
-		return photosNames[activePhotoIndex]
+		return photosNames[selectedPhotoIndex]
 	}
 	
-	mutating func goToPreviousPhoto() {
-		activePhotoIndex = max(0, activePhotoIndex - 1)
-	}
-	
-	mutating func andvanceToNextPhoto() {
-		activePhotoIndex = min(photosCount - 1, activePhotoIndex + 1)
+	mutating func setPhotoAsSelected(at index: Int) {
+		guard index >= 0, index < photosNames.count else { return }
+		
+		selectedPhotoIndex = index
 	}
 }

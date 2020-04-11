@@ -29,7 +29,7 @@ class PhotoPreviewCell: UICollectionViewCell {
 		contentView.addSubview(photoImageView)
 		photoImageView.constrainToSuperview()
 
-		photoImageView.layer.setBorder(size: 1, color: .gray)
+		photoImageView.layer.setBorder(size: 2, color: #colorLiteral(red: 0.9372549057, green: 0.5500408101, blue: 0.3201948127, alpha: 0.9211526113))
 		photoImageView.layer.roundCorners(radius: 6)
 		photoImageView.alpha = alphaNotSelected
 		photoImageView.contentMode = .scaleAspectFill
