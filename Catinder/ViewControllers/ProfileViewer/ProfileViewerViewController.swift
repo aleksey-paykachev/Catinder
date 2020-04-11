@@ -48,10 +48,9 @@ class ProfileViewerViewController: UIViewController {
 	
 	private func setupSubviews() {
 		// scroll view
-		scrollView.contentInsetAdjustmentBehavior = .never // don't use safeAreaInsets
 		scrollView.alwaysBounceVertical = true
 		view.addSubview(scrollView)
-		scrollView.constrainToSuperview(respectSafeArea: false)
+		scrollView.constrainToSuperview()
 		
 		// photo
 		photoImageView.contentMode = .scaleAspectFill
@@ -64,21 +63,21 @@ class ProfileViewerViewController: UIViewController {
 		// main stack
 		let mainStackView = VStackView([photoImageView, textLabelsStack], spacing: 16)
 		mainStackView.alignment = .center
-		textLabelsStack.constrainToSuperview(anchors: [.leading, .trailing], paddings: .all(14))
+		textLabelsStack.constrainToSuperview(anchors: [.leading, .trailing], paddings: .all(16))
 
 		scrollView.addSubview(mainStackView)
-		mainStackView.constrainToSuperview(paddings: .bottom(18), respectSafeArea: false)
+		mainStackView.constrainToSuperview(paddings: .bottom(12), respectSafeArea: false)
 		mainStackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
 		
 		// back button
-		#warning("Add real asset image to backButton or replace with close button.")
-		let backButton = UIButton(type: .system)
-		backButton.addTarget(self, action: #selector(closeButtonDidTapped), for: .touchUpInside)
-		scrollView.addSubview(backButton)
-		backButton.backgroundColor = .red
+		#warning("Add real asset image to closeButton.")
+		let closeButton = UIButton(type: .system)
+		closeButton.addTarget(self, action: #selector(closeButtonDidTapped), for: .touchUpInside)
+		closeButton.backgroundColor = .red
 
-		backButton.centerYAnchor.constraint(equalTo: photoImageView.bottomAnchor).isActive = true
-		backButton.constrainToSuperview(anchors: [.trailing], paddings: .all(36))
+		view.addSubview(closeButton)
+		closeButton.centerYAnchor.constraint(equalTo: photoImageView.bottomAnchor).isActive = true
+		closeButton.constrainToSuperview(anchors: [.trailing], paddings: .all(32))
 	}
 	
 	private func setupPhotoPreviewsViewer() {
