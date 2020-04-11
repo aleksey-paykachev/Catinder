@@ -1,5 +1,5 @@
 //
-//  CatinderBarButtonCircleButton.swift
+//  CatinderCircleBarButtonItem.swift
 //  Catinder
 //
 //  Created by Aleksey on 09.04.2020.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class CatinderBarButtonCircleButton: UIBarButtonItem {
+class CatinderCircleBarButtonItem: UIBarButtonItem {
 	
-	private let imageButton: CatinderCircleButton
+	private let imageButton: CatinderNavigationButton
 	private var clickEvent: (() -> ())?
 	
 	init(image: UIImage? = nil) {
-		imageButton = CatinderCircleButton(radius: 18, image: image)
+		imageButton = CatinderNavigationButton(radius: 18, image: image)
 
 		super.init()
 		customView = imageButton

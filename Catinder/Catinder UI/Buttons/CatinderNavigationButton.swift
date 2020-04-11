@@ -1,5 +1,5 @@
 //
-//  CatinderCircleButton.swift
+//  CatinderNavigationButton.swift
 //  Catinder
 //
 //  Created by Aleksey on 09.04.2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CatinderCircleButton: UIButton {
+class CatinderNavigationButton: UIButton {
 
 	convenience init(radius: CGFloat, image: UIImage? = nil) {
 		self.init(type: .system)

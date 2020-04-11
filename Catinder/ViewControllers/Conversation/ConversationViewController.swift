@@ -16,7 +16,7 @@ class ConversationViewController: UICollectionViewController {
 	private let collectionViewFlowLayout = ConversationViewControllerFlowLayout()
 	private let cellReuseId = "ConversationMessageCell"
 	private let textInputAccessoryView = CatinderTextInputAccessoryView()
-	private let navigationItemCollocutorButton = CatinderBarButtonCircleButton()
+	private let navigationItemCollocutorButton = CatinderCircleBarButtonItem()
 
 	private let viewModel: ConversationViewModel
 	private var messages: [ConversationMessageViewModel] = []
