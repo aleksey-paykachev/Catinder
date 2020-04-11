@@ -43,7 +43,7 @@ class LastMessagesViewController: UICollectionViewController {
 	private func setupCollectionView() {
 		collectionView.backgroundColor = .white
 		collectionView.alwaysBounceVertical = true
-		collectionView.contentInset.top = 20
+		collectionView.contentInset.top = 24
 
 		collectionView.register(LastMessageCell.self, forCellWithReuseIdentifier: cellReuseId)
 	}

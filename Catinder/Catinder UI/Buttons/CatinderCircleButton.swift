@@ -17,7 +17,7 @@ class CatinderCircleButton: UIButton {
 		imageView?.contentMode = .scaleAspectFill
 		set(image: image)
 
-		layer.setBorder(size: 2, color: .lightGray)
+		layer.setBorder(size: 2, color: .navigation)
 		layer.roundCorners(radius: radius)
 		
 		constrainSize(width: radius * 2, height: radius * 2)

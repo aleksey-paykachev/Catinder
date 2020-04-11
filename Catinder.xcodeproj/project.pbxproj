@@ -24,6 +24,7 @@
 		5B1B84CD2438A69300F0091F /* ProfilePhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B84CC2438A69300F0091F /* ProfilePhotoSelectorCell.swift */; };
 		5B1C8D0F2442632B00A6D91A /* PhotoPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C8D0E2442632B00A6D91A /* PhotoPreviewCell.swift */; };
 		5B1C8D112442683B00A6D91A /* PhotoPreviewsViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C8D102442683B00A6D91A /* PhotoPreviewsViewer.swift */; };
+		5B1C8D1324427EB200A6D91A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C8D1224427EB200A6D91A /* Colors.swift */; };
 		5B244CA623BF9AB60099B975 /* UIStackView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */; };
 		5B2DBA7523B9DA5900BACB52 /* CardsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */; };
 		5B37744323CE75FA00698427 /* PhotoImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37744223CE75FA00698427 /* PhotoImagePicker.swift */; };
@@ -87,6 +88,7 @@
 		5B1B84CC2438A69300F0091F /* ProfilePhotoSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoSelectorCell.swift; sourceTree = "<group>"; };
 		5B1C8D0E2442632B00A6D91A /* PhotoPreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPreviewCell.swift; sourceTree = "<group>"; };
 		5B1C8D102442683B00A6D91A /* PhotoPreviewsViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPreviewsViewer.swift; sourceTree = "<group>"; };
+		5B1C8D1224427EB200A6D91A /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extensions.swift"; sourceTree = "<group>"; };
 		5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsStackView.swift; sourceTree = "<group>"; };
 		5B37744223CE75FA00698427 /* PhotoImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoImagePicker.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				5BD54E1223D505F9004A0AA2 /* Buttons */,
+				5B1C8D1224427EB200A6D91A /* Colors.swift */,
 				5BAE16FA23D95839007D3EA4 /* CatinderNavigationController.swift */,
 				5B98EF86243F445F00BC93E9 /* CatinderBarButtonCircleButton.swift */,
 				5BC68D5B23BF29E500DE9E82 /* CatinderPageControl.swift */,
@@ -468,6 +471,7 @@
 				5BD54E1123D50381004A0AA2 /* CatinderSecondaryTextButton.swift in Sources */,
 				5B746EF923C8C56600063374 /* UILabel + Extensions.swift in Sources */,
 				5B96C7FD23BE713A00BFB4D0 /* Angle.swift in Sources */,
+				5B1C8D1324427EB200A6D91A /* Colors.swift in Sources */,
 				5B139E6923B777F800BE73E7 /* CardsViewerViewController.swift in Sources */,
 				5B07A50A23D12E9D00122190 /* CALayer + Extensions.swift in Sources */,
 				5B746EFB23C8C94000063374 /* ProfileViewModel.swift in Sources */,
