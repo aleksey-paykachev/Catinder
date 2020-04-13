@@ -11,6 +11,7 @@ import Foundation
 class NetworkManager {
 	
 	private let serverApiUrl = "https://raw.githubusercontent.com/aleksey-paykachev/Catinder-Demo-Server/master/api/v1/"
+	private let serverImagesUrl = "https://raw.githubusercontent.com/aleksey-paykachev/Catinder-Demo-Server/master/images/"
 
 	
 	// MARK: - Methods
@@ -23,6 +24,23 @@ class NetworkManager {
 			}
 			return
 		}
+
+		getData(from: url, completionQueue: completionQueue, completion: completion)
+	}
+	
+	func getImageData(imageName: String, completionQueue: DispatchQueue = .main, completion: @escaping (Data?, Error?) -> ()) {
+		
+		guard let url = URL(string: serverImagesUrl + imageName) else {
+			completionQueue.async {
+				completion(nil, NetworkError.wrongUrl)
+			}
+			return
+		}
+		
+		getData(from: url, completionQueue: completionQueue, completion: completion)
+	}
+	
+	func getData(from url: URL, completionQueue: DispatchQueue = .main, completion: @escaping (Data?, Error?) -> ()) {
 
 		URLSession.shared.dataTask(with: url) { data, urlResponse, error in
 			let statusCode = (urlResponse as? HTTPURLResponse)?.statusCode

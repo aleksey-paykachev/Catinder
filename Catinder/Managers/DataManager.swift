@@ -6,7 +6,7 @@
 //  Copyright © 2020 Aleksey Paykachev. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class DataManager {
 	// MARK: - Properties
@@ -30,6 +30,26 @@ class DataManager {
 	
 	func getProfile(by uid: String, completion: @escaping (Profile?, Error?) -> ()) {
 		parseDataFromNetwork(for: "profile/\(uid)", completion: completion)
+	}
+	
+	
+	// MARK: - Images
+	
+	func getImage(name: String, completion: @escaping (UIImage?, Error?) -> ()) {
+
+		networkManager.getImageData(imageName: name) { data, error in
+			if let error = error {
+				completion(nil, error)
+				return
+			}
+			
+			guard let data = data, let image = UIImage(data: data) else {
+				completion(nil, DataManagerError.wrongData)
+				return
+			}
+			
+			completion(image, nil)
+		}
 	}
 	
 	
@@ -125,12 +145,15 @@ class DataManager {
 	
 	enum DataManagerError: LocalizedError {
 		case emptyData
+		case wrongData
 		case parseError
 		
 		var errorDescription: String? {
 			switch self {
 			case .emptyData:
-				return "Empty data set."
+				return "Recieve empty data from server."
+			case .wrongData:
+				return "Recieve wrong data from server."
 			case .parseError:
 				return "Could not parse data."
 			}
