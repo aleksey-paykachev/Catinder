@@ -102,9 +102,17 @@ class ProfileViewerViewController: UIViewController {
 	// MARK: - UI
 	
 	private func updateUI() {
-		photoImageView.image = viewModel.selectedPhotoName.flatMap { UIImage(named: $0) }
+		updateSelectedImage()
 		nameLabel.text = viewModel.name
 		descriptionLabel.text = viewModel.description
+	}
+	
+	private func updateSelectedImage() {
+		guard let imageName = viewModel.selectedPhotoName else { return }
+
+		DataManager.shared.getImage(name: imageName) { [weak self] image, _ in
+			self?.photoImageView.image = image
+		}
 	}
 }
 
@@ -119,8 +127,12 @@ extension ProfileViewerViewController: UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoPreviewCell", for: indexPath) as! PhotoPreviewCell
-		let image = UIImage(named: viewModel.photosNames[indexPath.item])
-		cell.set(image: image)
+		
+		let imageName = viewModel.photosNames[indexPath.item]
+		DataManager.shared.getImage(name: imageName) { [weak cell] image, _ in
+			cell?.set(image: image)
+		}
+
 		return cell
 	}
 }
@@ -132,6 +144,6 @@ extension ProfileViewerViewController: UICollectionViewDelegate {
 	
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		viewModel.setPhotoAsSelected(at: indexPath.item)
-		photoImageView.image = viewModel.selectedPhotoName.flatMap { UIImage(named: $0) }
+		updateSelectedImage()
 	}
 }
