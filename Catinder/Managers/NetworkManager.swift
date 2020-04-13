@@ -12,6 +12,8 @@ class NetworkManager {
 	
 	private let serverApiUrl = "https://raw.githubusercontent.com/aleksey-paykachev/Catinder-Demo-Server/master/api/v1/"
 	private let serverImagesUrl = "https://raw.githubusercontent.com/aleksey-paykachev/Catinder-Demo-Server/master/images/"
+	
+	private let cache = NSCache<NSURL, NSData>()
 
 	
 	// MARK: - Methods
@@ -41,6 +43,12 @@ class NetworkManager {
 	}
 	
 	func getData(from url: URL, completionQueue: DispatchQueue = .main, completion: @escaping (Data?, Error?) -> ()) {
+		
+		// check if cache contains data for requested url
+		if let cachedData = cache.object(forKey: url as NSURL) as Data? {
+			completion(cachedData, nil)
+			return
+		}
 
 		URLSession.shared.dataTask(with: url) { data, urlResponse, error in
 			let statusCode = (urlResponse as? HTTPURLResponse)?.statusCode
@@ -51,6 +59,11 @@ class NetworkManager {
 				return
 			}
 
+			// put recieved data into cache
+			if let data = data {
+				self.cache.setObject(data as NSData, forKey: url as NSURL)
+			}
+			
 			completionQueue.async {
 				completion(data, error)
 			}

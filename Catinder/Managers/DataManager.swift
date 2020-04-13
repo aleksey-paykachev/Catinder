@@ -151,9 +151,9 @@ class DataManager {
 		var errorDescription: String? {
 			switch self {
 			case .emptyData:
-				return "Recieve empty data from server."
+				return "Recieve empty data."
 			case .wrongData:
-				return "Recieve wrong data from server."
+				return "Recieve wrong data."
 			case .parseError:
 				return "Could not parse data."
 			}
