@@ -37,6 +37,7 @@ class CardView: UIView {
 	// Properties
 	weak var delegate: CardViewDelegate?
 	private(set) var viewModel: CardViewModel { didSet { updateUI() } }
+	private var activeImageName: String?
 	private var state = State.present
 	private var panGestureRecognizer: UIPanGestureRecognizer!
 
@@ -74,6 +75,8 @@ class CardView: UIView {
 	// MARK: - Setup
 	
 	private func setupView() {
+		backgroundColor = .white
+		
 		setupLayer()
 		setupImageView()
 		setupLabels()
@@ -238,7 +241,13 @@ class CardView: UIView {
 	}
 	
 	private func updateUI() {
-		imageView.image = viewModel.activeImageName.flatMap { UIImage(named: $0) }
+		if let imageName = viewModel.activeImageName, imageName != activeImageName {
+			DataManager.shared.getImage(name: imageName) { [weak self] image, _ in
+				self?.activeImageName = imageName
+				self?.imageView.image = image
+			}
+		}
+
 		activeImagePageControl.currentPage = viewModel.activeImageIndex
 		titleLabel.text = viewModel.title
 		contentLabel.text = viewModel.content
