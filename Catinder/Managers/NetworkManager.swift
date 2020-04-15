@@ -16,23 +16,26 @@ class NetworkManager {
 	private let cache = NSCache<NSURL, NSData>()
 
 	
-	// MARK: - Methods
+	// MARK: - Convenience methods
 	
 	func getData(for apiResource: String, completionQueue: DispatchQueue = .main, completion: @escaping (Data?, Error?) -> ()) {
 
-		guard let url = URL(string: serverApiUrl + apiResource) else {
-			completionQueue.async {
-				completion(nil, NetworkError.wrongUrl)
-			}
-			return
-		}
-
-		getData(from: url, completionQueue: completionQueue, completion: completion)
+		let urlString = serverApiUrl + apiResource
+		getData(from: urlString, completionQueue: completionQueue, completion: completion)
 	}
 	
 	func getImageData(imageName: String, completionQueue: DispatchQueue = .main, completion: @escaping (Data?, Error?) -> ()) {
 		
-		guard let url = URL(string: serverImagesUrl + imageName) else {
+		let urlString = serverImagesUrl + imageName
+		getData(from: urlString, completionQueue: completionQueue, completion: completion)
+	}
+	
+	
+	// MARK: - Main methods
+	
+	func getData(from urlString: String, completionQueue: DispatchQueue = .main, completion: @escaping (Data?, Error?) -> ()) {
+		
+		guard let url = URL(string: urlString) else {
 			completionQueue.async {
 				completion(nil, NetworkError.wrongUrl)
 			}
