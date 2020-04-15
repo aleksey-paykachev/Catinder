@@ -10,6 +10,7 @@ import UIKit
 
 class MatchSplashScreenViewController: UIViewController {
 	// MARK: - Properties
+	private let dataManager = DataManager.shared
 	private let viewModel: MatchViewModel
 
 	// Blur view
@@ -110,9 +111,15 @@ class MatchSplashScreenViewController: UIViewController {
 	// MARK: - Methods
 	
 	private func updateUI() {
-		userProfileImageView.image = UIImage(named: viewModel.userProfileImageName)
-		matchedProfileImageView.image = UIImage(named: viewModel.matchedProfileImageName)
 		matchDescriptionLabel.text = "Вы, и \(viewModel.matchedProfileName) понравились друг другу."
+		
+		dataManager.getImage(name: viewModel.userProfileImageName) { [weak self] image, _ in
+			self?.userProfileImageView.image = image
+		}
+		
+		dataManager.getImage(name: viewModel.matchedProfileImageName) { [weak self] image, _ in
+			self?.matchedProfileImageView.image = image
+		}
 	}
 
 	@objc private func sendMessageButtonDidTapped() {

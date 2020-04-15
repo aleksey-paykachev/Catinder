@@ -49,7 +49,9 @@ class ConversationViewController: UICollectionViewController {
 		title = viewModel.collocutorName
 		
 		navigationItem.rightBarButtonItem = navigationItemCollocutorButton
-		navigationItemCollocutorButton.set(imageName: viewModel.collocutorImageName)
+		dataManager.getImage(name: viewModel.collocutorImageName) { [weak self] image, _ in
+			self?.navigationItemCollocutorButton.set(image: image)
+		}
 		
 		navigationItemCollocutorButton.onClick { [weak self] in
 			self?.showProfileViewer()
