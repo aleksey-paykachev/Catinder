@@ -12,14 +12,12 @@ class LastMessageCell: UICollectionViewCell {
 	let profileImageView = UIImageView()
 	let profileNameLabel = UILabel(font: .systemFont(ofSize: 18, weight: .medium))
 	let messageTextView = UITextView()
+	private var downloadingImageName: String?
 	
 	var viewModel: LastMessageViewModel? {
 		didSet {
 			guard let viewModel = viewModel else { return }
-			
-			profileImageView.image = UIImage(named: viewModel.profileImageName)
-			profileNameLabel.text = viewModel.profileName
-			messageTextView.text = viewModel.message
+			updateUI(with: viewModel)
 		}
 	}
 	
@@ -60,8 +58,24 @@ class LastMessageCell: UICollectionViewCell {
 		mainStack.constrainToSuperview(respectSafeArea: false)
 	}
 	
+	private func updateUI(with viewModel: LastMessageViewModel) {
+		let imageName = viewModel.profileImageName
+		downloadingImageName = imageName
+
+		DataManager.shared.getImage(name: imageName) { [weak self] image, _ in
+			guard self?.downloadingImageName == imageName else { return }
+			
+			self?.profileImageView.image = image
+		}
+
+		profileNameLabel.text = viewModel.profileName
+		messageTextView.text = viewModel.message
+	}
+	
 	override func prepareForReuse() {
 		super.prepareForReuse()
+
+		downloadingImageName = nil
 		
 		profileImageView.image = nil
 		profileNameLabel.text = ""

@@ -172,8 +172,8 @@ class DataManager {
 	private var demoMatches: [Match] {
 		guard let user = AuthenticationManager.shared.loggedInUser else { return [] }
 
-		let marusia = Profile(uid: "1", name: "Маруся", age: 4, photosNames: ["Cat_Marusia"], description: "")
-		let stray = Profile(uid: "2", name: "Мамочка", age: 3, photosNames: ["Cat_Stray"], description: "")
+		let marusia = Profile(uid: "1", name: "Маруся", age: 4, photosNames: ["Marusia.jpg"], description: "")
+		let stray = Profile(uid: "2", name: "Мамочка", age: 3, photosNames: ["Mamochka.jpg"], description: "")
 		
 		let message = Message(date: Date(), senderUid: "2", receiverUid: "1", text: "Привет.")
 
