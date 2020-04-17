@@ -10,8 +10,19 @@ import UIKit
 
 class ProfilePhotoSelectorViewController: UICollectionViewController {
 	
-	// demo images instead of user photos
-	var images = ["person.badge.plus.fill", "person.crop.circle.badge.plus", "person.crop.circle.fill.badge.plus", "plus.square", "plus.square.fill", "plus.circle", "plus.circle.fill", "photo", "photo.fill", "photo.on.rectangle", "photo.fill.on.rectangle.fill"].map { UIImage(systemName: $0)! }
+	private let maximumPhotosCountPerProfile = 6
+
+	private lazy var imagesNames: [String?] = {
+		var userPhotosNames: [String?] = AuthenticationManager.shared.loggedInUser?.photosNames ?? []
+		
+		let emptyPhotosCount = maximumPhotosCountPerProfile - userPhotosNames.count
+
+		if emptyPhotosCount > 0 {
+			userPhotosNames += Array<String?>(repeating: nil, count: emptyPhotosCount)
+		}
+		
+		return userPhotosNames
+	}()
 	
 	private let layout = ProfilePhotoSelectorLayout(spacing: 10)
 	
@@ -46,13 +57,14 @@ class ProfilePhotoSelectorViewController: UICollectionViewController {
 extension ProfilePhotoSelectorViewController {
 
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		6
+		imagesNames.count
 	}
 	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfilePhotoSelectorCell", for: indexPath) as! ProfilePhotoSelectorCell
-		cell.set(image: images[indexPath.item])
+		cell.set(imageName: imagesNames[indexPath.item])
+		
 		return cell
 	}
 }
@@ -77,8 +89,10 @@ extension ProfilePhotoSelectorViewController: UICollectionViewDragDelegate {
 	
 	func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
 		
-		let image = images[indexPath.item]
-		let itemProvider = NSItemProvider(object: image)
+		// disable dragging of empty item
+		guard let imageName = imagesNames[indexPath.item] else { return [] }
+		
+		let itemProvider = NSItemProvider(object: imageName as NSString)
 		let item = UIDragItem(itemProvider: itemProvider)
 		
 		return [item]
@@ -100,10 +114,13 @@ extension ProfilePhotoSelectorViewController: UICollectionViewDropDelegate {
 		guard let droppedItem = coordinator.items.first,
 			  let sourceIndexPath = droppedItem.sourceIndexPath,
 			  let destinationIndexPath = coordinator.destinationIndexPath else { return }
+
+		// disable dropping on empty item
+		if imagesNames[destinationIndexPath.item] == nil { return }
 		
 		collectionView.performBatchUpdates({
-			let draggedImage = images.remove(at: sourceIndexPath.item)
-			images.insert(draggedImage, at: destinationIndexPath.item)
+			let draggedImage = imagesNames.remove(at: sourceIndexPath.item)
+			imagesNames.insert(draggedImage, at: destinationIndexPath.item)
 			
 			collectionView.deleteItems(at: [sourceIndexPath])
 			collectionView.insertItems(at: [destinationIndexPath])

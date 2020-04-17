@@ -9,7 +9,8 @@
 import UIKit
 
 class ProfilePhotoSelectorCell: UICollectionViewCell {
-	private var photoImageView = UIImageView(image: UIImage(systemName: "xmark"))
+	#warning("Add placeholder image")
+	private let photoImageView = UIImageView(image: UIImage(systemName: "xmark"))
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -36,13 +37,17 @@ class ProfilePhotoSelectorCell: UICollectionViewCell {
 		borderLayer.path = CGPath(rect: contentView.bounds, transform: nil)
 		contentView.layer.addSublayer(borderLayer)
 
-		photoImageView.contentMode = .scaleAspectFit // .scaleAspectFill
+		photoImageView.contentMode = .scaleAspectFill
 		photoImageView.tintColor = .lightGray
 		contentView.addSubview(photoImageView)
 		photoImageView.constrainToSuperview()
 	}
 	
-	func set(image: UIImage) {
-		photoImageView.image = image
+	func set(imageName: String?) {
+		guard let imageName = imageName else { return }
+		
+		DataManager.shared.getImage(name: imageName) { [weak self] image, _ in
+			self?.photoImageView.image = image
+		}
 	}
 }
