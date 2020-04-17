@@ -19,9 +19,9 @@ class CatinderNavigationController: UINavigationController {
 	
 	private func setupAppearance() {
 		let navigationBarAppearance = UINavigationBar.appearance()
-		navigationBarAppearance.tintColor = .navigation
-		navigationBarAppearance.barTintColor = .white
-		navigationBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.navigation]
+		navigationBarAppearance.barTintColor = .navigationBackground
+		navigationBarAppearance.tintColor = .navigationContent
+		navigationBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.navigationContent]
 	}
 	
 	private func setupNavigationBar() {

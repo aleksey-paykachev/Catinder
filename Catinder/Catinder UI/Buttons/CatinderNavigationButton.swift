@@ -17,7 +17,7 @@ class CatinderNavigationButton: UIButton {
 		imageView?.contentMode = .scaleAspectFill
 		set(image: image)
 
-		layer.setBorder(size: 2, color: .navigation)
+		layer.setBorder(size: 2, color: .navigationContent)
 		layer.roundCorners(radius: radius)
 		
 		constrainSize(width: radius * 2, height: radius * 2)
