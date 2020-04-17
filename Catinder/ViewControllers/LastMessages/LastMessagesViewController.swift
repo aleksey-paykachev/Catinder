@@ -41,7 +41,7 @@ class LastMessagesViewController: UICollectionViewController {
 	}
 	
 	private func setupCollectionView() {
-		collectionView.backgroundColor = .white
+		collectionView.backgroundColor = .background
 		collectionView.alwaysBounceVertical = true
 		collectionView.contentInset.top = 24
 

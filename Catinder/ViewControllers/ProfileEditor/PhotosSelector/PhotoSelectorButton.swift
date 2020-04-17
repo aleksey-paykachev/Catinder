@@ -26,7 +26,7 @@ class PhotoSelectorButton: UIButton {
 	}
 	
 	private func setupView() {
-		backgroundColor = .white
+		backgroundColor = .background
 		layer.cornerRadius = 10
 		layer.borderColor = #colorLiteral(red: 0.862745098, green: 0.862745098, blue: 0.862745098, alpha: 1).cgColor
 		layer.borderWidth = 1

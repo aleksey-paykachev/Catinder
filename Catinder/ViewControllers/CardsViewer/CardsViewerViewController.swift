@@ -27,7 +27,7 @@ class CardsViewerViewController: UIViewController {
 	}
 	
 	private func setupView() {
-		view.backgroundColor = .white
+		view.backgroundColor = .background
 		
 		// top menu
 		let topMenuView = TopMenuView()

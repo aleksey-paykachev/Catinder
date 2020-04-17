@@ -75,7 +75,7 @@ class CardView: UIView {
 	// MARK: - Setup
 	
 	private func setupView() {
-		backgroundColor = .white
+		backgroundColor = .background
 		
 		setupLayer()
 		setupImageView()

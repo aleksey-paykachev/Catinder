@@ -21,7 +21,7 @@ class ProfilePhotoSelectorCell: UICollectionViewCell {
 	}
 	
 	private func setup() {
-		contentView.backgroundColor = .white
+		contentView.backgroundColor = .background
 //		contentView.layer.cornerRadius = 10
 //		contentView.layer.borderColor = #colorLiteral(red: 0.862745098, green: 0.862745098, blue: 0.862745098, alpha: 1).cgColor
 //		contentView.layer.borderWidth = 1

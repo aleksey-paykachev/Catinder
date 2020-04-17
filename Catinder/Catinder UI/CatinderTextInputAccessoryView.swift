@@ -45,7 +45,7 @@ class CatinderTextInputAccessoryView: UIView {
 	
 	private func setupView() {
 		frame.size.height = 50
-		backgroundColor = .white
+		backgroundColor = .background
 		layer.setShadow(size: 1, offsetY: -1, alpha: 0.1)
 	}
 	

@@ -43,7 +43,7 @@ class ProfileViewerViewController: UIViewController {
 	}
 
 	private func setupView() {
-		view.backgroundColor = .white
+		view.backgroundColor = .background
 	}
 	
 	private func setupSubviews() {

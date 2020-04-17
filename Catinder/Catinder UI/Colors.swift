@@ -9,5 +9,6 @@
 import UIKit
 
 extension UIColor {
+	static let background = UIColor.systemBackground
 	static let navigation = #colorLiteral(red: 0.9372549057, green: 0.4767975687, blue: 0.2674589695, alpha: 1)
 }
