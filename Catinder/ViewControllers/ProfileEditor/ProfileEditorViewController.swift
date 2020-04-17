@@ -22,7 +22,16 @@ class ProfileEditorViewController: UITableViewController {
 		}
 		
 		var placeholder: String {
-			return rawValue
+			switch self {
+			case .name:
+				return "Как вас зовут"
+			case .age:
+				return "Сколько вам лет"
+			case .description:
+				return "Расскажите кратко о себе"
+			default:
+				return ""
+			}
 		}
 	}
 	
