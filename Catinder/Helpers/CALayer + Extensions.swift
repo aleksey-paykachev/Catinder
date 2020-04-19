@@ -42,19 +42,20 @@ extension CALayer {
 		CATransaction.commit()
 	}
 	
+	/// Set rounded corners for current layer. Use half of the layers side with the
+	/// minimum size, i.e. make squared layer a circle and round rectangular.
+	///
+	func roundCorners() {
+		cornerRadius = min(frame.width / 2, frame.height / 2)
+		masksToBounds = true
+	}
+	
 	/// Set rounded corners for current layer using provided radius.
 	///
-	/// - Parameter radius: Radius value applying to corners. If no value were provided,
-	///						use half of the layers side with the minimum size, i.e. make
-	///						squared layer a circle and round rectangular.
+	/// - Parameter radius: Radius value applying to corners.
 	///
-	func roundCorners(radius: CGFloat? = nil) {
-		if let radius = radius {
-			cornerRadius = radius
-		} else {
-			cornerRadius = min(frame.width / 2, frame.height / 2)
-		}
-
+	func setCorner(radius: CGFloat) {
+		cornerRadius = radius
 		masksToBounds = true
 	}
 	
@@ -77,6 +78,7 @@ extension CALayer {
 	///   - offsetX: The X offset of the layer’s shadow.
 	///   - offsetY: The Y offset of the layer’s shadow.
 	///   - alpha: The opacity of the layer’s shadow.
+	///
 	func setShadow(color: UIColor = .black, size: CGFloat, offsetX: CGFloat = 0, offsetY: CGFloat = 0, alpha: CGFloat = 1) {
 		
 		shadowColor = color.cgColor

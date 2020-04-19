@@ -35,7 +35,7 @@ class LastMessageCell: UICollectionViewCell {
 		// profile image
 		profileImageView.contentMode = .scaleAspectFill
 		profileImageView.widthAnchor.constraint(equalTo: profileImageView.heightAnchor).isActive = true
-		profileImageView.layer.roundCorners(radius: size.height / 2)
+		profileImageView.layer.setCorner(radius: size.height / 2)
 		profileImageView.layer.setBorder(size: 2, color: #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1))
 		
 		// profile name

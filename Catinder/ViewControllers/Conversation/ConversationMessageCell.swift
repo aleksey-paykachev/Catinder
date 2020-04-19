@@ -45,7 +45,7 @@ class ConversationMessageCell: UICollectionViewCell {
 		messageView.constrainToSuperview(anchors: [.top, .bottom], respectSafeArea: false)
 		messageView.widthAnchor.constraint(lessThanOrEqualToConstant: 300).isActive = true
 		
-		messageView.layer.roundCorners(radius: 10)
+		messageView.layer.setCorner(radius: 10)
 		messageViewLeadingAnchor.priority = .defaultLow // to prevent autolayout issues
 	}
 		

@@ -18,7 +18,7 @@ class CatinderNavigationButton: UIButton {
 		set(image: image)
 
 		layer.setBorder(size: 2, color: .navigationContent)
-		layer.roundCorners(radius: radius)
+		layer.setCorner(radius: radius)
 		
 		constrainSize(width: radius * 2, height: radius * 2)
 	}

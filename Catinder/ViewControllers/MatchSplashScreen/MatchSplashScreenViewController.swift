@@ -103,7 +103,7 @@ class MatchSplashScreenViewController: UIViewController {
 
 		profileImageView.contentMode = .scaleAspectFill
 		profileImageView.constrainSize(to: .square(profileImageSideSize))
-		profileImageView.layer.roundCorners(radius: profileImageSideSize / 2)
+		profileImageView.layer.setCorner(radius: profileImageSideSize / 2)
 		profileImageView.layer.setBorder(size: 2, color: .white)
 	}
 	
