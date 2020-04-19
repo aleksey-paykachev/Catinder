@@ -15,10 +15,7 @@ class CatinderPageControl: UIView {
 	private var pageIndicators: [PageIndicatorView] = []
 	
 	private lazy var pageIndicatorsStackView: UIStackView = {
-		let stackView = UIStackView()
-		stackView.axis = .horizontal
-		stackView.distribution = .fillEqually
-		stackView.spacing = 5
+		let stackView = HStackView([], spacing: 5, distribution: .fillEqually)
 		
 		addSubview(stackView)
 		stackView.constrainToSuperview()
@@ -50,7 +47,7 @@ class CatinderPageControl: UIView {
 	}
 	
 	override var intrinsicContentSize: CGSize {
-		return CGSize(width: 100, height: 5)
+		CGSize(width: 100, height: 5)
 	}
 	
 	
