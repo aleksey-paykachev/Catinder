@@ -13,15 +13,10 @@ class ProfilePhotoSelectorViewController: UICollectionViewController {
 	private let maximumPhotosCountPerProfile = 6
 
 	private lazy var imagesNames: [String?] = {
-		var userPhotosNames: [String?] = AuthenticationManager.shared.loggedInUser?.photosNames ?? []
-		
-		let emptyPhotosCount = maximumPhotosCountPerProfile - userPhotosNames.count
+		guard let loggedInUser = AuthenticationManager.shared.loggedInUser else { return [] }
 
-		if emptyPhotosCount > 0 {
-			userPhotosNames += Array<String?>(repeating: nil, count: emptyPhotosCount)
-		}
-		
-		return userPhotosNames
+		var userPhotosNames: [String?] = loggedInUser.photosNames
+		return userPhotosNames.expandToCapacity(maximumPhotosCountPerProfile, with: nil)
 	}()
 	
 	private let layout = ProfilePhotoSelectorLayout(spacing: 10)

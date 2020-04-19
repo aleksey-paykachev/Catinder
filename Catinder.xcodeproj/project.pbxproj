@@ -63,6 +63,7 @@
 		5BD54E1723D5077E004A0AA2 /* VStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD54E1623D5077E004A0AA2 /* VStackView.swift */; };
 		5BD8BE9623C687C900D9943B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8BE9523C687C900D9943B /* DataManager.swift */; };
 		5BD9B09523CFDDC9000E5028 /* CGColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD9B09423CFDDC9000E5028 /* CGColor + Extensions.swift */; };
+		5BDFCF05244A747B006A523A /* Array + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDFCF04244A747B006A523A /* Array + Extensions.swift */; };
 		5BE56BB723E8BD59000374C2 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE56BB623E8BD59000374C2 /* AuthenticationManager.swift */; };
 		5BF37D4624360A9D00347053 /* ProfilePhotoSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF37D4524360A9D00347053 /* ProfilePhotoSelectorViewController.swift */; };
 		5BFC059923C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC059823C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift */; };
@@ -128,6 +129,7 @@
 		5BD54E1623D5077E004A0AA2 /* VStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VStackView.swift; sourceTree = "<group>"; };
 		5BD8BE9523C687C900D9943B /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		5BD9B09423CFDDC9000E5028 /* CGColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGColor + Extensions.swift"; sourceTree = "<group>"; };
+		5BDFCF04244A747B006A523A /* Array + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array + Extensions.swift"; sourceTree = "<group>"; };
 		5BE56BB623E8BD59000374C2 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		5BF37D4524360A9D00347053 /* ProfilePhotoSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoSelectorViewController.swift; sourceTree = "<group>"; };
 		5BFC059823C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorFieldTableViewCell.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				5BD9B09423CFDDC9000E5028 /* CGColor + Extensions.swift */,
 				5B035D4A23D299D100542242 /* CGSize + Extensions.swift */,
 				5B07A50923D12E9D00122190 /* CALayer + Extensions.swift */,
+				5BDFCF04244A747B006A523A /* Array + Extensions.swift */,
 				5B07A50B23D13A6500122190 /* Collection + Extensions.swift */,
 				5B41EBE223E5956800D99CA6 /* String + Extensions.swift */,
 				5B197FF323D6966D006DFB9E /* GradientView.swift */,
@@ -477,6 +480,7 @@
 				5B96C7FD23BE713A00BFB4D0 /* Angle.swift in Sources */,
 				5B1C8D1324427EB200A6D91A /* Colors.swift in Sources */,
 				5B139E6923B777F800BE73E7 /* CardsViewerViewController.swift in Sources */,
+				5BDFCF05244A747B006A523A /* Array + Extensions.swift in Sources */,
 				5B07A50A23D12E9D00122190 /* CALayer + Extensions.swift in Sources */,
 				5B746EFB23C8C94000063374 /* ProfileViewModel.swift in Sources */,
 				5B1C8D0F2442632B00A6D91A /* PhotoPreviewCell.swift in Sources */,
