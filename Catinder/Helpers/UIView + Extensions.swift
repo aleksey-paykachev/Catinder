@@ -35,31 +35,31 @@ extension UIView {
 		let bottom: CGFloat
 		
 		static func leading(_ padding: CGFloat) -> Padding {
-			return Padding(leading: padding, trailing: 0, top: 0, bottom: 0)
+			Padding(leading: padding, trailing: 0, top: 0, bottom: 0)
 		}
 		
 		static func trailing(_ padding: CGFloat) -> Padding {
-			return Padding(leading: 0, trailing: padding, top: 0, bottom: 0)
+			Padding(leading: 0, trailing: padding, top: 0, bottom: 0)
 		}
 
 		static func top(_ padding: CGFloat) -> Padding {
-			return Padding(leading: 0, trailing: 0, top: padding, bottom: 0)
+			Padding(leading: 0, trailing: 0, top: padding, bottom: 0)
 		}
 
 		static func bottom(_ padding: CGFloat) -> Padding {
-			return Padding(leading: 0, trailing: 0, top: 0, bottom: padding)
+			Padding(leading: 0, trailing: 0, top: 0, bottom: padding)
 		}
 		
 		static func vertical(_ padding: CGFloat) -> Padding {
-			return Padding(leading: 0, trailing: 0, top: padding, bottom: padding)
+			Padding(leading: 0, trailing: 0, top: padding, bottom: padding)
 		}
 		
 		static func horizontal(_ padding: CGFloat) -> Padding {
-			return Padding(leading: padding, trailing: padding, top: 0, bottom: 0)
+			Padding(leading: padding, trailing: padding, top: 0, bottom: 0)
 		}
 		
 		static func all(_ padding: CGFloat) -> Padding {
-			return Padding(leading: padding, trailing: padding, top: padding, bottom: padding)
+			Padding(leading: padding, trailing: padding, top: padding, bottom: padding)
 		}
 	}
 	
@@ -161,10 +161,16 @@ extension UIView {
 // MARK: - UIView.Padding + Extensions
 
 extension UIView.Padding {
+
+	/// Sums up all values from two padding structures and returns new, result instance.
+	/// - Parameters:
+	///   - lhs: First padding structure.
+	///   - rhs: Second padding structure.
+	///
 	static func +(lhs: UIView.Padding, rhs: UIView.Padding) -> UIView.Padding {
-		return UIView.Padding(leading: lhs.leading + rhs.leading,
-							  trailing: lhs.trailing + rhs.trailing,
-							  top: lhs.top + rhs.top,
-							  bottom: lhs.bottom + rhs.bottom)
+		UIView.Padding(leading: lhs.leading + rhs.leading,
+					   trailing: lhs.trailing + rhs.trailing,
+					   top: lhs.top + rhs.top,
+					   bottom: lhs.bottom + rhs.bottom)
 	}
 }
