@@ -52,12 +52,9 @@ class TopMenuView: UIView {
 	}
 	
 	private func setupView() {
-		constrainHeight(to: 30)
-		
-		let stackView = UIStackView(arrangedSubviews: [profileButton, logoImageView, messagesButton])
-		stackView.axis = .horizontal
-		stackView.distribution = .equalCentering
+		let stackView = HStackView([profileButton, logoImageView, messagesButton], distribution: .equalCentering)
 
+		constrainHeight(to: 30)
 		addSubview(stackView)
 		stackView.constrainToSuperview()
 	}
