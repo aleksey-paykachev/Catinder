@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// UIView with gradient layer.
 class GradientView: UIView {
 	
 	private let gradientLayer = CAGradientLayer()
@@ -15,6 +16,11 @@ class GradientView: UIView {
 	
 	// MARK: - Init
 	
+	/// Creates and returns new GradientView instance with provided parameters.
+	/// - Parameters:
+	///   - colors: An array of color objects defining the color of each gradient stop.
+	///   - locations: An array of numbers defining the location of each gradient stop.
+	///
 	init(_ colors: [UIColor], at locations: [Double]) {
 		super.init(frame: .zero)
 		

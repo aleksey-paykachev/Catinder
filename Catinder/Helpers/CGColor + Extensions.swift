@@ -13,13 +13,13 @@ extension CGColor {
 	/// A color object whose grayscale and alpha values are both 0.0.
 	///
 	static var clear: CGColor {
-		return UIColor.clear.cgColor
+		UIColor.clear.cgColor
 	}
 	
 	/// A color object whose grayscale value is 0.0 and whose alpha value is 1.0.
 	///
 	static var black: CGColor {
-		return UIColor.black.cgColor
+		UIColor.black.cgColor
 	}
 	
 	/// Creates and returns a color object that has the same color component values
@@ -29,6 +29,6 @@ extension CGColor {
 	/// - Returns: The new CGColor object.
 	///
 	func withAlphaComponent(_ alpha: CGFloat) -> CGColor {
-		return UIColor(cgColor: self).withAlphaComponent(alpha).cgColor
+		UIColor(cgColor: self).withAlphaComponent(alpha).cgColor
 	}
 }

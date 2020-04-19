@@ -15,6 +15,6 @@ extension CGSize {
 	/// - Returns: CGSize instance.
 	///
 	static func square(_ side: CGFloat) -> CGSize {
-		return CGSize(width: side, height: side)
+		CGSize(width: side, height: side)
 	}
 }
