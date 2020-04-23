@@ -49,11 +49,11 @@ class PhotosSelectorViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		photoImagePicker.photoSelectorDelegate = self
+//		photoImagePicker.photoSelectorDelegate = self
 	}
 	
 	private func photoSelectorButtonDidTapped(photoId: Int) {
-		photoImagePicker.photoId = photoId
+//		photoImagePicker.photoId = photoId
 		present(photoImagePicker, animated: true)
 	}
 }

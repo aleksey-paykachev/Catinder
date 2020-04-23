@@ -13,8 +13,23 @@ protocol PhotoImagePickerDelegate: class {
 }
 
 class PhotoImagePicker: UIImagePickerController {
-	var photoId: Int?
-	weak var photoSelectorDelegate: PhotoImagePickerDelegate?
+	private var photoId: Int?
+	private weak var photoSelectorDelegate: PhotoImagePickerDelegate?
+	
+	convenience init(photoId: Int, delegate: PhotoImagePickerDelegate, source: SourceType) {
+		self.init()
+		
+		self.photoId = photoId
+		photoSelectorDelegate = delegate
+		sourceType = source
+		setup()
+	}
+	
+	private func setup() {
+		modalPresentationStyle = .fullScreen
+		allowsEditing = true
+		delegate = self
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()

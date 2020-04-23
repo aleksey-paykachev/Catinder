@@ -236,7 +236,6 @@
 			children = (
 				5B37744623CE769A00698427 /* PhotosSelectorViewController.swift */,
 				5B37744423CE767400698427 /* PhotoSelectorButton.swift */,
-				5B37744223CE75FA00698427 /* PhotoImagePicker.swift */,
 			);
 			path = PhotosSelector;
 			sourceTree = "<group>";
@@ -310,6 +309,7 @@
 				5BF37D4524360A9D00347053 /* ProfilePhotoSelectorViewController.swift */,
 				5B6613852447BDD700E214E8 /* ProfilePhotoSelectorLayout.swift */,
 				5B1B84CC2438A69300F0091F /* ProfilePhotoSelectorCell.swift */,
+				5B37744223CE75FA00698427 /* PhotoImagePicker.swift */,
 				5B37744823CE772400698427 /* PhotosSelector */,
 			);
 			path = ProfileEditor;

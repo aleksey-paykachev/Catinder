@@ -70,9 +70,7 @@ extension ProfilePhotoSelectorViewController {
 extension ProfilePhotoSelectorViewController {
 
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		print(indexPath)
-		let photoImagePicker = PhotoImagePicker()
-		photoImagePicker.photoId = 1
+		let photoImagePicker = PhotoImagePicker(photoId: indexPath.item, delegate: self, source: .photoLibrary)
 		present(photoImagePicker, animated: true)
 	}
 }
@@ -122,5 +120,22 @@ extension ProfilePhotoSelectorViewController: UICollectionViewDropDelegate {
 		})
 		
 		coordinator.drop(droppedItem.dragItem, toItemAt: destinationIndexPath)
+	}
+}
+
+
+// MARK: - PhotoImagePickerDelegate
+
+extension ProfilePhotoSelectorViewController: PhotoImagePickerDelegate {
+
+	func didFinishPicking(image: UIImage, for photoId: Int) {
+		// upload image to server
+		
+		// update data source
+		
+		// update cell image
+		let indexPath = IndexPath(item: photoId, section: 0)
+		guard let cell = collectionView.cellForItem(at: indexPath) as? ProfilePhotoSelectorCell else { return }
+		cell.set(image: image)
 	}
 }

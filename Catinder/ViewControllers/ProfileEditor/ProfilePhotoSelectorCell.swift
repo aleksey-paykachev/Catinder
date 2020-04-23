@@ -50,4 +50,8 @@ class ProfilePhotoSelectorCell: UICollectionViewCell {
 			self?.photoImageView.image = image
 		}
 	}
+	
+	func set(image: UIImage?) {
+		photoImageView.image = image
+	}
 }
