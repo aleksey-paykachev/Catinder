@@ -9,6 +9,7 @@
 import CoreGraphics
 
 extension CGSize {
+
 	/// Creates and returns a CGSize instance with equal width and height.
 	///
 	/// - Parameter side: Side value of the square.

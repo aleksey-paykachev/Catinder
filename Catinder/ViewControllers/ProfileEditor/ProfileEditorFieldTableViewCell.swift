@@ -10,10 +10,11 @@ import UIKit
 
 class ProfileEditorFieldTableViewCell: UITableViewCell {
 	
-	init(placeholder: String? = nil, keyboardType: UIKeyboardType = .default) {
+	init(text: String? = nil, placeholder: String? = nil, keyboardType: UIKeyboardType = .default) {
 		super.init(style: .default, reuseIdentifier: nil)
 		
 		let textField = UITextField()
+		textField.text = text
 		textField.placeholder = placeholder
 		textField.keyboardType = keyboardType
 		textField.autocorrectionType = .no

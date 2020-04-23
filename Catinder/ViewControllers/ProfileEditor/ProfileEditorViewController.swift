@@ -109,8 +109,26 @@ extension ProfileEditorViewController {
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		let placeholder = sections[indexPath.section].placeholder
-		return ProfileEditorFieldTableViewCell(placeholder: placeholder)
+		let section = sections[indexPath.section]
+		let placeholder = section.placeholder
+		var text = ""
+		
+		if let userProfile = userProfile {
+			switch section {
+			case .name:
+				text = userProfile.name
+			case .age:
+				text = "\(userProfile.age)"
+			case .shortDescription:
+				text = userProfile.shortDescription
+			case .fullDescription:
+				text = userProfile.description
+			default:
+				break
+			}
+		}
+		
+		return ProfileEditorFieldTableViewCell(text: text, placeholder: placeholder)
 	}
 }
 
