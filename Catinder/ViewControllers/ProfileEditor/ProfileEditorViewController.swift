@@ -15,10 +15,11 @@ class ProfileEditorViewController: UITableViewController {
 		case photos = "Фотографии"
 		case name = "Имя"
 		case age = "Возраст"
-		case description = "Описание"
+		case shortDescription = "Краткое описание"
+		case fullDescription = "Полное описание"
 		
 		var title: String {
-			return rawValue
+			rawValue
 		}
 		
 		var placeholder: String {
@@ -27,8 +28,10 @@ class ProfileEditorViewController: UITableViewController {
 				return "Как вас зовут"
 			case .age:
 				return "Сколько вам лет"
-			case .description:
+			case .shortDescription:
 				return "Расскажите кратко о себе"
+			case .fullDescription:
+				return "Расскажите о себе более подробно"
 			default:
 				return ""
 			}
@@ -40,7 +43,7 @@ class ProfileEditorViewController: UITableViewController {
 	
 	private let dataManager: DataManager
 	private var userProfile: Profile?
-	private let sections: [Section] = [.photos, .name, .age, .description]
+	private let sections: [Section] = [.photos, .name, .age, .shortDescription, .fullDescription]
 	private let photoSelectorViewController = ProfilePhotoSelectorViewController()
 	
 	
