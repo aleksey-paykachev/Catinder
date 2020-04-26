@@ -10,6 +10,8 @@ import UIKit
 
 extension UIColor {
 	static let background = UIColor.systemBackground
+	
+	static let activityIndicator = #colorLiteral(red: 0.9015446749, green: 0.319128289, blue: 0, alpha: 1)
 
 	static let navigationContent = UIColor(dynamicProvider: { traitCollection in
 		traitCollection.userInterfaceStyle == .dark ? #colorLiteral(red: 0.9034442896, green: 0.3805156774, blue: 0.09398302256, alpha: 1) : #colorLiteral(red: 0.9372549057, green: 0.4767975687, blue: 0.2674589695, alpha: 1)

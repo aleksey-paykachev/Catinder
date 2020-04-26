@@ -12,6 +12,7 @@ class ProfilePhotoSelectorCell: UICollectionViewCell {
 	#warning("Add placeholder image")
 	private let defaultEmptyImage = UIImage(systemName: "xmark")
 	private lazy var photoImageView = UIImageView(image: defaultEmptyImage)
+	private let activityIndicatorView = UIActivityIndicatorView(style: .large)
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -42,6 +43,11 @@ class ProfilePhotoSelectorCell: UICollectionViewCell {
 		photoImageView.tintColor = .lightGray
 		contentView.addSubview(photoImageView)
 		photoImageView.constrainToSuperview()
+		
+		activityIndicatorView.hidesWhenStopped = true
+		activityIndicatorView.color = .activityIndicator
+		photoImageView.addSubview(activityIndicatorView)
+		activityIndicatorView.constrainToSuperview(anchors: [.centerX, .centerY])
 	}
 	
 	func set(imageName: String?) {
@@ -56,9 +62,18 @@ class ProfilePhotoSelectorCell: UICollectionViewCell {
 		photoImageView.image = image
 	}
 	
+	func showActivityIndicator() {
+		activityIndicatorView.startAnimating()
+	}
+	
+	func hideActivityIndicator() {
+		 activityIndicatorView.stopAnimating()
+	}
+	
 	override func prepareForReuse() {
 		super.prepareForReuse()
 
 		photoImageView.image = defaultEmptyImage
+		hideActivityIndicator()
 	}
 }
