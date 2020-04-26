@@ -62,12 +62,21 @@ class DataManager {
 		}
 	}
 	
+	func deleteImage(at position: Int, completion: @escaping (Result<Bool, Error>) -> ()) {
+		// emulate deleting image from server
+		let responseDelay = Int.random(in: 500...1000)
+
+		DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(responseDelay)) {
+			completion(.success(true))
+		}
+	}
+	
 	
 	// MARK: - Matches
 
 	func getMatches(completion: @escaping ([Match]?, Error?) -> ()) {
 
-		// Emulate server request
+		// Emulate server response
 		let responseDelay = Int.random(in: 500...1500)
 		DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(responseDelay)) {
 			completion(self.demoMatches, nil)
@@ -79,7 +88,7 @@ class DataManager {
 	
 	func getMessages(forConversationWith collocutorUid: String, completion: @escaping ([Message]?, Error?) -> ()) {
 
-		// emulate server request
+		// emulate server response
 		let responseDelay = Int.random(in: 500...1500)
 		DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(responseDelay)) {
 			completion(self.demoMessages, nil)

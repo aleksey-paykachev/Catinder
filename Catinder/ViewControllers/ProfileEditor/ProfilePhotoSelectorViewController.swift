@@ -10,6 +10,7 @@ import UIKit
 
 class ProfilePhotoSelectorViewController: UICollectionViewController {
 	
+	private let dataManager = DataManager.shared
 	private let maximumPhotosCountPerProfile = 6
 
 	private lazy var imagesNames: [String?] = {
@@ -80,11 +81,17 @@ class ProfilePhotoSelectorViewController: UICollectionViewController {
 	
 	func deletePhoto(at photoId: Int) {
 		// delete image on server
-		#warning("Send to server")
+		dataManager.deleteImage(at: photoId) { result in
+			switch result {
+			case .success(_):
+				print("Image deleted successfully.")
+			case .failure(_):
+				print("Error: could not delete image from server. Try again later.")
+			}
+		}
 		
 		// update data source
 		imagesNames[photoId] = nil
-		print(imagesNames)
 		
 		// update cell
 		let indexPath = IndexPath(item: photoId, section: 0)
@@ -175,7 +182,7 @@ extension ProfilePhotoSelectorViewController: PhotoImagePickerDelegate {
 
 	func didFinishPicking(image: UIImage, for photoId: Int) {
 		// upload image to server
-		DataManager.shared.setImage(image, at: photoId) { [weak self] imageName, error in
+		dataManager.setImage(image, at: photoId) { [weak self] imageName, error in
 			if let error = error {
 				print("Error: could not upload image to server.", error.localizedDescription)
 			}
