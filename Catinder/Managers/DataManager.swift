@@ -52,6 +52,13 @@ class DataManager {
 		}
 	}
 	
+	func setImage(_ image: UIImage, at position: Int, completion: @escaping (String?, Error?) -> ()) {
+		// uplad image to server
+		// ...
+		
+		completion("new_image_name.jpg", nil)
+	}
+	
 	
 	// MARK: - Matches
 

@@ -44,6 +44,36 @@ class ProfilePhotoSelectorViewController: UICollectionViewController {
 		collectionView.backgroundColor = .clear
 		collectionView.register(ProfilePhotoSelectorCell.self, forCellWithReuseIdentifier: "ProfilePhotoSelectorCell")
 	}
+	
+	private func showPhotoImagePickerSourceSelector(for photoId: Int) {
+		// check if device have a camera, and if not, show photo library image picker
+		if UIImagePickerController.isSourceTypeAvailable(.camera) == false {
+			let libraryPicker = PhotoImagePicker(photoId: photoId, delegate: self, source: .photoLibrary)
+			present(libraryPicker, animated: true)
+			return
+		}
+		
+		// if device do have a camera, show photo note image source selector: library or camera
+		let imageSourceSelectorAlertController = UIAlertController(title: "Пожалуйста, выберите источник фотографии.", message: nil, preferredStyle: .actionSheet)
+
+		let addImageFromCameraAction = UIAlertAction(title: "Камера", style: .default) { _ in
+
+			let cameraPicker = PhotoImagePicker(photoId: photoId, delegate: self, source: .camera)
+			self.present(cameraPicker, animated: true)
+		}
+		let addImageFromPhotoLibraryAction = UIAlertAction(title: "Фотобиблиотека", style: .default) { _ in
+
+			let libraryPicker = PhotoImagePicker(photoId: photoId, delegate: self, source: .photoLibrary)
+			self.present(libraryPicker, animated: true)
+		}
+		let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+
+		imageSourceSelectorAlertController.addAction(addImageFromCameraAction)
+		imageSourceSelectorAlertController.addAction(addImageFromPhotoLibraryAction)
+		imageSourceSelectorAlertController.addAction(cancelAction)
+
+		present(imageSourceSelectorAlertController, animated: true)
+	}
 }
 
 
@@ -70,8 +100,7 @@ extension ProfilePhotoSelectorViewController {
 extension ProfilePhotoSelectorViewController {
 
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		let photoImagePicker = PhotoImagePicker(photoId: indexPath.item, delegate: self, source: .photoLibrary)
-		present(photoImagePicker, animated: true)
+		showPhotoImagePickerSourceSelector(for: indexPath.item)
 	}
 }
 
@@ -130,12 +159,18 @@ extension ProfilePhotoSelectorViewController: PhotoImagePickerDelegate {
 
 	func didFinishPicking(image: UIImage, for photoId: Int) {
 		// upload image to server
+		DataManager.shared.setImage(image, at: photoId) { imageName, error in
+			if let error = error {
+				print("Error: could not upload image to server.", error.localizedDescription)
+			}
+		}
 		
 		// update data source
 		
 		// update cell image
 		let indexPath = IndexPath(item: photoId, section: 0)
-		guard let cell = collectionView.cellForItem(at: indexPath) as? ProfilePhotoSelectorCell else { return }
-		cell.set(image: image)
+		if let cell = collectionView.cellForItem(at: indexPath) as? ProfilePhotoSelectorCell {
+			cell.set(image: image)
+		}
 	}
 }
