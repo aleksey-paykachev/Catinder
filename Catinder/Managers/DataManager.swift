@@ -52,17 +52,17 @@ class DataManager {
 		}
 	}
 	
-	func setImage(_ image: UIImage, at position: Int, completion: @escaping (String?, Error?) -> ()) {
+	func setImage(_ image: UIImage, at position: Int, completion: @escaping (Result<String, DataManagerError>) -> ()) {
 		// emulate uploading image and recieving new image name from server
 		let responseDelay = Int.random(in: 500...1000)
 
 		DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(responseDelay)) {
 			let imageName = UUID().uuidString + ".jpg"
-			completion(imageName, nil)
+			completion(.success(imageName))
 		}
 	}
 	
-	func deleteImage(at position: Int, completion: @escaping (Result<Bool, Error>) -> ()) {
+	func deleteImage(at position: Int, completion: @escaping (Result<Bool, DataManagerError>) -> ()) {
 		// emulate deleting image from server
 		let responseDelay = Int.random(in: 500...1000)
 
@@ -166,6 +166,8 @@ class DataManager {
 		case emptyData
 		case wrongData
 		case parseError
+		case imageUpdateError
+		case imageDeleteError
 		
 		var errorDescription: String? {
 			switch self {
@@ -175,6 +177,10 @@ class DataManager {
 				return "Recieve wrong data."
 			case .parseError:
 				return "Could not parse data."
+			case .imageUpdateError:
+				return "Could not update image."
+			case .imageDeleteError:
+				return "Could not delete image."
 			}
 		}
 	}

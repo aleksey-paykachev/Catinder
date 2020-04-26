@@ -92,8 +92,8 @@ class ProfilePhotoSelectorViewController: UICollectionViewController {
 				self?.imagesNames[photoId] = nil
 				cell?.set(image: nil)
 
-			case .failure(_):
-				print("Error: could not delete image from server. Try again later.")
+			case .failure(let error):
+				print("Error:", error.localizedDescription)
 			}
 			
 			cell?.hideActivityIndicator()
@@ -189,14 +189,16 @@ extension ProfilePhotoSelectorViewController: PhotoImagePickerDelegate {
 		// upload image to server
 		cell.showActivityIndicator()
 		
-		dataManager.setImage(image, at: photoId) { [weak self, weak cell] imageName, error in
-			if let error = error {
-				print("Error: could not upload image to server.", error.localizedDescription)
+		dataManager.setImage(image, at: photoId) { [weak self, weak cell] result in
+			switch result {
+			case .success(let imageName):
+				self?.imagesNames[photoId] = imageName
+				cell?.set(image: image)
+	
+			case .failure(let error):
+				print("Error:", error.localizedDescription)
 			}
 
-			self?.imagesNames[photoId] = imageName
-			cell?.set(image: image)
-			
 			cell?.hideActivityIndicator()
 		}
 	}
