@@ -80,22 +80,24 @@ class ProfilePhotoSelectorViewController: UICollectionViewController {
 	}
 	
 	func deletePhoto(at photoId: Int) {
+		let indexPath = IndexPath(item: photoId, section: 0)
+		guard let cell = collectionView.cellForItem(at: indexPath) as? ProfilePhotoSelectorCell else { return }
+
 		// delete image on server
-		dataManager.deleteImage(at: photoId) { result in
+		cell.showActivityIndicator()
+
+		dataManager.deleteImage(at: photoId) { [weak self, weak cell] result in
 			switch result {
 			case .success(_):
-				print("Image deleted successfully.")
+				self?.imagesNames[photoId] = nil
+				cell?.set(image: nil)
+
 			case .failure(_):
 				print("Error: could not delete image from server. Try again later.")
 			}
+			
+			cell?.hideActivityIndicator()
 		}
-		
-		// update data source
-		imagesNames[photoId] = nil
-		
-		// update cell
-		let indexPath = IndexPath(item: photoId, section: 0)
-		collectionView.reloadItems(at: [indexPath])
 	}
 }
 
@@ -181,20 +183,21 @@ extension ProfilePhotoSelectorViewController: UICollectionViewDropDelegate {
 extension ProfilePhotoSelectorViewController: PhotoImagePickerDelegate {
 
 	func didFinishPicking(image: UIImage, for photoId: Int) {
+		let indexPath = IndexPath(item: photoId, section: 0)
+		guard let cell = collectionView.cellForItem(at: indexPath) as? ProfilePhotoSelectorCell else { return }
+		
 		// upload image to server
-		dataManager.setImage(image, at: photoId) { [weak self] imageName, error in
+		cell.showActivityIndicator()
+		
+		dataManager.setImage(image, at: photoId) { [weak self, weak cell] imageName, error in
 			if let error = error {
 				print("Error: could not upload image to server.", error.localizedDescription)
 			}
 
-			// update data source
 			self?.imagesNames[photoId] = imageName
-		}
-		
-		// update cell
-		let indexPath = IndexPath(item: photoId, section: 0)
-		if let cell = collectionView.cellForItem(at: indexPath) as? ProfilePhotoSelectorCell {
-			cell.set(image: image)
+			cell?.set(image: image)
+			
+			cell?.hideActivityIndicator()
 		}
 	}
 }

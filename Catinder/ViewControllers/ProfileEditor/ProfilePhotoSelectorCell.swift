@@ -59,7 +59,7 @@ class ProfilePhotoSelectorCell: UICollectionViewCell {
 	}
 	
 	func set(image: UIImage?) {
-		photoImageView.image = image
+		photoImageView.image = image ?? defaultEmptyImage
 	}
 	
 	func showActivityIndicator() {
