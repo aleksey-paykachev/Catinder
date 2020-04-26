@@ -46,33 +46,49 @@ class ProfilePhotoSelectorViewController: UICollectionViewController {
 	}
 	
 	private func showPhotoImagePickerSourceSelector(for photoId: Int) {
-		// check if device have a camera, and if not, show photo library image picker
-		if UIImagePickerController.isSourceTypeAvailable(.camera) == false {
-			let libraryPicker = PhotoImagePicker(photoId: photoId, delegate: self, source: .photoLibrary)
-			present(libraryPicker, animated: true)
-			return
+		let imageSourceSelectorAlertController = UIAlertController(title: "Пожалуйста, выберите действие.", message: nil, preferredStyle: .actionSheet)
+
+		// if device have a camera, add it as an option for photo note image source selector
+		if UIImagePickerController.isSourceTypeAvailable(.camera) {
+
+			let addImageFromCameraAction = UIAlertAction(title: "Добавить с камеры", style: .default) { _ in
+				let cameraPicker = PhotoImagePicker(photoId: photoId, delegate: self, source: .camera)
+				self.present(cameraPicker, animated: true)
+			}
+			imageSourceSelectorAlertController.addAction(addImageFromCameraAction)
 		}
-		
-		// if device do have a camera, show photo note image source selector: library or camera
-		let imageSourceSelectorAlertController = UIAlertController(title: "Пожалуйста, выберите источник фотографии.", message: nil, preferredStyle: .actionSheet)
 
-		let addImageFromCameraAction = UIAlertAction(title: "Камера", style: .default) { _ in
-
-			let cameraPicker = PhotoImagePicker(photoId: photoId, delegate: self, source: .camera)
-			self.present(cameraPicker, animated: true)
-		}
-		let addImageFromPhotoLibraryAction = UIAlertAction(title: "Фотобиблиотека", style: .default) { _ in
-
+		let addImageFromPhotoLibraryAction = UIAlertAction(title: "Выбрать из библиотеки", style: .default) { _ in
 			let libraryPicker = PhotoImagePicker(photoId: photoId, delegate: self, source: .photoLibrary)
 			self.present(libraryPicker, animated: true)
 		}
-		let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
-
-		imageSourceSelectorAlertController.addAction(addImageFromCameraAction)
 		imageSourceSelectorAlertController.addAction(addImageFromPhotoLibraryAction)
+
+		// add 'delete' option only if there is a photo in current slot
+		if imagesNames[photoId] != nil {
+			let deleteAction = UIAlertAction(title: "Удалить", style: .destructive) { _ in
+				self.deletePhoto(at: photoId)
+			}
+			imageSourceSelectorAlertController.addAction(deleteAction)
+		}
+
+		let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
 		imageSourceSelectorAlertController.addAction(cancelAction)
 
 		present(imageSourceSelectorAlertController, animated: true)
+	}
+	
+	func deletePhoto(at photoId: Int) {
+		// delete image on server
+		#warning("Send to server")
+		
+		// update data source
+		imagesNames[photoId] = nil
+		print(imagesNames)
+		
+		// update cell
+		let indexPath = IndexPath(item: photoId, section: 0)
+		collectionView.reloadItems(at: [indexPath])
 	}
 }
 
@@ -166,8 +182,9 @@ extension ProfilePhotoSelectorViewController: PhotoImagePickerDelegate {
 		}
 		
 		// update data source
+		#warning("Update data source")
 		
-		// update cell image
+		// update cell
 		let indexPath = IndexPath(item: photoId, section: 0)
 		if let cell = collectionView.cellForItem(at: indexPath) as? ProfilePhotoSelectorCell {
 			cell.set(image: image)

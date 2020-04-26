@@ -10,7 +10,8 @@ import UIKit
 
 class ProfilePhotoSelectorCell: UICollectionViewCell {
 	#warning("Add placeholder image")
-	private let photoImageView = UIImageView(image: UIImage(systemName: "xmark"))
+	private let defaultEmptyImage = UIImage(systemName: "xmark")
+	private lazy var photoImageView = UIImageView(image: defaultEmptyImage)
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -53,5 +54,11 @@ class ProfilePhotoSelectorCell: UICollectionViewCell {
 	
 	func set(image: UIImage?) {
 		photoImageView.image = image
+	}
+	
+	override func prepareForReuse() {
+		super.prepareForReuse()
+
+		photoImageView.image = defaultEmptyImage
 	}
 }
