@@ -175,14 +175,14 @@ extension ProfilePhotoSelectorViewController: PhotoImagePickerDelegate {
 
 	func didFinishPicking(image: UIImage, for photoId: Int) {
 		// upload image to server
-		DataManager.shared.setImage(image, at: photoId) { imageName, error in
+		DataManager.shared.setImage(image, at: photoId) { [weak self] imageName, error in
 			if let error = error {
 				print("Error: could not upload image to server.", error.localizedDescription)
 			}
+
+			// update data source
+			self?.imagesNames[photoId] = imageName
 		}
-		
-		// update data source
-		#warning("Update data source")
 		
 		// update cell
 		let indexPath = IndexPath(item: photoId, section: 0)

@@ -53,10 +53,13 @@ class DataManager {
 	}
 	
 	func setImage(_ image: UIImage, at position: Int, completion: @escaping (String?, Error?) -> ()) {
-		// uplad image to server
-		// ...
-		
-		completion("new_image_name.jpg", nil)
+		// emulate uploading image and recieving new image name from server
+		let responseDelay = Int.random(in: 500...1000)
+
+		DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(responseDelay)) {
+			let imageName = UUID().uuidString + ".jpg"
+			completion(imageName, nil)
+		}
 	}
 	
 	
@@ -76,7 +79,7 @@ class DataManager {
 	
 	func getMessages(forConversationWith collocutorUid: String, completion: @escaping ([Message]?, Error?) -> ()) {
 
-		// Emulate server request
+		// emulate server request
 		let responseDelay = Int.random(in: 500...1500)
 		DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(responseDelay)) {
 			completion(self.demoMessages, nil)
@@ -85,7 +88,7 @@ class DataManager {
 	
 	func addMessage(forConversationWith collocutorUid: String, completion: ((Bool?, Error?) -> ())? = nil) {
 
-		// Emulate server request
+		// emulate server request
 		let responseDelay = Int.random(in: 500...1500)
 		DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(responseDelay)) {
 			completion?(true, nil)
