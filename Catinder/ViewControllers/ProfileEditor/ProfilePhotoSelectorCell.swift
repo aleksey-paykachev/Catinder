@@ -11,7 +11,7 @@ import UIKit
 class ProfilePhotoSelectorCell: UICollectionViewCell {
 	#warning("Add placeholder image")
 	private let defaultEmptyImage = UIImage(systemName: "xmark")
-	private lazy var photoImageView = UIImageView(image: defaultEmptyImage)
+	private let photoImageView = UIImageView()
 	private let activityIndicatorView = UIActivityIndicatorView(style: .large)
 	
 	override init(frame: CGRect) {
@@ -24,26 +24,18 @@ class ProfilePhotoSelectorCell: UICollectionViewCell {
 	}
 	
 	private func setup() {
+		// background
 		contentView.backgroundColor = .background
-//		contentView.layer.cornerRadius = 10
-//		contentView.layer.borderColor = #colorLiteral(red: 0.862745098, green: 0.862745098, blue: 0.862745098, alpha: 1).cgColor
-//		contentView.layer.borderWidth = 1
+		contentView.layer.setBorder(size: 1, color: #colorLiteral(red: 0.862745098, green: 0.862745098, blue: 0.862745098, alpha: 1))
 		contentView.clipsToBounds = true
-		
-		let borderLayer = CAShapeLayer()
-		borderLayer.strokeColor = UIColor.lightGray.cgColor
-		borderLayer.fillColor = nil
-		borderLayer.lineWidth = 4
-		borderLayer.lineDashPattern = [5, 5]
-		borderLayer.frame = contentView.bounds
-		borderLayer.path = CGPath(rect: contentView.bounds, transform: nil)
-		contentView.layer.addSublayer(borderLayer)
 
+		// photo image
 		photoImageView.contentMode = .scaleAspectFill
 		photoImageView.tintColor = .lightGray
 		contentView.addSubview(photoImageView)
 		photoImageView.constrainToSuperview()
 		
+		// activity indicator
 		activityIndicatorView.hidesWhenStopped = true
 		activityIndicatorView.color = .activityIndicator
 		photoImageView.addSubview(activityIndicatorView)
@@ -51,14 +43,18 @@ class ProfilePhotoSelectorCell: UICollectionViewCell {
 	}
 	
 	func set(imageName: String?) {
-		guard let imageName = imageName else { return }
+		guard let imageName = imageName else {
+			set(image: nil)
+			return
+		}
 		
 		DataManager.shared.getImage(name: imageName) { [weak self] image, _ in
-			self?.photoImageView.image = image
+			self?.set(image: image)
 		}
 	}
 	
 	func set(image: UIImage?) {
+		contentView.layer.borderWidth = image == nil ? 1 : 0 // show/hide border
 		photoImageView.image = image ?? defaultEmptyImage
 	}
 	
