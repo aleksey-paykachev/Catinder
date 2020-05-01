@@ -10,8 +10,8 @@ import UIKit
 
 class ProfilePhotoSelectorLayout: UICollectionViewCompositionalLayout {
 
-	init(spacing: CGFloat) {
-		let section = Self.createSection(spacing: spacing)
+	init(edgeSpacing: CGFloat = 0, interItemSpacing: CGFloat = 0) {
+		let section = Self.createSection(edgeSpacing: edgeSpacing, interItemSpacing: interItemSpacing)
 		
 		super.init(section: section)
 	}
@@ -20,34 +20,48 @@ class ProfilePhotoSelectorLayout: UICollectionViewCompositionalLayout {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	private static func createSection(spacing: CGFloat) -> NSCollectionLayoutSection {
-		#warning("Add spacing")
+	private static func createSection(edgeSpacing: CGFloat, interItemSpacing: CGFloat) -> NSCollectionLayoutSection {
 
-		// large item (main top-left item)
-		let largeItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.66), heightDimension: .fractionalHeight(1))
+		// large top-left main item
+		let largeItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.67), heightDimension: .fractionalHeight(1))
 		let largeItem = NSCollectionLayoutItem(layoutSize: largeItemSize)
+		largeItem.contentInsets.trailing = interItemSpacing
 
-		// small vertical items and group (right items)
-		let smallVerticalItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.5))
-		let smallVerticalItem = NSCollectionLayoutItem(layoutSize: smallVerticalItemSize)
+		// small right vertical items and group
+		let verticalItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.5))
+		let verticalItem = NSCollectionLayoutItem(layoutSize: verticalItemSize)
 		
 		let verticalGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.33), heightDimension: .fractionalHeight(1))
-		let verticalGroup = NSCollectionLayoutGroup.vertical(layoutSize: verticalGroupSize, subitem: smallVerticalItem, count: 2)
+		let verticalGroup = NSCollectionLayoutGroup.vertical(layoutSize: verticalGroupSize, subitem: verticalItem, count: 2)
+		verticalGroup.interItemSpacing = .fixed(interItemSpacing)
 
 		// top group (main item + right items)
-		let topGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.66))
+		let topGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.67))
 		let topGroup = NSCollectionLayoutGroup.horizontal(layoutSize: topGroupSize, subitems: [largeItem, verticalGroup])
+		topGroup.contentInsets.bottom = interItemSpacing
 		
-		// small horizontal items and group (bottom items)
-		let smallHorizontalItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.33), heightDimension: .fractionalHeight(1))
-		let smallHorizontalItem = NSCollectionLayoutItem(layoutSize: smallHorizontalItemSize)
+		// small bottom-left horizontal items and group (below main item)
+		let leftHorizontalItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1))
+		let leftHorizontalItem = NSCollectionLayoutItem(layoutSize: leftHorizontalItemSize)
 		
-		let horizontalGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.99), heightDimension: .fractionalHeight(0.33))
-		let horizontalGroup = NSCollectionLayoutGroup.horizontal(layoutSize: horizontalGroupSize, subitem: smallHorizontalItem, count: 3)
+		let leftHorizontalGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.67), heightDimension: .fractionalHeight(1))
+		let leftHorizontalGroup = NSCollectionLayoutGroup.horizontal(layoutSize: leftHorizontalGroupSize, subitem: leftHorizontalItem, count: 2)
+		leftHorizontalGroup.contentInsets.trailing = interItemSpacing
+		leftHorizontalGroup.interItemSpacing = .fixed(interItemSpacing)
+		
+		// small bottom-right horizontal item
+		let rightHorizontalItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.33), heightDimension: .fractionalHeight(1))
+		let rightHorizontalItem = NSCollectionLayoutItem(layoutSize: rightHorizontalItemSize)
+		
+		// bottom group (horizontal items)
+		let bottomGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.33))
+		let bottomGroup = NSCollectionLayoutGroup.horizontal(layoutSize: bottomGroupSize, subitems: [leftHorizontalGroup, rightHorizontalItem])
 		
 		// main group
 		let mainGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(1))
-		let mainGroup = NSCollectionLayoutGroup.vertical(layoutSize: mainGroupSize, subitems: [topGroup, horizontalGroup])
+		let mainGroup = NSCollectionLayoutGroup.vertical(layoutSize: mainGroupSize, subitems: [topGroup, bottomGroup])
+		mainGroup.contentInsets.leading = edgeSpacing
+		mainGroup.contentInsets.trailing = edgeSpacing
 
 		return NSCollectionLayoutSection(group: mainGroup)
 	}

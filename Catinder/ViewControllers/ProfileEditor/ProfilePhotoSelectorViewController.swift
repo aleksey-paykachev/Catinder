@@ -20,7 +20,7 @@ class ProfilePhotoSelectorViewController: UICollectionViewController {
 		return userPhotosNames.expandToCapacity(maximumPhotosCountPerProfile, with: nil)
 	}()
 	
-	private let layout = ProfilePhotoSelectorLayout(spacing: 10)
+	private let layout = ProfilePhotoSelectorLayout(edgeSpacing: 14, interItemSpacing: 10)
 	
 	init() {
 		super.init(collectionViewLayout: layout)
