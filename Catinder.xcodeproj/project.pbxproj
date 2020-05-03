@@ -28,8 +28,6 @@
 		5B244CA623BF9AB60099B975 /* UIStackView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */; };
 		5B2DBA7523B9DA5900BACB52 /* CardsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */; };
 		5B37744323CE75FA00698427 /* PhotoImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37744223CE75FA00698427 /* PhotoImagePicker.swift */; };
-		5B37744523CE767400698427 /* PhotoSelectorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37744423CE767400698427 /* PhotoSelectorButton.swift */; };
-		5B37744723CE769A00698427 /* PhotosSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37744623CE769A00698427 /* PhotosSelectorViewController.swift */; };
 		5B3BCA0F23E0356500092DD5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3BCA0E23E0356500092DD5 /* Message.swift */; };
 		5B41EBE123E5916700D99CA6 /* CatinderTextInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41EBE023E5916700D99CA6 /* CatinderTextInputAccessoryView.swift */; };
 		5B41EBE323E5956800D99CA6 /* String + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41EBE223E5956800D99CA6 /* String + Extensions.swift */; };
@@ -94,8 +92,6 @@
 		5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extensions.swift"; sourceTree = "<group>"; };
 		5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsStackView.swift; sourceTree = "<group>"; };
 		5B37744223CE75FA00698427 /* PhotoImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoImagePicker.swift; sourceTree = "<group>"; };
-		5B37744423CE767400698427 /* PhotoSelectorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorButton.swift; sourceTree = "<group>"; };
-		5B37744623CE769A00698427 /* PhotosSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosSelectorViewController.swift; sourceTree = "<group>"; };
 		5B3BCA0E23E0356500092DD5 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		5B41EBE023E5916700D99CA6 /* CatinderTextInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderTextInputAccessoryView.swift; sourceTree = "<group>"; };
 		5B41EBE223E5956800D99CA6 /* String + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extensions.swift"; sourceTree = "<group>"; };
@@ -234,8 +230,6 @@
 		5B37744823CE772400698427 /* PhotosSelector */ = {
 			isa = PBXGroup;
 			children = (
-				5B37744623CE769A00698427 /* PhotosSelectorViewController.swift */,
-				5B37744423CE767400698427 /* PhotoSelectorButton.swift */,
 			);
 			path = PhotosSelector;
 			sourceTree = "<group>";
@@ -454,7 +448,6 @@
 				5B37744323CE75FA00698427 /* PhotoImagePicker.swift in Sources */,
 				5BC4195523DB3AFE00E98AA9 /* ConversationMessageCell.swift in Sources */,
 				5BE56BB723E8BD59000374C2 /* AuthenticationManager.swift in Sources */,
-				5B37744523CE767400698427 /* PhotoSelectorButton.swift in Sources */,
 				5B2DBA7523B9DA5900BACB52 /* CardsStackView.swift in Sources */,
 				5BD54E1523D5075A004A0AA2 /* HStackView.swift in Sources */,
 				5B7FFBCC23C2AABC009D2854 /* ProfileEditorViewController.swift in Sources */,
@@ -489,7 +482,6 @@
 				5B72293423E07063003B6BD4 /* Match.swift in Sources */,
 				5BD9B09523CFDDC9000E5028 /* CGColor + Extensions.swift in Sources */,
 				5B457F4E23D7DAE300A630F9 /* LastMessagesViewController.swift in Sources */,
-				5B37744723CE769A00698427 /* PhotosSelectorViewController.swift in Sources */,
 				5B244CA623BF9AB60099B975 /* UIStackView + Extensions.swift in Sources */,
 				5B197FF223D67C0E006DFB9E /* MatchViewModel.swift in Sources */,
 				5B139E6723B777F800BE73E7 /* AppDelegate.swift in Sources */,

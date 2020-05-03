@@ -162,9 +162,6 @@ extension ProfilePhotoSelectorViewController: UICollectionViewDropDelegate {
 			  let sourceIndexPath = droppedItem.sourceIndexPath,
 			  let destinationIndexPath = coordinator.destinationIndexPath else { return }
 
-		// disable dropping on empty item
-		if imagesNames[destinationIndexPath.item] == nil { return }
-		
 		collectionView.performBatchUpdates({
 			let draggedImage = imagesNames.remove(at: sourceIndexPath.item)
 			imagesNames.insert(draggedImage, at: destinationIndexPath.item)
