@@ -47,12 +47,12 @@ class CardsViewerViewController: UIViewController {
 	}
 	
 	private func loadData() {
-		showLoadingIndicator()
+		showActivityIndicator()
 		
 		dataManager.getAllProfiles { [weak self] profiles, error in
 			guard let self = self else { return }
 
-			self.hideLoadingIndicator()
+			self.hideActivityIndicator()
 			
 			if let error = error {
 				print(error.localizedDescription)

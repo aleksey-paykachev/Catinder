@@ -99,12 +99,12 @@ class ConversationViewController: UICollectionViewController {
 	// MARK: - Load data
 	
 	private func loadMessages() {
-		showLoadingIndicator()
+		showActivityIndicator()
 		
 		dataManager.getMessages(forConversationWith: "Current-Collocutor-UID") { [weak self] messages, error in
 			guard let self = self else { return }
 
-			self.hideLoadingIndicator()
+			self.hideActivityIndicator()
 
 			if let error = error {
 				print(error.localizedDescription)
@@ -117,12 +117,12 @@ class ConversationViewController: UICollectionViewController {
 	}
 	
 	private func loadCollocutorProfile(completion: @escaping (Profile) -> Void) {
-		showLoadingIndicator()
+		showActivityIndicator()
 		
 		dataManager.getProfile(by: viewModel.collocutorUid) { [weak self] profile, error in
 			guard let self = self else { return }
 			
-			self.hideLoadingIndicator()
+			self.hideActivityIndicator()
 
 			if let error = error {
 				print(error.localizedDescription)

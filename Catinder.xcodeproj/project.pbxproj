@@ -221,7 +221,6 @@
 			children = (
 				5BF12FCF245F0D4A004DA5C0 /* UICollectionView */,
 				5BD54E1323D50743004A0AA2 /* UIStackView */,
-				5BB2ED0923DD5900008AA5E6 /* UIViewController + Extensions.swift */,
 				5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */,
 				5B746EF823C8C56600063374 /* UILabel + Extensions.swift */,
 				5BD9B09423CFDDC9000E5028 /* CGColor + Extensions.swift */,
@@ -285,6 +284,7 @@
 				5B98EF86243F445F00BC93E9 /* CatinderCircleBarButtonItem.swift */,
 				5BC68D5B23BF29E500DE9E82 /* CatinderPageControl.swift */,
 				5B41EBE023E5916700D99CA6 /* CatinderTextInputAccessoryView.swift */,
+				5BB2ED0923DD5900008AA5E6 /* UIViewController + Extensions.swift */,
 			);
 			path = "Catinder UI";
 			sourceTree = "<group>";
