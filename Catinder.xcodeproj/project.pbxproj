@@ -27,7 +27,7 @@
 		5B1C8D1324427EB200A6D91A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C8D1224427EB200A6D91A /* Colors.swift */; };
 		5B244CA623BF9AB60099B975 /* UIStackView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */; };
 		5B2DBA7523B9DA5900BACB52 /* CardsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */; };
-		5B37744323CE75FA00698427 /* PhotoImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37744223CE75FA00698427 /* PhotoImagePicker.swift */; };
+		5B37744323CE75FA00698427 /* CatinderImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37744223CE75FA00698427 /* CatinderImagePicker.swift */; };
 		5B3BCA0F23E0356500092DD5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3BCA0E23E0356500092DD5 /* Message.swift */; };
 		5B41EBE123E5916700D99CA6 /* CatinderTextInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41EBE023E5916700D99CA6 /* CatinderTextInputAccessoryView.swift */; };
 		5B41EBE323E5956800D99CA6 /* String + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41EBE223E5956800D99CA6 /* String + Extensions.swift */; };
@@ -91,7 +91,7 @@
 		5B1C8D1224427EB200A6D91A /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		5B244CA523BF9AB60099B975 /* UIStackView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extensions.swift"; sourceTree = "<group>"; };
 		5B2DBA7423B9DA5900BACB52 /* CardsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsStackView.swift; sourceTree = "<group>"; };
-		5B37744223CE75FA00698427 /* PhotoImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoImagePicker.swift; sourceTree = "<group>"; };
+		5B37744223CE75FA00698427 /* CatinderImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderImagePicker.swift; sourceTree = "<group>"; };
 		5B3BCA0E23E0356500092DD5 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		5B41EBE023E5916700D99CA6 /* CatinderTextInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderTextInputAccessoryView.swift; sourceTree = "<group>"; };
 		5B41EBE223E5956800D99CA6 /* String + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extensions.swift"; sourceTree = "<group>"; };
@@ -269,6 +269,7 @@
 			children = (
 				5BD54E1223D505F9004A0AA2 /* Buttons */,
 				5B1C8D1224427EB200A6D91A /* Colors.swift */,
+				5B37744223CE75FA00698427 /* CatinderImagePicker.swift */,
 				5BAE16FA23D95839007D3EA4 /* CatinderNavigationController.swift */,
 				5B98EF86243F445F00BC93E9 /* CatinderCircleBarButtonItem.swift */,
 				5BC68D5B23BF29E500DE9E82 /* CatinderPageControl.swift */,
@@ -303,7 +304,6 @@
 			children = (
 				5B7FFBCB23C2AABC009D2854 /* ProfileEditorViewController.swift */,
 				5BFC059823C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift */,
-				5B37744223CE75FA00698427 /* PhotoImagePicker.swift */,
 				5B37744823CE772400698427 /* PhotosSelector */,
 			);
 			path = ProfileEditor;
@@ -445,7 +445,7 @@
 				5B139E7D23B7851700BE73E7 /* BottomMenuView.swift in Sources */,
 				5B41EBE123E5916700D99CA6 /* CatinderTextInputAccessoryView.swift in Sources */,
 				5B7FFBC723C2A442009D2854 /* CatinderImageButton.swift in Sources */,
-				5B37744323CE75FA00698427 /* PhotoImagePicker.swift in Sources */,
+				5B37744323CE75FA00698427 /* CatinderImagePicker.swift in Sources */,
 				5BC4195523DB3AFE00E98AA9 /* ConversationMessageCell.swift in Sources */,
 				5BE56BB723E8BD59000374C2 /* AuthenticationManager.swift in Sources */,
 				5B2DBA7523B9DA5900BACB52 /* CardsStackView.swift in Sources */,

@@ -53,14 +53,14 @@ class PhotoSelectorViewController: UICollectionViewController {
 		if UIImagePickerController.isSourceTypeAvailable(.camera) {
 
 			let addImageFromCameraAction = UIAlertAction(title: "Добавить с камеры", style: .default) { _ in
-				let cameraPicker = PhotoImagePicker(photoId: photoId, delegate: self, source: .camera)
+				let cameraPicker = CatinderImagePicker(imageId: photoId, delegate: self, source: .camera)
 				self.present(cameraPicker, animated: true)
 			}
 			imageSourceSelectorAlertController.addAction(addImageFromCameraAction)
 		}
 
 		let addImageFromPhotoLibraryAction = UIAlertAction(title: "Выбрать из библиотеки", style: .default) { _ in
-			let libraryPicker = PhotoImagePicker(photoId: photoId, delegate: self, source: .photoLibrary)
+			let libraryPicker = CatinderImagePicker(imageId: photoId, delegate: self, source: .photoLibrary)
 			self.present(libraryPicker, animated: true)
 		}
 		imageSourceSelectorAlertController.addAction(addImageFromPhotoLibraryAction)
@@ -175,9 +175,9 @@ extension PhotoSelectorViewController: UICollectionViewDropDelegate {
 }
 
 
-// MARK: - PhotoImagePickerDelegate
+// MARK: - CatinderImagePickerDelegate
 
-extension PhotoSelectorViewController: PhotoImagePickerDelegate {
+extension PhotoSelectorViewController: CatinderImagePickerDelegate {
 
 	func didFinishPicking(image: UIImage, for photoId: Int) {
 		let indexPath = IndexPath(item: photoId, section: 0)
