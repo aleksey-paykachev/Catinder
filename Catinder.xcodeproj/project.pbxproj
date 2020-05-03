@@ -62,6 +62,7 @@
 		5BD8BE9623C687C900D9943B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8BE9523C687C900D9943B /* DataManager.swift */; };
 		5BD9B09523CFDDC9000E5028 /* CGColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD9B09423CFDDC9000E5028 /* CGColor + Extensions.swift */; };
 		5BDACB67245ED32700A4DEA1 /* CatinderActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDACB66245ED32700A4DEA1 /* CatinderActivityIndicatorView.swift */; };
+		5BDACB69245ED79000A4DEA1 /* CatinderImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDACB68245ED79000A4DEA1 /* CatinderImageView.swift */; };
 		5BDFCF05244A747B006A523A /* Array + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDFCF04244A747B006A523A /* Array + Extensions.swift */; };
 		5BE56BB723E8BD59000374C2 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE56BB623E8BD59000374C2 /* AuthenticationManager.swift */; };
 		5BF37D4624360A9D00347053 /* ProfilePhotoSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF37D4524360A9D00347053 /* ProfilePhotoSelectorViewController.swift */; };
@@ -127,6 +128,7 @@
 		5BD8BE9523C687C900D9943B /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		5BD9B09423CFDDC9000E5028 /* CGColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGColor + Extensions.swift"; sourceTree = "<group>"; };
 		5BDACB66245ED32700A4DEA1 /* CatinderActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderActivityIndicatorView.swift; sourceTree = "<group>"; };
+		5BDACB68245ED79000A4DEA1 /* CatinderImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderImageView.swift; sourceTree = "<group>"; };
 		5BDFCF04244A747B006A523A /* Array + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array + Extensions.swift"; sourceTree = "<group>"; };
 		5BE56BB623E8BD59000374C2 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		5BF37D4524360A9D00347053 /* ProfilePhotoSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfilePhotoSelectorViewController.swift; path = ../ProfilePhotoSelectorViewController.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 			children = (
 				5BD54E1223D505F9004A0AA2 /* Buttons */,
 				5B1C8D1224427EB200A6D91A /* Colors.swift */,
+				5BDACB68245ED79000A4DEA1 /* CatinderImageView.swift */,
 				5B37744223CE75FA00698427 /* CatinderImagePicker.swift */,
 				5BDACB66245ED32700A4DEA1 /* CatinderActivityIndicatorView.swift */,
 				5BAE16FA23D95839007D3EA4 /* CatinderNavigationController.swift */,
@@ -499,6 +502,7 @@
 				5BFDACFE23E301B7006542FA /* ConversationViewControllerFlowLayout.swift in Sources */,
 				5BDACB67245ED32700A4DEA1 /* CatinderActivityIndicatorView.swift in Sources */,
 				5BC68D5C23BF29E500DE9E82 /* CatinderPageControl.swift in Sources */,
+				5BDACB69245ED79000A4DEA1 /* CatinderImageView.swift in Sources */,
 				5BD54E1723D5077E004A0AA2 /* VStackView.swift in Sources */,
 				5BAE16FB23D95839007D3EA4 /* CatinderNavigationController.swift in Sources */,
 			);

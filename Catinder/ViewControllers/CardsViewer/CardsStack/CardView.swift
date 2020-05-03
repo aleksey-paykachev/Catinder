@@ -25,7 +25,7 @@ class CardView: UIView {
 	let panRotationSpeedDegreesPerPixel: CGFloat = 0.12
 
 	// Subviews
-	private let imageView = UIImageView()
+	private let imageView = CatinderImageView()
 	private let activeImagePageControl = CatinderPageControl()
 	#warning("Add real image asset to moreInfoButton.")
 	private let moreInfoButton = UIButton(type: .detailDisclosure)
@@ -95,8 +95,6 @@ class CardView: UIView {
 	private func setupImageView() {
 		addSubview(imageView)
 		imageView.constrainToSuperview()
-		
-		imageView.contentMode = .scaleAspectFill
 	}
 	
 	private func setupLabels() {
@@ -242,9 +240,11 @@ class CardView: UIView {
 	
 	private func updateUI() {
 		if let imageName = viewModel.activeImageName, imageName != activeImageName {
+			imageView.startImageLoading()
+			
 			DataManager.shared.getImage(name: imageName) { [weak self] image, _ in
 				self?.activeImageName = imageName
-				self?.imageView.image = image
+				self?.imageView.set(image)
 			}
 		}
 
