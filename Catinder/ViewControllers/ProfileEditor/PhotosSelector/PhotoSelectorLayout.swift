@@ -1,5 +1,5 @@
 //
-//  ProfilePhotoSelectorLayout.swift
+//  PhotoSelectorLayout.swift
 //  Catinder
 //
 //  Created by Aleksey on 16.04.2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfilePhotoSelectorLayout: UICollectionViewCompositionalLayout {
+class PhotoSelectorLayout: UICollectionViewCompositionalLayout {
 
 	init(edgeSpacing: CGFloat = 0, interItemSpacing: CGFloat = 0) {
 		let section = Self.createSection(edgeSpacing: edgeSpacing, interItemSpacing: interItemSpacing)

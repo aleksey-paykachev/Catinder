@@ -1,5 +1,5 @@
 //
-//  ProfilePhotoSelectorViewController.swift
+//  PhotoSelectorViewController.swift
 //  Catinder
 //
 //  Created by Aleksey on 02.04.2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfilePhotoSelectorViewController: UICollectionViewController {
+class PhotoSelectorViewController: UICollectionViewController {
 	
 	private let dataManager = DataManager.shared
 	private let maximumPhotosCountPerProfile = 6
@@ -20,7 +20,7 @@ class ProfilePhotoSelectorViewController: UICollectionViewController {
 		return userPhotosNames.expandToCapacity(maximumPhotosCountPerProfile, with: nil)
 	}()
 	
-	private let layout = ProfilePhotoSelectorLayout(edgeSpacing: 14, interItemSpacing: 10)
+	private let layout = PhotoSelectorLayout(edgeSpacing: 14, interItemSpacing: 10)
 	
 	init() {
 		super.init(collectionViewLayout: layout)
@@ -43,7 +43,7 @@ class ProfilePhotoSelectorViewController: UICollectionViewController {
 		collectionView.dropDelegate = self
 		
 		collectionView.backgroundColor = .clear
-		collectionView.register(ProfilePhotoSelectorCell.self, forCellWithReuseIdentifier: "ProfilePhotoSelectorCell")
+		collectionView.register(PhotoSelectorCell.self, forCellWithReuseIdentifier: "PhotoSelectorCell")
 	}
 	
 	private func showPhotoImagePickerSourceSelector(for photoId: Int) {
@@ -81,7 +81,7 @@ class ProfilePhotoSelectorViewController: UICollectionViewController {
 	
 	func deletePhoto(at photoId: Int) {
 		let indexPath = IndexPath(item: photoId, section: 0)
-		guard let cell = collectionView.cellForItem(at: indexPath) as? ProfilePhotoSelectorCell else { return }
+		guard let cell = collectionView.cellForItem(at: indexPath) as? PhotoSelectorCell else { return }
 
 		// delete image on server
 		cell.showActivityIndicator()
@@ -104,7 +104,7 @@ class ProfilePhotoSelectorViewController: UICollectionViewController {
 
 // MARK: - UICollectionViewDataSource
 
-extension ProfilePhotoSelectorViewController {
+extension PhotoSelectorViewController {
 
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		imagesNames.count
@@ -112,7 +112,7 @@ extension ProfilePhotoSelectorViewController {
 	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfilePhotoSelectorCell", for: indexPath) as! ProfilePhotoSelectorCell
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoSelectorCell", for: indexPath) as! PhotoSelectorCell
 		cell.set(imageName: imagesNames[indexPath.item])
 		
 		return cell
@@ -122,7 +122,7 @@ extension ProfilePhotoSelectorViewController {
 
 // MARK: - UICollectionViewDelegate
 
-extension ProfilePhotoSelectorViewController {
+extension PhotoSelectorViewController {
 
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		showPhotoImagePickerSourceSelector(for: indexPath.item)
@@ -132,7 +132,7 @@ extension ProfilePhotoSelectorViewController {
 
 // MARK: - UICollectionViewDragDelegate
 
-extension ProfilePhotoSelectorViewController: UICollectionViewDragDelegate {
+extension PhotoSelectorViewController: UICollectionViewDragDelegate {
 	
 	func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
 		
@@ -149,7 +149,7 @@ extension ProfilePhotoSelectorViewController: UICollectionViewDragDelegate {
 
 // MARK: - UICollectionViewDropDelegate
 
-extension ProfilePhotoSelectorViewController: UICollectionViewDropDelegate {
+extension PhotoSelectorViewController: UICollectionViewDropDelegate {
 	
 	func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
 		
@@ -177,11 +177,11 @@ extension ProfilePhotoSelectorViewController: UICollectionViewDropDelegate {
 
 // MARK: - PhotoImagePickerDelegate
 
-extension ProfilePhotoSelectorViewController: PhotoImagePickerDelegate {
+extension PhotoSelectorViewController: PhotoImagePickerDelegate {
 
 	func didFinishPicking(image: UIImage, for photoId: Int) {
 		let indexPath = IndexPath(item: photoId, section: 0)
-		guard let cell = collectionView.cellForItem(at: indexPath) as? ProfilePhotoSelectorCell else { return }
+		guard let cell = collectionView.cellForItem(at: indexPath) as? PhotoSelectorCell else { return }
 		
 		// upload image to server
 		cell.showActivityIndicator()

@@ -1,5 +1,5 @@
 //
-//  ProfilePhotoSelectorCell.swift
+//  PhotoSelectorCell.swift
 //  Catinder
 //
 //  Created by Aleksey on 04.04.2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfilePhotoSelectorCell: UICollectionViewCell {
+class PhotoSelectorCell: UICollectionViewCell {
 	#warning("Add placeholder image")
 	private let defaultEmptyImage = UIImage(systemName: "xmark")
 	private let photoImageView = UIImageView()

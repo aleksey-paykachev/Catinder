@@ -44,7 +44,7 @@ class ProfileEditorViewController: UITableViewController {
 	private let dataManager: DataManager
 	private var userProfile: Profile?
 	private let sections: [Section] = [.photos, .name, .age, .shortDescription, .fullDescription]
-	private let photoSelectorViewController = ProfilePhotoSelectorViewController()
+	private let photoSelectorViewController = PhotoSelectorViewController()
 	
 	
 	// MARK: - Init
