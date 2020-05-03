@@ -43,7 +43,7 @@ class PhotoSelectorViewController: UICollectionViewController {
 		collectionView.dropDelegate = self
 		
 		collectionView.backgroundColor = .clear
-		collectionView.register(PhotoSelectorCell.self, forCellWithReuseIdentifier: "PhotoSelectorCell")
+		collectionView.registerCell(PhotoSelectorCell.self)
 	}
 	
 	private func showPhotoImagePickerSourceSelector(for photoId: Int) {
@@ -109,8 +109,7 @@ extension PhotoSelectorViewController {
 	}
 	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoSelectorCell", for: indexPath) as! PhotoSelectorCell
+		let cell = collectionView.dequeueCell(PhotoSelectorCell.self, for: indexPath)
 		
 		if let imageName = imagesNames[indexPath.item] {
 			// download image from server

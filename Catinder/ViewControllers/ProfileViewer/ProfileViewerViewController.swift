@@ -126,7 +126,7 @@ extension ProfileViewerViewController: UICollectionViewDataSource {
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoPreviewCell", for: indexPath) as! PhotoPreviewCell
+		let cell = collectionView.dequeueCell(PhotoPreviewCell.self, for: indexPath)
 		
 		let imageName = viewModel.photosNames[indexPath.item]
 		DataManager.shared.getImage(name: imageName) { [weak cell] image, _ in

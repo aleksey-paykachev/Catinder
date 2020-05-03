@@ -14,7 +14,6 @@ class ConversationViewController: UICollectionViewController {
 	private let dataManager: DataManager
 	
 	private let collectionViewFlowLayout = ConversationViewControllerFlowLayout()
-	private let cellReuseId = "ConversationMessageCell"
 	private let textInputAccessoryView = CatinderTextInputAccessoryView()
 	private let navigationItemCollocutorButton = CatinderCircleBarButtonItem()
 
@@ -69,7 +68,7 @@ class ConversationViewController: UICollectionViewController {
 		collectionView.alwaysBounceVertical = true
 		collectionView.contentInset.top = 10
 
-		collectionView.register(ConversationMessageCell.self, forCellWithReuseIdentifier: cellReuseId)
+		collectionView.registerCell(ConversationMessageCell.self)
 	}
 	
 	private func setupSubviews() {
@@ -167,7 +166,7 @@ extension ConversationViewController {
 	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseId, for: indexPath) as! ConversationMessageCell
+		let cell = collectionView.dequeueCell(ConversationMessageCell.self, for: indexPath)
 		cell.viewModel = messages[indexPath.item]
 		
 		return cell

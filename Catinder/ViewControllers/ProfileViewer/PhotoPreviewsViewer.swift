@@ -29,7 +29,7 @@ class PhotoPreviewsViewer: UICollectionView {
 		alwaysBounceHorizontal = true
 		showsHorizontalScrollIndicator = false
 
-		register(PhotoPreviewCell.self, forCellWithReuseIdentifier: "PhotoPreviewCell")
+		registerCell(PhotoPreviewCell.self)
 
 		layout.itemSize = CGSize(width: itemHeight * 0.8, height: itemHeight)
 		layout.scrollDirection = .horizontal

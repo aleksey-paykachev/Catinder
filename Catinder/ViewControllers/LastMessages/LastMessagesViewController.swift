@@ -12,8 +12,6 @@ class LastMessagesViewController: UICollectionViewController {
 	// MARK: - Properties
 	
 	private let dataManager: DataManager
-	
-	private let cellReuseId = "LastMessageCell"
 	private var lastMessages: [LastMessageViewModel] = []
 
 	
@@ -45,7 +43,7 @@ class LastMessagesViewController: UICollectionViewController {
 		collectionView.alwaysBounceVertical = true
 		collectionView.contentInset.top = 24
 
-		collectionView.register(LastMessageCell.self, forCellWithReuseIdentifier: cellReuseId)
+		collectionView.registerCell(LastMessageCell.self)
 	}
 	
 	
@@ -82,7 +80,7 @@ extension LastMessagesViewController {
 	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseId, for: indexPath) as! LastMessageCell
+		let cell = collectionView.dequeueCell(LastMessageCell.self, for: indexPath)
 		cell.viewModel = lastMessages[indexPath.item]
 
 		return cell
