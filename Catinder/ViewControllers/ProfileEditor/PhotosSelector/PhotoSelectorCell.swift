@@ -12,7 +12,7 @@ class PhotoSelectorCell: UICollectionViewCell {
 	#warning("Add placeholder image")
 	private let defaultEmptyImage = UIImage(systemName: "xmark")
 	private let photoImageView = UIImageView()
-	private let activityIndicatorView = UIActivityIndicatorView(style: .large)
+	private let activityIndicatorView = CatinderActivityIndicatorView()
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -36,8 +36,6 @@ class PhotoSelectorCell: UICollectionViewCell {
 		photoImageView.constrainToSuperview()
 		
 		// activity indicator
-		activityIndicatorView.hidesWhenStopped = true
-		activityIndicatorView.color = .activityIndicator
 		photoImageView.addSubview(activityIndicatorView)
 		activityIndicatorView.constrainToSuperview(anchors: [.centerX, .centerY])
 	}
@@ -59,11 +57,11 @@ class PhotoSelectorCell: UICollectionViewCell {
 	}
 	
 	func showActivityIndicator() {
-		activityIndicatorView.startAnimating()
+		activityIndicatorView.show()
 	}
 	
 	func hideActivityIndicator() {
-		 activityIndicatorView.stopAnimating()
+		 activityIndicatorView.hide()
 	}
 	
 	override func prepareForReuse() {
