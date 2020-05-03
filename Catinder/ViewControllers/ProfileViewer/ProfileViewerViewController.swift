@@ -127,8 +127,11 @@ extension ProfileViewerViewController: UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
 		let cell = collectionView.dequeueCell(PhotoPreviewCell.self, for: indexPath)
-		
+
+		// download image from server
 		let imageName = viewModel.photosNames[indexPath.item]
+		cell.showActivityIndicator()
+
 		DataManager.shared.getImage(name: imageName) { [weak cell] image, _ in
 			cell?.set(image: image)
 		}

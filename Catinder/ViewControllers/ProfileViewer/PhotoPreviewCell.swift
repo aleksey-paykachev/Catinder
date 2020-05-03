@@ -10,7 +10,7 @@ import UIKit
 
 class PhotoPreviewCell: UICollectionViewCell {
 
-	private let photoImageView = UIImageView()
+	private let photoImageView = CatinderImageView()
 	
 	private let alphaSelected: CGFloat = 1
 	private let alphaNotSelected: CGFloat = 0.6
@@ -32,7 +32,6 @@ class PhotoPreviewCell: UICollectionViewCell {
 		photoImageView.layer.setBorder(size: 2, color: #colorLiteral(red: 0.9372549057, green: 0.5500408101, blue: 0.3201948127, alpha: 0.9211526113))
 		photoImageView.layer.setCorner(radius: 6)
 		photoImageView.alpha = alphaNotSelected
-		photoImageView.contentMode = .scaleAspectFill
 		photoImageView.clipsToBounds = true
 	}
 	
@@ -44,11 +43,15 @@ class PhotoPreviewCell: UICollectionViewCell {
 		}
 	}
 	
+	func showActivityIndicator() {
+		photoImageView.showActivityIndicator()
+	}
+	
 	func set(image: UIImage?) {
-		photoImageView.image = image
+		photoImageView.set(image)
 	}
 	
 	override func prepareForReuse() {
-		photoImageView.image = nil
+		set(image: nil)
 	}
 }
