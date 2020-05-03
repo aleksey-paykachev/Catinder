@@ -240,7 +240,7 @@ class CardView: UIView {
 	
 	private func updateUI() {
 		if let imageName = viewModel.activeImageName, imageName != activeImageName {
-			imageView.startImageLoading()
+			imageView.showActivityIndicator()
 			
 			DataManager.shared.getImage(name: imageName) { [weak self] image, _ in
 				self?.activeImageName = imageName

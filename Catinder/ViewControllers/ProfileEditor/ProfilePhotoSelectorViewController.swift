@@ -95,8 +95,6 @@ class PhotoSelectorViewController: UICollectionViewController {
 			case .failure(let error):
 				print("Error:", error.localizedDescription)
 			}
-			
-			cell?.hideActivityIndicator()
 		}
 	}
 }
@@ -113,7 +111,17 @@ extension PhotoSelectorViewController {
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoSelectorCell", for: indexPath) as! PhotoSelectorCell
-		cell.set(imageName: imagesNames[indexPath.item])
+		
+		if let imageName = imagesNames[indexPath.item] {
+			// download image from server
+			cell.showActivityIndicator()
+
+			DataManager.shared.getImage(name: imageName) { [weak cell] image, _ in
+				cell?.set(image: image)
+			}
+		} else {
+			cell.set(image: nil)
+		}
 		
 		return cell
 	}
@@ -195,8 +203,6 @@ extension PhotoSelectorViewController: CatinderImagePickerDelegate {
 			case .failure(let error):
 				print("Error:", error.localizedDescription)
 			}
-
-			cell?.hideActivityIndicator()
 		}
 	}
 }

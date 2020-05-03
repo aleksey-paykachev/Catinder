@@ -11,8 +11,7 @@ import UIKit
 class PhotoSelectorCell: UICollectionViewCell {
 	#warning("Add placeholder image")
 	private let defaultEmptyImage = UIImage(systemName: "xmark")
-	private let photoImageView = UIImageView()
-	private let activityIndicatorView = CatinderActivityIndicatorView()
+	private let photoImageView = CatinderImageView()
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -30,44 +29,23 @@ class PhotoSelectorCell: UICollectionViewCell {
 		contentView.clipsToBounds = true
 
 		// photo image
-		photoImageView.contentMode = .scaleAspectFill
 		photoImageView.tintColor = .lightGray
 		contentView.addSubview(photoImageView)
 		photoImageView.constrainToSuperview()
-		
-		// activity indicator
-		photoImageView.addSubview(activityIndicatorView)
-		activityIndicatorView.constrainToSuperview(anchors: [.centerX, .centerY])
-	}
-	
-	func set(imageName: String?) {
-		guard let imageName = imageName else {
-			set(image: nil)
-			return
-		}
-		
-		DataManager.shared.getImage(name: imageName) { [weak self] image, _ in
-			self?.set(image: image)
-		}
 	}
 	
 	func set(image: UIImage?) {
 		contentView.layer.borderWidth = image == nil ? 1 : 0 // show/hide border
-		photoImageView.image = image ?? defaultEmptyImage
+		photoImageView.set(image ?? defaultEmptyImage)
 	}
 	
 	func showActivityIndicator() {
-		activityIndicatorView.show()
+		photoImageView.showActivityIndicator()
 	}
-	
-	func hideActivityIndicator() {
-		 activityIndicatorView.hide()
-	}
-	
+
 	override func prepareForReuse() {
 		super.prepareForReuse()
 
-		photoImageView.image = defaultEmptyImage
-		hideActivityIndicator()
+		set(image: nil)
 	}
 }

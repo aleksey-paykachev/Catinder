@@ -27,7 +27,7 @@ class CatinderImageView: UIImageView {
 		activityIndicatorView.constrainToSuperview(anchors: [.centerX, .centerY])
 	}
 	
-	func startImageLoading() {
+	func showActivityIndicator() {
 		activityIndicatorView.show()
 	}
 	
