@@ -47,7 +47,7 @@ class TopMenuView: UIView {
 	// MARK: - Setup
 	
 	private func setupSubviews() {
-		logoImageView.image = UIImage(named: "temporaryLogo")
+		logoImageView.image = UIImage(named: "CatinderLogo")
 		logoImageView.contentMode = .scaleAspectFit
 	}
 	

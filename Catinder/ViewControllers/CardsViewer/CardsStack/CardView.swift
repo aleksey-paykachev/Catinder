@@ -27,8 +27,6 @@ class CardView: UIView {
 	// Subviews
 	private let imageView = CatinderImageView()
 	private let activeImagePageControl = CatinderPageControl()
-	#warning("Add real image asset to moreInfoButton.")
-	private let moreInfoButton = UIButton(type: .detailDisclosure)
 
 	// Labels
 	private let titleLabel = UILabel(color: .white, font: .systemFont(ofSize: 36, weight: .medium))
@@ -122,10 +120,12 @@ class CardView: UIView {
 	}
 	
 	private func setupMoreInfoButton() {
-		moreInfoButton.tintColor = .white
+		let moreInfoButton = UIButton()
+		moreInfoButton.setImage(UIImage(named: "Info"), for: .normal)
 		moreInfoButton.addTarget(self, action: #selector(showMoreInfo), for: .touchUpInside)
 		
 		addSubview(moreInfoButton)
+		moreInfoButton.constrainSize(to: .square(32))
 		moreInfoButton.constrainToSuperview(anchors: .trailing, paddings: .trailing(14))
 		moreInfoButton.constrainTo(titleLabel, anchors: .centerY)
 	}

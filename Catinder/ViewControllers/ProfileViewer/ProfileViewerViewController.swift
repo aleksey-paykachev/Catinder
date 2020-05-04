@@ -70,14 +70,15 @@ class ProfileViewerViewController: UIViewController {
 		mainStackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
 		
 		// back button
-		#warning("Add real asset image to closeButton.")
-		let closeButton = UIButton(type: .system)
+		let closeButton = UIButton()
+		closeButton.layer.zPosition = .greatestFiniteMagnitude // move on top
+		closeButton.setImage(UIImage(named: "Dismiss"), for: .normal)
 		closeButton.addTarget(self, action: #selector(closeButtonDidTapped), for: .touchUpInside)
-		closeButton.backgroundColor = .red
 
 		view.addSubview(closeButton)
+		closeButton.constrainSize(to: .square(48))
 		closeButton.centerYAnchor.constraint(equalTo: photoImageView.bottomAnchor).isActive = true
-		closeButton.constrainToSuperview(anchors: [.trailing], paddings: .all(32))
+		closeButton.constrainToSuperview(anchors: [.trailing], paddings: .all(30))
 	}
 	
 	private func setupPhotoPreviewsViewer() {
