@@ -36,7 +36,7 @@ class LastMessageCell: UICollectionViewCell {
 		profileImageView.contentMode = .scaleAspectFill
 		profileImageView.widthAnchor.constraint(equalTo: profileImageView.heightAnchor).isActive = true
 		profileImageView.layer.setCorner(radius: size.height / 2)
-		profileImageView.layer.setBorder(size: 2, color: #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1))
+		profileImageView.layer.setBorder(size: 2, color: .lastMessagesProfileBorder)
 		
 		// profile name
 		profileNameLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
@@ -46,13 +46,13 @@ class LastMessageCell: UICollectionViewCell {
 		messageTextView.isEditable = false
 		messageTextView.isUserInteractionEnabled = false
 		messageTextView.font = .systemFont(ofSize: 16)
-		messageTextView.textColor = .darkGray
+		messageTextView.textColor = .secondaryLabel
 		messageTextView.textContainerInset = .zero
 		messageTextView.textContainer.lineFragmentPadding = 0
 		
 		// distribute all subviews in two stacks
-		let textStack = VStackView([profileNameLabel, messageTextView], spacing: 6, distribution: .fill)
-		let mainStack = HStackView([profileImageView, textStack], spacing: 14, distribution: .fill)
+		let textStack = VStackView([profileNameLabel, messageTextView], spacing: 4)
+		let mainStack = HStackView([profileImageView, textStack], spacing: 14)
 		
 		addSubview(mainStack)
 		mainStack.constrainToSuperview(respectSafeArea: false)

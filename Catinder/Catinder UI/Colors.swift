@@ -21,4 +21,7 @@ extension UIColor {
 		traitCollection.userInterfaceStyle == .dark ? #colorLiteral(red: 0.06646573604, green: 0.06646573604, blue: 0.06646573604, alpha: 1) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 	})
 
+	static let lastMessagesProfileBorder = UIColor(dynamicProvider: { traitCollection in
+		traitCollection.userInterfaceStyle == .dark ? #colorLiteral(red: 0.8639001971, green: 0.5287541003, blue: 0.345114692, alpha: 1) : #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
+	})
 }
