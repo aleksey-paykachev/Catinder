@@ -27,7 +27,6 @@ class ProfileViewerViewController: UIViewController {
 		
 		setupView()
 		setupSubviews()
-		setupPhotoPreviewsViewer()
 		updateUI()
 	}
 	
@@ -66,17 +65,19 @@ class ProfileViewerViewController: UIViewController {
 		textLabelsStack.constrainToSuperview(anchors: [.leading, .trailing], paddings: .all(16))
 
 		scrollView.addSubview(mainStackView)
-		mainStackView.constrainToSuperview(paddings: .bottom(12), respectSafeArea: false)
+		mainStackView.constrainToSuperview(paddings: .bottom(24), respectSafeArea: false)
 		mainStackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
 		
-		// back button
+		// photo previews
+		setupPhotoPreviewsViewer()
+		
+		// close button
 		let closeButton = UIButton()
-		closeButton.layer.zPosition = .greatestFiniteMagnitude // move on top
 		closeButton.setImage(UIImage(named: "Dismiss"), for: .normal)
 		closeButton.addTarget(self, action: #selector(closeButtonDidTapped), for: .touchUpInside)
 
 		view.addSubview(closeButton)
-		closeButton.constrainSize(to: .square(48))
+		closeButton.constrainSize(to: .square(44))
 		closeButton.centerYAnchor.constraint(equalTo: photoImageView.bottomAnchor).isActive = true
 		closeButton.constrainToSuperview(anchors: [.trailing], paddings: .all(30))
 	}

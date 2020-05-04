@@ -19,7 +19,7 @@ extension UILabel {
 	///   - allowMultipleLines: Enables support of multiple lines for current label.
 	///   - font: The font used to display the text.
 	///
-	convenience init(text: String = "", color: UIColor = .black, alignment: NSTextAlignment = .left, allowMultipleLines: Bool = false, font: UIFont? = nil) {
+	convenience init(text: String = "", color: UIColor = .label, alignment: NSTextAlignment = .left, allowMultipleLines: Bool = false, font: UIFont? = nil) {
 		self.init()
 
 		self.text = text

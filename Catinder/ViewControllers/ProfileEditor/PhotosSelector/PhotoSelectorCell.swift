@@ -10,7 +10,7 @@ import UIKit
 
 class PhotoSelectorCell: UICollectionViewCell {
 	#warning("Add placeholder image")
-	private let defaultEmptyImage = UIImage(systemName: "xmark")
+	private let placeholderImage = UIImage(systemName: "xmark")
 	private let photoImageView = CatinderImageView()
 	
 	override init(frame: CGRect) {
@@ -36,7 +36,7 @@ class PhotoSelectorCell: UICollectionViewCell {
 	
 	func set(image: UIImage?) {
 		contentView.layer.borderWidth = image == nil ? 1 : 0 // show/hide border
-		photoImageView.set(image ?? defaultEmptyImage)
+		photoImageView.set(image ?? placeholderImage)
 	}
 	
 	func showActivityIndicator() {
