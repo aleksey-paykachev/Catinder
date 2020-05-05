@@ -19,7 +19,7 @@ class AuthenticationManager {
 		// get logged-in user data from network
 		// ...
 		
-		loggedInUser = Profile(uid: "F59C2433-B0F5-4A84-B017-2212C1CFA7ED", name: "Me", age: 5, photosNames: ["Bob_1.jpg", "Bob_2.jpg", "Bob_3.jpg"], description: "Description")
+		loggedInUser = Profile(uid: "F59C2433-B0F5-4A84-B017-2212C1CFA7ED", name: "Me", age: 5, photosNames: ["Bob_1.jpg", "Bob_2.jpg", "Bob_3.jpg"], description: "Some description about myself. It could be distributed along multiple lines because...")
 		
 		return true
 	}

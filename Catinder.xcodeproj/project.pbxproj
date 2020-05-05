@@ -38,6 +38,7 @@
 		5B5AD28123C8BF3C00D5B6D7 /* ProfileViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5AD28023C8BF3C00D5B6D7 /* ProfileViewerViewController.swift */; };
 		5B6613862447BDD700E214E8 /* PhotoSelectorLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6613852447BDD700E214E8 /* PhotoSelectorLayout.swift */; };
 		5B72293423E07063003B6BD4 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B72293323E07063003B6BD4 /* Match.swift */; };
+		5B72F00E2461B83B0057D38F /* ProfileEditorExpandableFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B72F00D2461B83B0057D38F /* ProfileEditorExpandableFieldCell.swift */; };
 		5B746EF923C8C56600063374 /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B746EF823C8C56600063374 /* UILabel + Extensions.swift */; };
 		5B746EFB23C8C94000063374 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B746EFA23C8C94000063374 /* ProfileViewModel.swift */; };
 		5B7FFBC723C2A442009D2854 /* CatinderImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7FFBC623C2A442009D2854 /* CatinderImageButton.swift */; };
@@ -68,7 +69,7 @@
 		5BF12FCC245F0D1A004DA5C0 /* UICollectionViewCell + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF12FCB245F0D1A004DA5C0 /* UICollectionViewCell + Extension.swift */; };
 		5BF12FCE245F0D44004DA5C0 /* UICollectionView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF12FCD245F0D44004DA5C0 /* UICollectionView + Extensions.swift */; };
 		5BF37D4624360A9D00347053 /* ProfilePhotoSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF37D4524360A9D00347053 /* ProfilePhotoSelectorViewController.swift */; };
-		5BFC059923C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC059823C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift */; };
+		5BFC059923C54954005C7FC1 /* ProfileEditorFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC059823C54954005C7FC1 /* ProfileEditorFieldCell.swift */; };
 		5BFDACFE23E301B7006542FA /* ConversationViewControllerFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFDACFD23E301B7006542FA /* ConversationViewControllerFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +107,7 @@
 		5B5AD28023C8BF3C00D5B6D7 /* ProfileViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewerViewController.swift; sourceTree = "<group>"; };
 		5B6613852447BDD700E214E8 /* PhotoSelectorLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorLayout.swift; sourceTree = "<group>"; };
 		5B72293323E07063003B6BD4 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		5B72F00D2461B83B0057D38F /* ProfileEditorExpandableFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorExpandableFieldCell.swift; sourceTree = "<group>"; };
 		5B746EF823C8C56600063374 /* UILabel + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
 		5B746EFA23C8C94000063374 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		5B7FFBC623C2A442009D2854 /* CatinderImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderImageButton.swift; sourceTree = "<group>"; };
@@ -136,7 +138,7 @@
 		5BF12FCB245F0D1A004DA5C0 /* UICollectionViewCell + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell + Extension.swift"; sourceTree = "<group>"; };
 		5BF12FCD245F0D44004DA5C0 /* UICollectionView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView + Extensions.swift"; sourceTree = "<group>"; };
 		5BF37D4524360A9D00347053 /* ProfilePhotoSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfilePhotoSelectorViewController.swift; path = ../ProfilePhotoSelectorViewController.swift; sourceTree = "<group>"; };
-		5BFC059823C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorFieldTableViewCell.swift; sourceTree = "<group>"; };
+		5BFC059823C54954005C7FC1 /* ProfileEditorFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorFieldCell.swift; sourceTree = "<group>"; };
 		5BFDACFD23E301B7006542FA /* ConversationViewControllerFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewControllerFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -314,7 +316,8 @@
 			isa = PBXGroup;
 			children = (
 				5B7FFBCB23C2AABC009D2854 /* ProfileEditorViewController.swift */,
-				5BFC059823C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift */,
+				5BFC059823C54954005C7FC1 /* ProfileEditorFieldCell.swift */,
+				5B72F00D2461B83B0057D38F /* ProfileEditorExpandableFieldCell.swift */,
 				5B37744823CE772400698427 /* PhotosSelector */,
 			);
 			path = ProfileEditor;
@@ -471,11 +474,12 @@
 				5B2DBA7523B9DA5900BACB52 /* CardsStackView.swift in Sources */,
 				5BD54E1523D5075A004A0AA2 /* HStackView.swift in Sources */,
 				5B7FFBCC23C2AABC009D2854 /* ProfileEditorViewController.swift in Sources */,
+				5B72F00E2461B83B0057D38F /* ProfileEditorExpandableFieldCell.swift in Sources */,
 				5B8B1D8D23B7C57F00543F20 /* Profile.swift in Sources */,
 				5B5A9D7223D1422F00C7FF85 /* MatchSplashScreenViewController.swift in Sources */,
 				5BF12FCE245F0D44004DA5C0 /* UICollectionView + Extensions.swift in Sources */,
 				5B875FE723DC00F900408EDC /* ConversationViewModel.swift in Sources */,
-				5BFC059923C54954005C7FC1 /* ProfileEditorFieldTableViewCell.swift in Sources */,
+				5BFC059923C54954005C7FC1 /* ProfileEditorFieldCell.swift in Sources */,
 				5B6613862447BDD700E214E8 /* PhotoSelectorLayout.swift in Sources */,
 				5B875FE523DC00E200408EDC /* ConversationMessageViewModel.swift in Sources */,
 				5B98EF87243F445F00BC93E9 /* CatinderCircleBarButtonItem.swift in Sources */,

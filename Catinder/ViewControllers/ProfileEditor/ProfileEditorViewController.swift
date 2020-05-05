@@ -108,27 +108,27 @@ extension ProfileEditorViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		guard let userProfile = userProfile else { return UITableViewCell() }
 		
 		let section = sections[indexPath.section]
 		let placeholder = section.placeholder
-		var text = ""
 		
-		if let userProfile = userProfile {
-			switch section {
-			case .name:
-				text = userProfile.name
-			case .age:
-				text = "\(userProfile.age)"
-			case .shortDescription:
-				text = userProfile.shortDescription
-			case .fullDescription:
-				text = userProfile.description
-			default:
-				break
-			}
+		switch section {
+		case .name:
+			return ProfileEditorFieldCell(text: userProfile.name, placeholder: placeholder)
+			
+		case .age:
+			return ProfileEditorFieldCell(text: "\(userProfile.age)", placeholder: placeholder, keyboardType: .numberPad)
+			
+		case .shortDescription:
+			return ProfileEditorExpandableFieldCell(text: userProfile.shortDescription, placeholder: placeholder, delegate: self)
+			
+		case .fullDescription:
+			return ProfileEditorExpandableFieldCell(text: userProfile.description, placeholder: placeholder, delegate: self)
+			
+		default:
+			return UITableViewCell()
 		}
-		
-		return ProfileEditorFieldTableViewCell(text: text, placeholder: placeholder)
 	}
 }
 
@@ -156,7 +156,7 @@ extension ProfileEditorViewController {
 			return photoSelectorViewController.collectionView.contentSize.height
 
 		default:
-			return UITableView.automaticDimension
+			return 40
 		}
 	}
 	
@@ -165,5 +165,19 @@ extension ProfileEditorViewController {
 
 		headerView.textLabel?.capitalizeText()
 		headerView.textLabel?.font = .systemFont(ofSize: 16, weight: .medium)
+	}
+}
+
+
+// MARK: - ProfileEditorExpandableFieldCellDelegate
+
+extension ProfileEditorViewController: ProfileEditorExpandableFieldCellDelegate {
+	
+	func textViewDidChanged() {
+		// resize cells on textView's text changing
+		UIView.setAnimationsEnabled(false)
+		tableView.performBatchUpdates(nil) { _ in
+			UIView.setAnimationsEnabled(true)
+		}
 	}
 }
