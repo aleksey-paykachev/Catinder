@@ -11,7 +11,7 @@ import UIKit
 extension UIColor {
 	static let background = UIColor.systemBackground
 		
-	// MARK: - Profile Card
+	// MARK: - Profile card
 	
 	static let profileCardTitle = UIColor(dynamicProvider: { traitCollection in
 		traitCollection.userInterfaceStyle == .dark ? #colorLiteral(red: 0.98, green: 0.98, blue: 0.98, alpha: 1) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -34,6 +34,17 @@ extension UIColor {
 
 	static let navigationBackground = UIColor(dynamicProvider: { traitCollection in
 		traitCollection.userInterfaceStyle == .dark ? #colorLiteral(red: 0.06646573604, green: 0.06646573604, blue: 0.06646573604, alpha: 1) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+	})
+	
+	
+	// MARK: - Photo selector
+	
+	static let photoSelectorBorder = UIColor(dynamicProvider: { traitCollection in
+		traitCollection.userInterfaceStyle == .dark ? #colorLiteral(red: 0.4, green: 0.4, blue: 0.4, alpha: 1) : #colorLiteral(red: 0.86, green: 0.86, blue: 0.86, alpha: 1)
+	})
+	
+	static let photoSelectorPlaceholderImage = UIColor(dynamicProvider: { traitCollection in
+		traitCollection.userInterfaceStyle == .dark ? #colorLiteral(red: 0.56, green: 0.56, blue: 0.56, alpha: 1) : #colorLiteral(red: 0.76, green: 0.76, blue: 0.76, alpha: 1)
 	})
 
 	

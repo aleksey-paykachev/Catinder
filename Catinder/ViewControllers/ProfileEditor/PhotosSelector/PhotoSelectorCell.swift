@@ -9,8 +9,7 @@
 import UIKit
 
 class PhotoSelectorCell: UICollectionViewCell {
-	#warning("Add placeholder image")
-	private let placeholderImage = UIImage(systemName: "xmark")
+	private let placeholderImage = UIImage(named: "PhotoPlaceholder")
 	private let photoImageView = CatinderImageView()
 	
 	override init(frame: CGRect) {
@@ -25,18 +24,25 @@ class PhotoSelectorCell: UICollectionViewCell {
 	private func setup() {
 		// background
 		contentView.backgroundColor = .background
-		contentView.layer.setBorder(size: 1, color: #colorLiteral(red: 0.862745098, green: 0.862745098, blue: 0.862745098, alpha: 1))
+		contentView.layer.setBorder(size: 1, color: .photoSelectorBorder)
 		contentView.clipsToBounds = true
 
 		// photo image
-		photoImageView.tintColor = .lightGray
+		photoImageView.tintColor = .photoSelectorPlaceholderImage
 		contentView.addSubview(photoImageView)
 		photoImageView.constrainToSuperview()
 	}
 	
 	func set(image: UIImage?) {
-		contentView.layer.borderWidth = image == nil ? 1 : 0 // show/hide border
 		photoImageView.set(image ?? placeholderImage)
+		
+		if image == nil {
+			contentView.layer.borderWidth = 1
+			photoImageView.contentMode = .scaleAspectFit
+		} else {
+			contentView.layer.borderWidth = 0
+			photoImageView.contentMode = .scaleAspectFill
+		}
 	}
 	
 	func showActivityIndicator() {
