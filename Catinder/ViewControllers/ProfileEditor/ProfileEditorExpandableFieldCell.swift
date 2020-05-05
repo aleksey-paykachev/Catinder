@@ -15,13 +15,17 @@ protocol ProfileEditorExpandableFieldCellDelegate: class {
 class ProfileEditorExpandableFieldCell: UITableViewCell {
 	
 	weak var delegate: ProfileEditorExpandableFieldCellDelegate?
-	
+
+	private let textView = UITextView()
+	private var placeholder: String?
+	private let placeholderLabel = UILabel()
+
 	init(text: String? = nil, placeholder: String? = nil, delegate: ProfileEditorExpandableFieldCellDelegate? = nil) {
 		super.init(style: .default, reuseIdentifier: nil)
 		
+		self.placeholder = placeholder
 		self.delegate = delegate
 		
-		let textView = UITextView()
 		textView.text = text
 		textView.font = .systemFont(ofSize: 16)
 		textView.autocorrectionType = .no
@@ -33,10 +37,28 @@ class ProfileEditorExpandableFieldCell: UITableViewCell {
 
 		contentView.addSubview(textView)
 		textView.constrainToSuperview(paddings: .all(12), respectSafeArea: false)
+		
+		setupPlaceholder()
 	}
 	
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
+	}
+
+	private func setupPlaceholder() {
+		placeholderLabel.textColor = .placeholderText
+		
+		textView.addSubview(placeholderLabel)
+		placeholderLabel.frame.origin = CGPoint(x: textView.textContainer.lineFragmentPadding,
+												y: textView.textContainerInset.top)
+		placeholderLabel.text = placeholder
+		placeholderLabel.sizeToFit()
+
+		updatePlaceholderVisibility()
+	}
+	
+	private func updatePlaceholderVisibility() {
+		placeholderLabel.isHidden = placeholder == nil || textView.text.isNotEmpty
 	}
 }
 
@@ -44,7 +66,9 @@ class ProfileEditorExpandableFieldCell: UITableViewCell {
 // MARK: - UITextViewDelegate
 
 extension ProfileEditorExpandableFieldCell: UITextViewDelegate {
+
 	func textViewDidChange(_ textView: UITextView) {
+		updatePlaceholderVisibility()
 		delegate?.textViewDidChanged()
 	}
 }
