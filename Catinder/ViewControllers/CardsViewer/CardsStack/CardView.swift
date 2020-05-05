@@ -29,8 +29,8 @@ class CardView: UIView {
 	private let activeImagePageControl = CatinderPageControl()
 
 	// Labels
-	private let titleLabel = UILabel(color: .white, font: .systemFont(ofSize: 36, weight: .medium))
-	private let contentLabel = UILabel(color: UIColor(white: 0.96, alpha: 1), allowMultipleLines: true, font: .systemFont(ofSize: 18, weight: .medium))
+	private let titleLabel = UILabel(color: .profileCardTitle, font: .systemFont(ofSize: 36, weight: .medium))
+	private let contentLabel = UILabel(color: .profileCardContent, allowMultipleLines: true, font: .systemFont(ofSize: 18, weight: .medium))
 
 	// Properties
 	weak var delegate: CardViewDelegate?
@@ -123,6 +123,7 @@ class CardView: UIView {
 		let moreInfoButton = UIButton()
 		moreInfoButton.setImage(UIImage(named: "Info"), for: .normal)
 		moreInfoButton.addTarget(self, action: #selector(showMoreInfo), for: .touchUpInside)
+		moreInfoButton.tintColor = .profileCardTint
 		
 		addSubview(moreInfoButton)
 		moreInfoButton.constrainSize(to: .square(32))
