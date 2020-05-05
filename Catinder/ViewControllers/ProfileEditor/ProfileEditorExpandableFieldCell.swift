@@ -28,6 +28,7 @@ class ProfileEditorExpandableFieldCell: UITableViewCell {
 		
 		textView.text = text
 		textView.font = .systemFont(ofSize: 16)
+		textView.backgroundColor = .clear
 		textView.autocorrectionType = .no
 
 		textView.isScrollEnabled = false
