@@ -55,7 +55,7 @@ class CardsViewerViewController: UIViewController {
 			self.hideActivityIndicator()
 			
 			if let error = error {
-				print(error.localizedDescription)
+				self.showError(error.localizedDescription)
 				return
 			}
 
@@ -145,22 +145,22 @@ extension CardsViewerViewController: CardsStackViewDelegate {
 	func cardDidSwiped(cardId: String, decision: RelationshipDecision) {
 		switch decision {
 		case .dislike:
-			dataManager.setDislike(to: cardId) { error in
+			dataManager.setDislike(to: cardId) { [weak self] error in
 				if let error = error {
-					print("Error:", error.localizedDescription)
+					self?.showError(error.localizedDescription)
 				}
 			}
 			
 		case .like(let type):
-			dataManager.setLike(to: cardId, likeType: type) { isLikeMutual, error in
+			dataManager.setLike(to: cardId, likeType: type) { [weak self] isLikeMutual, error in
 				if let error = error {
-					print("Eror:", error.localizedDescription)
+					self?.showError(error.localizedDescription)
 					return
 				}
 				
 				if isLikeMutual == true {
-					cardsStackView.cancelAllUserInteractions()
-					showMatchSplashScreen(for: cardId)
+					self?.cardsStackView.cancelAllUserInteractions()
+					self?.showMatchSplashScreen(for: cardId)
 				}
 			}
 		}

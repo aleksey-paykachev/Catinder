@@ -58,7 +58,7 @@ class LastMessagesViewController: UICollectionViewController {
 			self.hideActivityIndicator()
 
 			if let error = error {
-				print(error.localizedDescription)
+				self.showError(error.localizedDescription)
 				return
 			}
 			
