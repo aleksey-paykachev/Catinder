@@ -129,9 +129,9 @@ class DataManager {
 	
 	private func parseDataFromNetwork<T: Decodable>(for resource: String, completion: @escaping (T?, Error?) -> ()) {
 		
-		networkManager.getData(for: resource) { data, error in
-			guard error == nil else {
-				completion(nil, error)
+		networkManager.getData(for: resource) { data, networkError in
+			guard networkError == nil else {
+				completion(nil, networkError)
 				return
 			}
 			

@@ -18,13 +18,13 @@ class NetworkManager {
 	
 	// MARK: - Convenience methods
 	
-	func getData(for apiResource: String, completionQueue: DispatchQueue = .main, completion: @escaping (Data?, Error?) -> ()) {
+	func getData(for apiResource: String, completionQueue: DispatchQueue = .main, completion: @escaping (Data?, NetworkError?) -> ()) {
 
 		let urlString = serverApiUrl + apiResource
 		getData(from: urlString, completionQueue: completionQueue, completion: completion)
 	}
 	
-	func getImageData(imageName: String, completionQueue: DispatchQueue = .main, completion: @escaping (Data?, Error?) -> ()) {
+	func getImageData(imageName: String, completionQueue: DispatchQueue = .main, completion: @escaping (Data?, NetworkError?) -> ()) {
 		
 		let urlString = serverImagesUrl + imageName
 		getData(from: urlString, completionQueue: completionQueue, completion: completion)
@@ -33,7 +33,7 @@ class NetworkManager {
 	
 	// MARK: - Main methods
 	
-	func getData(from urlString: String, completionQueue: DispatchQueue = .main, completion: @escaping (Data?, Error?) -> ()) {
+	func getData(from urlString: String, completionQueue: DispatchQueue = .main, completion: @escaping (Data?, NetworkError?) -> ()) {
 		
 		guard let url = URL(string: urlString) else {
 			completionQueue.async {
@@ -45,7 +45,7 @@ class NetworkManager {
 		getData(from: url, completionQueue: completionQueue, completion: completion)
 	}
 	
-	func getData(from url: URL, completionQueue: DispatchQueue = .main, completion: @escaping (Data?, Error?) -> ()) {
+	func getData(from url: URL, completionQueue: DispatchQueue = .main, completion: @escaping (Data?, NetworkError?) -> ()) {
 		
 		// check if cache contains data for requested url
 		if let cachedData = cache.object(forKey: url as NSURL) as Data? {
@@ -75,7 +75,7 @@ class NetworkManager {
 			}
 			
 			completionQueue.async {
-				completion(data, error)
+				completion(data, nil)
 			}
 		}.resume()
 	}
