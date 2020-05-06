@@ -163,7 +163,7 @@ extension ProfileEditorViewController {
 	override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
 		guard let headerView = view as? UITableViewHeaderFooterView else { return }
 
-		headerView.textLabel?.capitalizeText()
+		headerView.textLabel?.capitalizeFirstLetter()
 		headerView.textLabel?.font = .systemFont(ofSize: 16, weight: .medium)
 	}
 }

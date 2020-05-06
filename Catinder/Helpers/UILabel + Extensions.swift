@@ -32,9 +32,9 @@ extension UILabel {
 		}
 	}
 
-	/// Capitalize text inside current label
+	/// Capitalize first letter of the text inside current label
 	///
-	func capitalizeText() {
-		text = text?.capitalized
+	func capitalizeFirstLetter() {
+		text = text?.firstLetterCapitalized
 	}
 }

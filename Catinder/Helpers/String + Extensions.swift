@@ -16,4 +16,10 @@ extension String {
 	var trimmed: String {
 		trimmingCharacters(in: .whitespacesAndNewlines)
 	}
+	
+	/// Returns a new string with only the first letter capitalized.
+	///
+	var firstLetterCapitalized: String {
+		prefix(1).capitalized + dropFirst().lowercased()
+	}
 }
