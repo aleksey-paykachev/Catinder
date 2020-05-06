@@ -170,18 +170,23 @@ class DataManager {
 		case imageDeleteError
 		
 		var errorDescription: String? {
+			let errorHeader = "An error occured. Please try again later."
+			let error: String
+
 			switch self {
 			case .emptyData:
-				return "Recieve empty data."
+				error = "Recieve empty data."
 			case .wrongData:
-				return "Recieve wrong data."
+				error = "Recieve wrong data."
 			case .parseError:
-				return "Could not parse data."
+				error = "Could not parse data."
 			case .imageUpdateError:
-				return "Could not update image."
+				error = "Could not update image."
 			case .imageDeleteError:
-				return "Could not delete image."
+				error = "Could not delete image."
 			}
+			
+			return errorHeader + "\n\n" + error
 		}
 	}
 	

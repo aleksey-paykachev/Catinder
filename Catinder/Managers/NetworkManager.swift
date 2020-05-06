@@ -54,6 +54,13 @@ class NetworkManager {
 		}
 
 		URLSession.shared.dataTask(with: url) { data, urlResponse, error in
+			if let error = error {
+				completionQueue.async {
+					completion(nil, NetworkError.requestFailed(error: error))
+				}
+				return
+			}
+			
 			let statusCode = (urlResponse as? HTTPURLResponse)?.statusCode
 			guard statusCode == 200 else {
 				completionQueue.async {
@@ -78,16 +85,26 @@ class NetworkManager {
 	
 	enum NetworkError: LocalizedError {
 		case wrongUrl
+		case requestFailed(error: Error)
 		case wrongStatusCode(Int?)
 		
 		var errorDescription: String? {
+			let errorHeader = "Couldn't load data from server. Please try again later."
+			let error: String
+			
 			switch self {
 			case .wrongUrl:
-				return "Wrong URL."
+				error = "Wrong URL."
+				
+			case .requestFailed:
+				error = "Network request did failed."
+				
 			case .wrongStatusCode(let code):
 				let codeDescription = code.map { String($0) } ?? "no code"
-				return "Wrong HTTP status code. Expected: 200, get: \(codeDescription)."
+				error = "Wrong HTTP status code. Expected: 200, get: \(codeDescription)."
 			}
+			
+			return errorHeader + "\n\n" + error
 		}
 	}
 }
