@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Message {
+struct Message: Decodable {
 	let date: Date
 	let senderUid: String
 	let receiverUid: String

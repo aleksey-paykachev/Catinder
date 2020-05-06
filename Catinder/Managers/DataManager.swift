@@ -75,24 +75,14 @@ class DataManager {
 	// MARK: - Matches
 
 	func getMatches(completion: @escaping ([Match]?, Error?) -> ()) {
-
-		// Emulate server response
-		let responseDelay = Int.random(in: 500...1500)
-		DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(responseDelay)) {
-			completion(self.demoMatches, nil)
-		}
+		parseDataFromNetwork(for: "matches", completion: completion)
 	}
 	
 	
 	// MARK: - Messages
 	
 	func getMessages(forConversationWith collocutorUid: String, completion: @escaping ([Message]?, Error?) -> ()) {
-
-		// emulate server response
-		let responseDelay = Int.random(in: 500...1500)
-		DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(responseDelay)) {
-			completion(self.demoMessages, nil)
-		}
+		parseDataFromNetwork(for: "messages/\(collocutorUid)", completion: completion)
 	}
 	
 	func addMessage(forConversationWith collocutorUid: String, completion: ((Bool?, Error?) -> ())? = nil) {
@@ -188,29 +178,5 @@ class DataManager {
 			
 			return errorHeader + "\n\n" + error
 		}
-	}
-	
-	
-	// MARK: - del - Demo data
-	
-	private let demoMessages = [
-		Message(date: Date(), senderUid: "F59C2433-B0F5-4A84-B017-2212C1CFA7ED", receiverUid: "Logged-In-User-Uid", text: "Привет."),
-		Message(date: Date(), senderUid: "Logged-In-User-Uid", receiverUid: "F59C2433-B0F5-4A84-B017-2212C1CFA7ED", text: "Привет, привет.\nКак у тебя дела?"),
-		Message(date: Date(), senderUid: "F59C2433-B0F5-4A84-B017-2212C1CFA7ED", receiverUid: "Logged-In-User-Uid", text: "Да вот, решил написать тебе длинное сообщение, чтобы проверить, будет ли оно переноситься на следующую строку, чтобы целиком влезть на экран.")
-	]
-	
-	private var demoMatches: [Match] {
-		guard let user = AuthenticationManager.shared.loggedInUser else { return [] }
-
-		let marusia = Profile(uid: "95387C7D-E2EA-4E99-95C6-CA51E1F2B9BF", name: "Маруся", age: 4, photosNames: ["Marusia.jpg"], shortDescription: "", extendedDescription: "")
-		let stray = Profile(uid: "B99E5E82-70BF-47E4-A2C8-41B4829DAF62", name: "Мамочка", age: 3, photosNames: ["Mamochka.jpg"], shortDescription: "", extendedDescription: "")
-		
-		let message1 = Message(date: Date(), senderUid: "-", receiverUid: "-", text: "Привет.")
-		let message2 = Message(date: Date(), senderUid: "-", receiverUid: "-", text: "Как у тебя дела? Что-то давно не пишешь. Нашёл себе нового кота что ли?")
-
-		return [
-			Match(matchDate: Date(), profile1: user, profile2: marusia, lastMessage: message1),
-			Match(matchDate: Date(), profile1: stray, profile2: user, lastMessage: message2)
-		]
 	}
 }

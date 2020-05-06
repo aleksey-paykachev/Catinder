@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Match {
+struct Match: Decodable {
 	let matchDate: Date
 	let profile1: Profile
 	let profile2: Profile
