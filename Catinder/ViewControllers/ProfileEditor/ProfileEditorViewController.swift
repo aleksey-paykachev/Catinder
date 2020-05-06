@@ -16,7 +16,7 @@ class ProfileEditorViewController: UITableViewController {
 		case name = "Имя"
 		case age = "Возраст"
 		case shortDescription = "Краткое описание"
-		case fullDescription = "Полное описание"
+		case extendedDescription = "Расширенное описание"
 		
 		var title: String {
 			rawValue
@@ -30,7 +30,7 @@ class ProfileEditorViewController: UITableViewController {
 				return "Сколько вам лет"
 			case .shortDescription:
 				return "Расскажите кратко о себе"
-			case .fullDescription:
+			case .extendedDescription:
 				return "Расскажите о себе более подробно"
 			default:
 				return ""
@@ -43,7 +43,7 @@ class ProfileEditorViewController: UITableViewController {
 	
 	private let dataManager: DataManager
 	private var userProfile: Profile?
-	private let sections: [Section] = [.photos, .name, .age, .shortDescription, .fullDescription]
+	private let sections: [Section] = [.photos, .name, .age, .shortDescription, .extendedDescription]
 	private let photoSelectorViewController = PhotoSelectorViewController()
 	
 	
@@ -123,8 +123,8 @@ extension ProfileEditorViewController {
 		case .shortDescription:
 			return ProfileEditorExpandableFieldCell(text: userProfile.shortDescription, placeholder: placeholder, delegate: self)
 			
-		case .fullDescription:
-			return ProfileEditorExpandableFieldCell(text: userProfile.description, placeholder: placeholder, delegate: self)
+		case .extendedDescription:
+			return ProfileEditorExpandableFieldCell(text: userProfile.extendedDescription, placeholder: placeholder, delegate: self)
 			
 		default:
 			return UITableViewCell()

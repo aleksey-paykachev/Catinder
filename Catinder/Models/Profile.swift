@@ -13,14 +13,15 @@ struct Profile: Decodable {
 	let name: String
 	let age: Int
 	let photosNames: [String]
-	let description: String
+	let shortDescription: String
+	let extendedDescription: String
 	
 	var photoName: String {
 		photosNames.first ?? ""
 	}
 	
-	var shortDescription: String {
-		description.count > 120 ? description.prefix(100).appending("...") : description
+	var fullDescription: String {
+		shortDescription + "/n" + extendedDescription
 	}
 }
 
@@ -53,6 +54,6 @@ extension Profile: CardViewModelRepresentable {
 extension Profile: ProfileViewModelRepresentable {
 
 	var profileViewModel: ProfileViewModel {
-		ProfileViewModel(name: name, description: description, photosNames: photosNames)
+		ProfileViewModel(name: name, description: fullDescription, photosNames: photosNames)
 	}
 }
