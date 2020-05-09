@@ -21,7 +21,7 @@ struct Profile: Decodable {
 	}
 	
 	var fullDescription: String {
-		shortDescription + "/n" + extendedDescription
+		shortDescription + "\n\n" + extendedDescription
 	}
 }
 

@@ -61,6 +61,7 @@
 		5BD54E1123D50381004A0AA2 /* CatinderSecondaryTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD54E1023D50381004A0AA2 /* CatinderSecondaryTextButton.swift */; };
 		5BD54E1523D5075A004A0AA2 /* HStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD54E1423D5075A004A0AA2 /* HStackView.swift */; };
 		5BD54E1723D5077E004A0AA2 /* VStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD54E1623D5077E004A0AA2 /* VStackView.swift */; };
+		5BD646DB24631473000DC15A /* NetworkEmulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD646DA24631473000DC15A /* NetworkEmulator.swift */; };
 		5BD8BE9623C687C900D9943B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8BE9523C687C900D9943B /* DataManager.swift */; };
 		5BD9B09523CFDDC9000E5028 /* CGColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD9B09423CFDDC9000E5028 /* CGColor + Extensions.swift */; };
 		5BDACB67245ED32700A4DEA1 /* CatinderActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDACB66245ED32700A4DEA1 /* CatinderActivityIndicatorView.swift */; };
@@ -131,6 +132,7 @@
 		5BD54E1023D50381004A0AA2 /* CatinderSecondaryTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderSecondaryTextButton.swift; sourceTree = "<group>"; };
 		5BD54E1423D5075A004A0AA2 /* HStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStackView.swift; sourceTree = "<group>"; };
 		5BD54E1623D5077E004A0AA2 /* VStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VStackView.swift; sourceTree = "<group>"; };
+		5BD646DA24631473000DC15A /* NetworkEmulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEmulator.swift; sourceTree = "<group>"; };
 		5BD8BE9523C687C900D9943B /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		5BD9B09423CFDDC9000E5028 /* CGColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGColor + Extensions.swift"; sourceTree = "<group>"; };
 		5BDACB66245ED32700A4DEA1 /* CatinderActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderActivityIndicatorView.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				5B41EBE223E5956800D99CA6 /* String + Extensions.swift */,
 				5B197FF323D6966D006DFB9E /* GradientView.swift */,
 				5B96C7FC23BE713A00BFB4D0 /* Angle.swift */,
+				5BD646DA24631473000DC15A /* NetworkEmulator.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				5BF12FCC245F0D1A004DA5C0 /* UICollectionViewCell + Extension.swift in Sources */,
 				5B96C7FD23BE713A00BFB4D0 /* Angle.swift in Sources */,
 				5B1C8D1324427EB200A6D91A /* Colors.swift in Sources */,
+				5BD646DB24631473000DC15A /* NetworkEmulator.swift in Sources */,
 				5B139E6923B777F800BE73E7 /* CardsViewerViewController.swift in Sources */,
 				5BDFCF05244A747B006A523A /* Array + Extensions.swift in Sources */,
 				5B07A50A23D12E9D00122190 /* CALayer + Extensions.swift in Sources */,

@@ -53,20 +53,18 @@ class DataManager {
 	}
 	
 	func setImage(_ image: UIImage, at position: Int, completion: @escaping (Result<String, DataManagerError>) -> ()) {
-		// emulate uploading image and recieving new image name from server
-		let responseDelay = Int.random(in: 500...1000)
 
-		DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(responseDelay)) {
+		// emulate uploading image and recieving uploaded image name from server
+		NetworkEmulator.emulateRequest(response: .medium) {
 			let imageName = UUID().uuidString + ".jpg"
 			completion(.success(imageName))
 		}
 	}
 	
 	func deleteImage(at position: Int, completion: @escaping (Result<Bool, DataManagerError>) -> ()) {
-		// emulate deleting image from server
-		let responseDelay = Int.random(in: 500...1000)
 
-		DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(responseDelay)) {
+		// emulate deleting image from server
+		NetworkEmulator.emulateRequest(response: .medium) {
 			completion(.success(true))
 		}
 	}
@@ -87,9 +85,8 @@ class DataManager {
 	
 	func addMessage(forConversationWith collocutorUid: String, completion: ((Bool?, Error?) -> ())? = nil) {
 
-		// emulate server request
-		let responseDelay = Int.random(in: 500...1500)
-		DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(responseDelay)) {
+		// emulate saving new message to server
+		NetworkEmulator.emulateRequest(response: .long) {
 			completion?(true, nil)
 		}
 	}
@@ -98,10 +95,7 @@ class DataManager {
 	// MARK: - Likes / dislikes
 	
 	func setLike(to uid: String, likeType: RelationshipDecision.LikeType, completion: (_ isLikeMutual: Bool?, Error?) -> ()) {
-		// save to server
-		// ...
-		
-		// and get from server info about like mutuality. In this demo app use random values based on like type
+		// save and get from server info about like mutuality. In this demo app use random values based on like type
 		let isLikeMutual: Bool
 
 		switch likeType {
