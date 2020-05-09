@@ -243,9 +243,11 @@ class CardView: UIView {
 		if let imageName = viewModel.activeImageName, imageName != activeImageName {
 			imageView.showActivityIndicator()
 			
-			DataManager.shared.getImage(name: imageName) { [weak self] image, _ in
-				self?.activeImageName = imageName
-				self?.imageView.set(image)
+			DataManager.shared.getImage(name: imageName) { [weak self] result in
+				if case Result.success(let image) = result {
+					self?.activeImageName = imageName
+					self?.imageView.set(image)					
+				}
 			}
 		}
 

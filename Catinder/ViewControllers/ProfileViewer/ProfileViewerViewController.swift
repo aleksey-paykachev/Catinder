@@ -112,8 +112,10 @@ class ProfileViewerViewController: UIViewController {
 	private func updateSelectedImage() {
 		guard let imageName = viewModel.selectedPhotoName else { return }
 
-		DataManager.shared.getImage(name: imageName) { [weak self] image, _ in
-			self?.photoImageView.image = image
+		DataManager.shared.getImage(name: imageName) { [weak self] result in
+			if case Result.success(let image) = result {
+				self?.photoImageView.image = image
+			}
 		}
 	}
 }
@@ -134,8 +136,10 @@ extension ProfileViewerViewController: UICollectionViewDataSource {
 		let imageName = viewModel.photosNames[indexPath.item]
 		cell.showActivityIndicator()
 
-		DataManager.shared.getImage(name: imageName) { [weak cell] image, _ in
-			cell?.set(image: image)
+		DataManager.shared.getImage(name: imageName) { [weak cell] result in
+			if case Result.success(let image) = result {
+				cell?.set(image: image)
+			}
 		}
 
 		return cell

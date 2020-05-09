@@ -48,8 +48,10 @@ class ConversationViewController: UICollectionViewController {
 		title = viewModel.collocutorName
 		
 		navigationItem.rightBarButtonItem = navigationItemCollocutorButton
-		dataManager.getImage(name: viewModel.collocutorImageName) { [weak self] image, _ in
-			self?.navigationItemCollocutorButton.set(image: image)
+		dataManager.getImage(name: viewModel.collocutorImageName) { [weak self] result in
+			if case Result.success(let image) = result {
+				self?.navigationItemCollocutorButton.set(image: image)
+			}
 		}
 		
 		navigationItemCollocutorButton.onClick { [weak self] in

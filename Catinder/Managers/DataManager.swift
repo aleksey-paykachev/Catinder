@@ -40,20 +40,22 @@ class DataManager {
 	
 	// MARK: - Images
 	
-	func getImage(name: String, completion: @escaping (UIImage?, Error?) -> ()) {
+	func getImage(name: String, completion: @escaping (Result<UIImage, Error>) -> ()) {
 
-		networkManager.getImageData(imageName: name) { data, error in
-			if let error = error {
-				completion(nil, error)
-				return
-			}
+		networkManager.getImageData(imageName: name) { result in
 			
-			guard let data = data, let image = UIImage(data: data) else {
-				completion(nil, DataManagerError.wrongData)
-				return
+			switch result {
+			case .failure(let networkError):
+				completion(.failure(networkError))
+
+			case .success(let data):
+				guard let image = UIImage(data: data) else {
+					completion(.failure(DataManagerError.wrongData))
+					return
+				}
+				
+				completion(.success(image))
 			}
-			
-			completion(image, nil)
 		}
 	}
 	
@@ -128,23 +130,20 @@ class DataManager {
 	
 	private func parseDataFromNetwork<T: Decodable>(for resource: String, completion: @escaping (Result<T, Error>) -> ()) {
 		
-		networkManager.getData(for: resource) { data, networkError in
-			if let networkError = networkError {
+		networkManager.getData(for: resource) { result in
+			
+			switch result {
+			case .failure(let networkError):
 				completion(.failure(networkError))
-				return
+
+			case .success(let data):
+				guard let parsedData = try? self.jsonDecoder.decode(T.self, from: data) else {
+					completion(.failure(DataManagerError.parseError))
+					return
+				}
+				
+				completion(.success(parsedData))
 			}
-			
-			guard let data = data else {
-				completion(.failure(DataManagerError.emptyData))
-				return
-			}
-			
-			guard let parsedData = try? self.jsonDecoder.decode(T.self, from: data) else {
-				completion(.failure(DataManagerError.parseError))
-				return
-			}
-			
-			completion(.success(parsedData))
 		}
 	}
 	
@@ -152,7 +151,6 @@ class DataManager {
 	// MARK: - Errors
 	
 	enum DataManagerError: LocalizedError {
-		case emptyData
 		case wrongData
 		case parseError
 		case imageUpdateError
@@ -163,8 +161,6 @@ class DataManager {
 			let error: String
 
 			switch self {
-			case .emptyData:
-				error = "Recieve empty data."
 			case .wrongData:
 				error = "Recieve wrong data."
 			case .parseError:

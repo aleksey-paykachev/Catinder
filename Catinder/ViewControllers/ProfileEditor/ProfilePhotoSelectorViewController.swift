@@ -115,8 +115,10 @@ extension PhotoSelectorViewController {
 			// download image from server
 			cell.showActivityIndicator()
 
-			DataManager.shared.getImage(name: imageName) { [weak cell] image, _ in
-				cell?.set(image: image)
+			DataManager.shared.getImage(name: imageName) { [weak cell] result in
+				if case Result.success(let image) = result {
+					cell?.set(image: image)
+				}
 			}
 		} else {
 			cell.set(image: nil)

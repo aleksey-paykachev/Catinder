@@ -113,12 +113,16 @@ class MatchSplashScreenViewController: UIViewController {
 	private func updateUI() {
 		matchDescriptionLabel.text = "Вы, и \(viewModel.matchedProfileName) понравились друг другу."
 		
-		dataManager.getImage(name: viewModel.userProfileImageName) { [weak self] image, _ in
-			self?.userProfileImageView.image = image
+		dataManager.getImage(name: viewModel.userProfileImageName) { [weak self] result in
+			if case Result.success(let image) = result {
+				self?.userProfileImageView.image = image
+			}
 		}
 		
-		dataManager.getImage(name: viewModel.matchedProfileImageName) { [weak self] image, _ in
-			self?.matchedProfileImageView.image = image
+		dataManager.getImage(name: viewModel.matchedProfileImageName) { [weak self] result in
+			if case Result.success(let image) = result {
+				self?.matchedProfileImageView.image = image
+			}
 		}
 	}
 

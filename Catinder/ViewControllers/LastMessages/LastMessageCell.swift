@@ -62,10 +62,12 @@ class LastMessageCell: UICollectionViewCell {
 		let imageName = viewModel.profileImageName
 		downloadingImageName = imageName
 
-		DataManager.shared.getImage(name: imageName) { [weak self] image, _ in
-			guard self?.downloadingImageName == imageName else { return }
+		DataManager.shared.getImage(name: imageName) { [weak self] result in
+			guard let self = self, self.downloadingImageName == imageName else { return }
 			
-			self?.profileImageView.image = image
+			if case Result.success(let image) = result {
+				self.profileImageView.image = image
+			}
 		}
 
 		profileNameLabel.text = viewModel.profileName

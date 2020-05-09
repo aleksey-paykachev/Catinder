@@ -18,13 +18,13 @@ class NetworkManager {
 	
 	// MARK: - Convenience methods
 	
-	func getData(for apiResource: String, completionQueue: DispatchQueue = .main, completion: @escaping (Data?, NetworkError?) -> ()) {
+	func getData(for apiResource: String, completionQueue: DispatchQueue = .main, completion: @escaping (Result<Data, NetworkError>) -> ()) {
 
 		let urlString = serverApiUrl + apiResource
 		getData(from: urlString, completionQueue: completionQueue, completion: completion)
 	}
 	
-	func getImageData(imageName: String, completionQueue: DispatchQueue = .main, completion: @escaping (Data?, NetworkError?) -> ()) {
+	func getImageData(imageName: String, completionQueue: DispatchQueue = .main, completion: @escaping (Result<Data, NetworkError>) -> ()) {
 		
 		let urlString = serverImagesUrl + imageName
 		getData(from: urlString, completionQueue: completionQueue, completion: completion)
@@ -33,11 +33,11 @@ class NetworkManager {
 	
 	// MARK: - Main methods
 	
-	func getData(from urlString: String, completionQueue: DispatchQueue = .main, completion: @escaping (Data?, NetworkError?) -> ()) {
+	func getData(from urlString: String, completionQueue: DispatchQueue = .main, completion: @escaping (Result<Data, NetworkError>) -> ()) {
 		
 		guard let url = URL(string: urlString) else {
 			completionQueue.async {
-				completion(nil, NetworkError.wrongUrl)
+				completion(.failure(NetworkError.wrongUrl))
 			}
 			return
 		}
@@ -45,18 +45,18 @@ class NetworkManager {
 		getData(from: url, completionQueue: completionQueue, completion: completion)
 	}
 	
-	func getData(from url: URL, completionQueue: DispatchQueue = .main, completion: @escaping (Data?, NetworkError?) -> ()) {
+	func getData(from url: URL, completionQueue: DispatchQueue = .main, completion: @escaping (Result<Data, NetworkError>) -> ()) {
 		
 		// check if cache contains data for requested url
 		if let cachedData = cache.object(forKey: url as NSURL) as Data? {
-			completion(cachedData, nil)
+			completion(.success(cachedData))
 			return
 		}
 
 		URLSession.shared.dataTask(with: url) { data, urlResponse, error in
 			if let error = error {
 				completionQueue.async {
-					completion(nil, NetworkError.requestFailed(error: error))
+					completion(.failure(NetworkError.requestFailed(error: error)))
 				}
 				return
 			}
@@ -64,18 +64,21 @@ class NetworkManager {
 			let statusCode = (urlResponse as? HTTPURLResponse)?.statusCode
 			guard statusCode == 200 else {
 				completionQueue.async {
-					completion(nil, NetworkError.wrongStatusCode(statusCode))
+					completion(.failure(NetworkError.wrongStatusCode(statusCode)))
 				}
 				return
 			}
 
-			// put recieved data into cache
-			if let data = data {
-				self.cache.setObject(data as NSData, forKey: url as NSURL)
+			guard let data = data else {
+				completion(.failure(NetworkError.emptyData))
+				return
 			}
 			
+			// put recieved data into cache
+			self.cache.setObject(data as NSData, forKey: url as NSURL)
+
 			completionQueue.async {
-				completion(data, nil)
+				completion(.success(data))
 			}
 		}.resume()
 	}
@@ -87,6 +90,7 @@ class NetworkManager {
 		case wrongUrl
 		case requestFailed(error: Error)
 		case wrongStatusCode(Int?)
+		case emptyData
 		
 		var errorDescription: String? {
 			let errorHeader = "Couldn't load data from server. Please try again later."
@@ -102,6 +106,9 @@ class NetworkManager {
 			case .wrongStatusCode(let code):
 				let codeDescription = code.map { String($0) } ?? "no code"
 				error = "Wrong HTTP status code. Expected: 200, get: \(codeDescription)."
+
+			case .emptyData:
+				error = "Recieve empty data."
 			}
 			
 			return errorHeader + "\n\n" + error
