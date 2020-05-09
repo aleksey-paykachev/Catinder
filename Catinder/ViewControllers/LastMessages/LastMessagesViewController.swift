@@ -52,18 +52,19 @@ class LastMessagesViewController: UICollectionViewController {
 	private func loadData() {
 		showActivityIndicator()
 		
-		dataManager.getMatches { [weak self] matches, error in
+		dataManager.getMatches { [weak self] result in
 			guard let self = self else { return }
 
 			self.hideActivityIndicator()
 
-			if let error = error {
+			switch result {
+			case .failure(let error):
 				self.showError(error.localizedDescription)
-				return
+
+			case .success(let matches):
+				self.lastMessages = matches.map { $0.lastMessageViewModel }
+				self.collectionView.reloadData()
 			}
-			
-			self.lastMessages = matches?.map { $0.lastMessageViewModel } ?? []
-			self.collectionView.reloadData()
 		}
 	}
 }

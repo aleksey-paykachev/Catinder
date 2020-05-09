@@ -49,18 +49,19 @@ class CardsViewerViewController: UIViewController {
 	private func loadData() {
 		showActivityIndicator()
 		
-		dataManager.getAllProfiles { [weak self] profiles, error in
+		dataManager.getAllProfiles { [weak self] result in
 			guard let self = self else { return }
 
 			self.hideActivityIndicator()
 			
-			if let error = error {
+			switch result {
+			case .failure(let error):
 				self.showError(error.localizedDescription)
-				return
-			}
 
-			self.profiles = profiles ?? []
-			self.cardsStackView.add(profiles ?? [])
+			case .success(let profiles):
+				self.profiles = profiles
+				self.cardsStackView.add(profiles)
+			}
 		}
 	}
 		

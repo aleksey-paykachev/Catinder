@@ -101,35 +101,35 @@ class ConversationViewController: UICollectionViewController {
 	private func loadMessages() {
 		showActivityIndicator()
 		
-		dataManager.getMessages(forConversationWith: viewModel.collocutorUid) { [weak self] messages, error in
+		dataManager.getMessages(forConversationWith: viewModel.collocutorUid) { [weak self] result in
 			guard let self = self else { return }
 
 			self.hideActivityIndicator()
 
-			if let error = error {
+			switch result {
+			case .failure(let error):
 				self.showError(error.localizedDescription)
-				return
+
+			case .success(let messages):
+				self.messages = messages.compactMap { $0.conversationMessageViewModel }
+				self.collectionView.reloadData()
 			}
-			
-			self.messages = messages?.compactMap { $0.conversationMessageViewModel } ?? []
-			self.collectionView.reloadData()
 		}
 	}
 	
 	private func loadCollocutorProfile(completion: @escaping (Profile) -> Void) {
 		showActivityIndicator()
 		
-		dataManager.getProfile(by: viewModel.collocutorUid) { [weak self] profile, error in
+		dataManager.getProfile(by: viewModel.collocutorUid) { [weak self] result in
 			guard let self = self else { return }
 			
 			self.hideActivityIndicator()
 
-			if let error = error {
+			switch result {
+			case .failure(let error):
 				self.showError(error.localizedDescription)
-				return
-			}
 
-			if let profile = profile {
+			case .success(let profile):
 				completion(profile)
 			}
 		}

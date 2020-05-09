@@ -20,8 +20,13 @@ class AuthenticationManager {
 		// ...
 		
 		let profileUid = "0C4CF4A2-6A45-4275-9F29-28951C1A317A"
-		DataManager.shared.getProfile(by: profileUid) { profile, error in
-			self.loggedInUser = profile
+		DataManager.shared.getProfile(by: profileUid) { [weak self] result in
+			switch result {
+			case .failure:
+				break
+			case .success(let profile):
+				self?.loggedInUser = profile
+			}
 		}
 		
 		return true

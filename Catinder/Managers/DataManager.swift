@@ -29,11 +29,11 @@ class DataManager {
 	
 	// MARK: - Profiles
 	
-	func getAllProfiles(completion: @escaping ([Profile]?, Error?) -> ()) {
+	func getAllProfiles(completion: @escaping (Result<[Profile], Error>) -> ()) {
 		parseDataFromNetwork(for: "profiles", completion: completion)
 	}
 	
-	func getProfile(by uid: String, completion: @escaping (Profile?, Error?) -> ()) {
+	func getProfile(by uid: String, completion: @escaping (Result<Profile, Error>) -> ()) {
 		parseDataFromNetwork(for: "profile/\(uid)", completion: completion)
 	}
 	
@@ -77,14 +77,14 @@ class DataManager {
 	
 	// MARK: - Matches
 
-	func getMatches(completion: @escaping ([Match]?, Error?) -> ()) {
+	func getMatches(completion: @escaping (Result<[Match], Error>) -> ()) {
 		parseDataFromNetwork(for: "matches", completion: completion)
 	}
 	
 	
 	// MARK: - Messages
 	
-	func getMessages(forConversationWith collocutorUid: String, completion: @escaping ([Message]?, Error?) -> ()) {
+	func getMessages(forConversationWith collocutorUid: String, completion: @escaping (Result<[Message], Error>) -> ()) {
 		parseDataFromNetwork(for: "messages/\(collocutorUid)", completion: completion)
 	}
 	
@@ -126,25 +126,25 @@ class DataManager {
 	
 	// MARK: - Parser
 	
-	private func parseDataFromNetwork<T: Decodable>(for resource: String, completion: @escaping (T?, Error?) -> ()) {
+	private func parseDataFromNetwork<T: Decodable>(for resource: String, completion: @escaping (Result<T, Error>) -> ()) {
 		
 		networkManager.getData(for: resource) { data, networkError in
-			guard networkError == nil else {
-				completion(nil, networkError)
+			if let networkError = networkError {
+				completion(.failure(networkError))
 				return
 			}
 			
 			guard let data = data else {
-				completion(nil, DataManagerError.emptyData)
+				completion(.failure(DataManagerError.emptyData))
 				return
 			}
 			
 			guard let parsedData = try? self.jsonDecoder.decode(T.self, from: data) else {
-				completion(nil, DataManagerError.parseError)
+				completion(.failure(DataManagerError.parseError))
 				return
 			}
 			
-			completion(parsedData, nil)
+			completion(.success(parsedData))
 		}
 	}
 	
