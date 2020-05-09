@@ -19,7 +19,10 @@ class AuthenticationManager {
 		// get logged-in user data from network
 		// ...
 		
-		loggedInUser = Profile(uid: "F59C2433-B0F5-4A84-B017-2212C1CFA7ED", name: "Me", age: 5, photosNames: ["Bob_1.jpg", "Bob_2.jpg", "Bob_3.jpg"], shortDescription: "Some short description about myself.", extendedDescription: "Extended description could be distributed along multiple lines because it could be very long.")
+		let profileUid = "0C4CF4A2-6A45-4275-9F29-28951C1A317A"
+		DataManager.shared.getProfile(by: profileUid) { profile, error in
+			self.loggedInUser = profile
+		}
 		
 		return true
 	}
