@@ -101,7 +101,7 @@ class ConversationViewController: UICollectionViewController {
 	private func loadMessages() {
 		showActivityIndicator()
 		
-		dataManager.getMessages(forConversationWith: "Current-Collocutor-UID") { [weak self] messages, error in
+		dataManager.getMessages(forConversationWith: viewModel.collocutorUid) { [weak self] messages, error in
 			guard let self = self else { return }
 
 			self.hideActivityIndicator()

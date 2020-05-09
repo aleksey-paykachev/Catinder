@@ -14,7 +14,12 @@ class DataManager {
 	static let shared = DataManager()
 
 	private let networkManager = NetworkManager()
-	private let jsonDecoder = JSONDecoder()
+	private let jsonDecoder: JSONDecoder = {
+		let jsonDecoder = JSONDecoder()
+		jsonDecoder.dateDecodingStrategy = .iso8601
+
+		return jsonDecoder
+	}()
 
 	
 	// MARK: - Init
