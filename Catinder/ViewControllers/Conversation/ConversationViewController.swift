@@ -66,7 +66,7 @@ class ConversationViewController: UICollectionViewController {
 	}
 	
 	private func setupCollectionView() {
-		collectionView.backgroundColor = #colorLiteral(red: 0.8416953683, green: 0.8855920434, blue: 0.9355512857, alpha: 1)
+		collectionView.backgroundColor = .conversationBackground
 		collectionView.alwaysBounceVertical = true
 		collectionView.contentInset.top = 10
 

@@ -14,7 +14,7 @@ class ConversationMessageCell: UICollectionViewCell {
 	private let messageViewHorizontalAlignmentPadding: CGFloat = 12
 	
 	private let messageView = UIView()
-	private let messageLabel = UILabel(color: .darkText, allowMultipleLines: true, font: .systemFont(ofSize: 14))
+	private let messageLabel = UILabel(color: .conversationMessageText, allowMultipleLines: true, font: .systemFont(ofSize: 14))
 	var viewModel: ConversationMessageViewModel? { didSet { updateUI() } }
 	
 	lazy var messageViewLeadingAnchor = messageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: messageViewHorizontalAlignmentPadding)
@@ -46,7 +46,7 @@ class ConversationMessageCell: UICollectionViewCell {
 		messageView.widthAnchor.constraint(lessThanOrEqualToConstant: 300).isActive = true
 		
 		messageView.layer.setCorner(radius: 10)
-		messageView.layer.setBorder(size: 1, color: #colorLiteral(red: 0.8145642877, green: 0.8508019447, blue: 0.871671021, alpha: 1))
+		messageView.layer.setBorder(size: 1, color: .conversationMessageBorder)
 		messageViewLeadingAnchor.priority = .defaultLow // to prevent autolayout issues
 	}
 		
@@ -70,11 +70,11 @@ class ConversationMessageCell: UICollectionViewCell {
 		
 		switch viewModel.sender {
 		case .user:
-			messageView.backgroundColor = #colorLiteral(red: 0.8876842856, green: 0.999817431, blue: 0.7837184072, alpha: 1)
+			messageView.backgroundColor = .conversationUserMessageBackground
 			setMessageViewAlignTrailing()
 
 		case .collocutor:
-			messageView.backgroundColor = #colorLiteral(red: 0.9999037385, green: 1, blue: 0.9957979321, alpha: 1)
+			messageView.backgroundColor = .conversationCollocutorMessageBackground
 			setMessageViewAlignLeading()
 		}
 	}
