@@ -58,6 +58,7 @@
 		5BC4194F23DB321F00E98AA9 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC4194E23DB321F00E98AA9 /* ConversationViewController.swift */; };
 		5BC4195523DB3AFE00E98AA9 /* ConversationMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC4195423DB3AFE00E98AA9 /* ConversationMessageCell.swift */; };
 		5BC68D5C23BF29E500DE9E82 /* CatinderPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC68D5B23BF29E500DE9E82 /* CatinderPageControl.swift */; };
+		5BCB68ED246D9AE2009B2471 /* LoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB68EC246D9AE2009B2471 /* LoginScreenViewController.swift */; };
 		5BD54E1123D50381004A0AA2 /* CatinderSecondaryTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD54E1023D50381004A0AA2 /* CatinderSecondaryTextButton.swift */; };
 		5BD54E1523D5075A004A0AA2 /* HStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD54E1423D5075A004A0AA2 /* HStackView.swift */; };
 		5BD54E1723D5077E004A0AA2 /* VStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD54E1623D5077E004A0AA2 /* VStackView.swift */; };
@@ -129,6 +130,7 @@
 		5BC4194E23DB321F00E98AA9 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		5BC4195423DB3AFE00E98AA9 /* ConversationMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationMessageCell.swift; sourceTree = "<group>"; };
 		5BC68D5B23BF29E500DE9E82 /* CatinderPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderPageControl.swift; sourceTree = "<group>"; };
+		5BCB68EC246D9AE2009B2471 /* LoginScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenViewController.swift; sourceTree = "<group>"; };
 		5BD54E1023D50381004A0AA2 /* CatinderSecondaryTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderSecondaryTextButton.swift; sourceTree = "<group>"; };
 		5BD54E1423D5075A004A0AA2 /* HStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStackView.swift; sourceTree = "<group>"; };
 		5BD54E1623D5077E004A0AA2 /* VStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VStackView.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 		5B139E7823B784E200BE73E7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5BCB68EE246D9B12009B2471 /* LoginScreen */,
 				5B139E7923B784F500BE73E7 /* CardsViewer */,
 				5B7FFBCD23C2AAC3009D2854 /* ProfileEditor */,
 				5B5AD28223C8C0F700D5B6D7 /* ProfileViewer */,
@@ -357,6 +360,14 @@
 				5BC4195423DB3AFE00E98AA9 /* ConversationMessageCell.swift */,
 			);
 			path = Conversation;
+			sourceTree = "<group>";
+		};
+		5BCB68EE246D9B12009B2471 /* LoginScreen */ = {
+			isa = PBXGroup;
+			children = (
+				5BCB68EC246D9AE2009B2471 /* LoginScreenViewController.swift */,
+			);
+			path = LoginScreen;
 			sourceTree = "<group>";
 		};
 		5BD54E1223D505F9004A0AA2 /* Buttons */ = {
@@ -532,6 +543,7 @@
 				5BC68D5C23BF29E500DE9E82 /* CatinderPageControl.swift in Sources */,
 				5BDACB69245ED79000A4DEA1 /* CatinderImageView.swift in Sources */,
 				5BD54E1723D5077E004A0AA2 /* VStackView.swift in Sources */,
+				5BCB68ED246D9AE2009B2471 /* LoginScreenViewController.swift in Sources */,
 				5BAE16FB23D95839007D3EA4 /* CatinderNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

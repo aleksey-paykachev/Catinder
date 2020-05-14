@@ -13,16 +13,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 
-
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		
 		window = UIWindow()
-		window?.rootViewController = CatinderNavigationController(rootViewController: CardsViewerViewController())
+		window?.rootViewController = CatinderNavigationController(rootViewController: LoginScreenViewController())
 
 		window?.makeKeyAndVisible()
-		
-		#warning("Move auth logic from app delegate.")
-		AuthenticationManager.shared.login(with: "login", password: "password")
 		return true
 	}
 }
