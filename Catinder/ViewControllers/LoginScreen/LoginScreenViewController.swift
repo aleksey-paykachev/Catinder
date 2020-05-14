@@ -40,13 +40,14 @@ class LoginScreenViewController: UIViewController {
 		// login textfield
 		let loginTextField = UITextField()
 		loginTextField.borderStyle = .roundedRect
-		loginTextField.placeholder = "Login"
+		loginTextField.placeholder = "Имя пользователя"
 		loginTextField.constrainHeight(to: 36)
 		
-		// passwork textfield
+		// password textfield
 		let passwordTextField = UITextField()
+		passwordTextField.isSecureTextEntry = true
 		passwordTextField.borderStyle = .roundedRect
-		passwordTextField.placeholder = "Password"
+		passwordTextField.placeholder = "Пароль"
 		passwordTextField.constrainHeight(to: 36)
 		
 		// enter button
@@ -65,10 +66,21 @@ class LoginScreenViewController: UIViewController {
 	}
 	
 	@objc private func enterButtonDidTapped() {
-		AuthenticationManager.shared.login(with: "login", password: "password")
+		showActivityIndicator()
+		AuthenticationManager.shared.login(with: "login", password: "password") { [weak self] result in
+			guard let self = self else { return }
+			self.hideActivityIndicator()
+			
+			switch result {
+			case .success:
+				let mainViewController = CatinderNavigationController(rootViewController: CardsViewerViewController())
+				mainViewController.modalPresentationStyle = .fullScreen
+				self.present(mainViewController, animated: true)
+
+			case .failure(let error):
+				self.showError(error.localizedDescription)
+			}
+		}
 		
-		let mainViewController = CatinderNavigationController(rootViewController: CardsViewerViewController())
-		mainViewController.modalPresentationStyle = .fullScreen
-		present(mainViewController, animated: true)
 	}
 }
