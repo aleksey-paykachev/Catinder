@@ -30,8 +30,12 @@ class LoginScreenViewController: UIViewController {
 		view.backgroundColor = .background
 		
 		// logo
-		let logoImageView = UIImageView(image: UIImage(named: "CatinderLogo"))
+		guard let logoImage = UIImage(named: "CatinderLogo") else { return }
+		let logoImageView = UIImageView(image: logoImage)
 		logoImageView.contentMode = .scaleAspectFit
+
+		let aspectRatio = logoImage.size.width / logoImage.size.height
+		logoImageView.widthAnchor.constraint(equalTo: logoImageView.heightAnchor, multiplier: aspectRatio).isActive = true
 		
 		// login textfield
 		let loginTextField = UITextField()
@@ -51,7 +55,9 @@ class LoginScreenViewController: UIViewController {
 		enterButton.constrainHeight(to: 44)
 		
 		// main stack
-		let stack = VStackView([logoImageView, loginTextField, passwordTextField, enterButton], spacing: 12)
+		let stack = VStackView([logoImageView, loginTextField, passwordTextField, enterButton], spacing: 8)
+		stack.setCustomSpacing(60, after: logoImageView)
+		stack.setCustomSpacing(20, after: passwordTextField)
 		
 		view.addSubview(stack)
 		stack.constrainToSuperview(anchors: [.centerX, .centerY])
