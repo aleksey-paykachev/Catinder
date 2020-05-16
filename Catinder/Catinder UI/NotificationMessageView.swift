@@ -1,5 +1,5 @@
 //
-//  ErrorMessageView.swift
+//  NotificationMessageView.swift
 //  Catinder
 //
 //  Created by Aleksey on 06.05.2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ErrorMessageView: UIView {
+class NotificationMessageView: UIView {
 	// MARK: - Init
 	
 	private let message: String

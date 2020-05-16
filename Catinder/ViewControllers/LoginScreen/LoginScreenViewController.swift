@@ -28,7 +28,7 @@ class LoginScreenViewController: UIViewController {
 	override func viewDidLoad() {
 		// demo version helper notification message
 		DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
-			self.showError("В данной демонстрационной версии вы можете ввести любое имя пользователя и пароль.", hideAfter: 6)
+			self.showNotification("В данной демонстрационной версии вы можете ввести любое имя пользователя и пароль.", hideAfter: 6)
 		}
 	}
 	
@@ -99,7 +99,7 @@ class LoginScreenViewController: UIViewController {
 				self.present(mainViewController, animated: true)
 
 			case .failure(let error):
-				self.showError(error.localizedDescription)
+				self.showNotification(error.localizedDescription)
 			}
 		}
 	}

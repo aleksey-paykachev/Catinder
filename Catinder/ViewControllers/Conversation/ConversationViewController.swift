@@ -110,7 +110,7 @@ class ConversationViewController: UICollectionViewController {
 
 			switch result {
 			case .failure(let error):
-				self.showError(error.localizedDescription)
+				self.showNotification(error.localizedDescription)
 
 			case .success(let messages):
 				self.messages = messages.compactMap { $0.conversationMessageViewModel }
@@ -129,7 +129,7 @@ class ConversationViewController: UICollectionViewController {
 
 			switch result {
 			case .failure(let error):
-				self.showError(error.localizedDescription)
+				self.showNotification(error.localizedDescription)
 
 			case .success(let profile):
 				completion(profile)

@@ -59,7 +59,7 @@ class LastMessagesViewController: UICollectionViewController {
 
 			switch result {
 			case .failure(let error):
-				self.showError(error.localizedDescription)
+				self.showNotification(error.localizedDescription)
 
 			case .success(let matches):
 				self.lastMessages = matches.map { $0.lastMessageViewModel }

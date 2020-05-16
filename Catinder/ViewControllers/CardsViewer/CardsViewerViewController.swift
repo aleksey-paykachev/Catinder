@@ -56,7 +56,7 @@ class CardsViewerViewController: UIViewController {
 			
 			switch result {
 			case .failure(let error):
-				self.showError(error.localizedDescription)
+				self.showNotification(error.localizedDescription)
 
 			case .success(let profiles):
 				self.profiles = profiles
@@ -148,14 +148,14 @@ extension CardsViewerViewController: CardsStackViewDelegate {
 		case .dislike:
 			dataManager.setDislike(to: cardId) { [weak self] error in
 				if let error = error {
-					self?.showError(error.localizedDescription)
+					self?.showNotification(error.localizedDescription)
 				}
 			}
 			
 		case .like(let type):
 			dataManager.setLike(to: cardId, likeType: type) { [weak self] isLikeMutual, error in
 				if let error = error {
-					self?.showError(error.localizedDescription)
+					self?.showNotification(error.localizedDescription)
 					return
 				}
 				

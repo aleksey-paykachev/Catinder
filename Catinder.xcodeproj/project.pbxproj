@@ -19,7 +19,7 @@
 		5B139E7D23B7851700BE73E7 /* BottomMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E7C23B7851700BE73E7 /* BottomMenuView.swift */; };
 		5B139E7F23B7853000BE73E7 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E7E23B7853000BE73E7 /* CardView.swift */; };
 		5B139E8123B7873200BE73E7 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */; };
-		5B1537D52462DF7100ED7FC8 /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1537D42462DF7100ED7FC8 /* ErrorMessageView.swift */; };
+		5B1537D52462DF7100ED7FC8 /* NotificationMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1537D42462DF7100ED7FC8 /* NotificationMessageView.swift */; };
 		5B197FF223D67C0E006DFB9E /* MatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B197FF123D67C0E006DFB9E /* MatchViewModel.swift */; };
 		5B197FF423D6966D006DFB9E /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B197FF323D6966D006DFB9E /* GradientView.swift */; };
 		5B1B84CD2438A69300F0091F /* PhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B84CC2438A69300F0091F /* PhotoSelectorCell.swift */; };
@@ -93,7 +93,7 @@
 		5B139E7C23B7851700BE73E7 /* BottomMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuView.swift; sourceTree = "<group>"; };
 		5B139E7E23B7853000BE73E7 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
-		5B1537D42462DF7100ED7FC8 /* ErrorMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageView.swift; sourceTree = "<group>"; };
+		5B1537D42462DF7100ED7FC8 /* NotificationMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationMessageView.swift; sourceTree = "<group>"; };
 		5B197FF123D67C0E006DFB9E /* MatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewModel.swift; sourceTree = "<group>"; };
 		5B197FF323D6966D006DFB9E /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		5B1B84CC2438A69300F0091F /* PhotoSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorCell.swift; sourceTree = "<group>"; };
@@ -300,7 +300,7 @@
 				5BF4C40D2470578C00E4624D /* CatinderTextField.swift */,
 				5BC68D5B23BF29E500DE9E82 /* CatinderPageControl.swift */,
 				5B41EBE023E5916700D99CA6 /* CatinderTextInputAccessoryView.swift */,
-				5B1537D42462DF7100ED7FC8 /* ErrorMessageView.swift */,
+				5B1537D42462DF7100ED7FC8 /* NotificationMessageView.swift */,
 				5BB2ED0923DD5900008AA5E6 /* UIViewController + Extensions.swift */,
 			);
 			path = "Catinder UI";
@@ -526,7 +526,7 @@
 				5BDFCF05244A747B006A523A /* Array + Extensions.swift in Sources */,
 				5B07A50A23D12E9D00122190 /* CALayer + Extensions.swift in Sources */,
 				5B746EFB23C8C94000063374 /* ProfileViewModel.swift in Sources */,
-				5B1537D52462DF7100ED7FC8 /* ErrorMessageView.swift in Sources */,
+				5B1537D52462DF7100ED7FC8 /* NotificationMessageView.swift in Sources */,
 				5B1C8D0F2442632B00A6D91A /* PhotoPreviewCell.swift in Sources */,
 				5B5AD28123C8BF3C00D5B6D7 /* ProfileViewerViewController.swift in Sources */,
 				5B8FB3D923BE946600041B23 /* CardViewModel.swift in Sources */,

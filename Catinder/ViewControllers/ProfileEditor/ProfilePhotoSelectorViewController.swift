@@ -93,7 +93,7 @@ class PhotoSelectorViewController: UICollectionViewController {
 				cell?.set(image: nil)
 
 			case .failure(let error):
-				self?.showError(error.localizedDescription)
+				self?.showNotification(error.localizedDescription)
 			}
 		}
 	}
@@ -202,7 +202,7 @@ extension PhotoSelectorViewController: CatinderImagePickerDelegate {
 				cell?.set(image: image)
 	
 			case .failure(let error):
-				self?.showError(error.localizedDescription)
+				self?.showNotification(error.localizedDescription)
 			}
 		}
 	}

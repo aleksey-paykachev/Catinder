@@ -37,9 +37,9 @@ extension UIViewController {
 	}
 	
 	
-	// MARK: - Error message
+	// MARK: - Notification message
 
-	func showError(_ message: String, hideAfter intervalBeforeHide: TimeInterval = 4) {
+	func showNotification(_ message: String, hideAfter intervalBeforeHide: TimeInterval = 4) {
 		// properties
 		let topConstraintHidden: CGFloat = -100
 		var topConstraintShown: CGFloat = 10
@@ -51,41 +51,41 @@ extension UIViewController {
 			topConstraintShown += navigationBar.bounds.height
 		}
 		
-		let errorMessageView = ErrorMessageView(message: message)
-		view.addSubview(errorMessageView)
+		let notificationMessageView = NotificationMessageView(message: message)
+		view.addSubview(notificationMessageView)
 
 		// constraints
-		errorMessageView.translatesAutoresizingMaskIntoConstraints = false
+		notificationMessageView.translatesAutoresizingMaskIntoConstraints = false
 
-		let errorMessageViewTopConstraint = errorMessageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstraintHidden)
+		let notificationMessageViewTopConstraint = notificationMessageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstraintHidden)
 
 		NSLayoutConstraint.activate([
-			errorMessageView.widthAnchor.constraint(equalToConstant: widthConstraint),
-			errorMessageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			errorMessageViewTopConstraint
+			notificationMessageView.widthAnchor.constraint(equalToConstant: widthConstraint),
+			notificationMessageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			notificationMessageViewTopConstraint
 		])
 		
 		// show-wait-hide animation:
 		// prepare
-		errorMessageView.alpha = 0
+		notificationMessageView.alpha = 0
 		view.layoutIfNeeded()
 		
 		// show
 		UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseOut, animations: {
-			errorMessageViewTopConstraint.constant = topConstraintShown
-			errorMessageView.alpha = 1
+			notificationMessageViewTopConstraint.constant = topConstraintShown
+			notificationMessageView.alpha = 1
 			self.view.layoutIfNeeded()
 		}, completion: { _ in
 			
 			// hide
 			UIView.animate(withDuration: animationDuration, delay: intervalBeforeHide, options: .curveEaseIn, animations: {
-				errorMessageViewTopConstraint.constant = topConstraintHidden
-				errorMessageView.alpha = 0
+				notificationMessageViewTopConstraint.constant = topConstraintHidden
+				notificationMessageView.alpha = 0
 				self.view.layoutIfNeeded()
 			}, completion: { _ in
 				
 				// remove
-				errorMessageView.removeFromSuperview()
+				notificationMessageView.removeFromSuperview()
 			})
 		})
 	}
