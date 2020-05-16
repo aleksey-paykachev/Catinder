@@ -35,7 +35,7 @@ class TopMenuView: UIView {
 	init() {
 		super.init(frame: .zero)
 		
-		setupSubviews()
+		setupLogoImageView()
 		setupView()
 	}
 	
@@ -46,9 +46,13 @@ class TopMenuView: UIView {
 	
 	// MARK: - Setup
 	
-	private func setupSubviews() {
-		logoImageView.image = UIImage(named: "CatinderLogo")
+	private func setupLogoImageView() {
+		let logoImage = UIImage(named: "CatinderLogo")
+		logoImageView.image = logoImage
 		logoImageView.contentMode = .scaleAspectFit
+		
+		let logoImageAspectRatio = logoImage!.size.width / logoImage!.size.height
+		logoImageView.widthAnchor.constraint(equalTo: logoImageView.heightAnchor, multiplier: logoImageAspectRatio).isActive = true
 	}
 	
 	private func setupView() {
