@@ -10,8 +10,8 @@ import UIKit
 
 class LoginScreenViewController: UIViewController {
 	
-	private let loginTextField = UITextField()
-	private let passwordTextField = UITextField()
+	private let loginTextField = CatinderTextField(placeholder: "Имя пользователя")
+	private let passwordTextField = CatinderTextField(placeholder: "Пароль")
 	private var mainStack: VStackView!
 	private var mainStackCenterYConstraint: NSLayoutConstraint!
 	
@@ -46,18 +46,14 @@ class LoginScreenViewController: UIViewController {
 		let logoImageView = UIImageView(image: logoImage)
 		logoImageView.contentMode = .scaleAspectFit
 
-		let aspectRatio = logoImage.size.width / logoImage.size.height
-		logoImageView.widthAnchor.constraint(equalTo: logoImageView.heightAnchor, multiplier: aspectRatio).isActive = true
+		let logoImageAspectRatio = logoImage.size.width / logoImage.size.height
+		logoImageView.widthAnchor.constraint(equalTo: logoImageView.heightAnchor, multiplier: logoImageAspectRatio).isActive = true
 		
 		// login textfield
-		loginTextField.borderStyle = .roundedRect
-		loginTextField.placeholder = "Имя пользователя"
 		loginTextField.constrainHeight(to: 36)
 		
 		// password textfield
 		passwordTextField.isSecureTextEntry = true
-		passwordTextField.borderStyle = .roundedRect
-		passwordTextField.placeholder = "Пароль"
 		passwordTextField.constrainHeight(to: 36)
 		
 		// enter button
@@ -78,9 +74,19 @@ class LoginScreenViewController: UIViewController {
 	}
 	
 	@objc private func enterButtonDidTapped() {
-		guard let login = loginTextField.text, let password = passwordTextField.text else { return }
+		// check if user did input login and password
+		guard let login = loginTextField.text, login.isNotEmpty else {
+			loginTextField.showWrongInputAnimation()
+			return
+		}
+			
+		guard let password = passwordTextField.text, password.isNotEmpty else {
+			passwordTextField.showWrongInputAnimation()
+			return
+		}
 		
 		// try to login
+		view.endEditing(true)
 		showActivityIndicator()
 		AuthenticationManager.shared.login(with: login, password: password) { [weak self] result in
 			guard let self = self else { return }
