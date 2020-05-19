@@ -14,7 +14,7 @@ class ConversationViewController: UICollectionViewController {
 	private let dataManager: DataManager
 	
 	private let collectionViewFlowLayout = ConversationViewControllerFlowLayout()
-	private let textInputAccessoryView = CatinderTextInputAccessoryView()
+	private let textInputView = ConversationTextInputView()
 	private let navigationItemCollocutorButton = CatinderCircleBarButtonItem()
 
 	private let viewModel: ConversationViewModel
@@ -31,7 +31,7 @@ class ConversationViewController: UICollectionViewController {
 		setupNavigationBar()
 		setupCollectionViewLayout()
 		setupCollectionView()
-		setupSubviews()
+		setupTextInputView()
 		setupGestures()
 		
 		loadMessages()
@@ -47,6 +47,7 @@ class ConversationViewController: UICollectionViewController {
 	private func setupNavigationBar() {
 		title = viewModel.collocutorName
 		
+		// setup collocutor button in navigation bar
 		navigationItem.rightBarButtonItem = navigationItemCollocutorButton
 		dataManager.getImage(name: viewModel.collocutorImageName) { [weak self] result in
 			if case Result.success(let image) = result {
@@ -73,13 +74,22 @@ class ConversationViewController: UICollectionViewController {
 		collectionView.registerCell(ConversationMessageCell.self)
 	}
 	
-	private func setupSubviews() {
-		textInputAccessoryView.delegate = self
+	private func setupTextInputView() {
+		textInputView.delegate = self
+		
+		collectionView.addSubview(textInputView)
+
+		textInputView.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			textInputView.leadingAnchor.constraint(equalTo: collectionView.frameLayoutGuide.leadingAnchor),
+			textInputView.trailingAnchor.constraint(equalTo: collectionView.frameLayoutGuide.trailingAnchor),
+			textInputView.bottomAnchor.constraint(equalTo: collectionView.frameLayoutGuide.bottomAnchor)
+		])
 	}
 	
 	private func setupGestures() {
 		// hide keyboard on tap
-		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+		let tapGestureRecognizer = UITapGestureRecognizer(target: collectionView, action: #selector(UIView.endEditing))
 		view.addGestureRecognizer(tapGestureRecognizer)
 	}
 	
@@ -87,14 +97,6 @@ class ConversationViewController: UICollectionViewController {
 		loadCollocutorProfile { [weak self] profile in
 			self?.present(ProfileViewerViewController(viewModel: profile.profileViewModel), animated: true)
 		}
-	}
-	
-	override var inputAccessoryView: UIView? {
-		textInputAccessoryView
-	}
-	
-	override var canBecomeFirstResponder: Bool {
-		true
 	}
 	
 	
@@ -151,10 +153,6 @@ class ConversationViewController: UICollectionViewController {
 		#warning("Set 'sended' status for sended messages.")
 		dataManager.addMessage(forConversationWith: "")
 	}
-	
-	@objc private func hideKeyboard() {
-		textInputAccessoryView.hideKeyboard()
-	}
 }
 
 
@@ -176,9 +174,9 @@ extension ConversationViewController {
 }
 
 
-// MARK: - CatinderTextInputAccessoryViewDelegate
+// MARK: - ConversationTextInputViewDelegate
 
-extension ConversationViewController: CatinderTextInputAccessoryViewDelegate {
+extension ConversationViewController: ConversationTextInputViewDelegate {
 	func sendButtonDidTapped(with text: String) {
 		addMessage(text: text)
 	}

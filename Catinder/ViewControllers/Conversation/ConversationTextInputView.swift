@@ -1,5 +1,5 @@
 //
-//  CatinderTextInputAccessoryView.swift
+//  ConversationTextInputView.swift
 //  Catinder
 //
 //  Created by Aleksey on 01.02.2020.
@@ -8,16 +8,16 @@
 
 import UIKit
 
-protocol CatinderTextInputAccessoryViewDelegate: class {
+protocol ConversationTextInputViewDelegate: class {
 	func sendButtonDidTapped(with text: String)
 }
 
-class CatinderTextInputAccessoryView: UIView {
+class ConversationTextInputView: UIView {
 	// MARK: - Properties
 	
 	private let textInputTextView = UITextView()
 	private let sendButton = UIButton(type: .system)
-	weak var delegate: CatinderTextInputAccessoryViewDelegate?
+	weak var delegate: ConversationTextInputViewDelegate?
 
 	
 	// MARK: - Init
@@ -34,17 +34,10 @@ class CatinderTextInputAccessoryView: UIView {
 	}
 	
 	
-	// MARK: - API
-	
-	func hideKeyboard() {
-		textInputTextView.resignFirstResponder()
-	}
-	
-	
 	// MARK: - Setup
 	
 	private func setupView() {
-		frame.size.height = 50
+//		frame.size.height = 50
 		backgroundColor = .background
 		layer.setShadow(size: 1, offsetY: -1, alpha: 0.1)
 	}
@@ -81,7 +74,7 @@ class CatinderTextInputAccessoryView: UIView {
 
 // MARK: - UITextViewDelegate
 
-extension CatinderTextInputAccessoryView: UITextViewDelegate {
+extension ConversationTextInputView: UITextViewDelegate {
 	func textViewDidChange(_ textView: UITextView) {
 		sendButton.isEnabled = textView.text.trimmed.isNotEmpty
 	}

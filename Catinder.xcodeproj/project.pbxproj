@@ -31,7 +31,7 @@
 		5B30C22B246DF07900734CF8 /* KeyboardNotificationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B30C22A246DF07900734CF8 /* KeyboardNotificationInfo.swift */; };
 		5B37744323CE75FA00698427 /* CatinderImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37744223CE75FA00698427 /* CatinderImagePicker.swift */; };
 		5B3BCA0F23E0356500092DD5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3BCA0E23E0356500092DD5 /* Message.swift */; };
-		5B41EBE123E5916700D99CA6 /* CatinderTextInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41EBE023E5916700D99CA6 /* CatinderTextInputAccessoryView.swift */; };
+		5B41EBE123E5916700D99CA6 /* ConversationTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41EBE023E5916700D99CA6 /* ConversationTextInputView.swift */; };
 		5B41EBE323E5956800D99CA6 /* String + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41EBE223E5956800D99CA6 /* String + Extensions.swift */; };
 		5B457F4E23D7DAE300A630F9 /* LastMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B457F4D23D7DAE300A630F9 /* LastMessagesViewController.swift */; };
 		5B457F5123D7F0BD00A630F9 /* LastMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B457F5023D7F0BD00A630F9 /* LastMessageCell.swift */; };
@@ -105,7 +105,7 @@
 		5B30C22A246DF07900734CF8 /* KeyboardNotificationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationInfo.swift; sourceTree = "<group>"; };
 		5B37744223CE75FA00698427 /* CatinderImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderImagePicker.swift; sourceTree = "<group>"; };
 		5B3BCA0E23E0356500092DD5 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		5B41EBE023E5916700D99CA6 /* CatinderTextInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderTextInputAccessoryView.swift; sourceTree = "<group>"; };
+		5B41EBE023E5916700D99CA6 /* ConversationTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTextInputView.swift; sourceTree = "<group>"; };
 		5B41EBE223E5956800D99CA6 /* String + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extensions.swift"; sourceTree = "<group>"; };
 		5B457F4D23D7DAE300A630F9 /* LastMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastMessagesViewController.swift; sourceTree = "<group>"; };
 		5B457F5023D7F0BD00A630F9 /* LastMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastMessageCell.swift; sourceTree = "<group>"; };
@@ -299,7 +299,6 @@
 				5B98EF86243F445F00BC93E9 /* CatinderCircleBarButtonItem.swift */,
 				5BF4C40D2470578C00E4624D /* CatinderTextField.swift */,
 				5BC68D5B23BF29E500DE9E82 /* CatinderPageControl.swift */,
-				5B41EBE023E5916700D99CA6 /* CatinderTextInputAccessoryView.swift */,
 				5B1537D42462DF7100ED7FC8 /* NotificationMessageView.swift */,
 				5BB2ED0923DD5900008AA5E6 /* UIViewController + Extensions.swift */,
 			);
@@ -362,6 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				5BC4194E23DB321F00E98AA9 /* ConversationViewController.swift */,
+				5B41EBE023E5916700D99CA6 /* ConversationTextInputView.swift */,
 				5BFDACFD23E301B7006542FA /* ConversationViewControllerFlowLayout.swift */,
 				5BC4195423DB3AFE00E98AA9 /* ConversationMessageCell.swift */,
 			);
@@ -489,7 +489,7 @@
 				5BC4194F23DB321F00E98AA9 /* ConversationViewController.swift in Sources */,
 				5B3BCA0F23E0356500092DD5 /* Message.swift in Sources */,
 				5B139E7D23B7851700BE73E7 /* BottomMenuView.swift in Sources */,
-				5B41EBE123E5916700D99CA6 /* CatinderTextInputAccessoryView.swift in Sources */,
+				5B41EBE123E5916700D99CA6 /* ConversationTextInputView.swift in Sources */,
 				5B7FFBC723C2A442009D2854 /* CatinderImageButton.swift in Sources */,
 				5B37744323CE75FA00698427 /* CatinderImagePicker.swift in Sources */,
 				5BC4195523DB3AFE00E98AA9 /* ConversationMessageCell.swift in Sources */,
