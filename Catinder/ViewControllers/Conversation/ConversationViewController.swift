@@ -14,8 +14,9 @@ class ConversationViewController: UICollectionViewController {
 	private let dataManager: DataManager
 	
 	private let collectionViewFlowLayout = ConversationViewControllerFlowLayout()
-	private let textInputView = ConversationTextInputView()
 	private let navigationItemCollocutorButton = CatinderCircleBarButtonItem()
+	private let textInputView = ConversationTextInputView()
+	private var textInputViewBottomConstraint: NSLayoutConstraint!
 
 	private let viewModel: ConversationViewModel
 	private var messages: [ConversationMessageViewModel] = []
@@ -80,10 +81,12 @@ class ConversationViewController: UICollectionViewController {
 		collectionView.addSubview(textInputView)
 
 		textInputView.translatesAutoresizingMaskIntoConstraints = false
+		textInputViewBottomConstraint = textInputView.bottomAnchor.constraint(equalTo: collectionView.frameLayoutGuide.bottomAnchor)
+
 		NSLayoutConstraint.activate([
 			textInputView.leadingAnchor.constraint(equalTo: collectionView.frameLayoutGuide.leadingAnchor),
 			textInputView.trailingAnchor.constraint(equalTo: collectionView.frameLayoutGuide.trailingAnchor),
-			textInputView.bottomAnchor.constraint(equalTo: collectionView.frameLayoutGuide.bottomAnchor)
+			textInputViewBottomConstraint
 		])
 	}
 	
@@ -170,6 +173,46 @@ extension ConversationViewController {
 		cell.viewModel = messages[indexPath.item]
 		
 		return cell
+	}
+}
+
+
+// MARK: - Keyboard handling
+
+extension ConversationViewController {
+
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		
+		// add keyboard notification observers
+		NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+	}
+	
+	override func viewDidDisappear(_ animated: Bool) {
+		super.viewDidDisappear(animated)
+		
+		// remove keyboard notification observers
+		NotificationCenter.default.removeObserver(self)
+	}
+	
+	@objc private func handleKeyboardWillShow(notification: Notification) {
+		guard let keyboardInfo = KeyboardNotificationInfo(of: notification) else { return }
+		
+		setContentYOffset(-keyboardInfo.height, with: keyboardInfo.animationDuration)
+	}
+	
+	@objc private func handleKeyboardWillHide(notification: Notification) {
+		guard let keyboardInfo = KeyboardNotificationInfo(of: notification) else { return }
+
+		setContentYOffset(0, with: keyboardInfo.animationDuration)
+	}
+	
+	private func setContentYOffset(_ offsetY: CGFloat, with animationDuration: TimeInterval) {
+		textInputViewBottomConstraint.constant = offsetY
+		UIView.animate(withDuration: animationDuration) {
+			self.view.layoutIfNeeded()
+		}
 	}
 }
 
