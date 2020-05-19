@@ -90,11 +90,11 @@ class DataManager {
 		parseDataFromNetwork(for: "messages/\(collocutorUid)", completion: completion)
 	}
 	
-	func addMessage(forConversationWith collocutorUid: String, completion: ((Bool?, Error?) -> ())? = nil) {
+	func addMessage(forConversationWith collocutorUid: String, completion: @escaping (Result<Bool, Error>) -> ()) {
 
 		// emulate saving new message to server
-		NetworkEmulator.emulateRequest(response: .long) {
-			completion?(true, nil)
+		NetworkEmulator.emulateRequest(response: .medium) {
+			completion(.success(true))
 		}
 	}
 

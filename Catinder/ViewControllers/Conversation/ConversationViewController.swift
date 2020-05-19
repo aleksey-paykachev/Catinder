@@ -153,8 +153,18 @@ class ConversationViewController: UICollectionViewController {
 		let newItemIndexPath = IndexPath(item: messages.endIndex - 1, section: 0)
 		collectionView.insertItems(at: [newItemIndexPath])
 		
-		#warning("Set 'sended' status for sended messages.")
-		dataManager.addMessage(forConversationWith: "")
+		dataManager.addMessage(forConversationWith: viewModel.collocutorUid) { [weak self] result in
+			guard let self = self else { return }
+			
+			switch result {
+			case .failure(let error):
+				self.showNotification(error.localizedDescription)
+
+			case .success:
+				print("Sended")
+				#warning("Add mark sign to sended messages")
+			}
+		}
 	}
 }
 
