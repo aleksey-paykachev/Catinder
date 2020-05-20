@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConversationMessageCell: UICollectionViewCell {
+class ConversationMessageCell: UITableViewCell {
 	// MARK: - Properties
 	
 	private let messageViewHorizontalAlignmentPadding: CGFloat = 12
@@ -23,9 +23,11 @@ class ConversationMessageCell: UICollectionViewCell {
 	
 	// MARK: - Init
 	
-	override init(frame: CGRect) {
-		super.init(frame: frame)
+	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+		super.init(style: style, reuseIdentifier: reuseIdentifier)
+
 		setupView()
+		setupSubviews()
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -36,13 +38,17 @@ class ConversationMessageCell: UICollectionViewCell {
 	// MARK: - Setup
 	
 	private func setupView() {
+		backgroundColor = .clear
+	}
+	
+	private func setupSubviews() {
 		// message label
 		messageView.addSubview(messageLabel)
 		messageLabel.constrainToSuperview(paddings: .horizontal(14) + .vertical(10), respectSafeArea: false)
 
 		// message view
-		addSubview(messageView)
-		messageView.constrainToSuperview(anchors: [.top, .bottom], respectSafeArea: false)
+		contentView.addSubview(messageView)
+		messageView.constrainToSuperview(anchors: [.top, .bottom], paddings: .all(4), respectSafeArea: false)
 		messageView.widthAnchor.constraint(lessThanOrEqualToConstant: 300).isActive = true
 		
 		messageView.layer.setCorner(radius: 10)

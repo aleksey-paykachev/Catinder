@@ -28,8 +28,8 @@ class CatinderTextField: UITextField {
 	
 	private func setupView() {
 		backgroundColor = .textFieldBackground
-		layer.setBorder(size: 1, color: .textFieldBorder)
-		layer.setCorner(radius: 5)
+		layer.setBorder(size: 1.5, color: .textFieldBorder)
+		layer.setCorner(radius: 6)
 	}
 	
 	// override textRect and editingRect to set inner bounds insets for placeholder and text

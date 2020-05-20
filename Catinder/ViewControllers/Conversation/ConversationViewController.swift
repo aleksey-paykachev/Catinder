@@ -8,30 +8,30 @@
 
 import UIKit
 
-class ConversationViewController: UICollectionViewController {
+class ConversationViewController: UITableViewController {
 	// MARK: - Properties
 	
 	private let dataManager: DataManager
+	private let authManager: AuthenticationManager
 	
-	private let collectionViewFlowLayout = ConversationViewControllerFlowLayout()
 	private let navigationItemCollocutorButton = CatinderCircleBarButtonItem()
 	private let textInputView = ConversationTextInputView()
 	private var textInputViewBottomConstraint: NSLayoutConstraint!
 
 	private let viewModel: ConversationViewModel
-	private var messages: [ConversationMessageViewModel] = []
+	private var messages: [Message] = []
 	
 	
 	// MARK: - Init
 	
-	init(viewModel: ConversationViewModel, dataManager: DataManager = .shared) {
+	init(viewModel: ConversationViewModel, dataManager: DataManager = .shared, authManager: AuthenticationManager = .shared) {
 		self.dataManager = dataManager
+		self.authManager = authManager
 		self.viewModel = viewModel
-		super.init(collectionViewLayout: collectionViewFlowLayout)
+		super.init(nibName: nil, bundle: nil)
 		
 		setupNavigationBar()
-		setupCollectionViewLayout()
-		setupCollectionView()
+		setupTableView()
 		setupTextInputView()
 		setupGestures()
 		
@@ -60,39 +60,35 @@ class ConversationViewController: UICollectionViewController {
 			self?.showProfileViewer()
 		}
 	}
-	
-	private func setupCollectionViewLayout() {
-		collectionViewFlowLayout.scrollDirection = .vertical
-		let cellMaxWidth = collectionView.bounds.width
-		collectionViewFlowLayout.estimatedItemSize = CGSize(width: cellMaxWidth, height: 0)
-	}
-	
-	private func setupCollectionView() {
-		collectionView.backgroundColor = .conversationBackground
-		collectionView.alwaysBounceVertical = true
-		collectionView.contentInset.top = 10
+		
+	private func setupTableView() {
+		tableView.backgroundColor = .conversationBackground
+		tableView.alwaysBounceVertical = true
+		tableView.contentInset.top = 10
+		tableView.allowsSelection = false
+		tableView.separatorStyle = .none
 
-		collectionView.registerCell(ConversationMessageCell.self)
+		tableView.register(ConversationMessageCell.self, forCellReuseIdentifier: "ConversationMessageCell")
 	}
 	
 	private func setupTextInputView() {
 		textInputView.delegate = self
 		
-		collectionView.addSubview(textInputView)
+		tableView.addSubview(textInputView)
 
 		textInputView.translatesAutoresizingMaskIntoConstraints = false
-		textInputViewBottomConstraint = textInputView.bottomAnchor.constraint(equalTo: collectionView.frameLayoutGuide.bottomAnchor)
+		textInputViewBottomConstraint = textInputView.bottomAnchor.constraint(equalTo: tableView.frameLayoutGuide.bottomAnchor)
 
 		NSLayoutConstraint.activate([
-			textInputView.leadingAnchor.constraint(equalTo: collectionView.frameLayoutGuide.leadingAnchor),
-			textInputView.trailingAnchor.constraint(equalTo: collectionView.frameLayoutGuide.trailingAnchor),
+			textInputView.leadingAnchor.constraint(equalTo: tableView.frameLayoutGuide.leadingAnchor),
+			textInputView.trailingAnchor.constraint(equalTo: tableView.frameLayoutGuide.trailingAnchor),
 			textInputViewBottomConstraint
 		])
 	}
 	
 	private func setupGestures() {
 		// hide keyboard on tap
-		let tapGestureRecognizer = UITapGestureRecognizer(target: collectionView, action: #selector(UIView.endEditing))
+		let tapGestureRecognizer = UITapGestureRecognizer(target: tableView, action: #selector(UIView.endEditing))
 		view.addGestureRecognizer(tapGestureRecognizer)
 	}
 	
@@ -118,9 +114,12 @@ class ConversationViewController: UICollectionViewController {
 				self.showNotification(error.localizedDescription)
 
 			case .success(let messages):
-				self.messages = messages.compactMap { $0.conversationMessageViewModel }
-				self.collectionView.reloadData()
+				break
 			}
+			
+			let testMessages = [Message(date: Date(), senderUid: "", receiverUid: "", text: "Preved"), Message(date: Date(), senderUid: "", receiverUid: "", text: "Medved")]
+			self.messages = testMessages
+			self.tableView.reloadData()
 		}
 	}
 	
@@ -146,12 +145,15 @@ class ConversationViewController: UICollectionViewController {
 	// MARK: - Methods
 	
 	private func addMessage(text: String) {
-		let sender = Bool.random() ? ConversationMessageViewModel.Sender.user : .collocutor
+		guard let userUid = authManager.loggedInUser?.uid else { return }
 
-		let message = ConversationMessageViewModel(sender: sender, messageText: text)
+		let message = Message(date: Date(), senderUid: userUid, receiverUid: viewModel.collocutorUid, text: text)
 		messages.append(message)
+
 		let newItemIndexPath = IndexPath(item: messages.endIndex - 1, section: 0)
-		collectionView.insertItems(at: [newItemIndexPath])
+		tableView.performBatchUpdates({
+			tableView.insertRows(at: [newItemIndexPath], with: .bottom)
+		})
 		
 		dataManager.addMessage(forConversationWith: viewModel.collocutorUid) { [weak self] result in
 			guard let self = self else { return }
@@ -169,18 +171,18 @@ class ConversationViewController: UICollectionViewController {
 }
 
 
-// MARK: - UICollectionViewDataSource
+// MARK: - UITableViewDataSource
 
 extension ConversationViewController {
 	
-	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		messages.count
 	}
-	
-	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
-		let cell = collectionView.dequeueCell(ConversationMessageCell.self, for: indexPath)
-		cell.viewModel = messages[indexPath.item]
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		
+		let cell = tableView.dequeueReusableCell(withIdentifier: "ConversationMessageCell", for: indexPath) as! ConversationMessageCell
+		cell.viewModel = messages[indexPath.item].conversationMessageViewModel
 		
 		return cell
 	}
@@ -219,6 +221,7 @@ extension ConversationViewController {
 	}
 	
 	private func setContentYOffset(_ offsetY: CGFloat, with animationDuration: TimeInterval) {
+
 		textInputViewBottomConstraint.constant = offsetY
 		UIView.animate(withDuration: animationDuration) {
 			self.view.layoutIfNeeded()
@@ -232,5 +235,8 @@ extension ConversationViewController {
 extension ConversationViewController: ConversationTextInputViewDelegate {
 	func sendButtonDidTapped(with text: String) {
 		addMessage(text: text)
+
+		let lastIndexPath = IndexPath(item: messages.count - 1, section: 0)
+		tableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: true)
 	}
 }

@@ -43,7 +43,7 @@ class ConversationTextInputView: UIView {
 	
 	private func setupSubviews() {
 		// text view
-		textInputTextView.font = .systemFont(ofSize: 16)
+		textInputTextView.font = .systemFont(ofSize: 15)
 		textInputTextView.delegate = self
 		textInputTextView.isScrollEnabled = false
 		textInputTextView.clipsToBounds = false
