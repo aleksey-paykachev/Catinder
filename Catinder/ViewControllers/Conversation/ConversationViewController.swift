@@ -120,14 +120,11 @@ class ConversationViewController: UIViewController {
 				self.showNotification(error.localizedDescription)
 
 			case .success(let messages):
-				break
+				self.messages = messages
+				self.tableView.reloadData()
+				self.updateTableViewContentTopInset()
+				self.scrollToBottom(animated: false)
 			}
-			
-			let testMessages = [Message(date: Date(), senderUid: "", receiverUid: "", text: "Preved"), Message(date: Date(), senderUid: "", receiverUid: "", text: "Medved")]
-			self.messages = testMessages
-			self.tableView.reloadData()
-			self.updateTableViewContentTopInset()
-			self.scrollToBottom(animated: false)
 		}
 	}
 	
@@ -194,6 +191,8 @@ class ConversationViewController: UIViewController {
 	}
 	
 	private func scrollToBottom(animated: Bool = true) {
+		guard messages.isNotEmpty else { return }
+		
 		let lastIndexPath = IndexPath(item: messages.count - 1, section: 0)
 		tableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: animated)
 	}
@@ -238,8 +237,8 @@ extension ConversationViewController {
 	
 	@objc private func handleKeyboardWillShow(notification: Notification) {
 		guard let keyboardInfo = KeyboardNotificationInfo(of: notification) else { return }
-		
-		setContentYOffset(-keyboardInfo.height, with: keyboardInfo.animationDuration)
+
+		setContentYOffset(keyboardInfo.height - view.safeAreaInsets.bottom, with: keyboardInfo.animationDuration)
 		scrollToBottom(animated: false)
 	}
 	
@@ -251,7 +250,7 @@ extension ConversationViewController {
 	
 	private func setContentYOffset(_ offsetY: CGFloat, with animationDuration: TimeInterval) {
 
-		textInputViewBottomConstraint.constant = offsetY
+		textInputViewBottomConstraint.constant = -offsetY
 		UIView.animate(withDuration: animationDuration) {
 			self.view.layoutIfNeeded()
 		}
