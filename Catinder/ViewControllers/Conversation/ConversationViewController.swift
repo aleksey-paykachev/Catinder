@@ -8,12 +8,13 @@
 
 import UIKit
 
-class ConversationViewController: UITableViewController {
+class ConversationViewController: UIViewController {
 	// MARK: - Properties
 	
 	private let dataManager: DataManager
 	private let authManager: AuthenticationManager
 	
+	private let tableView = UITableView()
 	private let navigationItemCollocutorButton = CatinderCircleBarButtonItem()
 	private let textInputView = ConversationTextInputView()
 	private var textInputViewBottomConstraint: NSLayoutConstraint!
@@ -31,6 +32,7 @@ class ConversationViewController: UITableViewController {
 		super.init(nibName: nil, bundle: nil)
 		
 		setupNavigationBar()
+		setupView()
 		setupTableView()
 		setupTextInputView()
 		setupGestures()
@@ -48,7 +50,7 @@ class ConversationViewController: UITableViewController {
 	private func setupNavigationBar() {
 		title = viewModel.collocutorName
 		
-		// setup collocutor button in navigation bar
+		// setup collocutor button inside navigation bar
 		navigationItem.rightBarButtonItem = navigationItemCollocutorButton
 		dataManager.getImage(name: viewModel.collocutorImageName) { [weak self] result in
 			if case Result.success(let image) = result {
@@ -60,36 +62,40 @@ class ConversationViewController: UITableViewController {
 			self?.showProfileViewer()
 		}
 	}
+	
+	private func setupView() {
+		view.backgroundColor = .background
+	}
 		
 	private func setupTableView() {
+		view.addSubview(tableView)
+		tableView.constrainToSuperview(anchors: [.leading, .trailing, .top], respectSafeArea: false)
+
 		tableView.backgroundColor = .conversationBackground
 		tableView.alwaysBounceVertical = true
-		tableView.contentInset.top = 10
 		tableView.allowsSelection = false
+		tableView.scrollsToTop = false
 		tableView.separatorStyle = .none
-
+		tableView.dataSource = self
+		
 		tableView.register(ConversationMessageCell.self, forCellReuseIdentifier: "ConversationMessageCell")
 	}
 	
 	private func setupTextInputView() {
-		textInputView.delegate = self
+		view.addSubview(textInputView)
+		textInputView.constrainToSuperview(anchors: [.leading ,.trailing])
+
+		textInputViewBottomConstraint = textInputView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+		textInputViewBottomConstraint.isActive = true
+		textInputView.topAnchor.constraint(equalTo: tableView.bottomAnchor).isActive = true
 		
-		tableView.addSubview(textInputView)
-
-		textInputView.translatesAutoresizingMaskIntoConstraints = false
-		textInputViewBottomConstraint = textInputView.bottomAnchor.constraint(equalTo: tableView.frameLayoutGuide.bottomAnchor)
-
-		NSLayoutConstraint.activate([
-			textInputView.leadingAnchor.constraint(equalTo: tableView.frameLayoutGuide.leadingAnchor),
-			textInputView.trailingAnchor.constraint(equalTo: tableView.frameLayoutGuide.trailingAnchor),
-			textInputViewBottomConstraint
-		])
+		textInputView.delegate = self
 	}
 	
 	private func setupGestures() {
 		// hide keyboard on tap
-		let tapGestureRecognizer = UITapGestureRecognizer(target: tableView, action: #selector(UIView.endEditing))
-		view.addGestureRecognizer(tapGestureRecognizer)
+		let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+		view.addGestureRecognizer(tapGesture)
 	}
 	
 	private func showProfileViewer() {
@@ -147,14 +153,17 @@ class ConversationViewController: UITableViewController {
 	private func addMessage(text: String) {
 		guard let userUid = authManager.loggedInUser?.uid else { return }
 
+		// add message localy
 		let message = Message(date: Date(), senderUid: userUid, receiverUid: viewModel.collocutorUid, text: text)
 		messages.append(message)
 
+		// update tableView
 		let newItemIndexPath = IndexPath(item: messages.endIndex - 1, section: 0)
 		tableView.performBatchUpdates({
 			tableView.insertRows(at: [newItemIndexPath], with: .bottom)
 		})
 		
+		// add message to server
 		dataManager.addMessage(forConversationWith: viewModel.collocutorUid) { [weak self] result in
 			guard let self = self else { return }
 			
@@ -164,6 +173,7 @@ class ConversationViewController: UITableViewController {
 
 			case .success:
 				print("Sended")
+				// indicate successeful message sending
 				#warning("Add mark sign to sended messages")
 			}
 		}
@@ -173,13 +183,13 @@ class ConversationViewController: UITableViewController {
 
 // MARK: - UITableViewDataSource
 
-extension ConversationViewController {
+extension ConversationViewController: UITableViewDataSource {
 	
-	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		messages.count
 	}
 		
-	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
 		let cell = tableView.dequeueReusableCell(withIdentifier: "ConversationMessageCell", for: indexPath) as! ConversationMessageCell
 		cell.viewModel = messages[indexPath.item].conversationMessageViewModel
