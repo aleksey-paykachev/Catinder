@@ -64,6 +64,8 @@
 		5BD54E1523D5075A004A0AA2 /* HStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD54E1423D5075A004A0AA2 /* HStackView.swift */; };
 		5BD54E1723D5077E004A0AA2 /* VStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD54E1623D5077E004A0AA2 /* VStackView.swift */; };
 		5BD646DB24631473000DC15A /* NetworkEmulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD646DA24631473000DC15A /* NetworkEmulator.swift */; };
+		5BD8724524757A5D0025B977 /* UITableView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8724424757A5D0025B977 /* UITableView + Extensions.swift */; };
+		5BD8724724757A740025B977 /* UITableViewCell + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8724624757A740025B977 /* UITableViewCell + Extensions.swift */; };
 		5BD8BE9623C687C900D9943B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8BE9523C687C900D9943B /* DataManager.swift */; };
 		5BD9B09523CFDDC9000E5028 /* CGColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD9B09423CFDDC9000E5028 /* CGColor + Extensions.swift */; };
 		5BDACB67245ED32700A4DEA1 /* CatinderActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDACB66245ED32700A4DEA1 /* CatinderActivityIndicatorView.swift */; };
@@ -138,6 +140,8 @@
 		5BD54E1423D5075A004A0AA2 /* HStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStackView.swift; sourceTree = "<group>"; };
 		5BD54E1623D5077E004A0AA2 /* VStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VStackView.swift; sourceTree = "<group>"; };
 		5BD646DA24631473000DC15A /* NetworkEmulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEmulator.swift; sourceTree = "<group>"; };
+		5BD8724424757A5D0025B977 /* UITableView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView + Extensions.swift"; sourceTree = "<group>"; };
+		5BD8724624757A740025B977 /* UITableViewCell + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell + Extensions.swift"; sourceTree = "<group>"; };
 		5BD8BE9523C687C900D9943B /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		5BD9B09423CFDDC9000E5028 /* CGColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGColor + Extensions.swift"; sourceTree = "<group>"; };
 		5BDACB66245ED32700A4DEA1 /* CatinderActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderActivityIndicatorView.swift; sourceTree = "<group>"; };
@@ -233,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				5BF12FCF245F0D4A004DA5C0 /* UICollectionView */,
+				5BD8724824757A7A0025B977 /* UITableView */,
 				5BD54E1323D50743004A0AA2 /* UIStackView */,
 				5B139E8023B7873200BE73E7 /* UIView + Extensions.swift */,
 				5B746EF823C8C56600063374 /* UILabel + Extensions.swift */,
@@ -397,6 +402,15 @@
 			path = UIStackView;
 			sourceTree = "<group>";
 		};
+		5BD8724824757A7A0025B977 /* UITableView */ = {
+			isa = PBXGroup;
+			children = (
+				5BD8724424757A5D0025B977 /* UITableView + Extensions.swift */,
+				5BD8724624757A740025B977 /* UITableViewCell + Extensions.swift */,
+			);
+			path = UITableView;
+			sourceTree = "<group>";
+		};
 		5BD8BE9723C687F800D9943B /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -529,6 +543,7 @@
 				5B1537D52462DF7100ED7FC8 /* NotificationMessageView.swift in Sources */,
 				5B1C8D0F2442632B00A6D91A /* PhotoPreviewCell.swift in Sources */,
 				5B5AD28123C8BF3C00D5B6D7 /* ProfileViewerViewController.swift in Sources */,
+				5BD8724724757A740025B977 /* UITableViewCell + Extensions.swift in Sources */,
 				5B8FB3D923BE946600041B23 /* CardViewModel.swift in Sources */,
 				5B72293423E07063003B6BD4 /* Match.swift in Sources */,
 				5BD9B09523CFDDC9000E5028 /* CGColor + Extensions.swift in Sources */,
@@ -551,6 +566,7 @@
 				5BDACB69245ED79000A4DEA1 /* CatinderImageView.swift in Sources */,
 				5BD54E1723D5077E004A0AA2 /* VStackView.swift in Sources */,
 				5BCB68ED246D9AE2009B2471 /* LoginScreenViewController.swift in Sources */,
+				5BD8724524757A5D0025B977 /* UITableView + Extensions.swift in Sources */,
 				5BAE16FB23D95839007D3EA4 /* CatinderNavigationController.swift in Sources */,
 				5B30C22B246DF07900734CF8 /* KeyboardNotificationInfo.swift in Sources */,
 			);

@@ -78,7 +78,7 @@ class ConversationViewController: UIViewController {
 		tableView.separatorStyle = .none
 		tableView.dataSource = self
 		
-		tableView.register(ConversationMessageCell.self, forCellReuseIdentifier: "ConversationMessageCell")
+		tableView.registerCell(ConversationMessageCell.self)
 	}
 	
 	private func setupTextInputView() {
@@ -209,8 +209,7 @@ extension ConversationViewController: UITableViewDataSource {
 	}
 		
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		
-		let cell = tableView.dequeueReusableCell(withIdentifier: "ConversationMessageCell", for: indexPath) as! ConversationMessageCell
+		let cell = tableView.dequeueCell(ConversationMessageCell.self, for: indexPath)
 		cell.viewModel = messages[indexPath.item].conversationMessageViewModel
 		
 		return cell
