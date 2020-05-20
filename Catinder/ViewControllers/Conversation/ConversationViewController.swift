@@ -126,6 +126,8 @@ class ConversationViewController: UIViewController {
 			let testMessages = [Message(date: Date(), senderUid: "", receiverUid: "", text: "Preved"), Message(date: Date(), senderUid: "", receiverUid: "", text: "Medved")]
 			self.messages = testMessages
 			self.tableView.reloadData()
+			self.updateTableViewContentTopInset()
+			self.scrollToBottom(animated: false)
 		}
 	}
 	
@@ -178,6 +180,23 @@ class ConversationViewController: UIViewController {
 			}
 		}
 	}
+	
+	private func updateTableViewContentTopInset() {
+		var contentInsetTop = tableView.bounds.height
+		
+		// substract all rows total height from tableView height
+		for indexPath in tableView.indexPathsForVisibleRows ?? [] {
+			contentInsetTop -= tableView.rectForRow(at: indexPath).height
+		}
+		
+		contentInsetTop = max(0, contentInsetTop) // limit inset to positive value
+		tableView.contentInset.top = contentInsetTop
+	}
+	
+	private func scrollToBottom(animated: Bool = true) {
+		let lastIndexPath = IndexPath(item: messages.count - 1, section: 0)
+		tableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: animated)
+	}
 }
 
 
@@ -222,6 +241,7 @@ extension ConversationViewController {
 		guard let keyboardInfo = KeyboardNotificationInfo(of: notification) else { return }
 		
 		setContentYOffset(-keyboardInfo.height, with: keyboardInfo.animationDuration)
+		scrollToBottom(animated: false)
 	}
 	
 	@objc private func handleKeyboardWillHide(notification: Notification) {
@@ -236,6 +256,7 @@ extension ConversationViewController {
 		UIView.animate(withDuration: animationDuration) {
 			self.view.layoutIfNeeded()
 		}
+		updateTableViewContentTopInset()
 	}
 }
 
@@ -245,8 +266,7 @@ extension ConversationViewController {
 extension ConversationViewController: ConversationTextInputViewDelegate {
 	func sendButtonDidTapped(with text: String) {
 		addMessage(text: text)
-
-		let lastIndexPath = IndexPath(item: messages.count - 1, section: 0)
-		tableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: true)
+		updateTableViewContentTopInset()
+		scrollToBottom()
 	}
 }
