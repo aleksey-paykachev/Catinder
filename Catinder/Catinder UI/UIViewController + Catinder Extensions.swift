@@ -1,5 +1,5 @@
 //
-//  UIViewController + Extensions.swift
+//  UIViewController + Catinder Extensions.swift
 //  Catinder
 //
 //  Created by Aleksey on 26/01/2020.
