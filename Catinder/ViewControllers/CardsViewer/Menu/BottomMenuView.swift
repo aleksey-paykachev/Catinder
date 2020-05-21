@@ -11,6 +11,7 @@ import UIKit
 protocol BotomMenuActionsDelegate: class {
 	func undoButtonDidPressed()
 	func dislikeButtonDidPressed()
+	func boostButtonDidPressed()
 	func likeButtonDidPressed()
 	func superLikeButtonDidPressed()
 }
@@ -29,8 +30,16 @@ class BottomMenuView: UIView {
 		self?.delegate?.dislikeButtonDidPressed()
 	}
 
-	private let boostProfileButton = CatinderImageButton("Boost") {
-		print("Boost")
+	private lazy var boostProfileButton = CatinderImageButton("Boost") { [weak self] in
+		self?.delegate?.boostButtonDidPressed()
+	}
+	
+	func activateBoostOption(for activationTime: DispatchTimeInterval) {
+		boostProfileButton.isEnabled = false
+		DispatchQueue.main.asyncAfter(deadline: .now() + activationTime) { [weak self] in
+			#warning("Add animation")
+			self?.boostProfileButton.isEnabled = true
+		}
 	}
 
 	private lazy var likeButton = CatinderImageButton("Like") { [weak self] in self?.delegate?.likeButtonDidPressed()

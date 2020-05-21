@@ -17,6 +17,7 @@ extension UIViewController {
 		
 		view.addSubview(activityIndicatorView)
 		activityIndicatorView.constrainToSuperview(anchors: [.centerX, .centerY])
+		activityIndicatorView.layer.zPosition = 10 // place activity indicator above all other views
 		
 		return activityIndicatorView
 	}

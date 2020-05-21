@@ -12,6 +12,7 @@ class CardsViewerViewController: UIViewController {
 
 	private let dataManager: DataManager
 	private let cardsStackView = CardsStackView()
+	private let bottomMenuView = BottomMenuView()
 	private var profiles: [Profile] = []
 
 	init(dataManager: DataManager = .shared) {
@@ -37,7 +38,6 @@ class CardsViewerViewController: UIViewController {
 		cardsStackView.delegate = self
 		
 		// bottom menu
-		let bottomMenuView = BottomMenuView()
 		bottomMenuView.delegate = self
 		
 		// main stack
@@ -120,6 +120,23 @@ extension CardsViewerViewController: BotomMenuActionsDelegate {
 	
 	func dislikeButtonDidPressed() {
 		cardsStackView.removeTopCard(decision: .dislike)
+	}
+	
+	func boostButtonDidPressed() {
+		showActivityIndicator()
+
+		dataManager.activateBoost { [weak self] result in
+			guard let self = self else { return }
+			self.hideActivityIndicator()
+			
+			switch result {
+			case .success(let activationTimeInSeconds):
+				self.bottomMenuView.activateBoostOption(for: .seconds(activationTimeInSeconds))
+
+			case .failure(let error):
+				self.showNotification(error.localizedDescription)
+			}
+		}
 	}
 	
 	func likeButtonDidPressed() {
