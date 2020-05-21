@@ -128,7 +128,7 @@ class DataManager {
 	func activateBoost(completion: @escaping (Result<Int, Error>) -> ()) {
 		// get "boost" activation time in seconds allowed for current user from server
 		
-		NetworkEmulator.emulateRequest(response: .fast) {
+		NetworkEmulator.emulateRequest(response: .medium) {
 			// in demo app always activate boost for 10 seconds
 			completion(.success(10))
 		}

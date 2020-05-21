@@ -304,7 +304,6 @@
 				5B98EF86243F445F00BC93E9 /* CatinderCircleBarButtonItem.swift */,
 				5BF4C40D2470578C00E4624D /* CatinderTextField.swift */,
 				5BC68D5B23BF29E500DE9E82 /* CatinderPageControl.swift */,
-				5B1AE73A2476DE4400545AD7 /* CatinderMarkSignView.swift */,
 				5B1537D42462DF7100ED7FC8 /* NotificationMessageView.swift */,
 				5BB2ED0923DD5900008AA5E6 /* UIViewController + Catinder Extensions.swift */,
 			);
@@ -369,6 +368,7 @@
 				5BC4194E23DB321F00E98AA9 /* ConversationViewController.swift */,
 				5B41EBE023E5916700D99CA6 /* ConversationTextInputView.swift */,
 				5BC4195423DB3AFE00E98AA9 /* ConversationMessageCell.swift */,
+				5B1AE73A2476DE4400545AD7 /* CatinderMarkSignView.swift */,
 			);
 			path = Conversation;
 			sourceTree = "<group>";

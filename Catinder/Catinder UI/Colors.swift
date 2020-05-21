@@ -77,6 +77,14 @@ extension UIColor {
 		traitCollection.userInterfaceStyle == .dark ? #colorLiteral(red: 0.1356711686, green: 0.1795552075, blue: 0.229470253, alpha: 1) : #colorLiteral(red: 0.9999037385, green: 1, blue: 0.9957979321, alpha: 1)
 	})
 	
+	static let conversationSendButton = UIColor(dynamicProvider: { traitCollection in
+		traitCollection.userInterfaceStyle == .dark ? #colorLiteral(red: 0.2411876023, green: 0.3770276904, blue: 0.5472865105, alpha: 1) : #colorLiteral(red: 0.9372549057, green: 0.4767975687, blue: 0.2674589695, alpha: 1)
+	})
+	
+	static let conversationSendedMarkSign = UIColor(dynamicProvider: { traitCollection in
+		traitCollection.userInterfaceStyle == .dark ? #colorLiteral(red: 0.04835501664, green: 0.182211425, blue: 0.3499839469, alpha: 1) : #colorLiteral(red: 0.490666152, green: 0.7010695714, blue: 0.2955875581, alpha: 1)
+	})
+	
 	
 	// MARK: - Other
 

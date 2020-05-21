@@ -16,7 +16,9 @@ class ConversationTextInputView: UIView {
 	// MARK: - Properties
 	
 	private let textInputTextView = UITextView()
-	private let sendButton = UIButton(type: .system)
+	private lazy var sendButton = CatinderImageButton("SendMessage") { [weak self] in
+		self?.sendButtonDidTapped()
+	}
 	weak var delegate: ConversationTextInputViewDelegate?
 
 	
@@ -51,18 +53,17 @@ class ConversationTextInputView: UIView {
 
 		// send button
 		sendButton.isEnabled = false
-		sendButton.addTarget(self, action: #selector(sendButtonDidTapped), for: .touchUpInside)
-		#warning("Add real send button image.")
-		sendButton.setTitle(">", for: .normal)
-		sendButton.constrainWidth(to: 20)
+		sendButton.constrainSize(to: .square(28))
+		sendButton.tintColor = .conversationSendButton
 		
 		// stack
 		let stack = HStackView([textInputTextView, sendButton], spacing: 10)
+		stack.alignment = .center
 		addSubview(stack)
 		stack.constrainToSuperview(paddings: .all(10), respectSafeArea: false)
 	}
 	
-	@objc private func sendButtonDidTapped() {
+	private func sendButtonDidTapped() {
 		guard let text = textInputTextView.text?.trimmed, text.isNotEmpty else { return }
 
 		textInputTextView.text = ""

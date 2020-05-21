@@ -121,7 +121,7 @@ class CardView: UIView {
 	
 	private func setupMoreInfoButton() {
 		let moreInfoButton = UIButton()
-		moreInfoButton.setImage(UIImage(named: "Info"), for: .normal)
+		moreInfoButton.setImage(UIImage(named: "MoreInfo"), for: .normal)
 		moreInfoButton.addTarget(self, action: #selector(showMoreInfo), for: .touchUpInside)
 		moreInfoButton.tintColor = .profileCardTint
 		
