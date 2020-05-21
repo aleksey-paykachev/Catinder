@@ -1,5 +1,5 @@
 //
-//  CatinderMarkSignView.swift
+//  SendStatusMarkSignView.swift
 //  Catinder
 //
 //  Created by Aleksey on 21.05.2020.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class CatinderMarkSignView: UIView {
+class SendStatusMarkSignView: UIView {
 
 	private let shapeLayer = CAShapeLayer()
 	private let lineWidth: CGFloat = 1.5
 	private let showBorder = false
 	private let animationDuration: CFTimeInterval = 0.3
 	
-	private let shapeColor: UIColor = .systemGreen
+	private let shapeColor: UIColor = .conversationSendedMarkSign
 	private let borderColor: UIColor = .darkGray
 	
 	override init(frame: CGRect) {

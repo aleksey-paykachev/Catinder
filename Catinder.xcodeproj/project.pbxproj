@@ -22,7 +22,7 @@
 		5B1537D52462DF7100ED7FC8 /* NotificationMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1537D42462DF7100ED7FC8 /* NotificationMessageView.swift */; };
 		5B197FF223D67C0E006DFB9E /* MatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B197FF123D67C0E006DFB9E /* MatchViewModel.swift */; };
 		5B197FF423D6966D006DFB9E /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B197FF323D6966D006DFB9E /* GradientView.swift */; };
-		5B1AE73B2476DE4500545AD7 /* CatinderMarkSignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1AE73A2476DE4400545AD7 /* CatinderMarkSignView.swift */; };
+		5B1AE73B2476DE4500545AD7 /* SendStatusMarkSignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1AE73A2476DE4400545AD7 /* SendStatusMarkSignView.swift */; };
 		5B1B84CD2438A69300F0091F /* PhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B84CC2438A69300F0091F /* PhotoSelectorCell.swift */; };
 		5B1C8D0F2442632B00A6D91A /* PhotoPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C8D0E2442632B00A6D91A /* PhotoPreviewCell.swift */; };
 		5B1C8D112442683B00A6D91A /* PhotoPreviewsViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C8D102442683B00A6D91A /* PhotoPreviewsViewer.swift */; };
@@ -98,7 +98,7 @@
 		5B1537D42462DF7100ED7FC8 /* NotificationMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationMessageView.swift; sourceTree = "<group>"; };
 		5B197FF123D67C0E006DFB9E /* MatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewModel.swift; sourceTree = "<group>"; };
 		5B197FF323D6966D006DFB9E /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
-		5B1AE73A2476DE4400545AD7 /* CatinderMarkSignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderMarkSignView.swift; sourceTree = "<group>"; };
+		5B1AE73A2476DE4400545AD7 /* SendStatusMarkSignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendStatusMarkSignView.swift; sourceTree = "<group>"; };
 		5B1B84CC2438A69300F0091F /* PhotoSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorCell.swift; sourceTree = "<group>"; };
 		5B1C8D0E2442632B00A6D91A /* PhotoPreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPreviewCell.swift; sourceTree = "<group>"; };
 		5B1C8D102442683B00A6D91A /* PhotoPreviewsViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPreviewsViewer.swift; sourceTree = "<group>"; };
@@ -368,7 +368,7 @@
 				5BC4194E23DB321F00E98AA9 /* ConversationViewController.swift */,
 				5B41EBE023E5916700D99CA6 /* ConversationTextInputView.swift */,
 				5BC4195423DB3AFE00E98AA9 /* ConversationMessageCell.swift */,
-				5B1AE73A2476DE4400545AD7 /* CatinderMarkSignView.swift */,
+				5B1AE73A2476DE4400545AD7 /* SendStatusMarkSignView.swift */,
 			);
 			path = Conversation;
 			sourceTree = "<group>";
@@ -556,7 +556,7 @@
 				5B035D4B23D299D100542242 /* CGSize + Extensions.swift in Sources */,
 				5B98EF85243F43C800BC93E9 /* CatinderNavigationButton.swift in Sources */,
 				5B139E8123B7873200BE73E7 /* UIView + Extensions.swift in Sources */,
-				5B1AE73B2476DE4500545AD7 /* CatinderMarkSignView.swift in Sources */,
+				5B1AE73B2476DE4500545AD7 /* SendStatusMarkSignView.swift in Sources */,
 				5B139E7F23B7853000BE73E7 /* CardView.swift in Sources */,
 				5B1B84CD2438A69300F0091F /* PhotoSelectorCell.swift in Sources */,
 				5B41EBE323E5956800D99CA6 /* String + Extensions.swift in Sources */,

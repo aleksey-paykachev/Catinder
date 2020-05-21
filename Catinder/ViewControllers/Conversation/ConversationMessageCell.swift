@@ -15,7 +15,7 @@ class ConversationMessageCell: UITableViewCell {
 	
 	private let messageView = UIView()
 	private let messageLabel = UILabel(color: .conversationMessageText, allowMultipleLines: true, font: .systemFont(ofSize: 14))
-	private let markSignView = CatinderMarkSignView()
+	private let sendStatusMarkSignView = SendStatusMarkSignView()
 	var viewModel: ConversationMessageViewModel? { didSet { updateUI() } }
 	
 	lazy var messageViewLeadingAnchor = messageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: messageViewHorizontalAlignmentPadding)
@@ -48,9 +48,9 @@ class ConversationMessageCell: UITableViewCell {
 		messageLabel.constrainToSuperview(paddings: .horizontal(14) + .vertical(10))
 		
 		// mark sign
-		markSignView.constrainSize(to: .square(9))
-		messageView.addSubview(markSignView)
-		markSignView.constrainToSuperview(anchors: [.trailing, .bottom], paddings: .all(5))
+		sendStatusMarkSignView.constrainSize(to: .square(9))
+		messageView.addSubview(sendStatusMarkSignView)
+		sendStatusMarkSignView.constrainToSuperview(anchors: [.trailing, .bottom], paddings: .all(5))
 
 		// message view
 		contentView.addSubview(messageView)
