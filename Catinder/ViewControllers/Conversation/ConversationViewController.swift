@@ -171,9 +171,9 @@ class ConversationViewController: UIViewController {
 				self.showNotification(error.localizedDescription)
 
 			case .success:
-				print("Sended")
-				// indicate successeful message sending
-				#warning("Add mark sign to sended messages")
+				// indicate message successeful sending
+				let cell = self.tableView.cellForRow(at: newItemIndexPath) as? ConversationMessageCell
+				cell?.markAsUploadedToServer()
 			}
 		}
 	}
@@ -191,9 +191,10 @@ class ConversationViewController: UIViewController {
 	}
 	
 	private func scrollToBottom(animated: Bool = true) {
-		guard messages.isNotEmpty else { return }
+		let numberOfRows = tableView.numberOfRows(inSection: 0)
+		guard numberOfRows > 0 else { return }
 		
-		let lastIndexPath = IndexPath(item: messages.count - 1, section: 0)
+		let lastIndexPath = IndexPath(item: numberOfRows - 1, section: 0)
 		tableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: animated)
 	}
 }

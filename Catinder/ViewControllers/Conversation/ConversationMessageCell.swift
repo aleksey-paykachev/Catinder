@@ -15,6 +15,7 @@ class ConversationMessageCell: UITableViewCell {
 	
 	private let messageView = UIView()
 	private let messageLabel = UILabel(color: .conversationMessageText, allowMultipleLines: true, font: .systemFont(ofSize: 14))
+	private let markSignView = CatinderMarkSignView()
 	var viewModel: ConversationMessageViewModel? { didSet { updateUI() } }
 	
 	lazy var messageViewLeadingAnchor = messageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: messageViewHorizontalAlignmentPadding)
@@ -44,11 +45,16 @@ class ConversationMessageCell: UITableViewCell {
 	private func setupSubviews() {
 		// message label
 		messageView.addSubview(messageLabel)
-		messageLabel.constrainToSuperview(paddings: .horizontal(14) + .vertical(10), respectSafeArea: false)
+		messageLabel.constrainToSuperview(paddings: .horizontal(14) + .vertical(10))
+		
+		// mark sign
+		markSignView.constrainSize(to: .square(9))
+		messageView.addSubview(markSignView)
+		markSignView.constrainToSuperview(anchors: [.trailing, .bottom], paddings: .all(5))
 
 		// message view
 		contentView.addSubview(messageView)
-		messageView.constrainToSuperview(anchors: [.top, .bottom], paddings: .all(4), respectSafeArea: false)
+		messageView.constrainToSuperview(anchors: [.top, .bottom], paddings: .all(4))
 		messageView.widthAnchor.constraint(lessThanOrEqualToConstant: 300).isActive = true
 		
 		messageView.layer.setCorner(radius: 10)
@@ -83,6 +89,10 @@ class ConversationMessageCell: UITableViewCell {
 			messageView.backgroundColor = .conversationCollocutorMessageBackground
 			setMessageViewAlignLeading()
 		}
+	}
+	
+	func markAsUploadedToServer() {
+		markSignView.show()
 	}
 	
 	override func prepareForReuse() {
