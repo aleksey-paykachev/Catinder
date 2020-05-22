@@ -51,10 +51,12 @@ class LoginScreenViewController: UIViewController {
 		
 		// login textfield
 		loginTextField.constrainHeight(to: 36)
+		loginTextField.delegate = self
 		
 		// password textfield
 		passwordTextField.isSecureTextEntry = true
 		passwordTextField.constrainHeight(to: 36)
+		passwordTextField.delegate = self
 		
 		// enter button
 		let enterButton = CatinderPrimaryTextButton(text: "Войти")
@@ -102,6 +104,26 @@ class LoginScreenViewController: UIViewController {
 				self.showNotification(error.localizedDescription)
 			}
 		}
+	}
+}
+
+
+// MARK: - UITextFieldDelegate
+
+extension LoginScreenViewController: UITextFieldDelegate {
+
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		// move to next field on 'return'
+		switch textField {
+		case loginTextField:
+			passwordTextField.becomeFirstResponder()
+		case passwordTextField:
+			enterButtonDidTapped()
+		default:
+			break
+		}
+
+		return true
 	}
 }
 
