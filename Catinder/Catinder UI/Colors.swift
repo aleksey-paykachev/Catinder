@@ -55,11 +55,26 @@ extension UIColor {
 	})
 
 	
-	// MARK: - Conversation
+	// MARK: - Conversation (common)
 	
 	static let conversationBackground = UIColor(dynamicProvider: { traitCollection in
 		traitCollection.userInterfaceStyle == .dark ? #colorLiteral(red: 0.03045731835, green: 0.044003285, blue: 0.05651818158, alpha: 1) : #colorLiteral(red: 0.8416953683, green: 0.8855920434, blue: 0.9355512857, alpha: 1)
 	})
+	
+	static let conversationTextInputViewBackground = UIColor(dynamicProvider: { traitCollection in
+		traitCollection.userInterfaceStyle == .dark ? #colorLiteral(red: 0.1289230458, green: 0.1288574279, blue: 0.1350364881, alpha: 1) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+	})
+	
+	static let conversationTextFieldBackground = UIColor(dynamicProvider: { traitCollection in
+		traitCollection.userInterfaceStyle == .dark ? #colorLiteral(red: 0.1809509672, green: 0.1809509672, blue: 0.1809509672, alpha: 1) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+	})
+	
+	static let conversationSendButton = UIColor(dynamicProvider: { traitCollection in
+		traitCollection.userInterfaceStyle == .dark ? #colorLiteral(red: 0.2411876023, green: 0.3770276904, blue: 0.5472865105, alpha: 1) : #colorLiteral(red: 0.9372549057, green: 0.4767975687, blue: 0.2674589695, alpha: 1)
+	})
+	
+	
+	// MARK: - Conversation (message)
 	
 	static let conversationMessageText = UIColor(dynamicProvider: { traitCollection in
 		traitCollection.userInterfaceStyle == .dark ? #colorLiteral(red: 0.9716983438, green: 1, blue: 1, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
@@ -77,11 +92,7 @@ extension UIColor {
 		traitCollection.userInterfaceStyle == .dark ? #colorLiteral(red: 0.1356711686, green: 0.1795552075, blue: 0.229470253, alpha: 1) : #colorLiteral(red: 0.9999037385, green: 1, blue: 0.9957979321, alpha: 1)
 	})
 	
-	static let conversationSendButton = UIColor(dynamicProvider: { traitCollection in
-		traitCollection.userInterfaceStyle == .dark ? #colorLiteral(red: 0.2411876023, green: 0.3770276904, blue: 0.5472865105, alpha: 1) : #colorLiteral(red: 0.9372549057, green: 0.4767975687, blue: 0.2674589695, alpha: 1)
-	})
-	
-	static let conversationSendedMarkSign = UIColor(dynamicProvider: { traitCollection in
+	static let conversationMessageSendedMarkSign = UIColor(dynamicProvider: { traitCollection in
 		traitCollection.userInterfaceStyle == .dark ? #colorLiteral(red: 0.04835501664, green: 0.182211425, blue: 0.3499839469, alpha: 1) : #colorLiteral(red: 0.490666152, green: 0.7010695714, blue: 0.2955875581, alpha: 1)
 	})
 	

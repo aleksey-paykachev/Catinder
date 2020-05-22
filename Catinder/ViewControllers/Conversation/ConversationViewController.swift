@@ -64,7 +64,8 @@ class ConversationViewController: UIViewController {
 	}
 	
 	private func setupView() {
-		view.backgroundColor = .background
+		// bottom area visibile below ConversationTextInputView
+		view.backgroundColor = .conversationTextInputViewBackground
 	}
 		
 	private func setupTableView() {
@@ -174,8 +175,7 @@ class ConversationViewController: UIViewController {
 			case .success:
 				// indicate message successeful sending
 				self.messages[newMessageIndex].status = .sended
-				let cell = self.tableView.cellForRow(at: newItemIndexPath) as? ConversationMessageCell
-				cell?.viewModel = self.messages[newMessageIndex].conversationMessageViewModel
+				self.tableView.reloadRows(at: [newItemIndexPath], with: .none)
 			}
 		}
 	}

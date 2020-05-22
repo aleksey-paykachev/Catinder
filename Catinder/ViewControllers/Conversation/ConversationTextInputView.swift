@@ -39,13 +39,14 @@ class ConversationTextInputView: UIView {
 	// MARK: - Setup
 	
 	private func setupView() {
-		backgroundColor = .background
+		backgroundColor = .conversationTextInputViewBackground
 		layer.setShadow(size: 1, offsetY: -1, alpha: 0.1)
 	}
 	
 	private func setupSubviews() {
 		// text view
 		textInputTextView.font = .systemFont(ofSize: 15)
+		textInputTextView.backgroundColor = .conversationTextFieldBackground
 		textInputTextView.delegate = self
 		textInputTextView.isScrollEnabled = false
 		textInputTextView.clipsToBounds = false

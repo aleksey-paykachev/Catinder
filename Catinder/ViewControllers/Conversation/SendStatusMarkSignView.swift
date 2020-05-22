@@ -15,7 +15,7 @@ class SendStatusMarkSignView: UIView {
 	private let showBorder = false
 	private let animationDuration: CFTimeInterval = 0.3
 	
-	private let shapeColor: UIColor = .conversationSendedMarkSign
+	private let shapeColor: UIColor = .conversationMessageSendedMarkSign
 	private let borderColor: UIColor = .darkGray
 	
 	override init(frame: CGRect) {
