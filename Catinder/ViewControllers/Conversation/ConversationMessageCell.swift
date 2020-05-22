@@ -84,13 +84,16 @@ class ConversationMessageCell: UITableViewCell {
 		case .user:
 			messageView.backgroundColor = .conversationUserMessageBackground
 			setMessageViewAlignTrailing()
+			setStatus(viewModel.status)
 
 		case .collocutor:
 			messageView.backgroundColor = .conversationCollocutorMessageBackground
 			setMessageViewAlignLeading()
 		}
-		
-		switch viewModel.status {
+	}
+	
+	private func setStatus(_ status: Message.Status) {
+		switch status {
 		case .notSended:
 			sendStatusMarkSignView.hide()
 		case .sended, .viewed:
