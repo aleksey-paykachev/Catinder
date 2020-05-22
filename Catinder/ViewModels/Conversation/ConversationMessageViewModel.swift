@@ -15,6 +15,7 @@ protocol ConversationMessageViewModelRepresentable {
 struct ConversationMessageViewModel {
 	let sender: Sender
 	let messageText: String
+	let status: Message.Status
 	
 	enum Sender {
 		case user

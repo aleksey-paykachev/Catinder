@@ -89,15 +89,19 @@ class ConversationMessageCell: UITableViewCell {
 			messageView.backgroundColor = .conversationCollocutorMessageBackground
 			setMessageViewAlignLeading()
 		}
-	}
-	
-	func markAsUploadedToServer() {
-		markSignView.show()
+		
+		switch viewModel.status {
+		case .notSended:
+			sendStatusMarkSignView.hide()
+		case .sended, .viewed:
+			sendStatusMarkSignView.show()
+		}
 	}
 	
 	override func prepareForReuse() {
 		super.prepareForReuse()
 		
 		messageLabel.text = ""
+		sendStatusMarkSignView.hide()
 	}
 }

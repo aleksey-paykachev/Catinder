@@ -13,6 +13,13 @@ struct Message: Decodable {
 	let senderUid: String
 	let receiverUid: String
 	let text: String
+	var status: Status = .notSended
+	
+	enum Status: String, Decodable {
+		case notSended
+		case sended
+		case viewed
+	}
 }
 
 
@@ -24,6 +31,6 @@ extension Message: ConversationMessageViewModelRepresentable {
 		let loggedInUserUid = AuthenticationManager.shared.loggedInUser?.uid
 		let sender = senderUid == loggedInUserUid ? ConversationMessageViewModel.Sender.user : .collocutor
 		
-		return ConversationMessageViewModel(sender: sender, messageText: text)
+		return ConversationMessageViewModel(sender: sender, messageText: text, status: status)
 	}
 }

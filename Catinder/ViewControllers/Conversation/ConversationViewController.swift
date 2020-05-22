@@ -157,7 +157,8 @@ class ConversationViewController: UIViewController {
 		messages.append(message)
 
 		// update tableView
-		let newItemIndexPath = IndexPath(item: messages.endIndex - 1, section: 0)
+		let newMessageIndex = messages.endIndex - 1
+		let newItemIndexPath = IndexPath(item: newMessageIndex, section: 0)
 		tableView.performBatchUpdates({
 			tableView.insertRows(at: [newItemIndexPath], with: .bottom)
 		})
@@ -172,8 +173,9 @@ class ConversationViewController: UIViewController {
 
 			case .success:
 				// indicate message successeful sending
+				self.messages[newMessageIndex].status = .sended
 				let cell = self.tableView.cellForRow(at: newItemIndexPath) as? ConversationMessageCell
-				cell?.markAsUploadedToServer()
+				cell?.viewModel = self.messages[newMessageIndex].conversationMessageViewModel
 			}
 		}
 	}
