@@ -10,12 +10,14 @@ import UIKit
 
 protocol ConversationTextInputViewDelegate: class {
 	func sendButtonDidTapped(with text: String)
+	func textInputHeightDidChanged()
 }
 
 class ConversationTextInputView: UIView {
 	// MARK: - Properties
 	
 	private let textInputTextView = UITextView()
+	private var textInputTextViewHeight: CGFloat = 0
 	private lazy var sendButton = CatinderImageButton("SendMessage") { [weak self] in
 		self?.sendButtonDidTapped()
 	}
@@ -29,6 +31,7 @@ class ConversationTextInputView: UIView {
 		
 		setupView()
 		setupSubviews()
+		saveTextInputTextViewHeight()
 	}
 	
 	required init?(coder: NSCoder) {
@@ -64,6 +67,13 @@ class ConversationTextInputView: UIView {
 		stack.constrainToSuperview(paddings: .all(10), respectSafeArea: false)
 	}
 	
+	
+	// MARK: - Methods
+	
+	private func saveTextInputTextViewHeight() {
+		textInputTextViewHeight = textInputTextView.intrinsicContentSize.height
+	}
+	
 	private func sendButtonDidTapped() {
 		guard let text = textInputTextView.text?.trimmed, text.isNotEmpty else { return }
 
@@ -79,5 +89,12 @@ class ConversationTextInputView: UIView {
 extension ConversationTextInputView: UITextViewDelegate {
 	func textViewDidChange(_ textView: UITextView) {
 		sendButton.isEnabled = textView.text.trimmed.isNotEmpty
+		
+		// check if height of the textField did changed
+		if textInputTextViewHeight != textView.intrinsicContentSize.height {
+			saveTextInputTextViewHeight()
+			textInputTextView.layoutIfNeeded()
+			delegate?.textInputHeightDidChanged()
+		}
 	}
 }

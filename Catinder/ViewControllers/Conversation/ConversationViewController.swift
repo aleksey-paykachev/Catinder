@@ -270,4 +270,11 @@ extension ConversationViewController: ConversationTextInputViewDelegate {
 		updateTableViewContentTopInset()
 		scrollToBottom()
 	}
+	
+	func textInputHeightDidChanged() {
+		DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(200)) {
+			self.updateTableViewContentTopInset()
+			self.scrollToBottom()
+		}
+	}
 }
