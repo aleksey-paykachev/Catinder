@@ -15,11 +15,10 @@ class AuthenticationManager {
 	
 	private(set) var loggedInUser: Profile? = nil
 
-	func login(with username: String, password: String, completion: @escaping (Result<Bool, Error>) -> ()) {
-		// get logged-in user data from network
-		// ...
+	func login(with username: String, password: String, completion: @escaping (Result<Profile, Error>) -> ()) {
 		
-		let profileUid = "0C4CF4A2-6A45-4275-9F29-28951C1A317A"
+		#warning("Get logged-in profile from network instead of using hardcoded value.")
+		let profileUid = "F98FBF08-0C94-4C67-97CB-D55DE82A5F47"
 
 		DataManager.shared.getProfile(by: profileUid) { [weak self] result in
 			switch result {
@@ -28,14 +27,12 @@ class AuthenticationManager {
 
 			case .success(let profile):
 				self?.loggedInUser = profile
-				completion(.success(true))
+				completion(.success(profile))
 			}
 		}
 	}
 	
 	func logout() {
 		loggedInUser = nil
-	}
-	
-//	enum Authentication
+	}	
 }
