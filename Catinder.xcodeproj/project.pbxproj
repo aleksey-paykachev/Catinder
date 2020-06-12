@@ -44,6 +44,7 @@
 		5B72F00E2461B83B0057D38F /* ProfileEditorExpandableFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B72F00D2461B83B0057D38F /* ProfileEditorExpandableFieldCell.swift */; };
 		5B746EF923C8C56600063374 /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B746EF823C8C56600063374 /* UILabel + Extensions.swift */; };
 		5B746EFB23C8C94000063374 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B746EFA23C8C94000063374 /* ProfileViewModel.swift */; };
+		5B77BD672493E56E000838C0 /* ActionButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B77BD662493E56E000838C0 /* ActionButtonCell.swift */; };
 		5B7FFBC723C2A442009D2854 /* CatinderImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7FFBC623C2A442009D2854 /* CatinderImageButton.swift */; };
 		5B7FFBCC23C2AABC009D2854 /* ProfileEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7FFBCB23C2AABC009D2854 /* ProfileEditorViewController.swift */; };
 		5B81A26823D7F28100565F4A /* LastMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81A26723D7F28100565F4A /* LastMessageViewModel.swift */; };
@@ -120,6 +121,7 @@
 		5B72F00D2461B83B0057D38F /* ProfileEditorExpandableFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorExpandableFieldCell.swift; sourceTree = "<group>"; };
 		5B746EF823C8C56600063374 /* UILabel + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
 		5B746EFA23C8C94000063374 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		5B77BD662493E56E000838C0 /* ActionButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonCell.swift; sourceTree = "<group>"; };
 		5B7FFBC623C2A442009D2854 /* CatinderImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderImageButton.swift; sourceTree = "<group>"; };
 		5B7FFBCB23C2AABC009D2854 /* ProfileEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorViewController.swift; sourceTree = "<group>"; };
 		5B81A26723D7F28100565F4A /* LastMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastMessageViewModel.swift; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 				5B7FFBCB23C2AABC009D2854 /* ProfileEditorViewController.swift */,
 				5BFC059823C54954005C7FC1 /* ProfileEditorFieldCell.swift */,
 				5B72F00D2461B83B0057D38F /* ProfileEditorExpandableFieldCell.swift */,
+				5B77BD662493E56E000838C0 /* ActionButtonCell.swift */,
 				5B37744823CE772400698427 /* PhotosSelector */,
 			);
 			path = ProfileEditor;
@@ -563,6 +566,7 @@
 				5B956FAC23D4289B008A53B6 /* CatinderPrimaryTextButton.swift in Sources */,
 				5BDACB67245ED32700A4DEA1 /* CatinderActivityIndicatorView.swift in Sources */,
 				5BC68D5C23BF29E500DE9E82 /* CatinderPageControl.swift in Sources */,
+				5B77BD672493E56E000838C0 /* ActionButtonCell.swift in Sources */,
 				5BDACB69245ED79000A4DEA1 /* CatinderImageView.swift in Sources */,
 				5BD54E1723D5077E004A0AA2 /* VStackView.swift in Sources */,
 				5BCB68ED246D9AE2009B2471 /* LoginScreenViewController.swift in Sources */,

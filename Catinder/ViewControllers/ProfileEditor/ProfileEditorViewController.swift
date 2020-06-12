@@ -17,6 +17,7 @@ class ProfileEditorViewController: UITableViewController {
 		case age = "Возраст"
 		case shortDescription = "Краткое описание"
 		case extendedDescription = "Расширенное описание"
+		case exit = ""
 		
 		var title: String {
 			rawValue
@@ -43,7 +44,7 @@ class ProfileEditorViewController: UITableViewController {
 	
 	private let dataManager: DataManager
 	private var userProfile: Profile?
-	private let sections: [Section] = [.photos, .name, .age, .shortDescription, .extendedDescription]
+	private let sections: [Section] = [.photos, .name, .age, .shortDescription, .extendedDescription, .exit]
 	private let photoSelectorViewController = PhotoSelectorViewController()
 	
 	
@@ -125,6 +126,11 @@ extension ProfileEditorViewController {
 			
 		case .extendedDescription:
 			return ProfileEditorExpandableFieldCell(text: userProfile.extendedDescription, placeholder: placeholder, delegate: self)
+			
+		case .exit:
+			return ActionButtonCell(title: "Выйти из профиля", type: .destructive) {
+				AuthenticationManager.shared.logout()
+			}
 			
 		default:
 			return UITableViewCell()
