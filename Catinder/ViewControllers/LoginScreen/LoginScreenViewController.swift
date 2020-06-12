@@ -19,6 +19,8 @@ class LoginScreenViewController: UIViewController {
 		super.init(nibName: nil, bundle: nil)
 		setupView()
 		setupSubviews()
+		
+		AuthenticationManager.shared.delegate = self
 	}
 	
 	required init?(coder: NSCoder) {
@@ -96,14 +98,32 @@ class LoginScreenViewController: UIViewController {
 			
 			switch result {
 			case .success:
-				let mainViewController = CatinderNavigationController(rootViewController: CardsViewerViewController())
-				mainViewController.modalPresentationStyle = .fullScreen
-				self.present(mainViewController, animated: true)
-
+				break // handle successful login as AuthenticationManager delegate
 			case .failure(let error):
 				self.showNotification(error.localizedDescription)
 			}
 		}
+	}
+	
+	private func clearTextFields() {
+		loginTextField.text = ""
+		passwordTextField.text = ""
+	}
+}
+
+
+// MARK: - AuthenticationManagerDelegate
+
+extension LoginScreenViewController: AuthenticationManagerDelegate {
+	func userDidLogin() {
+		let mainViewController = CatinderNavigationController(rootViewController: CardsViewerViewController())
+		mainViewController.modalPresentationStyle = .fullScreen
+		present(mainViewController, animated: true)
+	}
+	
+	func userDidLogout() {
+		clearTextFields()
+		presentedViewController?.dismiss(animated: true)
 	}
 }
 

@@ -8,12 +8,18 @@
 
 import Foundation
 
+protocol AuthenticationManagerDelegate: class {
+	func userDidLogin()
+	func userDidLogout()
+}
+
 class AuthenticationManager {
 	static var shared = AuthenticationManager()
 	
 	private init() {}
 	
 	private(set) var loggedInUser: Profile? = nil
+	weak var delegate: AuthenticationManagerDelegate?
 
 	func login(with username: String, password: String, completion: @escaping (Result<Profile, Error>) -> ()) {
 		
@@ -27,6 +33,7 @@ class AuthenticationManager {
 
 			case .success(let profile):
 				self?.loggedInUser = profile
+				self?.delegate?.userDidLogin()
 				completion(.success(profile))
 			}
 		}
@@ -34,5 +41,6 @@ class AuthenticationManager {
 	
 	func logout() {
 		loggedInUser = nil
+		delegate?.userDidLogout()
 	}	
 }
