@@ -108,7 +108,7 @@ class DataManager {
 		switch likeType {
 		case .regular:
 			// regular like gives random probability of mutuality
-			let mutualLikePercentageProbability = 35
+			let mutualLikePercentageProbability = 20
 			isLikeMutual = Int.random(in: 1...100) <= mutualLikePercentageProbability
 
 		case .super:
