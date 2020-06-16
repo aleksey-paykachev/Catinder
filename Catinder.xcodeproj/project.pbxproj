@@ -56,6 +56,7 @@
 		5B96C7FD23BE713A00BFB4D0 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B96C7FC23BE713A00BFB4D0 /* Angle.swift */; };
 		5B98EF85243F43C800BC93E9 /* CatinderNavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B98EF84243F43C800BC93E9 /* CatinderNavigationButton.swift */; };
 		5B98EF87243F445F00BC93E9 /* CatinderCircleBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B98EF86243F445F00BC93E9 /* CatinderCircleBarButtonItem.swift */; };
+		5B9EC59F249850B200EA3322 /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9EC59E249850B200EA3322 /* LoginData.swift */; };
 		5BAE16FB23D95839007D3EA4 /* CatinderNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAE16FA23D95839007D3EA4 /* CatinderNavigationController.swift */; };
 		5BB2ED0A23DD5900008AA5E6 /* UIViewController + Catinder Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2ED0923DD5900008AA5E6 /* UIViewController + Catinder Extensions.swift */; };
 		5BC4194F23DB321F00E98AA9 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC4194E23DB321F00E98AA9 /* ConversationViewController.swift */; };
@@ -133,6 +134,7 @@
 		5B96C7FC23BE713A00BFB4D0 /* Angle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
 		5B98EF84243F43C800BC93E9 /* CatinderNavigationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderNavigationButton.swift; sourceTree = "<group>"; };
 		5B98EF86243F445F00BC93E9 /* CatinderCircleBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderCircleBarButtonItem.swift; sourceTree = "<group>"; };
+		5B9EC59E249850B200EA3322 /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
 		5BAE16FA23D95839007D3EA4 /* CatinderNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatinderNavigationController.swift; sourceTree = "<group>"; };
 		5BB2ED0923DD5900008AA5E6 /* UIViewController + Catinder Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Catinder Extensions.swift"; sourceTree = "<group>"; };
 		5BC4194E23DB321F00E98AA9 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 				5B04923E23D69F9400639802 /* RelationshipDecision.swift */,
 				5B72293323E07063003B6BD4 /* Match.swift */,
 				5B3BCA0E23E0356500092DD5 /* Message.swift */,
+				5B9EC59E249850B200EA3322 /* LoginData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				5B139E7D23B7851700BE73E7 /* BottomMenuView.swift in Sources */,
 				5B41EBE123E5916700D99CA6 /* ConversationTextInputView.swift in Sources */,
 				5B7FFBC723C2A442009D2854 /* CatinderImageButton.swift in Sources */,
+				5B9EC59F249850B200EA3322 /* LoginData.swift in Sources */,
 				5B37744323CE75FA00698427 /* CatinderImagePicker.swift in Sources */,
 				5BC4195523DB3AFE00E98AA9 /* ConversationMessageCell.swift in Sources */,
 				5BE56BB723E8BD59000374C2 /* AuthenticationManager.swift in Sources */,

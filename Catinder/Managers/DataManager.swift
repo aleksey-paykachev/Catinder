@@ -27,6 +27,14 @@ class DataManager {
 	private init() { } 	// Singleton
 	
 	
+	// MARK: - Login
+	
+	func login(username: String, password: String, completion: @escaping (Result<LoginData, Error>) -> ()) {
+		// real application should use POST request and send username and password to server
+		parseDataFromNetwork(for: "login", completion: completion)
+	}
+	
+	
 	// MARK: - Profiles
 	
 	func getAllProfiles(completion: @escaping (Result<[Profile], Error>) -> ()) {

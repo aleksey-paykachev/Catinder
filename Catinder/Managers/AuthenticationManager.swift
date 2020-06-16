@@ -23,18 +23,23 @@ class AuthenticationManager {
 
 	func login(with username: String, password: String, completion: @escaping (Result<Profile, Error>) -> ()) {
 		
-		#warning("Get logged-in profile from network instead of using hardcoded value.")
-		let profileUid = "F98FBF08-0C94-4C67-97CB-D55DE82A5F47"
-
-		DataManager.shared.getProfile(by: profileUid) { [weak self] result in
+		DataManager.shared.login(username: username, password: password) { [weak self] result in
 			switch result {
 			case .failure(let error):
 				completion(.failure(error))
 
-			case .success(let profile):
+			case .success(let loginData) where loginData.result == true:
+				guard let profile = loginData.profile else {
+					completion(.failure(AuthenticationError.noProfileData))
+					return
+				}
+
 				self?.loggedInUser = profile
 				self?.delegate?.userDidLogin()
 				completion(.success(profile))
+				
+			default:
+				completion(.failure(AuthenticationError.wrongAuthenticationData))
 			}
 		}
 	}
@@ -42,5 +47,13 @@ class AuthenticationManager {
 	func logout() {
 		loggedInUser = nil
 		delegate?.userDidLogout()
-	}	
+	}
+	
+	
+	// MARK: - Errors
+	
+	enum AuthenticationError: Swift.Error {
+		case noProfileData
+		case wrongAuthenticationData
+	}
 }
