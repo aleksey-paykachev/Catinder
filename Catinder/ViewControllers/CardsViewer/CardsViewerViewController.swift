@@ -123,17 +123,17 @@ extension CardsViewerViewController: BotomMenuActionsDelegate {
 	}
 	
 	func boostButtonDidPressed() {
-		showActivityIndicator()
+		bottomMenuView.setBoostButtonInPendingState()
 
 		dataManager.activateBoost { [weak self] result in
 			guard let self = self else { return }
-			self.hideActivityIndicator()
 			
 			switch result {
 			case .success(let activationTimeInSeconds):
 				self.bottomMenuView.activateBoostOption(for: .seconds(activationTimeInSeconds))
 
 			case .failure(let error):
+				self.bottomMenuView.setBoostButtonInNormalState()
 				self.showNotification(error.localizedDescription)
 			}
 		}

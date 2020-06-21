@@ -33,14 +33,6 @@ class BottomMenuView: UIView {
 	private lazy var boostProfileButton = CatinderImageButton("Boost") { [weak self] in
 		self?.delegate?.boostButtonDidPressed()
 	}
-	
-	func activateBoostOption(for activationTime: DispatchTimeInterval) {
-		boostProfileButton.isEnabled = false
-		DispatchQueue.main.asyncAfter(deadline: .now() + activationTime) { [weak self] in
-			#warning("Add animation")
-			self?.boostProfileButton.isEnabled = true
-		}
-	}
 
 	private lazy var likeButton = CatinderImageButton("Like") { [weak self] in self?.delegate?.likeButtonDidPressed()
 	}
@@ -70,5 +62,25 @@ class BottomMenuView: UIView {
 		constrainHeight(to: 80)
 		addSubview(stackView)
 		stackView.constrainToSuperview()
+	}
+	
+	
+	// MARK: - Boost button actions
+	
+	func setBoostButtonInPendingState() {
+		boostProfileButton.isEnabled = false
+	}
+	
+	func setBoostButtonInNormalState() {
+		boostProfileButton.isEnabled = true
+	}
+	
+	func activateBoostOption(for activationTime: DispatchTimeInterval) {
+		#warning("TODO: Add activation animation.")
+		boostProfileButton.isEnabled = false
+
+		DispatchQueue.main.asyncAfter(deadline: .now() + activationTime) { [weak self] in
+			self?.setBoostButtonInNormalState()
+		}
 	}
 }
